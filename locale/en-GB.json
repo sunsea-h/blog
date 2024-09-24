@@ -1,5 +1,5 @@
 {
-  "common.notice": "notice",
   "common.ok": "OK",
-  "common.select": "Select"
+  "common.select": "Select",
+  "common.cancel": "Cancel"
 }
