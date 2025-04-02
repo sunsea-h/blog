@@ -13,11 +13,12 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://sunsea-h.github.io
+url: https://sunsea-h.github.io/blog
+root: /blog/
 permalink: :title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
@@ -106,8 +107,7 @@ theme: fluid
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repo: <repository url> # https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+  type:
 
 # Content blocks
 content_blocks:
