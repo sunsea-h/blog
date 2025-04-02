@@ -1,0 +1,15 @@
+---
+title: CSS知识点
+categories:
+  - CSS
+date: 2024-11-28 15:24:09
+updated: 2025-03-28 10:35:50
+---
+# CSS 知识点
+
+### margin 负值
+
+左/上为负, 元素本身左移  
+![](CSS知识点.assets/file-20241128153751938.png)  
+右/下为负, 元素边框左拉  
+![](CSS知识点.assets/file-20241128153811985.png)

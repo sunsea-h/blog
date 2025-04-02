@@ -1,0 +1,15 @@
+---
+title: Providers
+categories:
+  - JavaScript Framework
+  - Nest
+date: 2024-12-31 15:19:30
+updated: 2025-03-28 10:35:07
+---
+# Providers
+
+## DTO 使用类 (class) 的优势 (相比于接口 (interface))
+
+- **元数据支持**：类可以使用装饰器来定义元数据，接口则不支持。
+- **运行时类型检查**：类在运行时保留了类型信息，而接口在编译后被移除。
+- **更好的集成**：与 NestJS 的管道、守卫等特性更好地集成。
