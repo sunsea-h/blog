@@ -1,7 +1,5 @@
 ---
 title: Manjaro
-categories:
-  - System
 date: 2024-08-05 21:57:52
 updated: 2024-08-25 14:29:51
 ---

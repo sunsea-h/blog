@@ -1,7 +1,5 @@
 ---
 title: README
-categories:
-  - 个人配置
 date: 2023-04-06 17:14:55
 updated: 2024-06-17 23:15:57
 ---

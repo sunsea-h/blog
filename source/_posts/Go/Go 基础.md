@@ -1,9 +1,7 @@
 ---
-title: Go 基础
-categories:
-  - Go
 date: 2024-11-11 17:55:30
 updated: 2025-03-28 10:36:00
+title: Go 基础
 ---
 # Go 基础
 

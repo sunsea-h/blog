@@ -1,7 +1,5 @@
 ---
 title: JavaScript Question
-categories:
-  - JavaScript
 date: 2024-08-16 16:08:47
 updated: 2024-09-12 15:33:21
 ---

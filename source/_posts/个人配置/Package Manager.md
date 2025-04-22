@@ -1,7 +1,5 @@
 ---
 title: Package Manager
-categories:
-  - 个人配置
 date: 2022-09-26 09:27:58
 updated: 2024-08-12 11:58:16
 ---

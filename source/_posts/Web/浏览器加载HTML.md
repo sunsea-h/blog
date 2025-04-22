@@ -1,9 +1,7 @@
 ---
-title: 浏览器加载HTML
-categories:
-  - Web
 date: 2025-03-21 17:17:02
 updated: 2025-03-27 17:43:32
+title: 浏览器加载HTML
 ---
 # 浏览器加载 HTML
 

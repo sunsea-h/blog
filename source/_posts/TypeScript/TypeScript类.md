@@ -1,7 +1,5 @@
 ---
 title: TypeScript 类
-categories:
-  - TypeScript
 date: 2024-06-05 13:55:37
 updated: 2024-07-17 11:08:31
 ---

@@ -1,7 +1,5 @@
 ---
 title: QA
-categories:
-  - Web
 date: 2024-09-11 15:58:11
 updated: 2024-09-20 17:15:38
 ---

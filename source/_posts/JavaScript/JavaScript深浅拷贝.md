@@ -1,7 +1,5 @@
 ---
 title: JavaScript 深浅拷贝
-categories:
-  - JavaScript
 date: 2022-10-19 15:22:40
 updated: 2025-03-18 11:32:50
 ---

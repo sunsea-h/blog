@@ -1,7 +1,5 @@
 ---
 title: Shell
-categories:
-  - Server
 date: 2024-10-07 18:20:13
 updated: 2025-03-28 17:04:23
 ---

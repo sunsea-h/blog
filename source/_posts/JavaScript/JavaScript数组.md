@@ -1,7 +1,5 @@
 ---
 title: JavaScript 数组
-categories:
-  - JavaScript
 date: 2022-09-05 11:33:18
 updated: 2023-07-30 20:48:58
 ---

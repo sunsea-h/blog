@@ -1,7 +1,5 @@
 ---
 title: nginx
-categories:
-  - Server
 date: 2024-07-28 23:50:53
 updated: 2025-03-07 18:11:43
 ---

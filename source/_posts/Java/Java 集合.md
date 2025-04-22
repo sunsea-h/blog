@@ -1,7 +1,5 @@
 ---
 title: Java 集合
-categories:
-  - Java
 date: 2024-06-24 23:38:55
 updated: 2024-06-30 00:01:06
 ---

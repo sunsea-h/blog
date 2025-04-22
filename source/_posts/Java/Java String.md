@@ -1,7 +1,5 @@
 ---
 title: Java String
-categories:
-  - Java
 date: 2024-06-19 23:03:39
 updated: 2024-06-21 21:59:06
 ---

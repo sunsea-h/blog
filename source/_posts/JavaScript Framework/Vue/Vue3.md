@@ -1,8 +1,5 @@
 ---
 title: Vue3
-categories:
-  - JavaScript Framework
-  - Vue
 date: 2022-09-26 09:27:58
 updated: 2024-11-06 14:07:19
 ---

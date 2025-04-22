@@ -1,12 +1,8 @@
 ---
 title: React
-categories:
-  - JavaScript Framework
-  - React
 date: 2023-02-17 09:37:55
-updated: 2024-11-08 15:09:32
+updated: 2025-04-17 16:39:46
 ---
-
 # React
 
 ### 环境初始化
@@ -1071,7 +1067,7 @@ import {flushSync} from "react-dom";
   }
 ```
 
-[合成事件](React-原理.md##合成事件)  
+[合成事件](React原理.md##合成事件)  
 
 #### useState 使用注意
 
@@ -1154,7 +1150,8 @@ useEffect(() => {
 ### useLayoutEffect
 
 `useEffect` 渲染完之后异步执行；  
-`useLayoutEffect` 在渲染之前同步执行。  
+`useLayoutEffect` 在渲染之前同步执行（浏览器 layout 之后，painting 之前执行）。  
+
 **使用 useEffect**  
 
 ```jsx
@@ -1301,10 +1298,12 @@ function App() {
 - `useRef` 存储的数据在渲染之间持久化。
 - `useRef` 初始化时为 `undefined`，所以更新值应该在 `useEffect` 或事件处理函数中。
 
-```ad-note
-title:`useRef` vs `createRef`
-TODO
-```
+`useRef` vs `createRef`  
+
+|          | useRef              | createRef |
+| -------- | ------------------- | --------- |
+| 用途     | 函数组件            | 类组件    |
+| 存储方式 | 组件对应的 Fiber 节点 | 类实例属性          |
 
 ### useImperativeHandle
 
@@ -1544,11 +1543,11 @@ const ref = React.createRef();
 
 ## 实践
 
-### [遇到的问题](React-问题.md)
+### [遇到的问题](React问题.md)
 
 ### [第三方库](React-第三方库.md)
 
-## [原理解析](React-原理.md)
+## [原理解析](React原理.md)
 
 ## [React-Router](React-Router.md)
 

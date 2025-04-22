@@ -1,9 +1,7 @@
 ---
-title: CSS知识点
-categories:
-  - CSS
 date: 2024-11-28 15:24:09
 updated: 2025-03-28 10:35:50
+title: CSS知识点
 ---
 # CSS 知识点
 

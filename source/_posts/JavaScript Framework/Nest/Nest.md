@@ -1,10 +1,7 @@
 ---
-title: Nest
-categories:
-  - JavaScript Framework
-  - Nest
 date: 2024-11-11 11:55:28
 updated: 2025-03-27 17:46:50
+title: Nest
 ---
 # Nest
 

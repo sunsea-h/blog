@@ -1,12 +1,8 @@
 ---
 title: Redux
-categories:
-  - JavaScript Framework
-  - React
 date: 2022-09-26 09:27:58
-updated: 2023-03-22 18:26:42
+updated: 2025-04-18 16:32:15
 ---
-
 # Redux
 
 ## 创建 Redux 的应用
@@ -41,9 +37,11 @@ npx create-react-app my-app --template redux-typescript
 
 #### Action
 
-action 具有 type 属性的普通 JS 对象，type 一般按“域/事件名称”命名，如 `"todos/todoAdded"` 。域：action 所属的特征或类别，事件名称：发生的具体事情。
+action 具有 type 属性的普通 JS 对象，type 一般按“域/事件名称”命名，如 `"todos/todoAdded"` 。  
+域：action 所属的特征或类别  
+事件名称：发生的具体事情
 
-还有 payload：存放有关事件发生的附加信息。
+payload：存放有关事件发生的附加信息。
 
 ```js
 const addTodoAction = {
@@ -788,4 +786,3 @@ export const {
 - `useSelector` 可以接受比较函数 如： `shallowEqual` 。
 - 组件可以包装在 `React.memo()` 中，仅在它们的 prop 发生变化时重新渲染。
 - 列表渲染可以通过让列表父组件仅读取每项的 ID 组成的数组、将 ID 传递给列表项子项并在子项中按 ID 检索项来实现优化
-

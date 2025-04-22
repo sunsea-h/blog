@@ -1,7 +1,5 @@
 ---
 title: JQuery
-categories:
-  - JavaScript
 date: 2022-09-26 09:27:58
 updated: 2023-03-22 18:18:27
 ---

@@ -1,7 +1,5 @@
 ---
 title: Java 新特性
-categories:
-  - Java
 date: 2024-07-20 23:46:02
 updated: 2024-07-21 18:27:25
 ---

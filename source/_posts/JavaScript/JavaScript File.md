@@ -1,7 +1,5 @@
 ---
 title: JavaScript File
-categories:
-  - JavaScript
 date: 2024-08-16 18:31:17
 updated: 2024-09-03 16:21:43
 ---

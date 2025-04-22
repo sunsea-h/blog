@@ -1,11 +1,8 @@
 ---
 title: WebAPI
-categories:
-  - JavaScript
 date: 2022-10-19 16:56:25
-updated: 2024-05-06 16:28:32
+updated: 2025-04-18 17:29:19
 ---
-
 # WebAPI
 
 ### Element.getBoundingClientRect()
@@ -277,12 +274,20 @@ function App() {
 
 ### requestIdleCallback
 
-存在屏幕刷新，计算剩余时间，存在空闲时执行；  
-不存在屏幕刷新，设置 50ms 的固定空闲时间执行。
-> 研究 100ms 内响应为瞬时，保留 50ms 执行用户输入等操作，不影响屏幕刷新。
+```js
+requestIdleCallback((deadline) => {
+    console.log('time:', deadline.timeRemaining())
+})
+```
 
-注意：
- - 避免在空闲时间改变 DOM，使用 requestAnimationFrame 调度。
+存在屏幕刷新时，输出为当前帧剩余时间；  
+不存在屏幕刷新时，会固定设置 50ms 的固定空闲时间执行。  
+当结束后如果依然没有屏幕刷新，就会在开启一个 50 ms 的空闲期。  
+设置 50ms 的原因：研究用户输入后， 100ms 内响应为瞬时，保留 50ms 执行用户输入等操作，不影响屏幕刷新。
+
+**注意：**  
+requestIdleCallback 执行时，当前帧已经结束绘制，避免改变 DOM。  
+应在 requestAnimationFrame 执行 DOM 操作。
 
 ### WebSockets
 

@@ -1,7 +1,5 @@
 ---
 title: BOM
-categories:
-  - JavaScript
 date: 2022-09-05 11:33:18
 updated: 2023-03-23 14:00:27
 ---

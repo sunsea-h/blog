@@ -1,7 +1,5 @@
 ---
 title: JavaScript 模块
-categories:
-  - JavaScript
 date: 2022-09-05 11:33:18
 updated: 2024-08-20 17:32:48
 ---

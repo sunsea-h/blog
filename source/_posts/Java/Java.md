@@ -1,7 +1,5 @@
 ---
 title: Java
-categories:
-  - Java
 date: 2022-09-05 11:33:18
 updated: 2024-07-22 23:49:05
 ---

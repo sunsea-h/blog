@@ -1,7 +1,5 @@
 ---
 title: Java lambda 和 stream 流
-categories:
-  - Java
 date: 2024-07-19 23:52:57
 updated: 2024-07-20 19:15:53
 ---

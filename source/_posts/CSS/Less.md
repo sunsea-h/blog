@@ -1,7 +1,5 @@
 ---
 title: Less
-categories:
-  - CSS
 date: 2022-09-05 11:33:18
 updated: 2023-03-22 18:27:32
 ---

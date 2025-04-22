@@ -1,7 +1,5 @@
 ---
 title: JavaScript 正则表达式
-categories:
-  - JavaScript
 date: 2022-09-26 09:27:58
 updated: 2025-03-21 16:54:15
 ---

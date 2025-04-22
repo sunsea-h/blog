@@ -1,10 +1,7 @@
 ---
-title: Pipes
-categories:
-  - JavaScript Framework
-  - Nest
 date: 2025-02-26 10:49:01
 updated: 2025-03-27 17:46:44
+title: Pipes
 ---
 # Pipes
 

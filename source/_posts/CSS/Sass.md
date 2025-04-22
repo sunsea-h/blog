@@ -1,7 +1,5 @@
 ---
 title: Sass
-categories:
-  - CSS
 date: 2024-02-15 16:44:28
 updated: 2024-02-15 17:31:13
 ---

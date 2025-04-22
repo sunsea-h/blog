@@ -1,7 +1,5 @@
 ---
 title: TypeScript 实践
-categories:
-  - TypeScript
 date: 2024-02-09 21:50:28
 updated: 2024-02-09 22:03:25
 ---

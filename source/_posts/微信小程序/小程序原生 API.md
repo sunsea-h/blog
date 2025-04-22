@@ -1,9 +1,7 @@
 ---
-title: 小程序原生 API
-categories:
-  - 微信小程序
 date: 2024-04-29 16:22:09
 updated: 2025-03-28 10:38:14
+title: 小程序原生 API
 ---
 # 小程序原生 API
 

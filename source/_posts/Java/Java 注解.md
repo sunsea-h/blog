@@ -1,7 +1,5 @@
 ---
 title: Java 注解
-categories:
-  - Java
 date: 2024-07-21 18:58:41
 updated: 2024-07-22 23:44:41
 ---

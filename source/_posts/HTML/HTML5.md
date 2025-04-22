@@ -1,7 +1,5 @@
 ---
 title: HTML5
-categories:
-  - HTML
 date: 2022-09-05 11:33:18
 updated: 2025-02-26 10:27:43
 ---

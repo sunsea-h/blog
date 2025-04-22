@@ -1,9 +1,7 @@
 ---
-title: Database
-categories:
-  - Server
 date: 2024-12-24 14:23:18
 updated: 2025-03-28 10:35:35
+title: Database
 ---
 # Database
 

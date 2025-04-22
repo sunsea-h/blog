@@ -1,9 +1,7 @@
 ---
 title: JavaScript 最佳实践
-updated: '2024309-19217-581290 20:30:00'
-categories:
-  - JavaScript
 date: 2023-05-04 10:35:48
+updated: 2024309-19217-581290 20:30:00
 ---
 
 # JavaScript 最佳实践

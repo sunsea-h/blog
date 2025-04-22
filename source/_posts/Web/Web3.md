@@ -1,7 +1,5 @@
 ---
 title: Web3
-categories:
-  - Web
 date: 2024-07-28 23:48:08
 updated: 2024-07-28 23:48:28
 ---

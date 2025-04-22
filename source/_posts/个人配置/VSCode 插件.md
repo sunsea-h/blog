@@ -1,9 +1,7 @@
 ---
-title: VSCode 插件
-categories:
-  - 个人配置
 date: 2025-03-24 13:52:28
 updated: 2025-03-27 16:48:19
+title: VSCode 插件
 ---
 # VSCode 插件
 

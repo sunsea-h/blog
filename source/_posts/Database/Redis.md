@@ -1,7 +1,5 @@
 ---
 title: Redis
-categories:
-  - Database
 date: 2023-12-30 21:21:25
 updated: 2025-03-28 10:41:44
 ---
