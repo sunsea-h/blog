@@ -5,8 +5,8 @@
   "scripts": {
     "copy": "node custom/copy.js",
     "commit": "node custom/git-auto-commit.js",
-    "prepush": "npm run copy && npm run commit",
     "build": "hexo clean && hexo generate",
+    "prepush": "npm run copy && npm run build && npm run clean && npm run commit",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo clean && hexo server",
