@@ -2,7 +2,7 @@ const { execSync } = require('child_process');
 const { log, error } = console;
 
 try {
-  execSync('git add .', { stdio: 'inherit' });
+  execSync('git add .\\source\\_posts\\', { stdio: 'inherit' });
   log('✅ Git add 成功');
 
   const commitMessage = '更新笔记';
