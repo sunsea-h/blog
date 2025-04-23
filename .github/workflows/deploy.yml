@@ -34,4 +34,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           branch: gh-pages
-          keep_files: true  # 完全覆盖目标分支
+          keep_files: false  # 完全覆盖目标分支
+          force_orphan: true  # 确保 gh-pages 分支为空
