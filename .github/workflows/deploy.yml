@@ -22,11 +22,10 @@ jobs:
 
       - name: Install Hexo and Dependencies
         run: |
-          npm install hexo-cli -g
           npm install
 
       - name: Generate Static Files
-        run: hexo clean && hexo generate
+        run: npm run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
