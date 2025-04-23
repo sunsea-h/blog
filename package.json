@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "copy": "node custom/copy.js",
+    "commit": "node custom/git-auto-commit.js",
+    "prepush": "npm run copy && npm run commit",
     "build": "hexo clean && hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo deploy",
