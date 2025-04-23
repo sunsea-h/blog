@@ -1,5 +1,7 @@
 ---
 title: ES6
+categories:
+  - JavaScript
 date: 2022-09-05 11:33:18
 updated: 2023-12-10 19:11:45
 ---

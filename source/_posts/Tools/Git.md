@@ -1,5 +1,7 @@
 ---
 title: Git
+categories:
+  - Tools
 date: 2022-09-26 09:27:58
 updated: 2025-04-22 18:16:57
 ---

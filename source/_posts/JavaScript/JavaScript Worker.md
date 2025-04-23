@@ -1,5 +1,7 @@
 ---
 title: JavaScript Worker
+categories:
+  - JavaScript
 date: 2024-08-13 17:42:02
 updated: 2025-01-02 16:09:46
 ---

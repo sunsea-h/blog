@@ -1,5 +1,8 @@
 ---
 title: Redux
+categories:
+  - JavaScript Framework
+  - React
 date: 2022-09-26 09:27:58
 updated: 2025-04-18 16:32:15
 ---

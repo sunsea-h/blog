@@ -1,5 +1,7 @@
 ---
 title: DOM 事件机制
+categories:
+  - JavaScript
 date: 2022-09-05 11:33:18
 updated: 2023-03-29 11:56:21
 ---

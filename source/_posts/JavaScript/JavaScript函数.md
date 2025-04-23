@@ -1,5 +1,7 @@
 ---
 title: JavaScript 函数
+categories:
+  - JavaScript
 date: 2022-09-05 11:33:18
 updated: 2023-04-21 12:12:59
 ---

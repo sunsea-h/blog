@@ -1,5 +1,8 @@
 ---
 title: Vue3+Typescript 使用指南
+categories:
+  - JavaScript Framework
+  - Vue
 date: 2023-05-09 10:37:53
 updated: 2023-05-09 15:36:35
 ---

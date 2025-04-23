@@ -1,5 +1,8 @@
 ---
 title: vue-element-admin
+categories:
+  - JavaScript Framework
+  - Vue
 date: 2022-09-26 09:27:58
 updated: 2023-03-22 18:24:10
 ---

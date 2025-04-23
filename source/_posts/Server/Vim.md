@@ -1,5 +1,7 @@
 ---
 title: Vim
+categories:
+  - Server
 date: 2022-09-26 09:27:58
 updated: 2024-11-06 16:18:44
 ---

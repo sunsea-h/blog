@@ -1,5 +1,7 @@
 ---
 title: JavaScript字符串
+categories:
+  - JavaScript
 date: 2023-01-31 14:07:50
 updated: 2023-03-23 09:44:03
 ---

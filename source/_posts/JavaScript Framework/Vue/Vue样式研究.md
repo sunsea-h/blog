@@ -1,5 +1,8 @@
 ---
 title: Vue 样式研究
+categories:
+  - JavaScript Framework
+  - Vue
 date: 2024-04-15 18:00:50
 updated: 2024-04-15 18:17:39
 ---

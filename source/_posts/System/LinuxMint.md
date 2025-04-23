@@ -1,5 +1,7 @@
 ---
 title: LinuxMint
+categories:
+  - System
 date: 2024-08-19 23:15:20
 updated: 2024-10-09 10:55:55
 ---

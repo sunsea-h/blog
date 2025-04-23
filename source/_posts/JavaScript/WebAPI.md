@@ -1,5 +1,7 @@
 ---
 title: WebAPI
+categories:
+  - JavaScript
 date: 2022-10-19 16:56:25
 updated: 2025-04-18 17:29:19
 ---

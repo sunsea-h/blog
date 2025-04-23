@@ -1,5 +1,8 @@
 ---
 title: Webpack核心概念
+categories:
+  - JavaScript Engineering
+  - Webpack
 date: 2025-04-14 14:08:58
 updated: 2025-04-16 17:31:24
 ---

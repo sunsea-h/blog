@@ -1,5 +1,8 @@
 ---
 title: Vue2
+categories:
+  - JavaScript Framework
+  - Vue
 date: 2022-09-26 09:27:58
 updated: 2024-09-14 16:02:15
 ---

@@ -1,7 +1,9 @@
 ---
+title: Caddy
+categories:
+  - Server
 date: 2025-03-07 18:14:29
 updated: 2025-03-27 17:46:35
-title: Caddy
 ---
 # Caddy
 

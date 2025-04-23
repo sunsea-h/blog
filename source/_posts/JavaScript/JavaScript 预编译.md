@@ -1,5 +1,7 @@
 ---
 title: JavaScript 预编译
+categories:
+  - JavaScript
 date: 2024-07-22 18:00:07
 updated: 2024-07-22 18:01:00
 ---

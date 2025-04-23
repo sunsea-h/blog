@@ -1,5 +1,7 @@
 ---
 title: Vite
+categories:
+  - JavaScript Engineering
 date: 2024-01-30 22:46:27
 updated: 2024-04-30 10:05:13
 ---

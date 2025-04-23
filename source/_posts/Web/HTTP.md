@@ -1,5 +1,7 @@
 ---
 title: HTTP
+categories:
+  - Web
 date: 2022-11-29 16:38:30
 updated: 2024-08-14 10:27:50
 ---

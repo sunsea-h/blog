@@ -1,5 +1,8 @@
 ---
 title: Webpack实践
+categories:
+  - JavaScript Engineering
+  - Webpack
 date: 2025-04-14 14:27:03
 updated: 2025-04-16 17:13:31
 ---

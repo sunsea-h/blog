@@ -1,5 +1,8 @@
 ---
 title: Vue
+categories:
+  - JavaScript Framework
+  - Vue
 date: 2023-05-09 15:19:31
 updated: 2023-05-09 15:19:56
 ---

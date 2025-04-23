@@ -1,5 +1,7 @@
 ---
 title: Docker
+categories:
+  - Server
 date: 2022-09-26 09:27:58
 updated: 2025-02-25 14:41:24
 ---

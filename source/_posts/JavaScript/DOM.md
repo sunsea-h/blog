@@ -1,5 +1,7 @@
 ---
 title: DOM
+categories:
+  - JavaScript
 date: 2022-09-05 11:33:18
 updated: 2024-07-24 17:44:57
 ---

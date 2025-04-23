@@ -1,5 +1,7 @@
 ---
 title: Java 多线程
+categories:
+  - Java
 date: 2024-06-22 20:15:41
 updated: 2024-06-24 23:38:43
 ---

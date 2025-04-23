@@ -1,5 +1,8 @@
 ---
 title: Vue原理
+categories:
+  - JavaScript Framework
+  - Vue
 date: 2025-04-18 15:09:40
 updated: 2025-04-18 15:25:16
 ---

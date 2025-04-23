@@ -1,5 +1,7 @@
 ---
 title: README
+categories:
+  - 微信小程序
 date: 2024-04-21 23:29:46
 updated: 2025-03-28 10:38:18
 ---

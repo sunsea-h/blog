@@ -1,7 +1,9 @@
 ---
 title: Linux
+updated: '2024-08624-00025 1413:46:32'
+categories:
+  - System
 date: 2022-09-26 09:27:58
-updated: 2024-08624-00025 1413:46:32
 ---
 
 # Linux

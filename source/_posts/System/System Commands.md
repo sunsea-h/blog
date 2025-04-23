@@ -1,5 +1,7 @@
 ---
 title: System Commands
+categories:
+  - System
 date: 2023-12-03 15:46:11
 updated: 2023-12-03 17:19:46
 ---

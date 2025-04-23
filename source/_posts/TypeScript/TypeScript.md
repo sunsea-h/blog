@@ -1,5 +1,7 @@
 ---
 title: TypeScript
+categories:
+  - TypeScript
 date: 2022-09-26 09:27:58
 updated: 2025-03-14 14:08:15
 ---

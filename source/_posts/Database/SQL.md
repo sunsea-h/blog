@@ -1,5 +1,7 @@
 ---
 title: SQL
+categories:
+  - Database
 date: 2025-04-18 17:08:56
 updated: 2025-04-18 17:11:47
 ---

@@ -1,5 +1,7 @@
 ---
 title: Browser
+categories:
+  - Web
 date: 2022-11-24 14:19:04
 updated: 2025-04-02 10:16:04
 ---

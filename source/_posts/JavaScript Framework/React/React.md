@@ -1,5 +1,8 @@
 ---
 title: React
+categories:
+  - JavaScript Framework
+  - React
 date: 2023-02-17 09:37:55
 updated: 2025-04-17 16:39:46
 ---

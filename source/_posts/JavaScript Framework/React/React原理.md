@@ -1,5 +1,8 @@
 ---
 title: React原理
+categories:
+  - JavaScript Framework
+  - React
 date: 2022-11-09 11:19:01
 updated: 2025-04-17 17:35:01
 ---

@@ -1,5 +1,8 @@
 ---
 title: Vue2vsVue3
+categories:
+  - JavaScript Framework
+  - Vue
 date: 2023-05-09 15:20:18
 updated: 2024-08-15 10:54:11
 ---

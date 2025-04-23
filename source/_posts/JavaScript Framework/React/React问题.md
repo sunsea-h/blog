@@ -1,5 +1,8 @@
 ---
 title: React问题
+categories:
+  - JavaScript Framework
+  - React
 date: 2023-02-20 12:08:29
 updated: 2025-04-21 10:24:47
 ---

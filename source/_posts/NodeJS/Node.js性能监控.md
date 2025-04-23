@@ -1,5 +1,7 @@
 ---
 title: Node.js性能监控
+categories:
+  - NodeJS
 date: 2025-04-10 14:55:31
 updated: 2025-04-11 18:08:42
 ---

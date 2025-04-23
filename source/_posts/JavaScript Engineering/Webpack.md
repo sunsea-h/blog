@@ -1,5 +1,7 @@
 ---
 title: Webpack
+categories:
+  - JavaScript Engineering
 date: 2022-09-26 09:27:58
 updated: 2025-04-14 18:16:06
 ---

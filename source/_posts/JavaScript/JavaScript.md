@@ -1,7 +1,9 @@
 ---
 title: JavaScript
+updated: '2024-09809-171432 623:55:04'
+categories:
+  - JavaScript
 date: 2022-09-05 11:33:18
-updated: 2024-09809-171432 623:55:04
 ---
 
 # JavaScript

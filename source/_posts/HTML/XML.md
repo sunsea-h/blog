@@ -1,5 +1,7 @@
 ---
 title: XML
+categories:
+  - HTML
 date: 2022-11-22 17:14:32
 updated: 2024-08-02 13:48:33
 ---

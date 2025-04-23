@@ -1,5 +1,7 @@
 ---
 title: Server Commands
+categories:
+  - Server
 date: 2024-08-25 14:02:19
 updated: 2024-08-25 14:19:15
 ---
