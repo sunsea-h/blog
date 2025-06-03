@@ -3,9 +3,8 @@ title: Java 集合
 categories:
   - Java
 date: 2024-06-24 23:38:55
-updated: 2024-06-30 00:01:06
+updated: 2025-06-02 19:44:00
 ---
-
 # Java 集合
 
 ## 集合框架
@@ -112,6 +111,21 @@ public static void main(String[] args) throws ExecutionException, InterruptedExc
     }  
 }
 ```
+
+#### asList
+
+`ArrayList.asList()` 返回对象为 Array 的内部类 ArrayList，底层固定长度的数组。  
+**只支持查询和修改，不支持增删操作。**  
+适合做快速初始化，用于判断包含关系。
+
+```java
+Array.asList(1,2,3).contains(userInput);
+```
+
+#### subList
+
+- 返回为原集合的视图，共享统一内存
+- 依赖原集合的 modCount，原集合增删会报错
 
 ### HashSet 的存储去重复
 

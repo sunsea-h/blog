@@ -3,7 +3,7 @@ title: Browser
 categories:
   - Web
 date: 2022-11-24 14:19:04
-updated: 2025-04-02 10:16:04
+updated: 2025-04-28 17:47:54
 ---
 # Browser
 
@@ -424,7 +424,7 @@ request.onsuccess = (event) => {
 存储空间限制（各浏览器不同）。  
 Firefox 本地文件不能访问 IndexedDB。
 
-## 同源策略
+## 同源策略（Same-Origin Policy）
 
 只允许从同源地址获取数据，非同源的请求会先出发 CORS 预检请求，简单请求不会出发预检请求。  
 
@@ -441,3 +441,23 @@ title: 简单请求
     
 - 请求中的任意 XMLHttpRequestUpload 对象均没有注册任何事件监听器；XMLHttpRequestUpload 对象可以使用 XMLHttpRequest.upload 属性访问
 ```
+
+### 存储分区（Storage Partitioning）
+
+![](Browser.assets/file-20250428173808360.png)  
+跨域加载页面默认启动存储分区。  
+部分浏览器针对跨端口（尤其是本地环境）嵌入相对宽松。  
+`127.0.0.1:5500` 嵌入 `127.0.0.1:9000` 不会触发存储分区，但 `localhost:5500` 嵌入 `127.0.0.1:9000` 会触发存储分区，因为不只是跨端口。  
+
+如果一定要跨域访问，可以使用 Storage Access API（兼容性考虑）。
+
+```js
+document.requestStorageAccess({ localStorage: true }).then((handle) => {
+	console.log(handle);
+	handle.localStorage.clear();
+}).catch(() => {
+	console.log('拒绝授权');
+});
+```
+
+需要在**用户主动触发**的操作中执行以上代码。

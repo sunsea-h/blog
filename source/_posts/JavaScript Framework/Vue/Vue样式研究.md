@@ -1,12 +1,11 @@
 ---
-title: Vue 样式研究
+title: Vue样式研究
 categories:
   - JavaScript Framework
   - Vue
 date: 2024-04-15 18:00:50
-updated: 2024-04-15 18:17:39
+updated: 2025-04-27 14:00:48
 ---
-
 # Vue 样式研究
 
 ## 样式应用规则
@@ -21,7 +20,10 @@ updated: 2024-04-15 18:17:39
 ###### 普通 CSS
 
 **Vue2**  
+原生 css  
 `.类名 >>> .类名 { 样式 }`  
+less/scss  
+`.类名 /deep/ .类名 { 样式 }`  
 **Vue3**  
 `:deep(.类名) { 样式 }` 或 `::v-deep(.类名) { 样式 }`
 

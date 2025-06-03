@@ -3,7 +3,7 @@ title: JavaScript 正则表达式
 categories:
   - JavaScript
 date: 2022-09-26 09:27:58
-updated: 2025-03-21 16:54:15
+updated: 2025-04-27 17:06:43
 ---
 # JavaScript 正则表达式
 
@@ -159,4 +159,6 @@ const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@,_.])[\da-zA-z$@,_.]$/
 
 ## 常用正则
 
+[正则表达式手册](https://tool.oschina.net/uploads/apidocs/jquery/regexp.html)  
+[正则大全](https://any-rule.vercel.app/)  
 校验中文：`\u4E00-\u9FA5`

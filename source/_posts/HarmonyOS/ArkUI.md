@@ -3,7 +3,7 @@ title: ArkUI
 categories:
   - HarmonyOS
 date: 2025-03-27 23:44:11
-updated: 2025-04-10 23:55:09
+updated: 2025-05-19 19:50:36
 ---
 # ArkUI
 
@@ -115,3 +115,54 @@ Column()
 修饰的变量必须进行初始化，为私有变量。  
 嵌套类型的数据，嵌套中的对象数据发生变化，无法检测（渐层监听）。  
 复杂类型数据，需要使用面向对象方法，new 实例进行初始化。
+
+## 组件通信
+
+**1.子组件中声明变量，父组件传递同名参数。**
+- 只能父传子，子无法触发更新
+- 只在初始化时渲染，之后无法触发更新
+
+**2.单项数据流， 子组件变量添加 `@Prop`**
+- 子组件修改变量只在当前组件使用，无法传递父组件
+- 可以不初始化
+- 父组件修改后子组件触发更新
+- 只能在 `@Component` 使用，不能在 `@Entry` 中使用
+
+**3.双向数据流， 子组件变量添加 `@Link`**
+- 子组件修改变量可以传递给父组件
+- 其他同 `@Prop`
+
+## 路由跳转
+
+### 1.Navigation（推荐）
+
+### 2.router
+
+```ts
+import { router } from '@kit.ArkUI';
+
+// 添加堆栈记录
+router.pushUrl({
+	// 路由地址，取profile/main_pages.json中值
+	url: 'pages/DetailPage',
+	params: {}
+	// 实例模式，默认多实例
+}, router.RouterMode.Standard)
+// 替换堆栈记录
+router.replaceUrl()
+```
+
+获取传参，需要进行类型断言
+
+```ts
+aboutToAppear(): void {
+	const result = router.getParams() as TaskParamsModel<TaskModel>
+	const detail = result.value
+}
+```
+
+## 存储
+
+### 页面存储
+
+### 应用存储

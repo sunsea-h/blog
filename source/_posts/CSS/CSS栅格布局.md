@@ -3,7 +3,7 @@ title: CSS栅格布局
 categories:
   - CSS
 date: 2025-04-09 13:33:56
-updated: 2025-04-09 13:34:51
+updated: 2025-06-03 16:54:22
 ---
 # CSS 栅格布局
 
@@ -71,11 +71,11 @@ updated: 2025-04-09 13:34:51
 
 **auto-fill**
 
-![](CSS基础.assets/image-20221014162047578.png)
+![](CSS栅格布局.assets/image-20221014162047578.png)
 
 **auto-fit**
 
-![](CSS基础.assets/image-20221014162136147.png)
+![](CSS栅格布局.assets/image-20221014162136147.png)
 
 `auto-fill` ：剩余空间保留空列，没有实质内容  
 `auto-fit`：剩余空间平均分配给所有子项  
@@ -170,13 +170,13 @@ updated: 2025-04-09 13:34:51
 - `column dense`：先列后行，尽可能紧密排列，不留空格
 
 `row`  
-![](CSS基础.assets/image-20221017100203866.png)
+![](CSS栅格布局.assets/image-20221017100203866.png)
 
 `row dense`  
-![](CSS基础.assets/image-20221017100345980.png)
+![](CSS栅格布局.assets/image-20221017100345980.png)
 
 `column dense`  
-![](CSS基础.assets/image-20221017100415318.png)
+![](CSS栅格布局.assets/image-20221017100415318.png)
 
 ### 设置单元格内对齐方式
 
@@ -244,7 +244,7 @@ updated: 2025-04-09 13:34:51
 }
 ```
 
-![](CSS基础.assets/image-20221017103503068.png)
+![](CSS栅格布局.assets/image-20221017103503068.png)
 
 数量不够会自动创建隐式网格，在右方或下方，以满足需求。
 

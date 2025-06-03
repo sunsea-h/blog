@@ -29,3 +29,6 @@ FLUSH PRIVILEGES;
 // 重启服务
 service mysql restart
 ```
+
+## 好用软件
+[HexHub \| 先进的数据库、SSH、SFTP桌面GUI工具](https://www.hexhub.cn/)

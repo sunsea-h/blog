@@ -1548,7 +1548,7 @@ const ref = React.createRef();
 
 ### [遇到的问题](React问题.md)
 
-### [第三方库](React-第三方库.md)
+### [第三方库](React第三方库.md)
 
 ## [原理解析](React原理.md)
 
