@@ -3,7 +3,7 @@ title: ArkUI
 categories:
   - HarmonyOS
 date: 2025-03-27 23:44:11
-updated: 2025-05-19 19:50:36
+updated: 2025-06-15 23:38:26
 ---
 # ArkUI
 
@@ -164,5 +164,54 @@ aboutToAppear(): void {
 ## 存储
 
 ### 页面存储
+
+LocalStorage 和 AppStorage 都是内存级别存储方案，唯一不同在于作用范围。  
+[**LocalStorage**](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V14/arkts-localstorage-V14)
+- 页面级别存储，内存数据库。
+- 在同一个 EntryAbility 中多个页面数据共享，不同 EntryAbility 中无法共享。  
+- 只能在模拟器中生效，预览器中无法生效。
+
+#### 页面范围注入
+
+*创建*
+
+```ts
+let storage: LocalStorage = new LocalStorage();  
+storage.setOrCreate('username', 'xiaowang');  
+  
+@Entry(storage)
+// ...
+```
+
+*使用*
+
+```ts
+@LocalStorageLink("username") name: string = '默认值';
+```
+
+#### Ability 范围注入
+
+```ts
+// Ability中声明注入
+
+params: Record<string, string> = { "username": "alice" };  
+storage: LocalStorage = new LocalStorage(this.params); 
+
+onWindowStageCreate(windowStage: window.WindowStage): void {  
+  // ...
+  windowStage.loadContent('pages/Index', this.storage);  
+}
+
+// 绑定到页面
+let storage = LocalStorage.getShared();
+@Entry(storage)
+```
+
+**AppStorage**  
+如果没有，会创建一个。
+
+```ts
+@StorageLink("username") username: string = "alice"
+```
 
 ### 应用存储

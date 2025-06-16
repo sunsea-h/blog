@@ -1,7 +1,7 @@
 ---
 title: CSS 定位布局
 categories:
-  - CSS
+  - StyleSheet
 date: 2025-04-07 15:23:39
 updated: 2025-04-08 14:35:32
 ---

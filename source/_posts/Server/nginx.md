@@ -3,7 +3,7 @@ title: nginx
 categories:
   - Server
 date: 2024-07-28 23:50:53
-updated: 2025-03-07 18:11:43
+updated: 2025-06-05 16:44:57
 ---
 # nginx
 
@@ -13,7 +13,9 @@ updated: 2025-03-07 18:11:43
 
 ```shell
 # 启动命令：
-nginx
+nginx -g 'daemon off;'
+# windows
+start nginx
 
 # 重启命令：
 nginx -s reload

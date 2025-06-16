@@ -1,7 +1,7 @@
 ---
 title: 浏览器 CSS
 categories:
-  - CSS
+  - StyleSheet
 date: 2023-12-12 21:27:19
 updated: 2024-01-02 18:33:32
 ---

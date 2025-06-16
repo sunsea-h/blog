@@ -1,7 +1,7 @@
 ---
 title: CSS栅格布局
 categories:
-  - CSS
+  - StyleSheet
 date: 2025-04-09 13:33:56
 updated: 2025-06-03 16:54:22
 ---

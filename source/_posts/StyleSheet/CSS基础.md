@@ -1,7 +1,7 @@
 ---
 title: CSS 基础
 categories:
-  - CSS
+  - StyleSheet
 date: 2022-09-05 11:33:18
 updated: 2024-07-28 17:35:04
 ---

@@ -3,7 +3,7 @@ title: Browser
 categories:
   - Web
 date: 2022-11-24 14:19:04
-updated: 2025-04-28 17:47:54
+updated: 2025-06-05 15:35:22
 ---
 # Browser
 
@@ -214,6 +214,8 @@ V8 还支持增量垃圾回收技术。
 title:多种命令
 
 ![](Browser.assets/image-20230512144002115.png)
+
+**immutable**：缓存有效期内禁止验证。一般搭配max-age使用，单独使用部分浏览器可能忽略该值。
 
 **no-cache**：客户端缓存内容，是否使用缓存则需要经过协商缓存来验证决定。表示不使用 Cache-Control的缓存控制方式做前置验证，而是使用 Etag 或者Last-Modified字段来控制缓存。  
 

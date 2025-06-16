@@ -3,7 +3,7 @@ title: Git
 categories:
   - Tools
 date: 2022-09-26 09:27:58
-updated: 2025-04-22 18:16:57
+updated: 2025-06-09 15:20:16
 ---
 # Git
 
@@ -149,6 +149,32 @@ git config --global --get core.autocrlf
 
 ```sh
 git config --global core.autocrlf false
+```
+
+## 提交操作
+
+撤销不取消暂存修改
+
+```sh
+git reset -soft HEAD~1
+```
+
+撤销并取消暂存修改
+
+```sh
+git reset HEAD~1
+```
+
+彻底删除提交和修改
+
+```sh
+git reset --hard HEAD~1
+```
+
+修改上次提交
+
+```sh
+git commit --amend
 ```
 
 ## 参考

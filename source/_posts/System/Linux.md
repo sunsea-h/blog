@@ -1,14 +1,15 @@
 ---
 title: Linux
-updated: '2024-08624-00025 1413:46:32'
 categories:
   - System
 date: 2022-09-26 09:27:58
+updated: 2025-06-03 17:29:44
 ---
-
 # Linux
-![](Linux.assets/微信图片_20250423233651.jpg)
+
+![](Linux.assets/微信图片_20250423233651.jpg)  
 ![](Linux.assets/微信图片_20250423233621.jpg)
+
 ## 文件系统
 
 ```txt
@@ -262,6 +263,10 @@ node --version
 | reboot   | 重启     |
 | echo     | 输出内容 |
 | wget     | 下载     |
+
+## 发行版
+
+[Garuda Linux](https://garudalinux.org)
 
 ## 帮助
 
