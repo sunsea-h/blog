@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "npm run prepush",
     "copy": "node custom/copy.js",
     "commit": "node custom/git-auto-commit.js",
     "build": "hexo clean && hexo generate",
