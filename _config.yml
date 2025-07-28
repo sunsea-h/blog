@@ -100,9 +100,9 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-#theme: next
-#theme: butterfly
-theme: fluid
+# theme: next
+theme: butterfly
+# theme: fluid
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
