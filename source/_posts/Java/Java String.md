@@ -3,11 +3,12 @@ title: Java String
 categories:
   - Java
 date: 2024-06-19 23:03:39
-updated: 2024-06-21 21:59:06
+updated: 2025-07-20 18:23:34
 ---
-
 # Java String
-## String类
+
+## String 类
+
 ### 特点
 
 1. 所有带双引号的都是 String 的对象啊
@@ -50,11 +51,13 @@ String s6 = "s1 + s2;
 // s3 != s6
 ```
 
-## StringBuilder类
-一个可变的字符串队列, 提供一个与 StringBuffer 兼容的统一 API, 但不保证同步
-作用: 主要是字符串拼接
+## StringBuilder 类
+
+一个可变的字符串队列, 提供一个与 StringBuffer 兼容的统一 API, 但不保证同步  
+作用: 主要是字符串拼接  
 String 拼接会产生新的字符串对象, 创建过多, 会占用内存, 效率低
 
 ### 特点
-默认长度 16
+
+默认长度 16  
 不够时, 默认扩容 2 倍 + 2, 如果扩容后的空间还是不够, 就按实际长度扩容

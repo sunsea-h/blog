@@ -3,7 +3,7 @@ title: VSCode 插件
 categories:
   - 个人配置
 date: 2025-03-24 13:52:28
-updated: 2025-03-27 16:48:19
+updated: 2025-06-16 16:08:50
 ---
 # VSCode 插件
 
@@ -322,7 +322,7 @@ updated: 2025-03-27 16:48:19
 }
 ```
 
-### Tailwind CSS IntelliSense
+### [Tailwind CSS IntelliSense](../StyleSheet/TailwindCSS.md#Tailwind%20CSS%20IntelliSense%20-%20VSCode)
 
 ### Headwind - tailwind css 排序
 

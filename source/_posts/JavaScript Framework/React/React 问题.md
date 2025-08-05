@@ -1,10 +1,10 @@
 ---
-title: React问题
+title: React 问题
 categories:
   - JavaScript Framework
   - React
 date: 2023-02-20 12:08:29
-updated: 2025-04-21 10:24:47
+updated: 2025-07-29 16:54:25
 ---
 # React 问题
 
@@ -84,10 +84,10 @@ export default App;
 
 **React：**  
 官方文档除了提供了在构造函数中或 Render 中通过 `bind()` 手动绑定 this 外，还提供了通过箭头函数绑定 this 。  
-![](React问题.assets/image-20230220140101094.png)
+![](React%20问题.assets/image-20230220140101094.png)
 
 **Vue：**  
-![](React问题.assets/image-20230220140107601.png)  
+![](React%20问题.assets/image-20230220140107601.png)  
 通过编写 demo 进行测试：  
 在 React 中，普通函数方式 this 为 undefined，而箭头函数方式 this 指向正确。
 
@@ -116,7 +116,7 @@ class Demo extends React.Component {
 }
 ```
 
-![](React问题.assets/image-20230220140126991.png)  
+![](React%20问题.assets/image-20230220140126991.png)  
 在 Vue 中，箭头函数方式 this 为 undefined，而普通函数方式 this 指向正确。
 
 ```vue
@@ -147,7 +147,7 @@ export default {
 </script>
 ```
 
-![](React问题.assets/image-20230220140140461.png)  
+![](React%20问题.assets/image-20230220140140461.png)  
 通过测试发现 Vue 与 React 中普通函数方式和箭头函数方式的结果正向相反。  
 1. 在 React 中事件触发时，回调函数的执行不是直接由实例调用。由于合成事件，会对事件处理函数做一个代理，从而导致 this 丢失。  
 	JS 中的类本质是一个构造函数，通过箭头函数声明时，本身没有 this ，会找父级作用域，即构造函数作用域，所以没有丢失。  
@@ -224,7 +224,7 @@ HOC 中的缺点，使用 Render Props 都可得到解决。
 
 ## hook 闭包问题
 
-![](React问题.assets/file-20250418102103773.png)  
+![](React%20问题.assets/file-20250418102103773.png)  
 解决方法：
 - 使用 useRef 声明变量，每次强制触发渲染（[useLatest](https://ahooks.js.org/zh-CN/hooks/use-latest)）
 - setState 传入回调函数（推荐）

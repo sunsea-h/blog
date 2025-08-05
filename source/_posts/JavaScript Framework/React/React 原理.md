@@ -1,10 +1,10 @@
 ---
-title: React原理
+title: React 原理
 categories:
   - JavaScript Framework
   - React
 date: 2022-11-09 11:19:01
-updated: 2025-05-06 15:06:44
+updated: 2025-07-29 16:54:56
 ---
 # React 原理
 
@@ -22,10 +22,10 @@ console.log(dom1);
 console.log(dom2);
 ```
 
-![](React原理.assets/image-20230220134458551.png)
+![](React%20原理.assets/image-20230220134458551.png)
 
 虚拟 DOM 本质上是一个 JS 对象，而真实 DOM 则是一个 dom 结构。  
-![](React原理.assets/image-20230220134532418.png)
+![](React%20原理.assets/image-20230220134532418.png)
 
 在真实 DOM 上默认挂载了许多属性和方法，所以**虚拟 DOM 相比真实 DOM 在结构方面轻便的多**。
 
@@ -77,7 +77,7 @@ React 通过以上三点策略（对应 `tree diff` 、`component diff` 、`elem
 #### tree diff
 
 同级比较，通过 `updateDepth` 控制虚拟 DOM 树进行同一级比较，当发现节点不存在时，会完全删除，不进行其他比较，这样只需要对树进行一次遍历。  
-![](React原理.assets/image-20230220134558080.png)
+![](React%20原理.assets/image-20230220134558080.png)
 
 如上图，进行一层层比较时，发现 L、B、C 从左侧跑到右侧 R 的下面，由于不进行跨层级比较，所以会直接删除整个 A ，然后重新创建。建议少进行跨层级操作。
 
@@ -106,7 +106,7 @@ React 通过以上三点策略（对应 `tree diff` 、`component diff` 、`elem
 
 index：节点在老集合中的位置，lastIndex：在 diff 过程中访问的位置的最大值  
 **节点位置改变，进行移动**  
-![](React原理.assets/image-20230220134609671.png)
+![](React%20原理.assets/image-20230220134609671.png)
 
 1.判断新集合中的节点 B 是否存在于老集合，然后根据 index\<lastIndex 判断，成立移动。index=1，lastIndex=0，不成立，不移动。  
 2.节点 A，index=0，lastIndex=1，成立，移动。  
@@ -117,7 +117,7 @@ index：节点在老集合中的位置，lastIndex：在 diff 过程中访问的
 diff 结束后，发现老集合中的节点再新集合中没有，会删除该节点。
 
 **缺陷：**  
-![](React原理.assets/image-20230220134624937.png)
+![](React%20原理.assets/image-20230220134624937.png)
 
 当一个节点从末尾提到开头时，原本只需要移动 D ，保持 A ，B ，C 不动即可。  
 但是 element diff 算法会保持 D 不动，一次将 A ，B ，C 移动，这样会导致性能损失。  
@@ -127,7 +127,7 @@ diff 结束后，发现老集合中的节点再新集合中没有，会删除该
 直接将事件绑定到真实 DOM 节点上，绑定的事件过多，对页面的响应和内存使用可能产生很大影响。  
 所以 React 不将 click 事件直接绑定到 dom 上，而是采用 **事件冒泡** 的形式。  
 在 document 处监听所有支持的事件（**React17 换成在 root 容器监听**），在事件发生并冒泡到 document 时，将事件封装到中间层 SyntheticEvent ，然后使用统一分发函数 `dispatchEvent` 将封装的事件交由对应的事件处理函数。  
-![](React原理.assets/image-20230220135629142.png)
+![](React%20原理.assets/image-20230220135629142.png)
 
 总结：  
 1. 如果阻止了原生事件的冒泡行为后，也会阻止合成事件监听器的执行。阻止了合成事件的冒泡行为，实际上阻止了 document 上的冒泡行为，不符合预期，不影响原生事件。  
@@ -155,9 +155,9 @@ Fiber 是一个执行单元。是纤程。
 纤程是协程的一种实现方式。协程比线程更小的调度单位。开启、暂停可以被程序员控制。  
 > 底层使用类似 requestIdleCallback ，自己实现的 api（Scheduler）。
 
-![](React原理.assets/file-20250417164937375.png)  
+![](React%20原理.assets/file-20250417164937375.png)  
 Fiber 也是一个数据结构（**链表结构**）。包含 child（第一个子节点）、sibling（兄弟节点）、return（父节点）等属性。  
-![](React原理.assets/file-20250417165256476.png)
+![](React%20原理.assets/file-20250417165256476.png)
 
 ### 调度器 Scheduler、协调器 Reconciler、渲染器 Renderer
 
@@ -179,7 +179,7 @@ React 定义了不同的优先级，如 `Immediate`（最高优先级，用于�
 
 ## 渲染流程
 
-![](React原理.assets/file-20250430144841059.png)
+![](React%20原理.assets/file-20250430144841059.png)
 
 中断原因：
 - 有其他更高优先级的任务需要执行

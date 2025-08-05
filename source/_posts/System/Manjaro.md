@@ -3,10 +3,9 @@ title: Manjaro
 categories:
   - System
 date: 2024-08-05 21:57:52
-updated: 2024-08-25 14:29:51
+updated: 2025-08-01 17:29:43
 ---
-
-# Manjaro
+# [Manjaro](https://manjaro.org/)
 
 版本: Plasma KDE 24.0.5  
 Linux: 69

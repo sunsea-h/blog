@@ -3,10 +3,9 @@ title: LinuxMint
 categories:
   - System
 date: 2024-08-19 23:15:20
-updated: 2024-10-09 10:55:55
+updated: 2025-08-01 17:18:04
 ---
-
-# LinuxMint
+# [LinuxMint](https://www.linuxmint.com/)
 
 版本: Linuxmint 22 ciannamon
 

@@ -3,11 +3,15 @@ title: Vim
 categories:
   - Server
 date: 2022-09-26 09:27:58
-updated: 2024-11-06 16:18:44
+updated: 2025-08-01 17:27:43
 ---
-
 # Vim
-[⌨️ Keymaps | LazyVim](http://www.lazyvim.org/keymaps#neo-treenvim)
+
+## 配置框架
+
+[⌨️ Keymaps | LazyVim](http://www.lazyvim.org/keymaps#neo-treenvim)  
+[Neovide - Neovide](https://neovide.dev/)
+
 ## 操作模式
 
 ### 普通模式

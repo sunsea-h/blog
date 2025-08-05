@@ -4,7 +4,7 @@ categories:
   - JavaScript Framework
   - React
 date: 2023-02-17 09:37:55
-updated: 2025-04-17 16:39:46
+updated: 2025-07-07 11:11:41
 ---
 # React
 
@@ -1070,7 +1070,7 @@ import {flushSync} from "react-dom";
   }
 ```
 
-[合成事件](React原理.md##合成事件)  
+[合成事件](React%20原理.md##合成事件)  
 
 #### useState 使用注意
 
@@ -1157,7 +1157,7 @@ useEffect(() => {
 
 **使用 useEffect**  
 
-```jsx
+```js
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
@@ -1184,7 +1184,7 @@ export default App;
 
 **使用 useLayoutEffect**  
 
-```jsx
+```js
 import React, { useState, useLayoutEffect } from "react";
 import "./App.css";
 
@@ -1546,13 +1546,13 @@ const ref = React.createRef();
 
 ## 实践
 
-### [遇到的问题](React问题.md)
+### [遇到的问题](React%20问题.md)
 
-### [第三方库](React第三方库.md)
+### [第三方库](React%20第三方库.md)
 
-## [原理解析](React原理.md)
+## [原理解析](React%20原理.md)
 
-## [React-Router](React-Router.md)
+## [React Router](React%20Router.md)
 
 ## 状态库
 

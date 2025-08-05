@@ -1,10 +1,10 @@
 ---
-title: React性能优化
+title: React 性能优化
 categories:
   - JavaScript Framework
   - React
 date: 2025-04-25 14:24:32
-updated: 2025-04-27 11:43:09
+updated: 2025-07-29 16:52:17
 ---
 # React 性能优化
 
@@ -136,3 +136,34 @@ key 值应在循环内保持唯一，且是稳定的。每次渲染都是固定�
     <!--子节点内容-->
 </div>
 ```
+
+**5.减少不必要的组件重渲染**
+
+```jsx
+<div className="App">
+	{data.map((item, i) => {
+		return (
+			<Item
+				key={item.title}
+				item={item}
+				onClick={() => handleClick(i)}
+			/>
+		);
+	})}
+</div>
+```
+
+每次父组件的 data 改变触发渲染，默认所有 Item 都会重新渲染。
+- 需要给 Item 包裹 `React.memo()`，避免未改动 Item 重渲染。
+- 事件处理函数避免传递匿名函数，每次都会生成新的函数，触发子组件渲染。
+
+```jsx
+  const clickHandlers = useMemo(() => {
+    return data.map((_, i) => () => handleClick(i));
+  }, [data.length]);
+```
+
+遇到需要传递循环中变量，
+- 使用 `useMemo` 生成事件处理函数缓存，每次传递缓存
+- 将需要传递的变量传给子组件，子组件内部传递给事件处理函数
+- 自定义 `React.memo()` 的比较函数，排除事件处理函数的比较

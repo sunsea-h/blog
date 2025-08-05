@@ -4,9 +4,8 @@ categories:
   - JavaScript Framework
   - Vue
 date: 2022-09-26 09:27:58
-updated: 2024-11-06 14:07:19
+updated: 2025-06-26 11:16:50
 ---
-
 # Vue3
 
 ## 基础
@@ -1436,6 +1435,10 @@ export default defineConfig({
 ```
 
 ## [使用Typescript](Vue3+Typescript使用指南.md)
+
+## Vue 代码规范指南
+
+[Priority A Rules: Essential](https://vuejs.org/style-guide/rules-essential.html)
 
 ## 参考
 

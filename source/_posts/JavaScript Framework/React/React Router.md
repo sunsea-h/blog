@@ -1,13 +1,48 @@
 ---
-title: React-Router
+title: React Router
 categories:
   - JavaScript Framework
   - React
 date: 2022-09-26 09:27:58
-updated: 2023-03-22 18:25:56
+updated: 2025-07-04 15:21:20
 ---
+# React Router
 
-# React-Router
+## 一览图
+
+![](React%20Router.assets/file-20250704152119498.png)
+
+## Declarative mode
+
+```jsx
+ReactDOM.createRoot(root).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+```
+
+## Data mode
+
+```jsx
+let router = createBrowserRouter([
+  {
+    path: "/",
+    Component: Root,
+    loader: loadRootData,
+  },
+]);
+
+ReactDOM.createRoot(root).render(
+  <RouterProvider router={router} />
+);
+```
+
+## Framework mode
+
+```jsx
+
+```
 
 ## 基础使用
 

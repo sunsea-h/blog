@@ -3,7 +3,7 @@ title: Browser
 categories:
   - Web
 date: 2022-11-24 14:19:04
-updated: 2025-06-05 15:35:22
+updated: 2025-07-18 17:58:45
 ---
 # Browser
 
@@ -290,7 +290,8 @@ class CookieUtil {
 ```
 
 **跨域携带**  
-`withCredentials: true`
+1.发送请求携带 `withCredentials: true`  
+2.服务器配置响应头 `"Access-Control-Allow-Origin", "http://xxx:${port}"`，`"Access-Control-Allow-Credentials", "true"`
 
 ### Storage
 

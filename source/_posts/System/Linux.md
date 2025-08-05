@@ -3,7 +3,7 @@ title: Linux
 categories:
   - System
 date: 2022-09-26 09:27:58
-updated: 2025-06-03 17:29:44
+updated: 2025-06-20 14:35:49
 ---
 # Linux
 
@@ -85,6 +85,74 @@ chmod g+w hello.js
 chmod 664 world.js
 ```
 
+## find
+
+## grep
+
+## tee
+
+## xargs
+
+## sed - 流编辑器
+
+### 替换文本 
+
+全局替换文件内容，并生成备份
+
+```sh
+sed -i.bak 's/旧内容/新内容/g' file.txt
+
+# 去除行首行尾空格
+sed 's/^[ \t]*//;s/[ \t]*$//' file.txt
+```
+
+### 删除行
+
+```sh
+# 条件：
+# Nd -> 指定行号($指最后一行)
+# 1,4d -> 1到4行
+# /regex/ -> 满足正则的行
+# /^$/ -> 所有空行
+# /error\|wraning/ -> 包含error或wraning的行
+sed '[条件]d' file.txt
+```
+
+### 输出行
+
+输出满足条件的行，`-n` 只输出匹配行
+
+```sh
+sed -n '[条件]p' file.txt
+```
+
+### 增/改行
+
+```sh
+# i 行前插入
+# a 行后插入
+# c 行修改
+sed '4i\ 插入内容' file.txt
+```
+
+### 依次执行多个操作
+
+```sh
+sed -e 's/Alice/Jane/' -e 's/Bob/John/' file.txt
+```
+
+### 批量执行操作
+
+```sh
+find /path -type f -name "*.txt" -exec sed -i 's/hello/hi/g' {} +
+find /var/log -type f -name "*.log" | xargs sed -i 's/DEBUG/INFO/g'
+```
+
+`+` 批量执行，提高效率（比 `\;` 更快）  
+`xargs` 比 `find -exec` 效率更高
+
+## awk
+
 ## 获取帮助
 
 | 命令 | 作用                                                                             |
@@ -114,7 +182,7 @@ chmod 664 world.js
 普通用户只能在自己的家目录中创建文件、删除文件、修改文件。  
 用户组
 
-```shell
+```sh
 # 增加一个web-ui组
 groupadd web-ui
 

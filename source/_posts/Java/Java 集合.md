@@ -3,7 +3,7 @@ title: Java 集合
 categories:
   - Java
 date: 2024-06-24 23:38:55
-updated: 2025-06-02 19:44:00
+updated: 2025-07-30 14:13:15
 ---
 # Java 集合
 
@@ -83,7 +83,7 @@ Collection 接口
 
 #### 总结
 
-1. ArrayList 在初始化后, 第一次吃调用 `add` 方法之后才会初始化长度 10
+1. ArrayList 在初始化后, 第一次调用 `add` 方法之后才会初始化长度 10
 2. 底层是数组, 但会自动扩容 `Array.copyof()` 1.5 倍
 
 #### 并发修改异常  
@@ -102,15 +102,17 @@ public static void main(String[] args) throws ExecutionException, InterruptedExc
     list.add("d");  
     list.add("e");  
   
-    Iterator<String> iterator = list.iterator();  
+    ListIterator<String> iterator = list.listIterator();  
     while (iterator.hasNext()) {  
         String element = iterator.next();  
         if ("c".equals(element)) {  
-            list.add("f");  
+            iterator.add("f");  
         }  
     }  
 }
 ```
+
+ListIterator 支持前后遍历，获取前置元素，使用提供的 `add` 方法会自动更新内部索引。
 
 #### asList
 

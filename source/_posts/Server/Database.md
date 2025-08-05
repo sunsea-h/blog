@@ -3,7 +3,7 @@ title: Database
 categories:
   - Server
 date: 2024-12-24 14:23:18
-updated: 2025-03-28 10:35:35
+updated: 2025-07-26 10:58:08
 ---
 # Database
 
@@ -31,4 +31,9 @@ service mysql restart
 ```
 
 ## 好用软件
+
 [HexHub \| 先进的数据库、SSH、SFTP桌面GUI工具](https://www.hexhub.cn/)
+
+## 查询
+
+分页查询数据量越大性能越慢，可以将上一页最大数据当做查询条件。

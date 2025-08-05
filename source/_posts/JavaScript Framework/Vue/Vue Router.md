@@ -1,13 +1,12 @@
 ---
-title: Vue-Router
+title: Vue Router
 categories:
   - JavaScript Framework
   - Vue
 date: 2022-09-26 09:27:58
-updated: 2023-03-22 18:24:21
+updated: 2025-07-07 10:52:58
 ---
-
-# Vue-Router
+# Vue Router
 
 Vue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。  
 **功能：**
@@ -661,7 +660,7 @@ const Foo = {
 11. 触发 DOM 更新。
 12. 调用 `beforeRouteEnter` 守卫中传给 `next` 的回调函数，创建好的组件实例会作为回调函数的参数传入。
 
-![流程图](Vue-Router.assets/Vue-Router_image_1.png)
+![流程图](Vue%20Router.assets/Vue%20Router_image_1.png)
 
 ## 路由懒加载
 

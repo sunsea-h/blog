@@ -3,7 +3,7 @@ title: ArkUI
 categories:
   - HarmonyOS
 date: 2025-03-27 23:44:11
-updated: 2025-06-15 23:38:26
+updated: 2025-06-18 00:01:22
 ---
 # ArkUI
 
@@ -80,7 +80,7 @@ RelativeContainer() {
 })
 ```
 
-## 装饰器
+## 样式扩展
 
 ### @Styles
 
@@ -109,12 +109,20 @@ Column()
 组件外部定义。  
 解决了 Styles 不能传参的问题，以及只支持通用属性和通用事件的问题。
 
+## 状态管理
+
 ### @State
 
 定义页面展示的数据，变化时会动态更新页面。  
 修饰的变量必须进行初始化，为私有变量。  
-嵌套类型的数据，嵌套中的对象数据发生变化，无法检测（渐层监听）。  
+嵌套类型的数据，嵌套中的对象数据发生变化，无法检测（**浅层监听**）。  
 复杂类型数据，需要使用面向对象方法，new 实例进行初始化。
+
+### [@ObjectLink](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-observed-and-objectlink)
+
+对象数组的深度更新解决方案。  
+不能直接在 `@Entry` 修饰的组件中使用。  
+必须同 `@Observed` 搭配使用，`@Observed` 修饰关联对象，`@ObjectLink` 用于在组件中声明状态。
 
 ## 组件通信
 
