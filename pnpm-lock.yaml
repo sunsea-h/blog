@@ -53,9 +53,6 @@ importers:
       hexo-theme-solitude:
         specifier: ^3.0.19
         version: 3.0.19
-      hexo-theme-volantis:
-        specifier: ^5.8.0
-        version: 5.8.0
 
 packages:
 
@@ -571,9 +568,6 @@ packages:
 
   hexo-theme-solitude@3.0.19:
     resolution: {integrity: sha512-Mc0C70CobxgQQlUq/o/y4pqVX8Lz3Q5G2E/OMcRX5VNhdOuITdmwnH9cYcYs+qmYVFVoPuOuAh8OpNf3JqZfOA==}
-
-  hexo-theme-volantis@5.8.0:
-    resolution: {integrity: sha512-Ap8xHssnfEj6eNIoGMVJNiGUza0azPlXcnMaoVa+N69981W9VQ4QSWiylw4kyhE7uu21nCUWxFH7RptyLzDxkw==}
 
   hexo-util@2.7.0:
     resolution: {integrity: sha512-hQM3h34nhDg0bSe/Tg1lnpODvNkz7h2u0+lZGzlKL0Oufp+5KCAEUX9wal7/xC7ax3/cwEn8IuoU75kNpZLpJQ==}
@@ -1682,8 +1676,6 @@ snapshots:
       hexo-renderer-stylus: 3.0.1
     transitivePeerDependencies:
       - supports-color
-
-  hexo-theme-volantis@5.8.0: {}
 
   hexo-util@2.7.0:
     dependencies:
