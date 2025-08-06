@@ -125,13 +125,6 @@ content_blocks:
     example: "#7c4dff || fa fa-vial"
     quote: "#9e9e9e || fa fa-quote-right"
 
-# Search
-search:
-  path: search.json
-  field: post
-  content: true
-  format: striptags
-
 # generate category for posts
 auto_category:
   enable: true
