@@ -30,7 +30,6 @@
     "hexo-renderer-pug": "^3.0.0",
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-theme-fluid": "^1.9.8",
-    "hexo-theme-solitude": "^3.0.19"
+    "hexo-theme-fluid": "^1.9.8"
   }
 }
