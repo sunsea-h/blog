@@ -3,7 +3,7 @@ title: JavaScript Worker
 categories:
   - JavaScript
 date: 2024-08-13 17:42:02
-updated: 2025-01-02 16:09:46
+updated: 2025-08-22 15:51:56
 ---
 # JavaScript Worker
 
@@ -356,7 +356,13 @@ navigator.serviceWorker.register('/serviceWorker.js')
 
 ### 生命周期
 
-已解析（parsed）、安装中 （installing）、已安装（installed）、激活中（activating）、已激活（activated）和已失效（redundant）。  
+- 已解析（parsed）
+- 安装中 （installing）
+- 已安装（installed）
+- 激活中（activating）
+- 已激活（activated）
+- 已失效（redundant）  
+
 **ServiceWorker.state** 永远不会返回 parsed，第一个返回的状态为 installing。
 
 判断当前服务工作者线程状态，以下属性的值为 ServiceWorker 实例，即为对应状态。
@@ -430,6 +436,10 @@ navigator.serviceWorker.register('/serviceWorker.js', {
  updateViaCache: 'none' 
 }); 
 ```
+
+### 可监听事件
+
+[ServiceWorkerGlobalScope](https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerGlobalScope)
 
 ### 通信
 

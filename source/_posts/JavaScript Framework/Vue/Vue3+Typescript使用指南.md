@@ -1,12 +1,11 @@
 ---
-title: Vue3+Typescript 使用指南
+title: Vue3+Typescript使用指南
 categories:
   - JavaScript Framework
   - Vue
 date: 2023-05-09 10:37:53
-updated: 2023-05-09 15:36:35
+updated: 2025-08-06 17:10:21
 ---
-
 # Vue3+Typescript 使用指南
 
 ## 环境搭建
@@ -267,3 +266,7 @@ function handleChange(event: Event) {
   console.log((event.target as HTMLInputElement).value)
 }
 ```
+
+## 外部文章
+
+[二次封装技巧](https://mp.weixin.qq.com/s/feTyOCo1CgvH8tiGOXh2-w)

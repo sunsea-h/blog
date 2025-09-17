@@ -3,7 +3,7 @@ title: Browser
 categories:
   - Web
 date: 2022-11-24 14:19:04
-updated: 2025-07-18 17:58:45
+updated: 2025-09-15 16:33:49
 ---
 # Browser
 
@@ -207,6 +207,8 @@ V8 还支持增量垃圾回收技术。
 
 **Expires** (http1.0)  
 `Expires:now()+max-age`，指定时间点之前访问可命中缓存。  
+> **缺点**：使用的是本地时间判断，本地时间可修改。
+
 **Cache-Control** (http1.1)  
 `Cache-Control:max-age=300`，返回时间开始，300 秒以内访问可命中缓存。
 
@@ -243,6 +245,12 @@ title:Last-Modified和ETag
 
 当响应中不存在 **Expires** 和 **Cache-Control** 头时, 浏览器依然会触发强缓存, 即启发式缓存  
 缓存有效期计算公式：**(date - last-modified ) * 10%**
+
+### memory cache 和 disk cache
+
+memory cache 存储在内存中，读取速度快；  
+disk cache 存储在硬盘中，读取速度慢于 memory cache。  
+页面打开后刷新从 memory cache 获取，页面关闭后再打开，从 disk cache 获取。
 
 ## 客户端存储
 

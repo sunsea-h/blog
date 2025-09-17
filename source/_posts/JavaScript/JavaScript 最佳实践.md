@@ -1,11 +1,10 @@
 ---
 title: JavaScript 最佳实践
-updated: '2024309-19217-581290 20:30:00'
 categories:
   - JavaScript
 date: 2023-05-04 10:35:48
+updated: 2025-08-06 16:32:02
 ---
-
 # JavaScript 最佳实践
 
 ## 松散耦合
@@ -92,6 +91,37 @@ function handleKeyPress(event) {
 		// 处理
 	} 
 	```
+
+### 判断是否存在
+
+ 使用 `Set` 或 `Map`，提高性能。
+
+ ```js
+// 较慢：O(n)
+const whitelist = ['admin', 'editor'];
+if (whitelist.includes(userRole)) {
+  grantAccess();
+}
+// 更快：O(1)
+const whitelist = new Set(['admin', 'editor']);
+if (whitelist.has(userRole)) {
+  grantAccess();
+}
+```
+
+### 转换遍历处理 DOM 结构
+
+```js
+const texts = Array.from(divs, div => div.textContent); 
+```
+
+### 操作 DOM 时的内存安全
+
+```js
+const weakMetadata = new WeakMap();
+weakMetadata.set(button, { clicked: true });
+button.remove(); // 有资格被GC回收
+```
 
 ## 函数声明
 

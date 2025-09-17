@@ -1,11 +1,10 @@
 ---
-title: DOM 事件机制
+title: DOM事件机制
 categories:
   - JavaScript
 date: 2022-09-05 11:33:18
-updated: 2023-03-29 11:56:21
+updated: 2025-08-19 15:30:05
 ---
-
 # DOM 事件机制
 
 ## 事件
@@ -109,7 +108,7 @@ JavaScript 与 HTML 之间的交互是通过事件来实现的。事件就是文
 特定元素支持的每个事件都可以使用事件处理程序的名字以 HTML 属性的形式来指定。此时属性的值必须是能够执行的 JavaScript 代码。如要在按钮被点击时执行某些 JavaScript 代码，可以使用以下 HTML 属性：
 
 ```html
-<button onclick="sonsole.log('Clicked')"></button>
+<button onclick="console.log('Clicked')"></button>
 ```
 
 点击这个按钮后，控制台会输出一条消息。这种交互能力是通过为 onclick 属性指定 JavaScript 代码值来实现的。  
@@ -469,4 +468,4 @@ window.addEventListener("beforeunload", (event) => {
 ```
 
 - **pageshow 和 pagehide**，在页面显示和隐藏时触发，不论是否来自往返缓存中（缓存中 load 事件不触发）。添加在 window 上。 **event.persisted** 表示是否来自往返缓存。注册 **onunload** 事件不会进入往返缓存。
-- **hashchange**，散列值发生变化时触发，添加在window上。
+- **hashchange**，散列值发生变化时触发，添加在 window 上。

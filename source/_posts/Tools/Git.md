@@ -3,7 +3,7 @@ title: Git
 categories:
   - Tools
 date: 2022-09-26 09:27:58
-updated: 2025-06-09 15:20:16
+updated: 2025-09-10 14:08:34
 ---
 # Git
 
@@ -175,6 +175,32 @@ git reset --hard HEAD~1
 
 ```sh
 git commit --amend
+```
+
+## 别名
+
+```ini
+[alias]
+	st = status
+	co = checkout
+	cob = checkout -b
+	br = branch
+	bra = branch -a
+	ci = commit -m
+	ca = commit --amend -m
+	cane = commit --amend --no-edit
+	last = log -1 HEAD
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lgd = log HEAD..origin/$(git branch --show-current) --oneline
+	discard = restore
+	pf = push --force-with-lease
+	aa = add .
+	d = diff
+	ds = diff --staged
+	f = fetch
+	p = push
+	pl = pull
+	plc = pull --rebase
 ```
 
 ## 参考
