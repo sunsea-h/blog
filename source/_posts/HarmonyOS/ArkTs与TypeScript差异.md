@@ -3,7 +3,7 @@ title: ArkTs与TypeScript差异
 categories:
   - HarmonyOS
 date: 2024-12-31 16:07:52
-updated: 2025-03-28 10:26:41
+updated: 2025-12-22 22:04:55
 ---
 # ArkTs 与 TypeScript 差异
 

@@ -3,9 +3,18 @@ title: Database
 categories:
   - Server
 date: 2024-12-24 14:23:18
-updated: 2025-07-26 10:58:08
+updated: 2025-09-26 15:01:16
 ---
 # Database
+
+## SQL
+
+### NOT IN 和 IN
+
+`not in` 和 `in` 无法命中索引。  
+一旦子查询中有 `NULL`，就会“失效”。  
+在筛选不存在于表 2 的表 1 中的字段时，如果表 2 中存在 NULL，在比较时会返回未知 UNKNOWN，sql 只会保留 TRUE，所以会导致结果错误。  
+可用于**确定**但**有限**的集合。
 
 ## MySQL
 

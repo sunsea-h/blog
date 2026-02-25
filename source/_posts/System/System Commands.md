@@ -3,9 +3,8 @@ title: System Commands
 categories:
   - System
 date: 2023-12-03 15:46:11
-updated: 2023-12-03 17:19:46
+updated: 2025-10-15 16:27:24
 ---
-
 # System Commands
 
 ## Bash

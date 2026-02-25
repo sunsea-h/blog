@@ -3,7 +3,7 @@ title: SQL
 categories:
   - Database
 date: 2025-04-18 17:08:56
-updated: 2025-08-01 16:42:03
+updated: 2025-10-17 16:43:56
 ---
 # SQL
 
@@ -24,3 +24,5 @@ from > where > group by > having > order by
 分析函数  
 只保留参与分组的字段和聚合函数的结果  
 常与 `ROW_NUMBER()`, `RANK()`, `DENSE_RANK()`, `NTILE()` 一同使用
+
+## 窗口函数

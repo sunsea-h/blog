@@ -3,9 +3,8 @@ title: ESLint
 categories:
   - 个人配置
 date: 2024-08-12 10:53:57
-updated: 2024-08-12 11:44:24
+updated: 2025-09-22 14:18:05
 ---
-
 # ESLint
 
 ```JavaScript

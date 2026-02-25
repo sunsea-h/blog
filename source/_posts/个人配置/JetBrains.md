@@ -3,9 +3,8 @@ title: JetBrains
 categories:
   - 个人配置
 date: 2024-06-06 23:08:24
-updated: 2024-08-12 11:59:57
+updated: 2025-09-22 14:16:32
 ---
-
 # JetBrains
 
 ## 激活

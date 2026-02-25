@@ -3,7 +3,7 @@ title: VSCode
 categories:
   - 个人配置
 date: 2024-07-22 17:46:07
-updated: 2025-04-03 17:30:23
+updated: 2025-09-22 14:14:42
 ---
 # VSCode
 

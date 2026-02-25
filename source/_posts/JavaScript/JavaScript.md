@@ -1,11 +1,10 @@
 ---
 title: JavaScript
-updated: '2024-09809-171432 623:55:04'
 categories:
   - JavaScript
 date: 2022-09-05 11:33:18
+updated: 2025-10-28 13:39:24
 ---
-
 # JavaScript
 
 ## 基础知识
@@ -75,6 +74,8 @@ title:script、link和image
   添加一个新的变量对象：要抛出的错误对象的声明
 - with 语句  
   添加指定对象
+
+>try...catch 只能捕获同步异常，无法捕获异步异常。
 
 #### 数据类型
 

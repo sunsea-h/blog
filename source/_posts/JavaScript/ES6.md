@@ -3,9 +3,8 @@ title: ES6
 categories:
   - JavaScript
 date: 2022-09-05 11:33:18
-updated: 2023-12-10 19:11:45
+updated: 2025-10-28 11:02:11
 ---
-
 # ES6
 
 ## 变量声明
@@ -1256,6 +1255,7 @@ Object.defineProperty(Example.prototype, 'func', {
 })
 
 ```
+
 ## 迭代器
 
 迭代器/遍历器（Iterator）就是这样一种机制。它是一种接口，为各种不同的数据结构提供统一的访问机制。任何数据结构只要部署 `Iterator` 接口，就可以完成遍历操作（即依次处理该数据结构的所有成员）。
