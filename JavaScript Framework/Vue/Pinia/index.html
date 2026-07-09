@@ -1,0 +1,1216 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../img/fluid.png">
+  <link rel="icon" href="../../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Pinia安装默认使用 Vite。 针对 Vue Cli 可以使用 非官方插件 。 Vue2配合 @vue&#x2F;composition-api 依赖和 PiniaVuePlugin 插件使用。 12345678910111213import &#123; createPinia, PiniaVuePlugin &#125; from &#x27;pinia&#x27;Vue.use(PiniaVueP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pinia">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/JavaScript%20Framework/Vue/Pinia/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="Pinia安装默认使用 Vite。 针对 Vue Cli 可以使用 非官方插件 。 Vue2配合 @vue&#x2F;composition-api 依赖和 PiniaVuePlugin 插件使用。 12345678910111213import &#123; createPinia, PiniaVuePlugin &#125; from &#x27;pinia&#x27;Vue.use(PiniaVueP">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-26T09:27:58.000Z">
+<meta property="article:modified_time" content="2023-03-22T18:23:46.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Pinia - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../js/utils.js" ></script>
+  <script  src="../../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Pinia"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-26 09:27" pubdate>
+          September 26, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          86 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Pinia</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Pinia"><a href="#Pinia" class="headerlink" title="Pinia"></a>Pinia</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>默认使用 Vite。</p>
+<p>针对 Vue Cli 可以使用 <a target="_blank" rel="noopener" href="https://github.com/wobsoriano/vue-cli-plugin-pinia">非官方插件</a> 。</p>
+<h3 id="Vue2"><a href="#Vue2" class="headerlink" title="Vue2"></a>Vue2</h3><p>配合 <code>@vue/composition-api</code> 依赖和 <code>PiniaVuePlugin</code> 插件使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createPinia, <span class="hljs-title class_">PiniaVuePlugin</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span><br><br><span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">PiniaVuePlugin</span>)<br><span class="hljs-keyword">const</span> pinia = <span class="hljs-title function_">createPinia</span>()<br><br><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;<br>  <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;##app&#x27;</span>,<br>  <span class="hljs-comment">// 其他选项...</span><br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-comment">// 注意同一个 `pinia` 实例可以在多个 Vue 应用程序中使用</span><br>  <span class="hljs-comment">// 同一个页面</span><br>  pinia,<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createPinia &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span><br><br>app.<span class="hljs-title function_">use</span>(<span class="hljs-title function_">createPinia</span>())<br></code></pre></td></tr></table></figure>
+
+<h2 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; defineStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span><br><br><span class="hljs-comment">// useStore 可以是 useUser、useCart 之类的任何东西</span><br><span class="hljs-comment">// 第一个参数是应用程序中 store 的唯一 id</span><br><span class="hljs-comment">// 第二个参数</span><br><span class="hljs-comment">// 2.1 一个对象</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;main&#x27;</span>, &#123;<br>  <span class="hljs-comment">// other options...</span><br>&#125;)<br><span class="hljs-comment">// 2.2 一个箭头函数，通过return返回定义内容</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useCounterStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&quot;counter&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-comment">// other options...</span><br><br>  <span class="hljs-keyword">return</span> &#123; <span class="hljs-comment">// other options... &#125;;</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>定义一个 store</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; ref, computed &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; defineStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;pinia&quot;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useCounterStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&quot;counter&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> count = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>);<br>  <span class="hljs-keyword">const</span> doubleCount = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> count.<span class="hljs-property">value</span> * <span class="hljs-number">2</span>);<br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">increment</span>(<span class="hljs-params"></span>) &#123;<br>    count.<span class="hljs-property">value</span>++;<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> &#123; count, doubleCount, increment &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="使用选项式-API"><a href="#使用选项式-API" class="headerlink" title="使用选项式 API"></a>使用选项式 API</h4><h5 id="使用-setup"><a href="#使用-setup" class="headerlink" title="使用 setup()"></a>使用 <code>setup()</code></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script&gt;<br>import &#123; useCounterStore &#125; from &#x27;@/stores/counter&#x27;<br><br>export default &#123;<br>  setup() &#123;<br>    const counterStore = useCounterStore()<br><br>    return &#123;<br>      // 您可以返回整个 store 实例以在模板中使用它<br>      counterStore,<br>    &#125;,<br>  &#125;,<br>  computed: &#123;<br>    quadrupleCounter() &#123;<br>      return counterStore.doubleCounter * 2<br>    &#125;,<br>  &#125;,<br>&#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>store 是一个 <code>reactive</code> 包裹的对象，自动解包，不能解构。</p>
+<p>从 store 中提取属性同时保持响应性，可以使用 <code>storeToRefs()</code> 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; storeToRefs &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>(&#123;<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> store = <span class="hljs-title function_">useStore</span>()<br>    <span class="hljs-keyword">const</span> &#123; name, doubleCount &#125; = <span class="hljs-title function_">storeToRefs</span>(store)<br><br>    <span class="hljs-keyword">return</span> &#123;<br>      name,<br>      doubleCount<br>    &#125;<br>  &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h5 id="不使用-setup"><a href="#不使用-setup" class="headerlink" title="不使用 setup()"></a>不使用 <code>setup()</code></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script&gt;<br>import &#123; mapState, mapWritableState &#125; from &quot;pinia&quot;;<br>import &#123; useCounterStore &#125; from &quot;@/stores/counter&quot;;<br><br>export default &#123;<br>  name: &quot;AboutView&quot;,<br>  data() &#123;<br>    return &#123;&#125;;<br>  &#125;,<br>  computed: &#123;<br>    ...mapState(useCounterStore, [&quot;countA&quot;]),<br>    ...mapWritableState(useCounterStore, [&quot;countB&quot;]),<br>    // 与上面相同，但将其注册为 this.myOwnName<br>    ...mapState(useCounterStore, &#123;<br>      myOwnName: &#x27;doubleCounter&#x27;,<br>      // 编写一个访问 store 的函数<br>      double: store =&gt; store.doubleCount,<br>    &#125;),<br>  &#125;,<br>  methods: &#123;<br>    // ...mapActions(useCounterStore, [&quot;increment&quot;]),<br>    addCounterA() &#123;<br>      // 错误，无法直接修改<br>      this.countA += 1;<br>      console.log(this.countA);<br>    &#125;,<br>    addCounterB() &#123;<br>      // 正确，可以直接修改，store<br>      this.countB += 1;<br>      console.log(this.countB);<br>    &#125;,<br>  &#125;,<br>&#125;;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p><code>mapState</code> 和 <code>mapWritableState</code> 相似，但 <code>mapWritableState</code> 可以直接修改，不需要调用 store 的方法。</p>
+<blockquote>
+<p>对于与数组相似的集合，不使用 <code>mapWritableState</code> 也可以修改，除非使用 <code>[]</code> 的新数组进行替换。</p>
+</blockquote>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用 &lt;script setup&gt;"></a>使用 <code>&lt;script setup&gt;</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup&gt;<br>import &#123; useCounterStore &#125; from &quot;@/stores/counter&quot;;<br><br>const counterStore = useCounterStore();<br>console.log(counterStore.count);<br>    <br>function increment() &#123;<br>  // 可以直接修改<br>  counterStore.count++;<br>&#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>state 为一个返回初始状态的函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; defineStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span><br><br><span class="hljs-keyword">const</span> useStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;storeId&#x27;</span>, &#123;<br>  <span class="hljs-comment">// 推荐使用 完整类型推断的箭头函数</span><br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">return</span> &#123;<br>      <span class="hljs-comment">// 所有这些属性都将自动推断其类型</span><br>      <span class="hljs-attr">counter</span>: <span class="hljs-number">0</span>,<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Eduardo&#x27;</span>,<br>      <span class="hljs-attr">isAdmin</span>: <span class="hljs-literal">true</span>,<br>    &#125;<br>  &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="重置状态"><a href="#重置状态" class="headerlink" title="重置状态"></a>重置状态</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> store = <span class="hljs-title function_">useStore</span>()<br><br>store.$reset()<br></code></pre></td></tr></table></figure>
+
+<h3 id="改变状态"><a href="#改变状态" class="headerlink" title="改变状态"></a>改变状态</h3><p>除了直接 <code>store.count++</code> 也可以通过 <code>$patch</code> 修改。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">store.$patch(&#123;<br>  <span class="hljs-attr">counter</span>: store.<span class="hljs-property">counter</span> + <span class="hljs-number">1</span>,<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Abalam&#x27;</span>,<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>但任何集合的修改（如：从数组推入、删除和拼接元素）需要创建一个新的集合。</p>
+<p>可以传入一个函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">cartStore.$patch(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> &#123;<br>  state.<span class="hljs-property">items</span>.<span class="hljs-title function_">push</span>(&#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;shoes&#x27;</span>, <span class="hljs-attr">quantity</span>: <span class="hljs-number">1</span> &#125;)<br>  state.<span class="hljs-property">hasChanged</span> = <span class="hljs-literal">true</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="替换-state"><a href="#替换-state" class="headerlink" title="替换 state"></a>替换 state</h3><p>通过设置 <code>$state</code> 属性，赋予新对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">store.<span class="hljs-property">$state</span> = &#123; <span class="hljs-attr">counter</span>: <span class="hljs-number">666</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Paimon&#x27;</span> &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="订阅状态"><a href="#订阅状态" class="headerlink" title="订阅状态"></a>订阅状态</h3><p>待解决</p>
+<p>使用 <code>$subscribe</code> 订阅状态，与 <code>watch()</code> 的优点是：<em>subscriptions</em> 只会在 <em>patches</em> 之后触发一次。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js">cartStore.$subscribe(<span class="hljs-function">(<span class="hljs-params">mutation, state</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// import &#123; MutationType &#125; from &#x27;pinia&#x27;</span><br>  mutation.<span class="hljs-property">type</span> <span class="hljs-comment">// &#x27;direct&#x27; | &#x27;patch object&#x27; | &#x27;patch function&#x27;</span><br>  <span class="hljs-comment">// 与 cartStore.$id 相同</span><br>  mutation.<span class="hljs-property">storeId</span> <span class="hljs-comment">// &#x27;cart&#x27;</span><br>  <span class="hljs-comment">// 仅适用于 mutation.type === &#x27;patch object&#x27;</span><br>  mutation.<span class="hljs-property">payload</span> <span class="hljs-comment">// 补丁对象传递给 to cartStore.$patch()</span><br><br>  <span class="hljs-comment">// 每当它发生变化时，将整个状态持久化到本地存储</span><br>  <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;cart&#x27;</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(state))<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><em>subscriptions</em> 默认绑定到添加它的组件上，跟随组件的卸载而销毁；若要保持其状态，将 <code>&#123;detached:true&#125;</code> 作为第二个参数出入。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">cartStore.$subscribe(callback, &#123; <span class="hljs-attr">detached</span>: <span class="hljs-literal">true</span> &#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Getters"><a href="#Getters" class="headerlink" title="Getters"></a>Getters</h2><p>等同于 store 状态的计算值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 1.传入对象</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;main&#x27;</span>, &#123;<br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;<br>    <span class="hljs-attr">counter</span>: <span class="hljs-number">0</span>,<br>  &#125;),<br>  <span class="hljs-attr">getters</span>: &#123;<br>    <span class="hljs-comment">// 推荐使用箭头函数</span><br>    <span class="hljs-attr">doubleCount</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> state.<span class="hljs-property">counter</span> * <span class="hljs-number">2</span>,<br>  &#125;,<br>&#125;)<br><br><span class="hljs-comment">// 2.传入函数</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;main&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> count = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>);<br>  <span class="hljs-keyword">const</span> doubleCount = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> count.<span class="hljs-property">value</span> * <span class="hljs-number">2</span>);<br><br>  <span class="hljs-keyword">return</span> &#123; count, doubleCount &#125;;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>可以通过 this 访问整个 store 实例，但必须注明返回类型（TS 中），JS 中使用 JSDoc 注明。</p>
+<p>不影响 <strong>使用箭头函数定义的</strong> 和 <strong>不使用 this 的常规函数</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;main&#x27;</span>, &#123;<br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;<br>    <span class="hljs-attr">counter</span>: <span class="hljs-number">0</span>,<br>  &#125;),<br>  <span class="hljs-attr">getters</span>: &#123;<br>    <span class="hljs-comment">// 自动将返回类型推断为数字</span><br>    <span class="hljs-title function_">doubleCount</span>(<span class="hljs-params">state</span>) &#123;<br>      <span class="hljs-keyword">return</span> state.<span class="hljs-property">counter</span> * <span class="hljs-number">2</span><br>    &#125;,<br>    <span class="hljs-comment">// 返回类型必须明确设置（使用this的常规函数）</span><br>    <span class="hljs-comment">// TS</span><br>    <span class="hljs-title function_">doublePlusOne</span>(): number &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">counter</span> * <span class="hljs-number">2</span> + <span class="hljs-number">1</span><br>    &#125;,<br>    <span class="hljs-comment">// JS</span><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回计数器值乘以二加一。</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@returns</span> &#123;<span class="hljs-type">number</span>&#125;</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-title function_">doubleCountPlusOne</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-comment">// 自动完成 ✨</span><br>      <span class="hljs-comment">// 引用其他 Getter</span><br>      <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">doubleCount</span> + <span class="hljs-number">1</span><br>    &#125;,<br>  &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="将参数传给-Getters"><a href="#将参数传给-Getters" class="headerlink" title="将参数传给 Getters"></a>将参数传给 Getters</h3><p>通过返回一个函数以接受参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&quot;main&quot;</span>, &#123;<br>  <span class="hljs-attr">state</span>: <span class="hljs-function">()=&gt;</span>(&#123;<br>    <span class="hljs-attr">users</span>: <span class="hljs-number">0</span>,<br>  &#125;),<br>  <span class="hljs-attr">getters</span>: &#123;<br>    <span class="hljs-attr">getUserById</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">userId</span>) =&gt;</span> state.<span class="hljs-property">users</span>.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> user.<span class="hljs-property">id</span> === userId);<br>    &#125;,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h2><p>相当于组件中 method ，适合定义业务逻辑。</p>
+<p>与 Getters 一样可以访问 this ，需要注明返回类型；但可以异步。</p>
+<h3 id="访问其他-store"><a href="#访问其他-store" class="headerlink" title="访问其他 store"></a>访问其他 store</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; useAuthStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./auth-store&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useSettingsStore = <span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&#x27;settings&#x27;</span>, &#123;<br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;<br>    <span class="hljs-comment">// ...</span><br>  &#125;),<br>  <span class="hljs-attr">actions</span>: &#123;<br>    <span class="hljs-keyword">async</span> <span class="hljs-title function_">fetchUserPreferences</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-keyword">const</span> auth = <span class="hljs-title function_">useAuthStore</span>()<br>      <span class="hljs-keyword">if</span> (auth.<span class="hljs-property">isAuthenticated</span>) &#123;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">preferences</span> = <span class="hljs-keyword">await</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">http</span>()<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;User must be authenticated&#x27;</span>)<br>      &#125;<br>    &#125;,<br>  &#125;,<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="订阅-Actions"><a href="#订阅-Actions" class="headerlink" title="订阅 Actions"></a>订阅 Actions</h3><p>通过 <code>store.$onAction()</code> 订阅 Action 及其结果。 传递给它的回调在 action 之前执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> unsubscribe = someStore.$onAction(<br>  <span class="hljs-function">(<span class="hljs-params">&#123;</span></span><br><span class="hljs-params"><span class="hljs-function">    name, // action 的名字</span></span><br><span class="hljs-params"><span class="hljs-function">    store, // store 实例</span></span><br><span class="hljs-params"><span class="hljs-function">    args, // 调用这个 action 的参数</span></span><br><span class="hljs-params"><span class="hljs-function">    after, // 在这个 action 执行完毕之后，执行这个函数</span></span><br><span class="hljs-params"><span class="hljs-function">    onError, // 在这个 action 抛出异常的时候，执行这个函数</span></span><br><span class="hljs-params"><span class="hljs-function">  &#125;</span>) =&gt;</span> &#123;<br>    <span class="hljs-comment">// 记录开始的时间变量</span><br>    <span class="hljs-keyword">const</span> startTime = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>()<br>    <span class="hljs-comment">// 这将在 `store` 上的操作执行之前触发</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Start &quot;<span class="hljs-subst">$&#123;name&#125;</span>&quot; with params [<span class="hljs-subst">$&#123;args.join(<span class="hljs-string">&#x27;, &#x27;</span>)&#125;</span>].`</span>)<br><br>    <span class="hljs-comment">// 如果 action 成功并且完全运行后，after 将触发。</span><br>    <span class="hljs-comment">// 它将等待任何返回的 promise</span><br>    <span class="hljs-title function_">after</span>(<span class="hljs-function">(<span class="hljs-params">result</span>) =&gt;</span> &#123;<br>      <span class="hljs-comment">// TODO</span><br>    &#125;)<br><br>    <span class="hljs-comment">// 如果 action 抛出或返回 Promise.reject ，onError 将触发</span><br>    <span class="hljs-title function_">onError</span>(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;<br>		<span class="hljs-comment">// TODO</span><br>    &#125;)<br>  &#125;<br>)<br><br><span class="hljs-comment">// 手动移除订阅</span><br><span class="hljs-title function_">unsubscribe</span>()<br></code></pre></td></tr></table></figure>
+
+<p><code>$onAction()</code> 绑定在使用它的组件上，随组件的卸载而销毁，可以传入第二个参数 <code>true</code> 保留。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> someStore = <span class="hljs-title function_">useSomeStore</span>()<br><br>    <span class="hljs-comment">// 此订阅将在组件卸载后保留</span><br>    someStore.$onAction(callback, <span class="hljs-literal">true</span>)<br><br>    <span class="hljs-comment">// ...</span><br>  &#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>插件是一个函数，返回要添加到 store 的属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">myPiniaPlugin</span>(<span class="hljs-params">context</span>) &#123;<br>  context.<span class="hljs-property">pinia</span> <span class="hljs-comment">// 使用 `createPinia()` 创建的 pinia</span><br>  context.<span class="hljs-property">app</span> <span class="hljs-comment">// 使用 `createApp()` 创建的当前应用程序（仅限 Vue 3）</span><br>  context.<span class="hljs-property">store</span> <span class="hljs-comment">// 插件正在扩充的 store</span><br>  context.<span class="hljs-property">options</span> <span class="hljs-comment">// 定义存储的选项对象传递给`defineStore()`</span><br>  <span class="hljs-comment">// ...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用 <code>pinia.use()</code> 将插件添加到 Pinia 实例上。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">pinia.<span class="hljs-title function_">use</span>(myPiniaPlugin)<br></code></pre></td></tr></table></figure>
+
+<p>适用于：添加全局对象（如路由器、模式或 toast 管理器）</p>
+<blockquote>
+<p>插件仅适用于**在将 <code>pinia</code> 传递给应用程序后创建的 store **，否则将不会被应用。</p>
+</blockquote>
+<p>简单例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createPinia &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span><br><br><span class="hljs-comment">// 为安装此插件后创建的每个store添加一个名为 `secret` 的属性</span><br><span class="hljs-comment">// 这可能在不同的文件中</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">SecretPiniaPlugin</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">secret</span>: <span class="hljs-string">&#x27;the cake is a lie&#x27;</span> &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> pinia = <span class="hljs-title function_">createPinia</span>()<br><span class="hljs-comment">// 将插件提供给 pinia</span><br>pinia.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">SecretPiniaPlugin</span>)<br><br><span class="hljs-comment">// 在另一个文件中</span><br><span class="hljs-keyword">const</span> store = <span class="hljs-title function_">useStore</span>()<br>store.<span class="hljs-property">secret</span> <span class="hljs-comment">// &#x27;the cake is a lie&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="扩充-Store"><a href="#扩充-Store" class="headerlink" title="扩充 Store"></a>扩充 Store</h3><p>1.返回对象（推荐，方便 devtools 跟踪）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">pinia.<span class="hljs-title function_">use</span>(<span class="hljs-function">() =&gt;</span> (&#123; <span class="hljs-attr">hello</span>: <span class="hljs-string">&#x27;world&#x27;</span> &#125;))<br></code></pre></td></tr></table></figure>
+
+<p>2.直接在 store 设置属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">pinia.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">&#123; store &#125;</span>) =&gt;</span> &#123;<br>  store.<span class="hljs-property">hello</span> = <span class="hljs-string">&#x27;world&#x27;</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p>添加到 <code>store._customProperties</code> （<strong>仅在开发模式</strong> 开发工具）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">pinia.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">&#123; store &#125;</span>) =&gt;</span> &#123;<br>  store.<span class="hljs-property">hello</span> = <span class="hljs-string">&#x27;world&#x27;</span><br>  <span class="hljs-comment">// 确保打包器可以处理这个问题（webpack 和 vite 默认这样做）</span><br>  <span class="hljs-keyword">if</span> (process.<span class="hljs-property">env</span>.<span class="hljs-property">NODE_ENV</span> === <span class="hljs-string">&#x27;development&#x27;</span>) &#123;<br>    <span class="hljs-comment">// 添加您在 store 中设置的任何 keys</span><br>    store.<span class="hljs-property">_customProperties</span>.<span class="hljs-title function_">add</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>每个 store 都使用了 <code>reactive</code> 包装，自动进行解包。</p>
+</blockquote>
+<h4 id="添加新状态"><a href="#添加新状态" class="headerlink" title="添加新状态"></a>添加新状态</h4><p>将新的状态属性添加到 store 或在 hydration 中使用的属性，需要在两个地方都添加：</p>
+<ul>
+<li>在 <code>store</code> 上（可以使用 <code>store.myState</code> 访问）</li>
+<li>在 <code>store.$state</code> 上（可以在 devtools 中使用，并且 <strong>在 SSR 期间被序列化</strong>）</li>
+</ul>
+<p>待解决</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> globalSecret = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;secret&#x27;</span>)<br>pinia.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">&#123; store &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// `secret` 在所有 store 之间共享</span><br>  store.<span class="hljs-property">$state</span>.<span class="hljs-property">secret</span> = globalSecret<br>  store.<span class="hljs-property">secret</span> = globalSecret<br>  <span class="hljs-comment">// 它会自动展开</span><br>  store.<span class="hljs-property">secret</span> <span class="hljs-comment">// &#x27;secret&#x27;</span><br><br>  <span class="hljs-keyword">const</span> hasError = <span class="hljs-title function_">ref</span>(<span class="hljs-literal">false</span>)<br>  store.<span class="hljs-property">$state</span>.<span class="hljs-property">hasError</span> = hasError<br>  <span class="hljs-comment">// 这个必须始终设置</span><br>  store.<span class="hljs-property">hasError</span> = <span class="hljs-title function_">toRef</span>(store.<span class="hljs-property">$state</span>, <span class="hljs-string">&#x27;hasError&#x27;</span>)<br><br>  <span class="hljs-comment">// 在这种情况下，最好不要返回 `hasError`，因为它</span><br>  <span class="hljs-comment">// 将显示在 devtools 的 `state` 部分</span><br>  <span class="hljs-comment">// 无论如何，如果我们返回它，devtools 将显示它两次。</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>插件中发生的状态更改或添加（包括调用 <code>store.$patch()</code>）发生在存储处于活动状态之前，不会触发任何订阅。</p>
+<p>如果使用 <strong>Vue 2</strong>，Pinia 会受到与 Vue 一样的 <a target="_blank" rel="noopener" href="https://vuejs.org/v2/guide/reactivity.html##Change-Detection-Caveats">相同的响应式警告</a>。 在创建 <code>secret</code> 和 <code>hasError</code> 之类的新状态属性时，需要使用来自 <code>@vue/composition-api</code> 的 <code>set</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; set &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@vue/composition-api&#x27;</span><br>pinia.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">&#123; store &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (!store.<span class="hljs-property">$state</span>.<span class="hljs-title function_">hasOwnProperty</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)) &#123;<br>    <span class="hljs-keyword">const</span> secretRef = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;secret&#x27;</span>)<br>    <span class="hljs-comment">// 如果数据打算在 SSR 期间使用，应该</span><br>    <span class="hljs-comment">// 将它设置在 `$state` 属性上，以便它被序列化并</span><br>    <span class="hljs-comment">// 在 hydration 中被提取</span><br>    <span class="hljs-title function_">set</span>(store.<span class="hljs-property">$state</span>, <span class="hljs-string">&#x27;secret&#x27;</span>, secretRef)<br>    <span class="hljs-comment">// 也可以直接在 store 中设置它，以便可以访问它</span><br>    <span class="hljs-comment">// 两种方式：`store.$state.secret` / `store.secret`</span><br>    <span class="hljs-title function_">set</span>(store, <span class="hljs-string">&#x27;secret&#x27;</span>, secretRef)<br>    store.<span class="hljs-property">secret</span> <span class="hljs-comment">// &#x27;secret&#x27;</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+</blockquote>
+<h3 id="添加新的外部属性"><a href="#添加新的外部属性" class="headerlink" title="添加新的外部属性"></a>添加新的外部属性</h3><p>在将新的外部属性，来自其他类实例或非响应式的内容添加到 store 之前，使用 <code>markRaw()</code> 进行包装对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; markRaw &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-comment">// 根据您的路由所在的位置进行调整</span><br><span class="hljs-keyword">import</span> &#123; router &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./router&#x27;</span><br><br>pinia.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">&#123; store &#125;</span>) =&gt;</span> &#123;<br>  store.<span class="hljs-property">router</span> = <span class="hljs-title function_">markRaw</span>(router)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="在插件中调用-subscribe"><a href="#在插件中调用-subscribe" class="headerlink" title="在插件中调用 $subscribe"></a>在插件中调用 <code>$subscribe</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">pinia.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">&#123; store &#125;</span>) =&gt;</span> &#123;<br>  store.$subscribe(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-comment">// 在存储变化的时候执行</span><br>  &#125;)<br>  store.$onAction(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-comment">// 在 action 的时候执行</span><br>  &#125;)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="添加新选项"><a href="#添加新选项" class="headerlink" title="添加新选项"></a>添加新选项</h3><p>添加新的选项，以便在之后使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">defineStore</span>(<span class="hljs-string">&quot;search&quot;</span>, &#123;<br>  <span class="hljs-attr">actions</span>: &#123;<br>    <span class="hljs-title function_">searchContacts</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-comment">// ...</span><br>    &#125;,<br>  &#125;,<br><br>  <span class="hljs-comment">// 稍后将由插件读取</span><br>  <span class="hljs-attr">debounce</span>: &#123;<br>    <span class="hljs-comment">// 将动作 searchContacts 防抖 300ms</span><br>    <span class="hljs-attr">searchContacts</span>: <span class="hljs-number">300</span>,<br>  &#125;,<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>使用 debounce 替代 原来的 action。</p>
+<p>待解决</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 使用任何防抖库</span><br><span class="hljs-keyword">import</span> debounce <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;lodash/debunce&#x27;</span><br><br>pinia.<span class="hljs-title function_">use</span>(<span class="hljs-function">(<span class="hljs-params">&#123; options, store &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (options.<span class="hljs-property">debounce</span>) &#123;<br>    <span class="hljs-comment">// 我们正在用新的action覆盖这些action</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(options.<span class="hljs-property">debounce</span>).<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">debouncedActions, action</span>) =&gt;</span> &#123;<br>      debouncedActions[action] = <span class="hljs-title function_">debounce</span>(<br>        store[action],<br>        options.<span class="hljs-property">debounce</span>[action]<br>      )<br>      <span class="hljs-keyword">return</span> debouncedActions<br>    &#125;, &#123;&#125;)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../categories/JavaScript-Framework/" class="category-chain-item">JavaScript Framework</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../categories/JavaScript-Framework/Vue/" class="category-chain-item">Vue</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Pinia</div>
+      <div>https://sunsea-h.github.io/blog/JavaScript Framework/Vue/Pinia/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 26, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../../React/UmiJS/" title="UmiJS">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">UmiJS</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../Vue%20Router/" title="Vue Router">
+                        <span class="hidden-mobile">Vue Router</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../js/events.js" ></script>
+<script  src="../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

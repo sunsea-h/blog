@@ -1,0 +1,1225 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../img/fluid.png">
+  <link rel="icon" href="../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="# PostgreSQL环境查看命令 显示服务器版本  1SHOW SERVER_VERSION;   显示所有环境变量  1SHOW ALL;   显示当前登录用户  1SELECT current_user;&#x2F;* 结果示例： admin *&#x2F;   显示当前数据库  1SELECT current_database();&#x2F;* 等效快捷命令： \c *&#x2F;  数据库操作命令 显示当前连接的数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/Database/PostgreSQL/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="# PostgreSQL环境查看命令 显示服务器版本  1SHOW SERVER_VERSION;   显示所有环境变量  1SHOW ALL;   显示当前登录用户  1SELECT current_user;&#x2F;* 结果示例： admin *&#x2F;   显示当前数据库  1SELECT current_database();&#x2F;* 等效快捷命令： \c *&#x2F;  数据库操作命令 显示当前连接的数据库">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-15T17:10:03.000Z">
+<meta property="article:modified_time" content="2025-10-16T11:16:47.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>PostgreSQL - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../js/utils.js" ></script>
+  <script  src="../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PostgreSQL"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-10-15 17:10" pubdate>
+          October 15, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">PostgreSQL</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="# PostgreSQL"></a># PostgreSQL</h1><h3 id="环境查看命令"><a href="#环境查看命令" class="headerlink" title="环境查看命令"></a>环境查看命令</h3><ol>
+<li>显示服务器版本</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> SERVER_VERSION;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>显示所有环境变量</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">ALL</span>;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>显示当前登录用户</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">current_user</span>;<span class="hljs-comment">/* 结果示例： admin */</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>显示当前数据库</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> current_database();<span class="hljs-comment">/* 等效快捷命令： \c */</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="数据库操作命令"><a href="#数据库操作命令" class="headerlink" title="数据库操作命令"></a>数据库操作命令</h3><ol>
+<li>显示当前连接的数据库</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> current_database();<span class="hljs-comment">/* 返回结果示例: current_database -------------------sales_db */</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建新数据库</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> DATABASE <span class="hljs-operator">&lt;</span>database_name<span class="hljs-operator">&gt;</span> <br><span class="hljs-keyword">WITH</span> OWNER <span class="hljs-operator">=</span> <span class="hljs-operator">&lt;</span>username<span class="hljs-operator">&gt;</span>ENCODING <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;UTF8&#x27;</span>;  <span class="hljs-comment">/* 推荐字符编码 */</span><span class="hljs-comment">/* 示例: CREATE DATABASE logistics WITH OWNER = admin; */</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删除数据库</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> DATABASE IF <span class="hljs-keyword">EXISTS</span> <span class="hljs-operator">&lt;</span>database_name<span class="hljs-operator">&gt;</span>;<span class="hljs-comment">/* 添加 IF EXISTS 可避免删除不存在的库时报错 */</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>重命名数据库</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> DATABASE <span class="hljs-operator">&lt;</span>old_database_name<span class="hljs-operator">&gt;</span><br>RENAME <span class="hljs-keyword">TO</span> <span class="hljs-operator">&lt;</span>new_database_name<span class="hljs-operator">&gt;</span>;<span class="hljs-comment">/* 示例: ALTER DATABASE table_name_old RENAME TO &lt;table_name_new&gt; */</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="表管理命令集"><a href="#表管理命令集" class="headerlink" title="表管理命令集"></a>表管理命令集</h3><h4 id="1-列出当前数据库的表"><a href="#1-列出当前数据库的表" class="headerlink" title="1. 列出当前数据库的表"></a>1. 列出当前数据库的表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 快捷命令：\dt      --\dt 默认只显示当前用户有权限的表-- 标准SQL查询：</span><br><span class="hljs-keyword">SELECT</span> table_schema <span class="hljs-keyword">AS</span> &quot;模式&quot;, table_name <span class="hljs-keyword">AS</span> &quot;表名&quot;<br><span class="hljs-keyword">FROM</span> information_schema.tables <br><span class="hljs-keyword">WHERE</span> table_catalog <span class="hljs-operator">=</span> current_database()<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-number">1</span>, <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-全局表列表（所有数据库）"><a href="#2-全局表列表（所有数据库）" class="headerlink" title="2. 全局表列表（所有数据库）"></a>2. 全局表列表（所有数据库）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> schemaname <span class="hljs-keyword">AS</span> &quot;模式&quot;,       <br>				tablename <span class="hljs-keyword">AS</span> &quot;表名&quot;,       <br>				tableowner <span class="hljs-keyword">AS</span> &quot;Owner&quot;<br><span class="hljs-keyword">FROM</span> pg_catalog.pg_tables;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-查看表结构"><a href="#3-查看表结构" class="headerlink" title="3. 查看表结构"></a>3. 查看表结构</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> column_name <span class="hljs-keyword">AS</span> &quot;列名&quot;,       <br>			data_type <span class="hljs-keyword">AS</span> &quot;类型&quot;,       <br>			character_maximum_length <span class="hljs-keyword">AS</span> &quot;长度&quot;,       <br>			is_nullable <span class="hljs-keyword">AS</span> &quot;可空&quot;<br><span class="hljs-keyword">FROM</span> information_schema.columns <br><span class="hljs-keyword">WHERE</span> <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span> <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;table_name&#x27;</span><br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-operator">&lt;</span>ordinal_position<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-创建表"><a href="#4-创建表" class="headerlink" title="4. 创建表"></a>4. 创建表</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础创建：</span><br><span class="hljs-keyword">CREATE TABLE</span> <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span> (<br>    id <span class="hljs-type">INT</span>,<br>    name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">50</span>),<br>    create_date <span class="hljs-type">DATE</span><br>);<br><span class="hljs-comment">-- 示例 主键自增：</span><br><span class="hljs-keyword">CREATE TABLE</span> departments (<br>    dept_id SERIAL <span class="hljs-keyword">PRIMARY KEY</span>, <span class="hljs-comment">-- 自动创建序列    </span><br>    dept_name <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">100</span>) <span class="hljs-keyword">UNIQUE</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="5-删除表（危险操作！）"><a href="#5-删除表（危险操作！）" class="headerlink" title="5. 删除表（危险操作！）"></a>5. 删除表（危险操作！）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 安全删除：</span><br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">TABLE</span> IF <span class="hljs-keyword">EXISTS</span> temp_data CASCADE;<br><span class="hljs-comment">-- 级联删除效果：   ✓ 删除表数据   ✓ 删除相关索引/触发器   ✓ 解除依赖该表的外键约束</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Permissions-权限篇"><a href="#Permissions-权限篇" class="headerlink" title="Permissions 权限篇"></a>Permissions 权限篇</h3><h4 id="1-数据库权限"><a href="#1-数据库权限" class="headerlink" title="1. 数据库权限"></a>1. 数据库权限</h4><ul>
+<li>权限层级：<code>CONNECT</code> → <code>TEMPORARY</code>→ <code>CREATE</code> → <code>ALL PRIVILEGES</code></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 授予数据库所有权限：</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">ON</span> DATABASE <span class="hljs-operator">&lt;</span>db_name<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">TO</span> <span class="hljs-operator">&lt;</span>user_name<span class="hljs-operator">&gt;</span>;<br><span class="hljs-comment">-- 授予连接权限（基础权限）：</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">CONNECT</span> <span class="hljs-keyword">ON</span> DATABASE <span class="hljs-operator">&lt;</span>db_name<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">TO</span> <span class="hljs-operator">&lt;</span>user_name<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-模式权限"><a href="#2-模式权限" class="headerlink" title="2. 模式权限"></a>2. 模式权限</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 授予模式使用权限：</span><br><span class="hljs-keyword">GRANT</span> USAGE <span class="hljs-keyword">ON</span> SCHEMA public <span class="hljs-keyword">TO</span> <span class="hljs-operator">&lt;</span>user_name<span class="hljs-operator">&gt;</span>;<br><span class="hljs-comment">-- 授予函数执行权限：</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">EXECUTE</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">ALL</span> FUNCTIONS <span class="hljs-keyword">IN</span> SCHEMA public <span class="hljs-keyword">TO</span> <span class="hljs-operator">&lt;</span>user_name <span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-表权限"><a href="#3-表权限" class="headerlink" title="3. 表权限"></a>3. 表权限</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 所有表授权（当前模式）：</span><br>GRANTSELECT,<br><span class="hljs-keyword">INSERT</span><br>,<br><span class="hljs-keyword">UPDATE</span>,<br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">ALL</span> TABLES <span class="hljs-keyword">IN</span> SCHEMA public <span class="hljs-keyword">TO</span> user_name;<br><span class="hljs-comment">-- 单表授权：</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span>, <span class="hljs-keyword">UPDATE</span>, <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">ON</span> table_name <span class="hljs-keyword">TO</span> <span class="hljs-operator">&lt;</span> user_name <span class="hljs-operator">&gt;</span>;<br><span class="hljs-comment">-- 只读权限：</span><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">ON</span> <span class="hljs-keyword">ALL</span> TABLES <span class="hljs-keyword">IN</span> SCHEMA public <span class="hljs-keyword">TO</span> <span class="hljs-operator">&lt;</span> user_name <span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="表结构变更与数据操作"><a href="#表结构变更与数据操作" class="headerlink" title="表结构变更与数据操作"></a>表结构变更与数据操作</h3><h4 id="1-添加新列"><a href="#1-添加新列" class="headerlink" title="1. 添加新列"></a>1. 添加新列</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法：</span><br><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ADD</span> <span class="hljs-operator">&lt;</span>column_name<span class="hljs-operator">&gt;</span> <span class="hljs-operator">&lt;</span>data_type<span class="hljs-operator">&gt;</span> [<span class="hljs-operator">&lt;</span>constraints<span class="hljs-operator">&gt;</span>];<br><span class="hljs-comment">-- 例子：</span><br><span class="hljs-keyword">ALTER TABLE</span> employees<br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">COLUMN</span> birth_date <span class="hljs-type">DATE</span> <span class="hljs-keyword">NOT NULL</span> <span class="hljs-keyword">DEFAULT</span> <span class="hljs-string">&#x27;2000-01-01&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>添加 <code>NOT NULL</code> 列时<strong>必须</strong>指定默认值</li>
+<li>大表操作建议在低峰期执行</li>
+</ul>
+</blockquote>
+<h4 id="2-修改列定义"><a href="#2-修改列定义" class="headerlink" title="2. 修改列定义"></a>2. 修改列定义</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法</span><br><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-operator">&lt;</span>column_name<span class="hljs-operator">&gt;</span> TYPE <span class="hljs-operator">&lt;</span>data_type<span class="hljs-operator">&gt;</span> [<span class="hljs-operator">&lt;</span>constraints<span class="hljs-operator">&gt;</span>];<br><span class="hljs-comment">-- 示例：</span><br><span class="hljs-comment">-- 修改数据类型：</span><br><span class="hljs-keyword">ALTER TABLE</span> products <br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">COLUMN</span> price TYPE <span class="hljs-type">NUMERIC</span>(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>);<br><span class="hljs-comment">-- 改为带精度的数字</span><br><span class="hljs-comment">-- 添加约束：</span><br><span class="hljs-keyword">ALTER TABLE</span> customers <br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">COLUMN</span> email <span class="hljs-keyword">SET</span> <span class="hljs-keyword">NOT NULL</span>;<br><span class="hljs-comment">-- 移除约束：</span><br><span class="hljs-keyword">ALTER TABLE</span> orders <br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">COLUMN</span> coupon_code <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">NOT NULL</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-删除列"><a href="#3-删除列" class="headerlink" title="3. 删除列"></a>3. 删除列</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法：</span><br><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span> <br><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">COLUMN</span> IF <span class="hljs-keyword">EXISTS</span> <span class="hljs-operator">&lt;</span>column_name<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><strong>温馨提示：</strong></p>
+<ul>
+<li>数据立即永久删除</li>
+<li>先确认无依赖关系：<code>SELECT * FROM information_schema.constraint_column_usage WHERE table_name = &#39;users&#39; AND column_name = &#39;obsolete_phone&#39;;</code></li>
+</ul>
+<h4 id="4-添加自增主键"><a href="#4-添加自增主键" class="headerlink" title="4. 添加自增主键"></a>4. 添加自增主键</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法：</span><br><span class="hljs-keyword">ALTER TABLE</span> <span class="hljs-operator">&lt;</span> table_name <span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">ADD</span> <span class="hljs-keyword">COLUMN</span> <span class="hljs-operator">&lt;</span> column_name <span class="hljs-operator">&gt;</span> SERIAL <span class="hljs-keyword">PRIMARY KEY</span>;<br><span class="hljs-comment">-- 示例：</span><br><span class="hljs-comment">-- 新增自增主键列：</span><br><span class="hljs-keyword">ALTER TABLE</span> product <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">COLUMN</span> product_id SERIAL <span class="hljs-keyword">PRIMARY KEY</span>;<br><span class="hljs-comment">-- 已有列转自增主键：</span><br><span class="hljs-keyword">ALTER TABLE</span> sales <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">COLUMN</span> sales_id SERIAL;<br><br><span class="hljs-keyword">ALTER TABLE</span> sales <span class="hljs-keyword">ADD</span> <span class="hljs-keyword">PRIMARY KEY</span> (sales_id);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>💡 技巧解释：<br><code>SERIAL</code> &#x3D; <code>INTEGER</code> + 自动序列 + 默认值 <code>nextval(&#39;table_col_seq&#39;)</code></p>
+</blockquote>
+<h4 id="5-使用自动递增的主键插入表中"><a href="#5-使用自动递增的主键插入表中" class="headerlink" title="5. 使用自动递增的主键插入表中"></a>5. 使用自动递增的主键插入表中</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法：</span><br><span class="hljs-keyword">INSERT INTO</span> <span class="hljs-operator">&lt;</span> table_name <span class="hljs-operator">&gt;</span> <span class="hljs-keyword">VALUES</span> (<span class="hljs-keyword">DEFAULT</span>, <span class="hljs-operator">&lt;</span> value1 <span class="hljs-operator">&gt;</span>);<br><br><span class="hljs-keyword">INSERT INTO</span><br>    <span class="hljs-operator">&lt;</span> table_name <span class="hljs-operator">&gt;</span> (<br>        <span class="hljs-operator">&lt;</span> column1_name <span class="hljs-operator">&gt;</span>,<br>        <span class="hljs-operator">&lt;</span> column2_name <span class="hljs-operator">&gt;</span><br>    )<br><span class="hljs-keyword">VALUES</span> (<span class="hljs-operator">&lt;</span> value1 <span class="hljs-operator">&gt;</span>, <span class="hljs-operator">&lt;</span> value2 <span class="hljs-operator">&gt;</span>);<br><span class="hljs-comment">-- 示例:</span><br><span class="hljs-comment">-- 方案1：使用DEFAULT关键字</span><br><span class="hljs-keyword">INSERT INTO</span> customers <span class="hljs-keyword">VALUES</span> ( <span class="hljs-keyword">DEFAULT</span>, <span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-string">&#x27;zhangsan@example.com&#x27;</span> );<br><span class="hljs-comment">-- 方案2：省略自增列</span><br><span class="hljs-keyword">INSERT INTO</span> orders (product_id, quantity) <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">101</span>, <span class="hljs-number">3</span>);<br><span class="hljs-comment">-- 方案3：多行插入</span><br><span class="hljs-keyword">INSERT INTO</span><br>    employees (name, department)<br><span class="hljs-keyword">VALUES</span> (<span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-string">&#x27;HR&#x27;</span>),<br>    (<span class="hljs-string">&#x27;王五&#x27;</span>, <span class="hljs-string">&#x27;IT&#x27;</span>),<br>    (<span class="hljs-string">&#x27;赵六&#x27;</span>, <span class="hljs-string">&#x27;saler&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="数据操作-DML"><a href="#数据操作-DML" class="headerlink" title="数据操作 DML"></a>数据操作 DML</h3><h4 id="1-数据查询（SELECT）"><a href="#1-数据查询（SELECT）" class="headerlink" title="1. 数据查询（SELECT）"></a>1. 数据查询（SELECT）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">&lt;</span>column1<span class="hljs-operator">&gt;</span>, <span class="hljs-operator">&lt;</span>column2<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">FROM</span> <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">WHERE</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">condition</span><span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">column</span><span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">ASC</span><span class="hljs-operator">|</span><span class="hljs-keyword">DESC</span>]<br>LIMIT <span class="hljs-operator">&lt;</span>count<span class="hljs-operator">&gt;</span>;<br><span class="hljs-comment">-- 示例：</span><br><span class="hljs-comment">-- 1. 全表查询</span><br><span class="hljs-comment">-- 获取所有员工数据</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> employees;<br><br><span class="hljs-comment">-- 2. 单行查询</span><br><span class="hljs-comment">-- 获取第一条订单</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> orders LIMIT <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">-- 3. 条件查询</span><br><span class="hljs-comment">-- 高价电子产品</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> products <span class="hljs-keyword">WHERE</span> price <span class="hljs-operator">&gt;</span> <span class="hljs-number">100</span> <span class="hljs-keyword">AND</span> category <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;apple&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-数据插入-INSERT"><a href="#2-数据插入-INSERT" class="headerlink" title="2. 数据插入 (INSERT)"></a>2. 数据插入 (INSERT)</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法：</span><br><span class="hljs-keyword">INSERT INTO</span><br>    <span class="hljs-operator">&lt;</span> table_name <span class="hljs-operator">&gt;</span> [(<span class="hljs-operator">&lt;</span>column1<span class="hljs-operator">&gt;</span>, <span class="hljs-operator">&lt;</span>column2<span class="hljs-operator">&gt;</span>, ...)]<br><span class="hljs-keyword">VALUES</span><br>    (<span class="hljs-operator">&lt;</span> value1 <span class="hljs-operator">&gt;</span>, <span class="hljs-operator">&lt;</span> value2 <span class="hljs-operator">&gt;</span>,...) [, (<span class="hljs-operator">&lt;</span>value1<span class="hljs-operator">&gt;</span>, <span class="hljs-operator">&lt;</span>value2<span class="hljs-operator">&gt;</span>, ...)];<br><br><span class="hljs-comment">-- 多行插入</span><br><span class="hljs-comment">-- 示例：</span><br><span class="hljs-comment">-- 1. 全列插入</span><br><span class="hljs-comment">-- 按表结构顺序</span><br><span class="hljs-keyword">INSERT INTO</span> customers <span class="hljs-keyword">VALUES</span> (<span class="hljs-number">101</span>, <span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-string">&#x27;zhangsan@qq.com&#x27;</span>);<br><br><br><span class="hljs-comment">-- 2. 安全插入（推荐）</span><br><span class="hljs-comment">-- 明确指定列名</span><br><span class="hljs-keyword">INSERT INTO</span><br>    orders (<br>        order_date,<br>        customer_id,<br>        amount<br>    )<br><span class="hljs-keyword">VALUES</span> (<span class="hljs-built_in">CURRENT_DATE</span>, <span class="hljs-number">42</span>, <span class="hljs-number">199.99</span>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-数据更新-UPDATE"><a href="#3-数据更新-UPDATE" class="headerlink" title="3. 数据更新 (UPDATE)"></a>3. 数据更新 (UPDATE)</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法：</span><br><span class="hljs-keyword">UPDATE</span> <span class="hljs-operator">&lt;</span> table_name <span class="hljs-operator">&gt;</span><br><span class="hljs-keyword">SET</span><br>    <span class="hljs-operator">&lt;</span> column1 <span class="hljs-operator">&gt;</span> <span class="hljs-operator">=</span> <span class="hljs-operator">&lt;</span> value1 <span class="hljs-operator">&gt;</span>,<br>    <span class="hljs-operator">&lt;</span> column2 <span class="hljs-operator">&gt;</span> <span class="hljs-operator">=</span> <span class="hljs-operator">&lt;</span> value2 <span class="hljs-operator">&gt;</span><br>[<span class="hljs-keyword">WHERE</span> <span class="hljs-operator">&lt;</span> <span class="hljs-keyword">condition</span> <span class="hljs-operator">&gt;</span>];<br><span class="hljs-comment">-- 缺少WHERE将更新所有行！</span><br><span class="hljs-comment">-- 示例：</span><br><span class="hljs-keyword">UPDATE</span> employeesSET department <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;IT&#x27;</span>,<br>salary <span class="hljs-operator">=</span> salary <span class="hljs-operator">*</span> <span class="hljs-number">1.1</span><span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">123</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-数据删除-DELETE"><a href="#4-数据删除-DELETE" class="headerlink" title="4. 数据删除 (DELETE)"></a>4. 数据删除 (DELETE)</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 基础语法：</span><br>DELETEFROM <span class="hljs-operator">&lt;</span>table_name<span class="hljs-operator">&gt;</span> [<span class="hljs-keyword">WHERE</span> <span class="hljs-operator">&lt;</span><span class="hljs-keyword">condition</span><span class="hljs-operator">&gt;</span>];  <span class="hljs-comment">-- 缺少WHERE将删除所有数据！</span><br><span class="hljs-comment">-- 示例：</span><br><span class="hljs-comment">-- 1. 条件删除</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> logs <span class="hljs-keyword">WHERE</span> created_at <span class="hljs-operator">&lt;</span> <span class="hljs-string">&#x27;2023-01-01&#x27;</span>;  <span class="hljs-comment">-- 删除旧日志</span><br><span class="hljs-comment">-- 2. 全表删除（极度危险！）</span><br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> temp_data;  <span class="hljs-comment">-- 清空临时表（无WHERE条件）-- </span><br></code></pre></td></tr></table></figure>
+
+<h3 id="角色和-schema-的管理命令"><a href="#角色和-schema-的管理命令" class="headerlink" title="角色和 schema 的管理命令"></a>角色和 schema 的管理命令</h3><h4 id="角色管理"><a href="#角色管理" class="headerlink" title="角色管理"></a>角色管理</h4><ol>
+<li>列出所有角色</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> rolname <span class="hljs-keyword">AS</span> &quot;角色名称&quot;, <br>				rolsuper <span class="hljs-keyword">AS</span> &quot;超级用户&quot;, <br>				rolcreaterole <span class="hljs-keyword">AS</span> &quot;可创建角色&quot;<br><span class="hljs-keyword">FROM</span> pg_roles;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建用户</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建用户（带登录权限）：</span><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-operator">&lt;</span>user_name<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">WITH</span> PASSWORD <span class="hljs-string">&#x27;&lt;password&gt;&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删除用户</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">USER</span> IF <span class="hljs-keyword">EXISTS</span> <span class="hljs-operator">&lt;</span>user_name<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>更改用户密码：</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> ROLE <span class="hljs-operator">&lt;</span>user_name<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">WITH</span> PASSWORD <span class="hljs-string">&#x27;&lt;password&gt;&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="模式管理"><a href="#模式管理" class="headerlink" title="模式管理"></a>模式管理</h4><ol>
+<li>列出 SCHEMAS</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> schema_name <span class="hljs-keyword">FROM</span> information_schema.schemata;<br><span class="hljs-keyword">SELECT</span> nspname <span class="hljs-keyword">FROM</span> pg_catalog.pg_namespace;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建模式</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> SCHEMA IF <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> <span class="hljs-operator">&lt;</span>schema_name<span class="hljs-operator">&gt;</span>;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>删除模式</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> SCHEMA IF <span class="hljs-keyword">EXISTS</span> <span class="hljs-operator">&lt;</span>schema_name<span class="hljs-operator">&gt;</span> CASCADE;<br></code></pre></td></tr></table></figure>
+
+<h3 id="查询逻辑执行顺序"><a href="#查询逻辑执行顺序" class="headerlink" title="查询逻辑执行顺序"></a>查询逻辑执行顺序</h3><p><strong>严格顺序性：</strong></p>
+<ul>
+<li><code>WHERE</code> 始终在 <code>GROUP BY</code> 之前</li>
+<li><code>HAVING</code> 必须在 <code>GROUP BY</code> 之后</li>
+<li><code>ORDER BY/LIMIT</code> 总是最后阶段</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../categories/Database/" class="category-chain-item">Database</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PostgreSQL</div>
+      <div>https://sunsea-h.github.io/blog/Database/PostgreSQL/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 15, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../../JavaScript%20Engineering/AI/" title="AI">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">AI</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../System/Omarchy/" title="Omarchy">
+                        <span class="hidden-mobile">Omarchy</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../js/events.js" ></script>
+<script  src="../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

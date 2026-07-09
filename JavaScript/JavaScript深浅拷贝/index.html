@@ -1,0 +1,1268 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../img/fluid.png">
+  <link rel="icon" href="../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="JavaScript 深浅拷贝一、浅拷贝浅拷贝是指，一个新的对象对原始对象的属性值进行精确地拷贝，如果拷贝的是基本数据类型，拷贝的就是基本数据类型的值；如果拷贝的是引用数据类型，拷贝的就是内存地址。如果其中一个对象的引用内存地址发生改变，另一个对象也会发生变化。 1. Object.assign()object.assign 是 ES6 中 object 的一个方法，该方法可以用于 JS 对象的合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 深浅拷贝">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/JavaScript/JavaScript%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="JavaScript 深浅拷贝一、浅拷贝浅拷贝是指，一个新的对象对原始对象的属性值进行精确地拷贝，如果拷贝的是基本数据类型，拷贝的就是基本数据类型的值；如果拷贝的是引用数据类型，拷贝的就是内存地址。如果其中一个对象的引用内存地址发生改变，另一个对象也会发生变化。 1. Object.assign()object.assign 是 ES6 中 object 的一个方法，该方法可以用于 JS 对象的合">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-19T15:22:40.000Z">
+<meta property="article:modified_time" content="2025-03-18T11:32:50.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>JavaScript 深浅拷贝 - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../js/utils.js" ></script>
+  <script  src="../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JavaScript 深浅拷贝"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-19 15:22" pubdate>
+          October 19, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          64 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">JavaScript 深浅拷贝</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="JavaScript-深浅拷贝"><a href="#JavaScript-深浅拷贝" class="headerlink" title="JavaScript 深浅拷贝"></a>JavaScript 深浅拷贝</h1><h2 id="一、浅拷贝"><a href="#一、浅拷贝" class="headerlink" title="一、浅拷贝"></a>一、浅拷贝</h2><p>浅拷贝是指，一个新的对象对原始对象的属性值进行精确地拷贝，如果拷贝的是基本数据类型，拷贝的就是基本数据类型的值；如果拷贝的是引用数据类型，拷贝的就是内存地址。如果其中一个对象的引用内存地址发生改变，另一个对象也会发生变化。</p>
+<h3 id="1-Object-assign"><a href="#1-Object-assign" class="headerlink" title="1. Object.assign()"></a>1. Object.assign()</h3><p><code>object.assign</code> 是 ES6 中 object 的一个方法，该方法可以用于 JS 对象的合并。我们可以使用它来实现浅拷贝。</p>
+<p>该方法的参数 target 指的是目标对象，sources 指的是源对象。使用形式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(target, ...sources)   <br></code></pre></td></tr></table></figure>
+
+<p>使用示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">let</span> target = &#123;<span class="hljs-attr">a</span>: <span class="hljs-number">1</span>&#125;;   <br><span class="hljs-keyword">let</span> object2 = &#123;<span class="hljs-attr">b</span>: &#123;d : <span class="hljs-number">2</span>&#125;&#125;;   <br><span class="hljs-keyword">let</span> object3 = &#123;<span class="hljs-attr">c</span>: <span class="hljs-number">3</span>&#125;;   <br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(target, object2, object3);     <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(target);  <br><span class="hljs-comment">// &#123;a: 1, b: &#123;d : 2&#125;, c: 3&#125;   </span><br></code></pre></td></tr></table></figure>
+
+<p>这里通过 Object.assign 将 object2 和 object3 拷贝到了 target 对象中，下面来尝试将 object2 对象中的 b 属性中的 d 属性由 2 修改为 666：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">object2.<span class="hljs-property">b</span>.<span class="hljs-property">d</span> = <span class="hljs-number">666</span>;   <br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(target); <br><span class="hljs-comment">// &#123;a: 1, b: &#123;d: 666&#125;, c: 3&#125;   </span><br></code></pre></td></tr></table></figure>
+
+<p>可以看到，target 的 b 属性值的 d 属性值变成了 666，因为这个 b 的属性值是一个对象，它保存了该对象的内存地址，当原对象发生变化时，引用他的值也会发生变化。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li><p>如果目标对象和源对象有同名属性，或者多个源对象有同名属性，则后面的属性会覆盖前面的属性；</p>
+</li>
+<li><p>如果该函数只有一个参数，当参数为对象时，直接返回该对象；当参数不是对象时，会先将参数转为对象然后返回；</p>
+</li>
+<li><p>因为 <code>null</code> 和 <code>undefined</code> 不能转化为对象，所以第一个参数不能为 <code>null</code> 或 <code>undefined</code>，否则会报错；</p>
+</li>
+<li><p>它不会拷贝对象的继承属性，不会拷贝对象的不可枚举的属性，可以拷贝 Symbol 类型的属性。</p>
+</li>
+</ul>
+<p>实际上，Object.assign 会循环遍历原对象的可枚举属性，通过复制的方式将其赋值给目标对象的相应属性。</p>
+<h3 id="2-扩展运算符"><a href="#2-扩展运算符" class="headerlink" title="2. 扩展运算符"></a>2. 扩展运算符</h3><p>使用扩展运算符可以在构造字面量对象的时候，进行属性的拷贝。使用形式如下：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">let cloneObj <span class="hljs-operator">=</span> &#123; ...obj &#125;<span class="hljs-comment">;   </span><br></code></pre></td></tr></table></figure>
+
+<p>使用示例：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">let</span> obj1 = &#123;a:<span class="hljs-number">1</span>,b:&#123;c:<span class="hljs-number">1</span>&#125;&#125;   let obj2 = &#123;...obj1&#125;;   obj1.a = <span class="hljs-number">2</span>;   console.log(obj1); //&#123;a:<span class="hljs-number">2</span>,b:&#123;c:<span class="hljs-number">1</span>&#125;&#125;   console.log(obj2); //&#123;a:<span class="hljs-number">1</span>,b:&#123;c:<span class="hljs-number">1</span>&#125;&#125;   obj1.b.c = <span class="hljs-number">2</span>;   console.log(obj1); //&#123;a:<span class="hljs-number">2</span>,b:&#123;c:<span class="hljs-number">2</span>&#125;&#125;   console.log(obj2); //&#123;a:<span class="hljs-number">1</span>,b:&#123;c:<span class="hljs-number">2</span>&#125;&#125;   <br></code></pre></td></tr></table></figure>
+
+<p>扩展运算符 和 object.assign 实现的浅拷贝的功能差不多，如果属性都是基本类型的值，使用扩展运算符进行浅拷贝会更加方便。</p>
+<h3 id="3-数组浅拷贝"><a href="#3-数组浅拷贝" class="headerlink" title="3. 数组浅拷贝"></a>3. 数组浅拷贝</h3><h4 id="（1）Array-prototype-slice"><a href="#（1）Array-prototype-slice" class="headerlink" title="（1）Array.prototype.slice()"></a>（1）Array.prototype.slice()</h4><p><code>slice()</code> 方法是 JavaScript 数组方法，该方法可以从已有数组中返回选定的元素，不会改变原始数组。使用方式如下：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">array</span>.<span class="hljs-keyword">slice</span>(<span class="hljs-keyword">start</span>, <span class="hljs-keyword">end</span>)   <br></code></pre></td></tr></table></figure>
+
+<p>该方法有两个参数，两个参数都可选：</p>
+<ul>
+<li><p>start: 规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</p>
+</li>
+<li><p>end：规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</p>
+</li>
+</ul>
+<p>如果两个参数都不写，就可以实现一个数组的浅拷贝：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">let arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];   console.log(arr.<span class="hljs-keyword">slice</span>()); // [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]   console.log(arr.<span class="hljs-keyword">slice</span>() === arr); //<span class="hljs-keyword">false</span>   <br></code></pre></td></tr></table></figure>
+
+<p>slice 方法不会修改原数组，只会返回一个浅拷贝了原数组中的元素的一个新数组。原数组的元素会按照下述规则拷贝：</p>
+<ul>
+<li><p>如果该元素是个对象引用 （不是实际的对象），slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。</p>
+</li>
+<li><p>对于字符串、数字及布尔值来说，slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。</p>
+</li>
+</ul>
+<p>如果向两个数组任一中添加了新元素，则另一个不会受到影响。</p>
+<h4 id="（2）Array-prototype-concat"><a href="#（2）Array-prototype-concat" class="headerlink" title="（2）Array.prototype.concat()"></a>（2）Array.prototype.concat()</h4><p><code>concat()</code> 方法用于合并两个或多个数组，此方法不会更改原始数组，而是返回一个新数组。使用方式如下：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">array</span>Object.concat(<span class="hljs-built_in">array</span>X,<span class="hljs-built_in">array</span>X,......,<span class="hljs-built_in">array</span>X)   <br></code></pre></td></tr></table></figure>
+
+<p>该方法的参数 arrayX 是一个数组或值，将被合并到 arrayObject 数组中。如果省略了所有 arrayX 参数，则 concat 会返回调用此方法的现存数组的一个浅拷贝：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima"><span class="hljs-built_in">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>];   console.<span class="hljs-built_in">log</span>(arr.<span class="hljs-built_in">concat</span>()); // [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]   console.<span class="hljs-built_in">log</span>(arr.<span class="hljs-built_in">concat</span>() === arr); //<span class="hljs-literal">false</span>   <br></code></pre></td></tr></table></figure>
+
+<p>concat 方法创建一个新的数组，它由被调用的对象中的元素组成，每个参数的顺序依次是该参数的元素（参数是数组）或参数本身（参数不是数组）。它不会递归到嵌套数组参数中。</p>
+<p>concat 方法不会改变 this 或任何作为参数提供的数组，而是返回一个浅拷贝，它包含与原始数组相结合的相同元素的副本。原始数组的元素将复制到新数组中，如下所示：</p>
+<ul>
+<li><p>对象引用（而不是实际对象）：concat 将对象引用复制到新数组中。原始数组和新数组都引用相同的对象。也就是说，如果引用的对象被修改，则更改对于新数组和原始数组都是可见的。这包括也是数组的数组参数的元素。</p>
+</li>
+<li><p>数据类型如字符串，数字和布尔值：concat 将字符串和数字的值复制到新数组中。</p>
+</li>
+</ul>
+<h3 id="4-手写实现浅拷贝"><a href="#4-手写实现浅拷贝" class="headerlink" title="4. 手写实现浅拷贝"></a>4. 手写实现浅拷贝</h3><p>根据以上对浅拷贝的理解，实现浅拷贝的思路：</p>
+<ul>
+<li><p>对基础类型做最基本的拷贝；</p>
+</li>
+<li><p>对引用类型开辟新的存储，并且拷贝一层对象属性。</p>
+</li>
+</ul>
+<p>代码实现：</p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nim">// 浅拷贝的实现;   function shallowCopy(<span class="hljs-keyword">object</span>) &#123;     // 只拷贝对象     <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">object</span> || typeof <span class="hljs-keyword">object</span> !== <span class="hljs-string">&quot;object&quot;</span>) <span class="hljs-keyword">return</span>;     // 根据 <span class="hljs-keyword">object</span> 的类型判断是新建一个数组还是对象     <span class="hljs-keyword">let</span> newObject = <span class="hljs-type">Array</span>.isArray(<span class="hljs-keyword">object</span>) ? [] : &#123;&#125;;     // 遍历 <span class="hljs-keyword">object</span>，并且判断是 <span class="hljs-keyword">object</span> 的属性才拷贝     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">in</span> <span class="hljs-keyword">object</span>) &#123;       <span class="hljs-keyword">if</span> (<span class="hljs-keyword">object</span>.hasOwnProperty(key)) &#123;         newObject[key] = <span class="hljs-keyword">object</span>[key];       &#125;     &#125;     <span class="hljs-keyword">return</span> newObject;   &#125;   <br></code></pre></td></tr></table></figure>
+
+<p>这里用到了 <code>hasOwnProperty()</code> 方法，该方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性。所有继承了 Object 的对象都会继承到 <code>hasOwnProperty()</code> 方法。这个方法可以用来检测一个对象是否是自身属性。</p>
+<p>可以看到，所有的浅拷贝都只能拷贝一层对象。如果存在对象的嵌套，那么浅拷贝就无能为力了。深拷贝就是为了解决这个问题而生的，它能解决多层对象嵌套问题，彻底实现拷贝。</p>
+<h2 id="二、深拷贝"><a href="#二、深拷贝" class="headerlink" title="二、深拷贝"></a>二、深拷贝</h2><p>深拷贝是指，对于简单数据类型直接拷贝他的值，对于引用数据类型，在堆内存中开辟一块内存用于存放复制的对象，并把原有的对象类型数据拷贝过来，这两个对象相互独立，属于两个不同的内存地址，修改其中一个，另一个不会发生改变。</p>
+<h3 id="1-JSON-stringify"><a href="#1-JSON-stringify" class="headerlink" title="1. JSON.stringify()"></a>1. JSON.stringify()</h3><p><code>JSON.parse(JSON.stringify(obj))</code> 是比较常用的深拷贝方法之一，它的原理就是利用 <code>JSON.stringify</code> 将 <code>JavaScript</code> 对象序列化成为 JSON 字符串），并将对象里面的内容转换成字符串，再使用 <code>JSON.parse</code> 来反序列化，将字符串生成一个新的 JavaScript 对象。</p>
+<p>这个方法是目前我在公司项目开发中使用最多的深拷贝的方法，也是最简单的方法。</p>
+<p>使用示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj1 = &#123;<br>  <span class="hljs-attr">a</span>: <span class="hljs-number">0</span>,<br>  <span class="hljs-attr">b</span>: &#123;<br>    <span class="hljs-attr">c</span>: <span class="hljs-number">0</span><br>  &#125;<br>&#125;;<br><span class="hljs-keyword">let</span> obj2 = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(obj1));<br>obj1.<span class="hljs-property">a</span> = <span class="hljs-number">1</span>;<br>obj1.<span class="hljs-property">b</span>.<span class="hljs-property">c</span> = <span class="hljs-number">1</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj1); <span class="hljs-comment">// &#123;a: 1, b: &#123;c: 1&#125;&#125;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj2); <span class="hljs-comment">// &#123;a: 0, b: &#123;c: 0&#125;&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>这个方法虽然简单粗暴，但也存在一些问题，在使用该方法时需要注意：</p>
+<ul>
+<li><p>拷贝的对象中如果有函数，undefined，symbol，当使用过 <code>JSON.stringify()</code> 进行处理之后，都会消失。</p>
+</li>
+<li><p>无法拷贝不可枚举的属性；</p>
+</li>
+<li><p>无法拷贝对象的原型链；</p>
+</li>
+<li><p>拷贝 Date 引用类型会变成字符串；</p>
+</li>
+<li><p>拷贝 RegExp 引用类型会变成空对象；</p>
+</li>
+<li><p>对象中含有 NaN、Infinity 以及 -Infinity，JSON 序列化的结果会变成 null；</p>
+</li>
+<li><p>无法拷贝对象的循环应用，即对象成环 (<code>obj[key] = obj</code>)。</p>
+</li>
+</ul>
+<p>在日常开发中，上述几种情况一般很少出现，所以这种方法基本可以满足日常的开发需求。如果需要拷贝的对象中存在上述情况，还是要考虑使用下面的几种方法。</p>
+<h3 id="2-函数库-lodash"><a href="#2-函数库-lodash" class="headerlink" title="2. 函数库 lodash"></a>2. 函数库 lodash</h3><p>该函数库也有提供 <code>_.cloneDeep</code> 用来做深拷贝，可以直接引入并使用：</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">var</span> _ = require(<span class="hljs-string">&#x27;lodash&#x27;</span>);   <span class="hljs-keyword">var</span> obj1 = &#123;       <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>,       <span class="hljs-attr">b</span>: &#123; <span class="hljs-attr">f</span>: &#123; <span class="hljs-attr">g</span>: <span class="hljs-number">1</span> &#125; &#125;,       <span class="hljs-attr">c</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]   &#125;;   <span class="hljs-keyword">var</span> obj2 = _.cloneDeep(obj1);   <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(obj1.b.f === obj2.b.f);<span class="hljs-comment">// false   </span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-手写实现深拷贝"><a href="#3-手写实现深拷贝" class="headerlink" title="3. 手写实现深拷贝"></a>3. 手写实现深拷贝</h3><h4 id="（1）基础递归实现"><a href="#（1）基础递归实现" class="headerlink" title="（1）基础递归实现"></a>（1）基础递归实现</h4><p>实现深拷贝的思路就是，使用 for in 来遍历传入参数的属性值，如果值是基本类型就直接复制，如果是引用类型就进行递归调用该函数，实现代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">deepClone</span>(<span class="hljs-params">source</span>) &#123;<br>  <span class="hljs-comment">//判断source是不是对象         </span><br>  <span class="hljs-keyword">if</span> (source <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Object</span> == <span class="hljs-literal">false</span>) <span class="hljs-keyword">return</span> source<br><span class="hljs-comment">//根据source类型初始化结果变量        </span><br>  <span class="hljs-keyword">let</span> target = <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">isArray</span>(source) ? [] : &#123;&#125;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> source) &#123;<br>    <span class="hljs-comment">// 判断是否是自身属性           </span><br>    <span class="hljs-keyword">if</span> (source.<span class="hljs-title function_">hasOwnProperty</span>(i)) &#123;<br>      <span class="hljs-comment">//判断数据i的类型             </span><br>      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> source[i] === <span class="hljs-string">&#x27;object&#x27;</span>) &#123;<br>        target[i] = <span class="hljs-title function_">deepClone</span>(source[i])<br>      &#125; <span class="hljs-keyword">else</span> &#123;<br>        target[i] = source[i]<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> target<br>&#125;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">clone</span>(&#123; <span class="hljs-attr">b</span>: &#123; <span class="hljs-attr">c</span>: &#123; <span class="hljs-attr">d</span>: <span class="hljs-number">1</span> &#125; &#125; &#125;))  <span class="hljs-comment">// &#123;b: &#123;c: &#123;d: 1&#125;&#125;&#125;) </span><br></code></pre></td></tr></table></figure>
+
+<p>这样虽然实现了深拷贝，但也存在一些问题：</p>
+<ul>
+<li><p>不能复制不可枚举属性以及 Symbol 类型；</p>
+</li>
+<li><p>只能对普通引用类型的值做递归复制，对于 Date、RegExp、Function 等引用类型不能正确拷贝；</p>
+</li>
+<li><p>可能存在循环引用问题。</p>
+</li>
+</ul>
+<h4 id="（2）优化递归实现"><a href="#（2）优化递归实现" class="headerlink" title="（2）优化递归实现"></a>（2）优化递归实现</h4><p>上面只是实现了一个基础版的深拷贝，对于上面存在的几个问题，可以尝试去解决一下：</p>
+<ol>
+<li><p>使用 <code>Reflect.ownKeys()</code> 方法来解决不能复制不可枚举属性以及 Symbol 类型的问题。<code>Reflect.ownKeys()</code> 方法会返回一个由目标对象自身的属性键组成的数组。它的返回值等同于: <code>Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))</code>;</p>
+</li>
+<li><p>当参数值为 Date、RegExp 类型时，直接生成一个新的实例并返回；</p>
+</li>
+<li><p>利用 <code>Object.getOwnPropertyDescriptors()</code> 方以获得对象的所有属性以及对应的特性。简单来说，这个方法返回给定对象的所有属性的信息，包括有关 getter 和 setter 的信息。它允许创建对象的副本并在复制所有属性（包括 getter 和 setter）时克隆它。</p>
+</li>
+<li><p>使用 <code>Object.create()</code> 方法创建一个新对象，并继承传入原对象的原型链。<code>Object.create()</code> 方法会创建一个新对象，使用现有的对象来提供新创建的对象的 <code>__proto__</code>。</p>
+</li>
+<li><p>使用 WeakMap 类型作为 Hash 表，WeakMap 是弱引用类型，可以防止内存泄漏，所以可以用来检测循环引用，如果存在循环，则引用直接返回 WeakMap 存储的值。WeakMap 的特性就是，保存在其中的对象不会影响垃圾回收，如果 WeakMap 保存的节点，在其他地方都没有被引用了，那么即使它还在 WeakMap 中也会被垃圾回收回收掉了。在深拷贝的过程当中，里面所有的引用对象都是被引用的，为了解决循环引用的问题，在深拷贝的过程中，希望有个数据结构能够记录每个引用对象有没有被使用过，但是深拷贝结束之后这个数据能自动被垃圾回收，避免内存泄漏。</p>
+</li>
+</ol>
+<p>代码实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">deepClone</span>(<span class="hljs-params">obj, hash = <span class="hljs-keyword">new</span> <span class="hljs-built_in">WeakMap</span>()</span>) &#123;<br>  <span class="hljs-comment">// 日期对象直接返回一个新的日期对象     </span><br>  <span class="hljs-keyword">if</span> (obj <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Date</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(obj)<br>  &#125;<br>  <span class="hljs-comment">//正则对象直接返回一个新的正则对象          </span><br>  <span class="hljs-keyword">if</span> (obj <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">RegExp</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RegExp</span>(obj)<br>  &#125;<br>  <span class="hljs-comment">//如果循环引用,就用 weakMap 来解决     </span><br>  <span class="hljs-keyword">if</span> (hash.<span class="hljs-title function_">has</span>(obj)) &#123;<br>    <span class="hljs-keyword">return</span> hash.<span class="hljs-title function_">get</span>(obj)<br>  &#125;<br>  <span class="hljs-comment">// 获取对象所有自身属性的描述   </span><br>  <span class="hljs-keyword">let</span> allDesc = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyDescriptors</span>(obj)<br>  <span class="hljs-comment">// 遍历传入参数所有键的特性     </span><br>  <span class="hljs-keyword">let</span> cloneObj = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(obj), allDesc)<br>  hash.<span class="hljs-title function_">set</span>(obj, cloneObj)<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> key <span class="hljs-keyword">of</span> <span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">ownKeys</span>(obj)) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> obj[key] === <span class="hljs-string">&#x27;object&#x27;</span> &amp;&amp; obj[key] !== <span class="hljs-literal">null</span>) &#123;<br>      cloneObj[key] = <span class="hljs-title function_">deepClone</span>(obj[key], hash)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      cloneObj[key] = obj[key]<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> cloneObj<br>&#125;   <br></code></pre></td></tr></table></figure>
+
+<p>可以使用以下数据进行测试：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;<br>  <span class="hljs-attr">num</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-attr">str</span>: <span class="hljs-string">&#x27;str&#x27;</span>,<br>  <span class="hljs-attr">boolean</span>: <span class="hljs-literal">true</span>,<br>  <span class="hljs-attr">und</span>: <span class="hljs-literal">undefined</span>,<br>  <span class="hljs-attr">nul</span>: <span class="hljs-literal">null</span>,<br>  <span class="hljs-attr">obj</span>: &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;对象&#x27;</span>,<br>    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span><br>  &#125;,<br>  <span class="hljs-attr">arr</span>: [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>],<br>  <span class="hljs-attr">func</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;函数&#x27;</span>)<br>  &#125;,<br>  <span class="hljs-attr">date</span>: <span class="hljs-title function_">newDate</span>(<span class="hljs-number">1</span>),<br>  <span class="hljs-attr">reg</span>: <span class="hljs-title function_">newRegExp</span>(<span class="hljs-string">&#x27;/正则/ig&#x27;</span>),<br>  [<span class="hljs-title class_">Symbol</span>(<span class="hljs-string">&#x27;1&#x27;</span>)]: <span class="hljs-number">1</span><br>&#125;<br><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(obj, <span class="hljs-string">&#x27;innumerable&#x27;</span>, &#123;<br>  <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>,<br>  <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;不可枚举属性&#x27;</span><br>&#125;)<br>obj = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(obj, <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyDescriptors</span>(obj))<br>obj.<span class="hljs-property">loop</span> = obj<br><span class="hljs-comment">//将loop设置成循环引用的属性   </span><br>letcloneObj = <span class="hljs-title function_">deepClone</span>(obj)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;obj&#x27;</span>, obj)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;cloneObj&#x27;</span>, cloneObj) <br></code></pre></td></tr></table></figure>
+
+<h2 id="structuredClone"><a href="#structuredClone" class="headerlink" title="structuredClone"></a>structuredClone</h2><p>缺点：</p>
+<ul>
+<li>无法克隆函数</li>
+<li>无法克隆 DOM 节点</li>
+<li>无法克隆类元数据功能，如 getter 只能复制值，而不是函数</li>
+<li>无法复制原型</li>
+</ul>
+<p>支持列表：<br><strong>JS 内置函数</strong></p>
+<p><code>Array</code>、<code>ArrayBuffer</code>、<code>Boolean</code>、<code>DataView</code>、<code>Date</code>、<code>Error</code> 类型（那些下面具体列出），<code>Map</code>，仅限于普通对象的 <code>Object</code>（比如来自对象字面量），除了 <code>symbol</code> 的原始类型（又名 <code>number</code>、<code>string</code>、<code>null</code>、<code>undefined</code>、<code>boolean</code>、<code>BigInt</code>）、<code>RegExp</code>、<code>Set</code>、<code>TypedArray</code></p>
+<p><strong><code>Error</code> 类型</strong></p>
+<ul>
+<li><code>Error</code></li>
+<li><code>EvalError</code></li>
+<li><code>RangeError</code></li>
+<li><code>ReferenceError</code></li>
+<li><code>SyntaxError</code></li>
+<li><code>TypeError</code></li>
+<li><code>URIError</code></li>
+</ul>
+<p><strong>Web&#x2F;API 类型</strong></p>
+<ul>
+<li><code>AudioData</code></li>
+<li><code>Blob</code></li>
+<li><code>CryptoKey</code></li>
+<li><code>DOMException</code></li>
+<li><code>DOMMatrix</code></li>
+<li><code>DOMMatrixReadOnly</code></li>
+<li><code>DOMPoint</code></li>
+<li><code>DomQuad</code></li>
+<li><code>DomRect</code></li>
+<li><code>File</code></li>
+<li><code>FileList</code></li>
+<li><code>FileSystemDirectoryHandle</code></li>
+<li><code>FileSystemFileHandle</code></li>
+<li><code>FileSystemHandle</code></li>
+<li><code>ImageBitmap</code></li>
+<li><code>ImageData</code></li>
+<li><code>RTCCertificate</code></li>
+<li><code>VideoFrame</code></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../categories/JavaScript/" class="category-chain-item">JavaScript</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JavaScript 深浅拷贝</div>
+      <div>https://sunsea-h.github.io/blog/JavaScript/JavaScript深浅拷贝/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 19, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../WebAPI/" title="WebAPI">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">WebAPI</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../JavaScript%20Framework/React/React%20%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93/" title="React 第三方库">
+                        <span class="hidden-mobile">React 第三方库</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../js/events.js" ></script>
+<script  src="../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

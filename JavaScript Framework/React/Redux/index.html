@@ -1,0 +1,1322 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../img/fluid.png">
+  <link rel="icon" href="../../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Redux创建 Redux 的应用12345## Redux + Plain JS templatenpx create-react-app my-app --template redux## Redux + TypeScript templatenpx create-react-app my-app --template redux-typescript  为 React 项目添加 Redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/JavaScript%20Framework/React/Redux/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="Redux创建 Redux 的应用12345## Redux + Plain JS templatenpx create-react-app my-app --template redux## Redux + TypeScript templatenpx create-react-app my-app --template redux-typescript  为 React 项目添加 Redux">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/JavaScript%20Framework/React/Redux/thunk.gif">
+<meta property="article:published_time" content="2022-09-26T09:27:58.000Z">
+<meta property="article:modified_time" content="2025-04-18T16:32:15.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sunsea-h.github.io/blog/JavaScript%20Framework/React/Redux/thunk.gif">
+  
+  
+  
+  <title>Redux - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../js/utils.js" ></script>
+  <script  src="../../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Redux"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-26 09:27" pubdate>
+          September 26, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          16k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          136 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Redux</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><h2 id="创建-Redux-的应用"><a href="#创建-Redux-的应用" class="headerlink" title="创建 Redux 的应用"></a>创建 Redux 的应用</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment">## Redux + Plain JS template</span><br>npx create-react-app my-app --template redux<br><br><span class="hljs-comment">## Redux + TypeScript template</span><br>npx create-react-app my-app --template redux-typescript<br></code></pre></td></tr></table></figure>
+
+<h3 id="为-React-项目添加-Redux"><a href="#为-React-项目添加-Redux" class="headerlink" title="为 React 项目添加 Redux"></a>为 React 项目添加 Redux</h3><ul>
+<li><p>添加 <code>@reduxjs/toolkit</code> 和 <code>react-redux</code> packages</p>
+</li>
+<li><p>使用 RTK 的 <code>configureStore</code> API 创建 Redux store，并传入至少一个 reducer 函数。</p>
+</li>
+<li><p>在应用程序的入口文件（比如 <code>src/index.js</code>）中引入 Redux store。</p>
+</li>
+<li><p>用 react-redux 中的 <code>&lt;Provider&gt;</code> 组件来包裹 React 根组件，比如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">&#123;store&#125;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,<br>  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>)<br>)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><p>action 具有 type 属性的普通 JS 对象，type 一般按“域&#x2F;事件名称”命名，如 <code>&quot;todos/todoAdded&quot;</code> 。<br>域：action 所属的特征或类别<br>事件名称：发生的具体事情</p>
+<p>payload：存放有关事件发生的附加信息。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> addTodoAction = &#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;todos/todoAdded&#x27;</span>,<br>  <span class="hljs-attr">payload</span>: <span class="hljs-string">&#x27;Buy milk&#x27;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Action-Creator"><a href="#Action-Creator" class="headerlink" title="Action Creator"></a>Action Creator</h4><p>创建并返回一个 action 对象的函数。避免每次手动编写 action 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">addTodo</span> = text =&gt; &#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;todos/todoAdded&#x27;</span>,<br>    <span class="hljs-attr">payload</span>: text<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a>Reducer</h4><p>一个函数，接受当前 <code>state</code> 和 <code>action</code> 函数，必要时决定如何更新状态，并返回新状态。可以看作一个事件监听器。</p>
+<p>Reducer 规则要求：</p>
+<ul>
+<li>仅使用 <code>state</code> 和 <code>action</code> 参数计算新的状态值</li>
+<li>禁止直接修改 <code>state</code>。必须通过复制现有的 <code>state</code> 并对复制的值进行更改的方式来做 <em>不可变更新（immutable updates）</em>。</li>
+<li>禁止任何异步逻辑、依赖随机值或导致其他“副作用”的代码</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> initialState = &#123; <span class="hljs-attr">value</span>: <span class="hljs-number">0</span> &#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">counterReducer</span>(<span class="hljs-params">state = initialState, action</span>) &#123;<br>	<span class="hljs-comment">// 检查 reducer 是否关心这个 action</span><br>	<span class="hljs-keyword">if</span> (action.<span class="hljs-property">type</span> === <span class="hljs-string">&#x27;counter/increment&#x27;</span>) &#123;<br>		<span class="hljs-comment">// 如果是，复制 `state`</span><br>		<span class="hljs-keyword">return</span> &#123;<br>			...state,<br>			<span class="hljs-comment">// 使用新值更新 state 副本</span><br>			<span class="hljs-attr">value</span>: state.<span class="hljs-property">value</span> + <span class="hljs-number">1</span><br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">// 返回原来的 state 不变</span><br>	<span class="hljs-keyword">return</span> state<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>内部可以使用任何类型逻辑： <code>if/else</code>、<code>switch</code>、循环等等。</p>
+<h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a>Store</h4><p>通过传入一个 reducer 创建，并且拥有一个 <code>getState</code> 方法，返回当前状态值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; configureStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@reduxjs/toolkit&#x27;</span><br><span class="hljs-keyword">const</span> store = <span class="hljs-title function_">configureStore</span>(&#123; <span class="hljs-attr">reducer</span>: counterReducer &#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(store.<span class="hljs-title function_">getState</span>())<br><span class="hljs-comment">// &#123;value: 0&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="Dispatch"><a href="#Dispatch" class="headerlink" title="Dispatch"></a>Dispatch</h4><p>更新 state 的唯一方法：通过 <code>store.dispatch()</code> 传入一个 action 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">store.<span class="hljs-title function_">dispatch</span>(&#123; <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;counter/increment&#x27;</span> &#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(store.<span class="hljs-title function_">getState</span>())<br><span class="hljs-comment">// &#123;value: 1&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>通常调用 action creator 调用 action ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">increment</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;counter/increment&#x27;</span><br>  &#125;<br>&#125;<br>store.<span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">increment</span>())<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(store.<span class="hljs-title function_">getState</span>())<br><span class="hljs-comment">// &#123;value: 2&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h4><p>从 store 状态树中提取指定的部分。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">selectCounterValue</span> = state =&gt; state.<span class="hljs-property">value</span><br><span class="hljs-keyword">const</span> currentValue = <span class="hljs-title function_">selectCounterValue</span>(store.<span class="hljs-title function_">getState</span>())<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(currentValue)<br><span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Redux-数据流"><a href="#Redux-数据流" class="headerlink" title="Redux 数据流"></a>Redux 数据流</h3><ul>
+<li>初始启动：<ul>
+<li>使用最顶层的 root reducer 函数创建 Redux store</li>
+<li>store 调用一次 root reducer，并将返回值保存为它的初始 <code>state</code></li>
+<li>当 UI 首次渲染时，UI 组件访问 Redux store 的当前 state，并使用该数据来决定要呈现的内容。同时监听 store 的更新，以便他们可以知道 state 是否已更改。</li>
+</ul>
+</li>
+<li>更新环节：<ul>
+<li>应用程序中发生了某些事情，例如用户单击按钮</li>
+<li>dispatch 一个 action 到 Redux store，例如 <code>dispatch(&#123;type: &#39;counter/increment&#39;&#125;)</code></li>
+<li>store 用之前的 <code>state</code> 和当前的 <code>action</code> 再次运行 reducer 函数，并将返回值保存为新的 <code>state</code></li>
+<li>store 通知所有订阅过的 UI，通知它们 store 发生更新</li>
+<li>每个订阅过 store 数据的 UI 组件都会检查它们需要的 state 部分是否被更新。</li>
+<li>发现数据被更新的每个组件都强制使用新数据重新渲染，紧接着更新网页</li>
+</ul>
+</li>
+</ul>
+<h2 id="应用结构"><a href="#应用结构" class="headerlink" title="应用结构"></a>应用结构</h2><h3 id="创建-Redux-Store"><a href="#创建-Redux-Store" class="headerlink" title="创建 Redux Store"></a>创建 Redux Store</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; configureStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@reduxjs/toolkit&#x27;</span><br><span class="hljs-keyword">import</span> usersReducer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../features/users/usersSlice&#x27;</span><br><span class="hljs-keyword">import</span> postsReducer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../features/posts/postsSlice&#x27;</span><br><span class="hljs-keyword">import</span> commentsReducer <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../features/comments/commentsSlice&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">configureStore</span>(&#123;<br>  <span class="hljs-attr">reducer</span>: &#123;<br>    <span class="hljs-attr">users</span>: usersReducer,<br>    <span class="hljs-attr">posts</span>: postsReducer,<br>    <span class="hljs-attr">comments</span>: commentsReducer<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="细节：Reducer-与-State-的结构"><a href="#细节：Reducer-与-State-的结构" class="headerlink" title="细节：Reducer 与 State 的结构"></a>细节：Reducer 与 State 的结构</h4><p>Redux store 需要在创建时传入一个“root reducer”函数。</p>
+<p>手动调用所有 slice 的 reducer  </p>
+<blockquote>
+<p>单独调用每个 slice reducer，传入 Redux 状态的特定切片，并将每个返回值包含在最终的新 Redux 状态对象中。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">rootReducer</span>(<span class="hljs-params">state = &#123;&#125;, action</span>) &#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">users</span>: <span class="hljs-title function_">usersReducer</span>(state.<span class="hljs-property">users</span>, action),<br>    <span class="hljs-attr">posts</span>: <span class="hljs-title function_">postsReducer</span>(state.<span class="hljs-property">posts</span>, action),<br>    <span class="hljs-attr">comments</span>: <span class="hljs-title function_">commentsReducer</span>(state.<span class="hljs-property">comments</span>, action)<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用 <code>combineReducers</code> 替代  </p>
+<blockquote>
+<p>将 slice reducer 的对象传递给 <code>configureStore</code> 时，它会将这些对象传递给 <code>combineReducers</code> 以便我们生成根 reducer。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> rootReducer = <span class="hljs-title function_">combineReducers</span>(&#123;<br>  <span class="hljs-attr">users</span>: usersReducer,<br>  <span class="hljs-attr">posts</span>: postsReducer,<br>  <span class="hljs-attr">comments</span>: commentsReducer<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>也可以直接传递一个 reducer 函数作为 reducer 参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> store = <span class="hljs-title function_">configureStore</span>(&#123;<br>  <span class="hljs-attr">reducer</span>: rootReducer<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建-Slice-Reducer-和-Action"><a href="#创建-Slice-Reducer-和-Action" class="headerlink" title="创建 Slice Reducer 和 Action"></a>创建 Slice Reducer 和 Action</h3><p><code>createSlice</code> 函数：负责生成 action 类型字符串、action creator 函数和 action 对象。<br><code>name</code> 选项的字符串用作每个 action 类型的第一部分，每个 reducer 函数的键名用作第二部分。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createSlice &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@reduxjs/toolkit&#x27;</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> counterSlice = <span class="hljs-title function_">createSlice</span>(&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;counter&#x27;</span>,<br>  <span class="hljs-attr">initialState</span>: &#123;<br>    <span class="hljs-attr">value</span>: <span class="hljs-number">0</span><br>  &#125;,<br>  <span class="hljs-attr">reducers</span>: &#123;<br>    <span class="hljs-attr">increment</span>: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;<br>      <span class="hljs-comment">// Redux Toolkit allows us to write &quot;mutating&quot; logic in reducers. It</span><br>      <span class="hljs-comment">// doesn&#x27;t actually mutate the state because it uses the immer library,</span><br>      <span class="hljs-comment">// which detects changes to a &quot;draft state&quot; and produces a brand new</span><br>      <span class="hljs-comment">// immutable state based off those changes</span><br>      state.<span class="hljs-property">value</span> += <span class="hljs-number">1</span><br>    &#125;,<br>    <span class="hljs-attr">decrement</span>: <span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;<br>      state.<span class="hljs-property">value</span> -= <span class="hljs-number">1</span><br>    &#125;,<br>    <span class="hljs-attr">incrementByAmount</span>: <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;<br>      state.<span class="hljs-property">value</span> += action.<span class="hljs-property">payload</span><br>    &#125;<br>  &#125;<br>&#125;)<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> &#123; increment, decrement, incrementByAmount &#125; = counterSlice.<span class="hljs-property">actions</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> counterSlice.<span class="hljs-property">reducer</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Reducer-与-不可变更新"><a href="#Reducer-与-不可变更新" class="headerlink" title="Reducer 与 不可变更新"></a>Reducer 与 不可变更新</h3><p>不允许更新原件，创建原件的副本，覆盖原件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">handwrittenReducer</span>(<span class="hljs-params">state, action</span>) &#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    ...state,<br>    <span class="hljs-attr">first</span>: &#123;<br>      ...state.<span class="hljs-property">first</span>,<br>      <span class="hljs-attr">second</span>: &#123;<br>        ...state.<span class="hljs-property">first</span>.<span class="hljs-property">second</span>,<br>        [action.<span class="hljs-property">someId</span>]: &#123;<br>          ...state.<span class="hljs-property">first</span>.<span class="hljs-property">second</span>[action.<span class="hljs-property">someId</span>],<br>          <span class="hljs-attr">fourth</span>: action.<span class="hljs-property">someValue</span><br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>更加安全，便捷的更新方式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">reducerWithImmer</span>(<span class="hljs-params">state, action</span>) &#123;<br>  state.<span class="hljs-property">first</span>.<span class="hljs-property">second</span>[action.<span class="hljs-property">someId</span>].<span class="hljs-property">fourth</span> = action.<span class="hljs-property">someValue</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>只能在**<code>createSlice</code> 和 <code>createReducer</code> 中**使用</p>
+</blockquote>
+<h3 id="用-Thunk-编写异步逻辑"><a href="#用-Thunk-编写异步逻辑" class="headerlink" title="用 Thunk 编写异步逻辑"></a>用 Thunk 编写异步逻辑</h3><p>使用两个函数编写：</p>
+<ul>
+<li>内部 thunk 函数，以 dispatch 和 getState 作为参数</li>
+<li>外部创建者函数，创建并返回 thunk 函数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">incrementAsync</span> = amount =&gt; <span class="hljs-function"><span class="hljs-params">dispatch</span> =&gt;</span> &#123;<br>  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">incrementByAmount</span>(amount))<br>  &#125;, <span class="hljs-number">1000</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用 thunk 需要将 redux-thunk 中间件添加到 Redux store 中，configureStore 已自动实现。</p>
+</blockquote>
+<p>请求服务器数据的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 外部的 thunk creator 函数</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">fetchUserById</span> = userId =&gt; &#123;<br>  <span class="hljs-comment">// 内部的 thunk 函数</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-title function_">async</span> (dispatch, getState) =&gt; &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>      <span class="hljs-comment">// thunk 内发起异步数据请求</span><br>      <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> userAPI.<span class="hljs-title function_">fetchById</span>(userId)<br>      <span class="hljs-comment">// 数据响应完成后 dispatch 一个 action</span><br>      <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">userLoaded</span>(user))<br>    &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>      <span class="hljs-comment">// 如果过程出错，在这里处理</span><br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="细节：Thunk-和异步逻辑"><a href="#细节：Thunk-和异步逻辑" class="headerlink" title="细节：Thunk 和异步逻辑"></a>细节：Thunk 和异步逻辑</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">thunkMiddleware</span> =<br>  (<span class="hljs-params">&#123; dispatch, getState &#125;</span>) =&gt;<br>  <span class="hljs-function"><span class="hljs-params">next</span> =&gt;</span><br>  <span class="hljs-function"><span class="hljs-params">action</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> action === <span class="hljs-string">&#x27;function&#x27;</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-title function_">action</span>(dispatch, getState)<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-title function_">next</span>(action)<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="组件-Hooks"><a href="#组件-Hooks" class="headerlink" title="组件 Hooks"></a>组件 Hooks</h3><h4 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a>useSelector</h4><p>使用 <code>useSelector</code> 获取 Redux store 状态树中的部分状态。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> countPlusTwo = <span class="hljs-title function_">useSelector</span>(<span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> state.<span class="hljs-property">counter</span>.<span class="hljs-property">value</span> + <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+
+<p>每当一个 action 被 dispatch 并且 Redux store 被更新时，<code>useSelector</code> 将重新运行选择器函数。如果选择器返回的值与上次不同，<code>useSelector</code> 将确保组件使用新值重新渲染。</p>
+<h4 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a>useDispatch</h4><p>在 Redux store 中使用 <code>store.dispatch(increment())</code> 直接 dispatch action ，在组件中使用 <code>useDispatch</code> 去 dispatch action 。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jsx"><span class="hljs-keyword">const</span> dispatch = <span class="hljs-title function_">useDispatch</span>()<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;button<br>  className=&#123;styles.<span class="hljs-property">button</span>&#125;<br>  aria-label=<span class="hljs-string">&quot;Increment value&quot;</span><br>  onClick=&#123;<span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">increment</span>())&#125;<br>&gt;<br>  +<br>&lt;/button&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Providing-the-Store"><a href="#Providing-the-Store" class="headerlink" title="Providing the Store"></a>Providing the Store</h3><p>通过 <code>&lt;Provider&gt;</code> 包裹根组件去提供 store ，使 <code>useSelector</code> 和 <code>useDispatch</code> 能正常访问 store 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">ReactDOM</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-dom&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./index.css&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App&#x27;</span><br><span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./app/store&#x27;</span><br><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Provider</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-redux&#x27;</span><br><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> serviceWorker <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./serviceWorker&#x27;</span><br><br><span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">render</span>(<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">&#123;store&#125;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,<br>  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>)<br>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="使用数据"><a href="#使用数据" class="headerlink" title="使用数据"></a>使用数据</h2><p>如果 action 需要包含唯一 ID 或其他一些随机值，请始终先生成该随机值并将其放入 action 对象中。 <strong>Reducer 中永远不应该计算随机值</strong>，因为这会使结果不可预测。</p>
+<p>为了简化每次创建有效负载对象过程，<code>createSlice</code> 允许在定义 reducer 时定义一个 <code>prepare</code> 函数。</p>
+<blockquote>
+<p><code>prepare</code> 函数：</p>
+<ul>
+<li>可接受多个参数，诸如唯一 ID 之类的随机值；并运行需要的其他同步逻辑来决定那些内容需要进入 action 对象</li>
+<li>返回一个包含 <code>payload</code> 字段的对象</li>
+<li>返回对象还可能包含 <code>meta</code> 字段，用于向 action 添加额外的描述性值</li>
+<li>返回对象还可能包含 <code>error</code> 字段，布尔值，指示此 action 是否表示某种错误</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> postsSlice = <span class="hljs-title function_">createSlice</span>(&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;posts&#x27;</span>,<br>  initialState,<br>  <span class="hljs-attr">reducers</span>: &#123;<br>    <span class="hljs-attr">postAdded</span>: &#123;<br>      <span class="hljs-title function_">reducer</span>(<span class="hljs-params">state, action</span>) &#123;<br>        state.<span class="hljs-title function_">push</span>(action.<span class="hljs-property">payload</span>)<br>      &#125;,<br>      <span class="hljs-title function_">prepare</span>(<span class="hljs-params">title, content</span>) &#123;<br>        <span class="hljs-keyword">return</span> &#123;<br>          <span class="hljs-attr">payload</span>: &#123;<br>            <span class="hljs-attr">id</span>: <span class="hljs-title function_">nanoid</span>(),<br>            title,<br>            content<br>          &#125;<br>        &#125;<br>      &#125;<br>    &#125;<br>    <span class="hljs-comment">// other reducers here</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="异步逻辑与数据请求"><a href="#异步逻辑与数据请求" class="headerlink" title="异步逻辑与数据请求"></a>异步逻辑与数据请求</h2><p><img src="thunk.gif" srcset="/blog/img/loading.gif" lazyload></p>
+<h3 id="Thunk-函数"><a href="#Thunk-函数" class="headerlink" title="Thunk 函数"></a>Thunk 函数</h3><p>将 <code>(dispatch, getState)</code> 作为参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> store = <span class="hljs-title function_">configureStore</span>(&#123; <span class="hljs-attr">reducer</span>: counterReducer &#125;)<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">exampleThunkFunction</span> = (<span class="hljs-params">dispatch, getState</span>) =&gt; &#123;<br>  <span class="hljs-keyword">const</span> stateBefore = <span class="hljs-title function_">getState</span>()<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Counter before: <span class="hljs-subst">$&#123;stateBefore.counter&#125;</span>`</span>)<br>  <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">increment</span>())<br>  <span class="hljs-keyword">const</span> stateAfter = <span class="hljs-title function_">getState</span>()<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Counter after: <span class="hljs-subst">$&#123;stateAfter.counter&#125;</span>`</span>)<br>&#125;<br><br>store.<span class="hljs-title function_">dispatch</span>(exampleThunkFunction)<br></code></pre></td></tr></table></figure>
+
+<p>为与普通 action 保持一致，通常写为 thunk action creator ,返回 thunk 函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">logAndAdd</span> = amount =&gt; &#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">dispatch, getState</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> stateBefore = <span class="hljs-title function_">getState</span>()<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Counter before: <span class="hljs-subst">$&#123;stateBefore.counter&#125;</span>`</span>)<br>    <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">incrementByAmount</span>(amount))<br>    <span class="hljs-keyword">const</span> stateAfter = <span class="hljs-title function_">getState</span>()<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Counter after: <span class="hljs-subst">$&#123;stateAfter.counter&#125;</span>`</span>)<br>  &#125;<br>&#125;<br><br>store.<span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">logAndAdd</span>(<span class="hljs-number">5</span>))<br></code></pre></td></tr></table></figure>
+
+<p><code>createSlice</code> 对 thunk 不支持，所以作为一个单独函数写在同一切片文件中，方便访问普通 action 。</p>
+<h3 id="编写异步-Thunks"><a href="#编写异步-Thunks" class="headerlink" title="编写异步 Thunks"></a>编写异步 Thunks</h3><p><code>createAsyncThunk</code> 提供 action 的创建和 dispatch 。</p>
+<h4 id="手动编写-asyc-thunk-函数"><a href="#手动编写-asyc-thunk-函数" class="headerlink" title="手动编写 asyc thunk 函数"></a>手动编写 asyc thunk 函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">getRepoDetailsStarted</span> = (<span class="hljs-params"></span>) =&gt; (&#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;repoDetails/fetchStarted&#x27;</span><br>&#125;)<br><span class="hljs-keyword">const</span> <span class="hljs-title function_">getRepoDetailsSuccess</span> = repoDetails =&gt; (&#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;repoDetails/fetchSucceeded&#x27;</span>,<br>  <span class="hljs-attr">payload</span>: repoDetails<br>&#125;)<br><span class="hljs-keyword">const</span> <span class="hljs-title function_">getRepoDetailsFailed</span> = error =&gt; (&#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;repoDetails/fetchFailed&#x27;</span>,<br>  error<br>&#125;)<br><span class="hljs-keyword">const</span> <span class="hljs-title function_">fetchIssuesCount</span> = (<span class="hljs-params">org, repo</span>) =&gt; <span class="hljs-keyword">async</span> dispatch =&gt; &#123;<br>  <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">getRepoDetailsStarted</span>())<br>  <span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-keyword">const</span> repoDetails = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getRepoDetails</span>(org, repo)<br>    <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">getRepoDetailsSuccess</span>(repoDetails))<br>  &#125; <span class="hljs-keyword">catch</span> (err) &#123;<br>    <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">getRepoDetailsFailed</span>(err.<span class="hljs-title function_">toString</span>()))<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="使用-createAsyncThunk-函数"><a href="#使用-createAsyncThunk-函数" class="headerlink" title="使用 createAsyncThunk 函数"></a>使用 <code>createAsyncThunk</code> 函数</h4><p>参数：</p>
+<ul>
+<li>将用作生成的 action 类型的前缀的字符串</li>
+<li>一个“payload creator”回调函数，它应该返回一个包含一些数据的 <code>Promise</code>，或者一个被拒绝的带有错误的 <code>Promise</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">fetchPosts</span> = (<span class="hljs-params"></span>) =&gt;  <br>  <span class="hljs-title function_">createAsyncThunk</span>(<span class="hljs-string">&#x27;posts/fetchPosts&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; &#123;  <br>    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/fakeApi/posts&#x27;</span>)  <br>    <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>  <br>  &#125;)<br></code></pre></td></tr></table></figure>
+
+<h5 id="在组件中-dispatch-thunk"><a href="#在组件中-dispatch-thunk" class="headerlink" title="在组件中 dispatch thunk"></a>在组件中 dispatch thunk</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> dispatch = <span class="hljs-title function_">useDispatch</span>()  <br><br><span class="hljs-keyword">const</span> postStatus = <span class="hljs-title function_">useSelector</span>(<span class="hljs-function">(<span class="hljs-params">&#123; posts &#125;</span>) =&gt;</span> posts.<span class="hljs-property">status</span>)  <br>  <br><span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;  <br>  <span class="hljs-keyword">if</span> (postStatus === <span class="hljs-string">&#x27;idle&#x27;</span>) &#123;  <br>    <span class="hljs-title function_">dispatch</span>(fetchPosts)  <br>  &#125;&#125;, [dispatch, postStatus])<br></code></pre></td></tr></table></figure>
+
+<h4 id="Reducer-与-Loading-Action"><a href="#Reducer-与-Loading-Action" class="headerlink" title="Reducer 与 Loading Action"></a>Reducer 与 Loading Action</h4><p>没有定义在 <code>createSlice</code> 中的切片需要响应，使用 <code>extraReducers</code> 字段。</p>
+<p> <code>extraReducers</code> 字段：<br> 接收名为 <code>builder</code> 的参数的函数。</p>
+<ul>
+<li><code>builder.addCase(actionCreator, reducer)</code>：定义一个 case reducer，它响应 RTK action creator 生成或者普通字符串定义的 action。</li>
+<li><code>builder.addMatcher(matcher, reducer)</code>：定义一个 case reducer，它可以响应任何 <code>matcher</code> 函数返回 <code>true</code> 的 action.</li>
+<li><code>builder.addDefaultCase(reducer)</code>：定义一个 case reducer，如果没有其他 case reducer 被执行，这个 action 就会运行。</li>
+</ul>
+<p>可以链接使用：<code>builder.addCase().addCase().addMatcher().addDefaultCase()</code> ，多个按定义顺序执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> postsSlice = <span class="hljs-title function_">createSlice</span>(&#123;  <br>	<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;posts&#x27;</span>,  <br>	initialState,  <br>	<span class="hljs-attr">reducers</span>: &#123;  <br>		<span class="hljs-comment">// slice-specific reducers here  </span><br>	&#125;,  <br>	<span class="hljs-attr">extraReducers</span>: <span class="hljs-function"><span class="hljs-params">builder</span> =&gt;</span> &#123;  <br>		builder  <br>			.<span class="hljs-title function_">addCase</span>(<span class="hljs-string">&#x27;counter/decrement&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;&#125;)  <br>			.<span class="hljs-title function_">addCase</span>(increment, <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;&#125;)  <br>	&#125;  <br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>TS 使用 <code>extraReducers</code> 的回调形式（推荐）或对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> postsSlice = <span class="hljs-title function_">createSlice</span>(&#123;<br>	<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;posts&#x27;</span>,<br>	initialState,<br>	<span class="hljs-attr">reducers</span>: &#123;<br>		<span class="hljs-comment">// slice-specific reducers here</span><br>	&#125;,<br>	<span class="hljs-attr">extraReducers</span>: &#123;<br>		<span class="hljs-string">&#x27;counter/increment&#x27;</span>: <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;<br>			<span class="hljs-comment">// 更新帖子内容 slice 的 reducer 逻辑</span><br>		&#125;<br>	&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>更好的方法：调用 <code>actionCreator.toString()</code>，它会返回 Redux Toolkit 生成的 action 类型的字符串。<br>待解决：increment 和 ‘counter&#x2F;increment’</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; increment &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../features/counter/counterSlice&#x27;</span><br><br><span class="hljs-keyword">const</span> postsSlice = <span class="hljs-title function_">createSlice</span>(&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;posts&#x27;</span>,<br>  initialState,<br>  <span class="hljs-attr">reducers</span>: &#123;<br>    <span class="hljs-comment">// slice-specific reducers here</span><br>  &#125;,<br>  <span class="hljs-attr">extraReducers</span>: &#123;<br>	  <span class="hljs-comment">// [increment] 计算属性</span><br>    [increment]: <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;<br>      <span class="hljs-comment">// 更新帖子内容 slice 的 reducer 逻辑</span><br>    &#125;<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>TypeScript 无法进行类型推断，因此必须在此处使用 <code>increment.type</code> 来传递类型字符串，<code>[fetchTodos.fulfilled.toString()]</code> 。 它也不会正确推断 reducer 内的 <code>action</code> 类型。</p>
+<p><strong>监听 thunk dispatch 类型</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> fetchPosts = <span class="hljs-title function_">createAsyncThunk</span>(<span class="hljs-string">&#x27;posts/fetchPosts&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; &#123;<br>  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/fakeApi/posts&#x27;</span>)<br>  <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span><br>&#125;)<br><br><span class="hljs-keyword">const</span> postsSlice = <span class="hljs-title function_">createSlice</span>(&#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;posts&#x27;</span>,<br>  initialState,<br>  <span class="hljs-attr">reducers</span>: &#123;<br>    <span class="hljs-comment">// omit existing reducers here</span><br>  &#125;,<br>  <span class="hljs-title function_">extraReducers</span>(<span class="hljs-params">builder</span>) &#123;<br>    builder<br>      .<span class="hljs-title function_">addCase</span>(fetchPosts.<span class="hljs-property">pending</span>, <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;<br>        state.<span class="hljs-property">status</span> = <span class="hljs-string">&#x27;loading&#x27;</span><br>      &#125;)<br>      .<span class="hljs-title function_">addCase</span>(fetchPosts.<span class="hljs-property">fulfilled</span>, <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;<br>        state.<span class="hljs-property">status</span> = <span class="hljs-string">&#x27;succeeded&#x27;</span><br>        <span class="hljs-comment">// Add any fetched posts to the array</span><br>        state.<span class="hljs-property">posts</span> = state.<span class="hljs-property">posts</span>.<span class="hljs-title function_">concat</span>(action.<span class="hljs-property">payload</span>)<br>      &#125;)<br>      .<span class="hljs-title function_">addCase</span>(fetchPosts.<span class="hljs-property">rejected</span>, <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;<br>        state.<span class="hljs-property">status</span> = <span class="hljs-string">&#x27;failed&#x27;</span><br>        state.<span class="hljs-property">error</span> = action.<span class="hljs-property">error</span>.<span class="hljs-property">message</span><br>      &#125;)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><code>createAsyncThunk</code> 在内部处理了所有错误，可以通过 <code>.unwrap()</code> 查看实际请求失败或成功。<br>返回一个新的 <code>Promise</code>，这个 <code>Promise</code> 在 <code>fulfilled</code> 状态时返回实际的 <code>action.payload</code> 值，或者在 <code>rejected</code> 状态下抛出错误。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">onSavePostClicked</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; &#123;  <br>	<span class="hljs-keyword">if</span> (canSave) &#123;  <br>		<span class="hljs-keyword">try</span> &#123;  <br>			<span class="hljs-title function_">setAddRequestStatus</span>(<span class="hljs-string">&#x27;pending&#x27;</span>)  <br>			<span class="hljs-keyword">await</span> <span class="hljs-title function_">dispatch</span>(<span class="hljs-title function_">addNewPost</span>(&#123; title, content, <span class="hljs-attr">user</span>: userId &#125;)).<span class="hljs-title function_">unwrap</span>()  <br>			<span class="hljs-title function_">setTitle</span>(<span class="hljs-string">&#x27;&#x27;</span>)  <br>			<span class="hljs-title function_">setContent</span>(<span class="hljs-string">&#x27;&#x27;</span>)  <br>			<span class="hljs-title function_">setUserId</span>(<span class="hljs-string">&#x27;&#x27;</span>)  <br>		&#125; <span class="hljs-keyword">catch</span> (err) &#123;  <br>			<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Failed to save the post: &#x27;</span>, err)  <br>		&#125; <span class="hljs-keyword">finally</span> &#123;  <br>			<span class="hljs-title function_">setAddRequestStatus</span>(<span class="hljs-string">&#x27;idle&#x27;</span>)  <br>		&#125;  <br>	&#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="性能与数据范式化数据"><a href="#性能与数据范式化数据" class="headerlink" title="性能与数据范式化数据"></a>性能与数据范式化数据</h2><h3 id="Thunk-参数"><a href="#Thunk-参数" class="headerlink" title="Thunk 参数"></a>Thunk 参数</h3><p>参数一：<br><code>createAsyncThunk</code> 只能传递一个参数，会自动传入 payload creator 作为其第一个参数。<br>参数二：<br>一个 thunkAPI 对象  </p>
+<ul>
+<li><code>dispatch</code> 和 <code>getState</code>：在 thunk 中 dispatch action ，或通过 getState 获取最新的 store 中的值</li>
+<li><code>extra</code>：当创建 store 时，用于传递给 thunk 中间件的“额外参数”。这通常时某种 API 的包装器，比如一组知道如何对应用程序的服务器进行 API 调用并返回数据的函数，这样您的 thunk 就不必直接包含所有的 URL 和查询逻辑。</li>
+<li><code>requestId</code>：该 thunk 调用的唯一随机 ID ，用于跟踪单个请求的状态。</li>
+<li><code>signal</code>：一个 <code>AbortController.signal</code> 函数，可用于取消正在进行的请求。</li>
+<li><code>rejectWithValue</code>：一个用于当 thunk 收到一个错误时帮助自定义 <code>rejected</code> action 内容的工具。</li>
+</ul>
+<h3 id="classnames-插件"><a href="#classnames-插件" class="headerlink" title="classnames 插件"></a>classnames 插件</h3><p>CSS 样式类合并  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">classNames</span>(<span class="hljs-string">&#x27;foo&#x27;</span>, <span class="hljs-string">&#x27;bar&#x27;</span>); <span class="hljs-comment">// =&gt; &#x27;foo bar&#x27;</span><br><span class="hljs-title function_">classNames</span>(<span class="hljs-string">&#x27;foo&#x27;</span>, &#123; <span class="hljs-attr">bar</span>: <span class="hljs-literal">true</span> &#125;); <span class="hljs-comment">// =&gt; &#x27;foo bar&#x27;</span><br><span class="hljs-title function_">classNames</span>(&#123; <span class="hljs-string">&#x27;foo-bar&#x27;</span>: <span class="hljs-literal">true</span> &#125;); <span class="hljs-comment">// =&gt; &#x27;foo-bar&#x27;</span><br><span class="hljs-title function_">classNames</span>(&#123; <span class="hljs-string">&#x27;foo-bar&#x27;</span>: <span class="hljs-literal">false</span> &#125;); <span class="hljs-comment">// =&gt; &#x27;&#x27;</span><br><span class="hljs-title function_">classNames</span>(&#123; <span class="hljs-attr">foo</span>: <span class="hljs-literal">true</span> &#125;, &#123; <span class="hljs-attr">bar</span>: <span class="hljs-literal">true</span> &#125;); <span class="hljs-comment">// =&gt; &#x27;foo bar&#x27;</span><br><span class="hljs-title function_">classNames</span>(&#123; <span class="hljs-attr">foo</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">bar</span>: <span class="hljs-literal">true</span> &#125;); <span class="hljs-comment">// =&gt; &#x27;foo bar&#x27;</span><br> <br><span class="hljs-comment">// lots of arguments of various types</span><br><span class="hljs-title function_">classNames</span>(<span class="hljs-string">&#x27;foo&#x27;</span>, &#123; <span class="hljs-attr">bar</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">duck</span>: <span class="hljs-literal">false</span> &#125;, <span class="hljs-string">&#x27;baz&#x27;</span>, &#123; <span class="hljs-attr">quux</span>: <span class="hljs-literal">true</span> &#125;); <span class="hljs-comment">// =&gt; &#x27;foo bar baz quux&#x27;</span><br> <br><span class="hljs-comment">// other falsy values are just ignored</span><br><span class="hljs-title function_">classNames</span>(<span class="hljs-literal">null</span>, <span class="hljs-literal">false</span>, <span class="hljs-string">&#x27;bar&#x27;</span>, <span class="hljs-literal">undefined</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, &#123; <span class="hljs-attr">baz</span>: <span class="hljs-literal">null</span> &#125;, <span class="hljs-string">&#x27;&#x27;</span>); <span class="hljs-comment">// =&gt; &#x27;bar 1&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="性能提升"><a href="#性能提升" class="headerlink" title="性能提升"></a>性能提升</h3><h4 id="Reselect"><a href="#Reselect" class="headerlink" title="Reselect"></a>Reselect</h4><p>一个创建记忆化 selector 函数的库。<br><code>createSelector</code> （RTK 已经导出，可以直接使用）创建记忆化的 selector 函数，只有在输入发生变化时才会重新计算结果。  </p>
+<p><code>createSelector</code> :</p>
+<ul>
+<li>接受一个或多个“输入” creator 函数和一个“输出” creator 函数</li>
+<li>将接受的参数传给所有“输入” creator 函数</li>
+<li>所有“输入” creator 函数的返回作为“输出” creator 函数的参数</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 只会在 posts 和 userId 发生变化时重新执行</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> selectPostsByUser = <span class="hljs-title function_">createSelector</span>(  <br>	[selectAllPosts, <span class="hljs-function">(<span class="hljs-params">state, userId</span>)=&gt;</span> userId],  <br>	<span class="hljs-comment">// selectAllPosts ==&gt; posts</span><br>	<span class="hljs-comment">// (state, userId)=&gt; userId ==&gt; userId</span><br>	<span class="hljs-function">(<span class="hljs-params">posts, userId</span>) =&gt;</span> posts.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">post</span>) =&gt;</span> post.<span class="hljs-property">user</span> === userId)  <br>)<br></code></pre></td></tr></table></figure>
+
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// UsePage.js</span><br><span class="hljs-keyword">const</span> postsForUser = <span class="hljs-title function_">useSelector</span>(<span class="hljs-function"><span class="hljs-params">state</span> =&gt;</span> &#123;  <br>	<span class="hljs-keyword">const</span> allPosts = <span class="hljs-title function_">selectAllPosts</span>(state)  <br>	<span class="hljs-keyword">return</span> allPosts.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">post</span> =&gt;</span> post.<span class="hljs-property">user</span> === userId)  <br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>filter 返回新数组，导致每次 state 发生变化都会重新执行，即使返回的数据相同，最终导致 UsePage 页面重载。<br>使用 <code>createSelector</code> 优化：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// postsSlice.js</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">selectAllPosts</span> = (<span class="hljs-params">state</span>) =&gt; state.<span class="hljs-property">posts</span>.<span class="hljs-property">posts</span>  <br>  <br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> selectPostsByUser = <span class="hljs-title function_">createSelector</span>(  <br>  [selectAllPosts, <span class="hljs-function">(<span class="hljs-params">state, userId</span>) =&gt;</span> userId],  <br>  <span class="hljs-function">(<span class="hljs-params">posts, userId</span>) =&gt;</span> posts.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">post</span>) =&gt;</span> post.<span class="hljs-property">user</span> === userId)  <br>)<br><br><span class="hljs-comment">// UsePage.js</span><br><span class="hljs-keyword">const</span> postsForUser = <span class="hljs-title function_">useSelector</span>(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> <span class="hljs-title function_">selectPostsByUser</span>(state, userId))<br></code></pre></td></tr></table></figure>
+
+<h3 id="范式化数据"><a href="#范式化数据" class="headerlink" title="范式化数据"></a>范式化数据</h3><h4 id="范式化-state-结构"><a href="#范式化-state-结构" class="headerlink" title="范式化 state 结构"></a>范式化 state 结构</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js">&#123;  <br>	<span class="hljs-attr">users</span>: &#123;  <br>		<span class="hljs-attr">ids</span>: [<span class="hljs-string">&quot;user1&quot;</span>, <span class="hljs-string">&quot;user2&quot;</span>, <span class="hljs-string">&quot;user3&quot;</span>],  <br>		<span class="hljs-attr">entities</span>: &#123;  <br>			<span class="hljs-string">&quot;user1&quot;</span>: &#123;<span class="hljs-attr">id</span>: <span class="hljs-string">&quot;user1&quot;</span>, firstName, lastName&#125;,  <br>			<span class="hljs-string">&quot;user2&quot;</span>: &#123;<span class="hljs-attr">id</span>: <span class="hljs-string">&quot;user2&quot;</span>, firstName, lastName&#125;,  <br>			<span class="hljs-string">&quot;user3&quot;</span>: &#123;<span class="hljs-attr">id</span>: <span class="hljs-string">&quot;user3&quot;</span>, firstName, lastName&#125;,  <br>		&#125;  <br>	&#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="使用-createEntityAdapter-管理范式化-state"><a href="#使用-createEntityAdapter-管理范式化-state" class="headerlink" title="使用 createEntityAdapter 管理范式化 state"></a>使用 <code>createEntityAdapter</code> 管理范式化 state</h4><p><code>createEntityAdapter</code> ：</p>
+<ul>
+<li>获取集合放入 <code>&#123; ids: [], entities: &#123;&#125; &#125;</code> 结构中</li>
+<li>生成一组知道如何处理该数据的 reducer 函数和 selector<br>如：<code>setAll</code>、<code>upsertMany</code> 等和 <code>selectAll</code>、<code>selectById</code>、<code>selectIds</code></li>
+<li>接受一个选项对象，可能包含 <code>sortCompare</code> 函数，用于比较两个项目保持 id 数组的排序</li>
+<li>返回一个对象，包含一组生成给的 reducer 函数，用于从实体 state 对象中添加、删除和更新项目</li>
+</ul>
+<p>adapter 对象：</p>
+<ul>
+<li><code>getSelectors</code> 函数：传入一个 selector，从 Redux 根 state 返回这个特定的 state 切片，生成类似于 <code>selectAll</code> 和 <code>selectById</code> 的选择器。</li>
+<li><code>getInitialState</code> 函数：生成一个空的 <code>&#123;ids: [], entities: &#123;&amp;#125;&amp;#125;</code> 对象。可以传递更多字段给 <code>getInitialState</code>，这些字段将会被合并。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> postsAdapter = <span class="hljs-title function_">createEntityAdapter</span>(&#123;  <br>	<span class="hljs-attr">sortComparer</span>: <span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> b.<span class="hljs-property">date</span>.<span class="hljs-title function_">localeCompare</span>(a.<span class="hljs-property">date</span>),  <br>&#125;)  <br>  <br><span class="hljs-keyword">const</span> initialState = postsAdapter.<span class="hljs-title function_">getInitialState</span>(&#123;  <br>	<span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;idle&#x27;</span>,  <br>	<span class="hljs-attr">error</span>: <span class="hljs-literal">null</span>,  <br>&#125;)<br><br><span class="hljs-comment">// ...</span><br><br><span class="hljs-title function_">extraReducers</span>(<span class="hljs-params">builder</span>) &#123;  <br>  builder  <br>    <span class="hljs-comment">// ...</span><br>    .<span class="hljs-title function_">addCase</span>(fetchPosts.<span class="hljs-property">fulfilled</span>, <span class="hljs-function">(<span class="hljs-params">state, action</span>) =&gt;</span> &#123;  <br>	      state.<span class="hljs-property">status</span> = <span class="hljs-string">&#x27;succeeded&#x27;</span>  <br>	      <span class="hljs-comment">// 使用</span><br>	      postsAdapter.<span class="hljs-title function_">upsertMany</span>(state, action.<span class="hljs-property">payload</span>)  <br>    &#125;)  <br>    <span class="hljs-comment">// ...</span><br>    .<span class="hljs-title function_">addCase</span>(addNewPost.<span class="hljs-property">fulfilled</span>, postsAdapter.<span class="hljs-property">addOne</span>)<br>&#125;,<br><br><span class="hljs-comment">// ...</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> &#123;  <br>	<span class="hljs-attr">selectAll</span>: selectAllPosts,  <br>	<span class="hljs-attr">selectById</span>: selectPostById,  <br>	<span class="hljs-attr">selectIds</span>: selectPostIds,  <br>&#125; = postsAdapter.<span class="hljs-title function_">getSelectors</span>(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> state.<span class="hljs-property">posts</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="优化总结"><a href="#优化总结" class="headerlink" title="优化总结"></a>优化总结</h3><h4 id="React-组件渲染"><a href="#React-组件渲染" class="headerlink" title="React 组件渲染"></a>React 组件渲染</h4><ul>
+<li>避免在 <code>useSelector</code> 中创建新的数组或对象的引用，会导致不必要的重新渲染。</li>
+<li>使用 <code>createSelector</code> 创建记忆化的 selector ，只有输入的 selector 值变化才会重新执行。</li>
+<li><code>useSelector</code> 可以接受比较函数 如： <code>shallowEqual</code> 。</li>
+<li>组件可以包装在 <code>React.memo()</code> 中，仅在它们的 prop 发生变化时重新渲染。</li>
+<li>列表渲染可以通过让列表父组件仅读取每项的 ID 组成的数组、将 ID 传递给列表项子项并在子项中按 ID 检索项来实现优化</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../categories/JavaScript-Framework/" class="category-chain-item">JavaScript Framework</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../categories/JavaScript-Framework/React/" class="category-chain-item">React</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Redux</div>
+      <div>https://sunsea-h.github.io/blog/JavaScript Framework/React/Redux/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 26, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../Recoil/" title="Recoil">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Recoil</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../UmiJS/" title="UmiJS">
+                        <span class="hidden-mobile">UmiJS</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../js/events.js" ></script>
+<script  src="../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

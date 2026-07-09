@@ -1,0 +1,1385 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../img/fluid.png">
+  <link rel="icon" href="../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="小程序基础小程序基础知识1. 认识什么是小程序什么是微信小程序 微信小程序是一种运行在微信内部的 轻量级 应用程序。 在使用小程序时 不需要下载安装，用户 扫一扫 或 搜一下 即可打开应用。它也体现了 “用完即走” 的理念，用户不用关心安装太多应用的问题。它实现了应用“触手可及”的梦想，应用无处不在，随时可用，但又 无须安装卸载。   特点: 小程序的四大特性：无须安装、用完即走、无须卸载、触手可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序基础">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="小程序基础小程序基础知识1. 认识什么是小程序什么是微信小程序 微信小程序是一种运行在微信内部的 轻量级 应用程序。 在使用小程序时 不需要下载安装，用户 扫一扫 或 搜一下 即可打开应用。它也体现了 “用完即走” 的理念，用户不用关心安装太多应用的问题。它实现了应用“触手可及”的梦想，应用无处不在，随时可用，但又 无须安装卸载。   特点: 小程序的四大特性：无须安装、用完即走、无须卸载、触手可">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E9%80%9A%E8%BF%87%E5%92%8C%20App%20%E5%AF%B9%E6%AF%94%E5%BC%95%E5%87%BA%E5%B0%8F%E7%A8%8B%E7%89%B9%E7%82%B9.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/01.%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F.gif">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/02-%E7%AB%8B%E5%8D%B3%E6%B3%A8%E5%86%8C.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/03-%E9%80%89%E6%8B%A9%E7%B1%BB%E5%9E%8B.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/04-%E8%B4%A6%E5%8F%B7%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/05-%E9%82%AE%E7%AE%B1%E6%BF%80%E6%B4%BB.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/06-%E8%B4%A6%E5%8F%B7%E6%BF%80%E6%B4%BB.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/07-%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/08-%E4%B8%BB%E4%BD%93%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/08-%E4%B8%BB%E4%BD%93%E4%BF%A1%E6%81%AF%E7%99%BB%E8%AE%B0-%E7%A1%AE%E8%AE%A4.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/09-%E6%B3%A8%E5%86%8C%E5%AE%8C%E6%88%90.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/10-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/11-%E5%AE%8C%E5%96%84%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/12-%E5%A1%AB%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BF%A1%E6%81%AF.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/13-%E6%B7%BB%E5%8A%A0%E7%B1%BB%E7%9B%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/14-%E7%AE%A1%E7%90%86%E5%91%98%E9%AA%8C%E8%AF%81.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/015-%E8%B5%84%E8%B4%A8%E4%BD%BF%E7%94%A8%E7%A1%AE%E8%AE%A4.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/018-%E7%B1%BB%E7%9B%AE%E9%80%89%E6%8B%A9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/017-%E7%B1%BB%E7%9B%AE%E9%80%89%E6%8B%A9%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/019-%E5%BC%80%E5%8F%91%E7%AE%A1%E7%90%86.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E6%88%90%E5%91%98%E7%AE%A1%E7%90%86.jpg">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E6%B7%BB%E5%8A%A0%E6%88%90%E5%91%98.jpg">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/020-%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base//021-%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/023-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/024-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/025-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/026-%E7%9B%AE%E5%BD%95%E4%B8%8D%E4%B8%BA%E7%A9%BA.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/027-%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/028-%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BD%8D%E7%BD%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/029-%E6%A8%A1%E6%8B%9F%E5%99%A8%E4%BD%8D%E7%BD%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/030-%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/031-%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/032-%E7%BC%96%E8%BE%91%E5%99%A8%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/033-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E8%B0%83%E8%AF%95%E9%9D%A2%E6%9D%BF.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E5%B7%A5%E5%85%B7%E6%A0%8F.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E8%B0%83%E8%AF%95%E5%9F%BA%E7%A1%80%E5%BA%93.png">
+<meta property="article:published_time" content="2024-04-29T16:22:09.000Z">
+<meta property="article:modified_time" content="2025-03-28T10:37:58.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://8.131.91.46:6677/mina/base/%E9%80%9A%E8%BF%87%E5%92%8C%20App%20%E5%AF%B9%E6%AF%94%E5%BC%95%E5%87%BA%E5%B0%8F%E7%A8%8B%E7%89%B9%E7%82%B9.png">
+  
+  
+  
+  <title>小程序基础 - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../js/utils.js" ></script>
+  <script  src="../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="小程序基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-29 16:22" pubdate>
+          April 29, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">小程序基础</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="小程序基础"><a href="#小程序基础" class="headerlink" title="小程序基础"></a>小程序基础</h1><h2 id="小程序基础知识"><a href="#小程序基础知识" class="headerlink" title="小程序基础知识"></a>小程序基础知识</h2><h3 id="1-认识什么是小程序"><a href="#1-认识什么是小程序" class="headerlink" title="1. 认识什么是小程序"></a>1. 认识什么是小程序</h3><p><strong>什么是微信小程序</strong></p>
+<p>微信小程序是一种运行在微信内部的 轻量级 应用程序。</p>
+<p>在使用小程序时 不需要下载安装，用户 扫一扫 或 搜一下 即可打开应用。它也体现了 “用完即走” 的理念，用户不用关心安装太多应用的问题。它实现了应用“触手可及”的梦想，应用无处不在，随时可用，但又 无须安装卸载。</p>
+<img src="http://8.131.91.46:6677/mina/base/通过和 App 对比引出小程特点.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p><strong>特点</strong>:</p>
+<p>小程序的四大特性：无须安装、用完即走、无须卸载、触手可及</p>
+<ol>
+<li>无须安装：体积小，用户感知不到下载的过程</li>
+<li>触手可及：用户 扫一扫 或 搜一下 即可打开应用，通过下拉能访问使用的小程序</li>
+<li>用完即走，无须卸载</li>
+</ol>
+<img src="http://8.131.91.46:6677/mina/base/01.微信小程序.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:28%; border: 1px solid #ccc" />
+
+<h3 id="2-微信小程序账号注册"><a href="#2-微信小程序账号注册" class="headerlink" title="2. 微信小程序账号注册"></a>2. 微信小程序账号注册</h3><p>小程序开发 与 网页开发不一样，在开始微信小程序开发之前，需要访问 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/">微信公众平台</a>，注册一个微信小程序账号。</p>
+<p>在拥有了小程序的账号以后，我们才可以开发和管理小程序，后续可以通过该账号进行开发信息的设置、成员的添加，也可以用该账号查看、运营小程序的相关数据。</p>
+<blockquote>
+<p>📌 <strong>注意事项</strong>：</p>
+<p>在申请账号前，我们需要先准备一个邮箱，该邮箱要求：</p>
+<p>1️⃣ 未被微信公众平台注册❗</p>
+<p>2️⃣ 未被微信开放平台注册❗</p>
+<p>3️⃣ <strong>未被个人微信号绑定过 ！</strong>如果被绑定了需要解绑 或 使用其他邮箱 ❗</p>
+</blockquote>
+<ol>
+<li><p>打开 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/">微信公众平台</a>，点击立即注册</p>
+<img src="http://8.131.91.46:6677/mina/base/02-立即注册.png" srcset="/blog/img/loading.gif" lazyload style="zoom:60%; border: 1px solid #ccc" />
+</li>
+<li><p>选择注册的帐号类型，在这里我们需要 <strong>选择小程序</strong></p>
+<img src="http://8.131.91.46:6677/mina/base/03-选择类型.png" srcset="/blog/img/loading.gif" lazyload style="zoom:63%; border: 1px solid #ccc" />
+</li>
+<li><p>输入账号信息</p>
+<img src="http://8.131.91.46:6677/mina/base/04-账号信息.png" srcset="/blog/img/loading.gif" lazyload style="zoom:60%; border: 1px solid #ccc" />
+</li>
+<li><p>邮箱激活，需要进入邮箱进行激活</p>
+<img src="http://8.131.91.46:6677/mina/base/05-邮箱激活.png" srcset="/blog/img/loading.gif" lazyload style="zoom:60%; border: 1px solid #ccc" />
+
+<img src="http://8.131.91.46:6677/mina/base/06-账号激活.png" srcset="/blog/img/loading.gif" lazyload style="zoom:43%; border: 1px solid #ccc" />
+</li>
+<li><p>信息登记，注册类型 (需要选择中国大陆和个人，企业其他需要资质认证)</p>
+<img src="http://8.131.91.46:6677/mina/base/07-信息登记.png" srcset="/blog/img/loading.gif" lazyload style="zoom:51%; border: 1px solid #ccc" />
+</li>
+<li><p>主体信息登记与确认</p>
+<blockquote>
+<p>📌 注意:</p>
+<p>​ 在进行管理员身份验证的时候，推荐使用自已的微信进行扫码，</p>
+<p>​ 将自已设置为小程序账号的管理员，方便以后对小程序进行开发、成员等相关的设置</p>
+</blockquote>
+<img src="http://8.131.91.46:6677/mina/base/08-主体信息登记.png" srcset="/blog/img/loading.gif" lazyload style="zoom:52%; border: 1px solid #ccc" />
+
+<img src="http://8.131.91.46:6677/mina/base/08-主体信息登记-确认.png" srcset="/blog/img/loading.gif" lazyload style="zoom:54%; border: 1px solid #ccc" />
+</li>
+<li><p>小程序注册完成，点击前往小程序，即可进入小程序后台</p>
+<img src="http://8.131.91.46:6677/mina/base/09-注册完成.png" srcset="/blog/img/loading.gif" lazyload style="zoom:54%; border: 1px solid #ccc" />
+
+<img src="http://8.131.91.46:6677/mina/base/10-小程序后台.png" srcset="/blog/img/loading.gif" lazyload style="zoom:46.5%; border: 1px solid #ccc" /></li>
+</ol>
+<h3 id="3-完善小程序账号信息"><a href="#3-完善小程序账号信息" class="headerlink" title="3. 完善小程序账号信息"></a>3. 完善小程序账号信息</h3><p>在完成小程序账号的注册后，你便可以打开微信公众平台对小程序账号进行一些设置，这是你开发前的准备工作，完善后才可以进入后续的开发步骤，这是因为小程序在后续进行提交审核的时候，小程序账号信息是必填项，因此在注册小程序以后，需要补充小程序的基本信息，如名称、图标、描述等。</p>
+<blockquote>
+<p>📌 <strong>注意事项</strong>：</p>
+<p>​	在填写小程序类目时<strong>不要选择游戏类型</strong>，否则微信官方将会视为小游戏开发 ❗</p>
+</blockquote>
+<img src="http://8.131.91.46:6677/mina/base/11-完善小程序信息.png" srcset="/blog/img/loading.gif" lazyload style="zoom:60%; border: 1px solid #ccc" />
+
+<p>点击 <strong>前往填写</strong>，填写小程序基本信息即可</p>
+<img src="http://8.131.91.46:6677/mina/base/12-填写小程序信息.png" srcset="/blog/img/loading.gif" lazyload style="zoom:75%; border: 1px solid #ccc" />
+
+<p>点击 <strong>前往设置</strong> , 设置小程序类目信息</p>
+<ol>
+<li><p>点击右上角添加类目</p>
+<img src="http://8.131.91.46:6677/mina/base/13-添加类目.png" srcset="/blog/img/loading.gif" lazyload style="zoom:68%; border: 1px solid #ccc" />
+</li>
+<li><p>管理员授权</p>
+<img src="http://8.131.91.46:6677/mina/base/14-管理员验证.png" srcset="/blog/img/loading.gif" lazyload style="zoom:63%; border: 1px solid #ccc" />
+</li>
+<li><p>手机微信进行认证</p>
+<img src="http://8.131.91.46:6677/mina/base/015-资质使用确认.png" srcset="/blog/img/loading.gif" lazyload style="zoom:20%; border: 1px solid #ccc" />
+</li>
+<li><p>添加小程序类目，<font color="red"><strong>注意：选择类目的时候不要选择小游戏类目 ！！！！</strong></font></p>
+</li>
+</ol>
+<img src="http://8.131.91.46:6677/mina/base/018-类目选择注意事项.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<img src="http://8.131.91.46:6677/mina/base/017-类目选择注意事项.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<h3 id="4-小程序开发者-ID"><a href="#4-小程序开发者-ID" class="headerlink" title="4. 小程序开发者 ID"></a>4. 小程序开发者 ID</h3><p>小程序的开发者账号是免费的，只要开发者满足开发资质就可以免费注册，并且会获得对应的开发者 ID</p>
+<p>一个完整的开发者 ID 由 **<font color="red">小程序 ID（AppID）</font>**和一个 **<font color="red">小程序密钥（AppSecret）</font>**组成。</p>
+<p><strong>小程序 ID 即 AppId</strong> 是小程序在整个微信账号体系内的唯一身份凭证，后续在很多地方都会用到，例如：新建小程序项目、真机调试、发布小程序等操作时，必须有小程序 ID。</p>
+<p>小程序密钥 是开发者对小程序拥有所有权的凭证，在进行 微信登录、微信支付，或进行发送消息等高级操作时会使用到</p>
+<p>在微信公众后台，单击左侧开发标签，选择 “ 开发管理 “，在新的页面中点击 “ 开发设置 “，就可以看到开发者 ID 信息。请妥善保管你的小程序 ID 和小程序密钥，在后续的开发中会经常使用到，获取位置见下图：</p>
+<img src="http://8.131.91.46:6677/mina/base/019-开发管理.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%;" />
+
+<h3 id="5-开发成员和体验成员"><a href="#5-开发成员和体验成员" class="headerlink" title="5. 开发成员和体验成员"></a>5. 开发成员和体验成员</h3><p>小程序提供了两种不同的成员角色：<strong>项目成员</strong> 和 <strong>体验成员</strong></p>
+<p><strong>项目成员</strong>：参与小程序开发、运营的成员，可登陆小程序管理后台，包括运营者、开发者及数据分析者。管理员可在“成员管理”中添加、删除项目成员，并设置项目成员的角色。</p>
+<p><strong>体验成员</strong>：参与小程序内测体验的成员，可使用体验版小程序，但不属于项目成员。管理员及项目成员均可添加、删除体验成员。</p>
+<img src="http://8.131.91.46:6677/mina/base/成员管理.jpg" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<img src="http://8.131.91.46:6677/mina/base/添加成员.jpg" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<h3 id="6-微信开发者工具"><a href="#6-微信开发者工具" class="headerlink" title="6. 微信开发者工具"></a>6. 微信开发者工具</h3><p>为了帮助开发者简单和高效地开发和调试微信小程序，微信官方提供了 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">微信开发者工具</a>，利用开发者工具可以很方便地进行小程序开发、代码查看以及编辑、预览和发布等功能。</p>
+<p>在 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">微信开发者工具</a> 下载页面，可以看到微信开发者工具包含三个版本：</p>
+<ol>
+<li>稳定版：稳定性高，<strong>开发中一般推荐大家使用稳定版本</strong></li>
+<li>预发布版：稳定性尚可，一般包含新的、大的特性，通过了内部测试</li>
+<li>开发版：稳定性差，主要用于尽快修复缺陷和敏捷上线小的特性，如果想体验新特性，可以使用这个版本</li>
+</ol>
+<img src="http://8.131.91.46:6677/mina/base/020-微信开发者工具版本.png" srcset="/blog/img/loading.gif" lazyload style="zoom:70%; border: 1px solid #ccc" />
+
+<p>选择合适的版本进行下载，在下载完成后，双击下载好的微信开发者工具安装包，根据引导点击下一步、我接受、直至安装完成。第一次使用微信开发者工具的时候，需要使用手机微信扫码登录，登录成功即可进入项目选择界面</p>
+<blockquote>
+<p>📌 <strong>注意事项</strong>：</p>
+<p>​	微信开发者工具必须联网使用 ❗</p>
+</blockquote>
+<img src="http://8.131.91.46:6677/mina/base//021-扫码登录.png" srcset="/blog/img/loading.gif" lazyload style="zoom:67%; border: 1px solid #cccc" />
+
+<img src="http://8.131.91.46:6677/mina/base/023-小程序登录成功.png" srcset="/blog/img/loading.gif" lazyload style="zoom:70%; border: 1px solid #ccc" />
+
+<h3 id="8-创建小程序项目"><a href="#8-创建小程序项目" class="headerlink" title="8. 创建小程序项目"></a>8. 创建小程序项目</h3><p><strong>创建项目</strong></p>
+<p>使用小程序开发者工具创建一个新的项目，步骤如下：</p>
+<ol>
+<li><p>打开微信开发者工具，左侧选择小程序，点击 + 号即可新建项目</p>
+<img src="http://8.131.91.46:6677/mina/base/024-创建项目.png" srcset="/blog/img/loading.gif" lazyload style="zoom:60%; border: 1px solid #ccc" />
+</li>
+<li><p>在弹出的新页面，填写项目信息</p>
+<ul>
+<li>项目名称：输入项目名称</li>
+<li>目录：选择小程序开发文件夹，注意：**<font color='red'>小程序的目录建议是空目录，否则官方会有提示，见下图</font>**</li>
+<li>AppID：填写自己申请的小程序 AppID</li>
+<li>开发模式：选择小程序</li>
+<li>后端服务：选择不使用云服务</li>
+<li>模板选择：选择不使用模板</li>
+</ul>
+<img src="http://8.131.91.46:6677/mina/base/025-创建项目.png" srcset="/blog/img/loading.gif" lazyload style="zoom:70%; border: 1px solid #ccc" />
+
+<img src="http://8.131.91.46:6677/mina/base/026-目录不为空.png" srcset="/blog/img/loading.gif" lazyload style="zoom:70%; border: 1px solid #ccc" />
+</li>
+<li><p>点击确定，如果能够看到小程序的开发主界面，说明小程序项目已经创建成功</p>
+<img src="http://8.131.91.46:6677/mina/base/027-第一个小程序项目.png" srcset="/blog/img/loading.gif" lazyload style="zoom:60%; border-right: 1px solid #ccc" /></li>
+</ol>
+<p><strong>开发者工具设置</strong></p>
+<p>为了后续高效的对小程序项目进行开发，我们需要对微信开发者工具进行一些个性化的设置，例如：设置模拟器位置、编辑器主题、编辑区行高等，当然你可以继续使用官方默认的，也可以按照自己的喜好设置，设置步骤如下：</p>
+<ol>
+<li><p>将小程序模拟器移动右侧：点击菜单栏的 视图 ➡ 外观 ➡ 将模拟器移到右侧，小程序模拟器即可调整到右侧</p>
+ <img src="http://8.131.91.46:6677/mina/base/028-模拟器位置.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+ <img src="http://8.131.91.46:6677/mina/base/029-模拟器位置.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+</li>
+<li><p>小程序主题设置，点击菜单栏的 设置 ➡ 外观设置 ➡ 在弹框中将主题和调试工具选择为深色</p>
+ <img src="http://8.131.91.46:6677/mina/base/030-主题设置.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+ <img src="http://8.131.91.46:6677/mina/base/031-主题设置.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+</li>
+<li><p>编辑区的设置，点击菜单栏的 设置 ➡ 编辑器设置 ➡ 按照自己的洗好调整行距和字号，或者其他设置</p>
+<img src="http://8.131.91.46:6677/mina/base/032-编辑器设置.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" /></li>
+</ol>
+<h3 id="9-小程序目录结构和文件介绍"><a href="#9-小程序目录结构和文件介绍" class="headerlink" title="9. 小程序目录结构和文件介绍"></a>9. 小程序目录结构和文件介绍</h3><p>在将小程序项目创建好以后，我们先来熟悉小程序项目的目录结构，如下图：</p>
+<img src="http://8.131.91.46:6677/mina/base/033-小程序目录.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p>一个完整的小程序项目分为两个部分：<strong>主体文件</strong>、<strong>页面文件</strong></p>
+<p><strong>主体文件</strong> 又称小程序全局文件，顾名思义，全局文件能够作用于整个小程序，影响到小程序的每个页面，且<strong>主体文件必须放到项目的根目录下</strong>，主要由三部分组成：</p>
+<table>
+<thead>
+<tr>
+<th align="center">文件名</th>
+<th align="center">作用</th>
+<th align="center">是否必须</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">app.js</td>
+<td align="center">小程序入口文件</td>
+<td align="center">必须</td>
+</tr>
+<tr>
+<td align="center">app.json</td>
+<td align="center">小程序的全局配置</td>
+<td align="center">必须</td>
+</tr>
+<tr>
+<td align="center">app.wxss</td>
+<td align="center">小程序的全局样式</td>
+<td align="center">非必须</td>
+</tr>
+</tbody></table>
+<p><strong>页面文件</strong> 是每个页面所需的文件，小程序页面文件都存放在 pages 目录下，一个页面一个文件夹，每个页面通常由四个文件组成，每个文件只对当前页面有效：</p>
+<table>
+<thead>
+<tr>
+<th align="center">文件名</th>
+<th align="center">作用</th>
+<th align="center">是否必须</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.js</td>
+<td align="center">页面逻辑</td>
+<td align="center">必须</td>
+</tr>
+<tr>
+<td align="center">.wxml</td>
+<td align="center">页面结构</td>
+<td align="center">必须</td>
+</tr>
+<tr>
+<td align="center">.wxss</td>
+<td align="center">页面样式</td>
+<td align="center">非必须</td>
+</tr>
+<tr>
+<td align="center">.json</td>
+<td align="center">页面配置</td>
+<td align="center">非必须</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>📌 <strong>注意事项</strong>：</p>
+<ol>
+<li>页面文件，wxss、json 文件能够覆盖主体文件中的样式和配置</li>
+<li>强烈建议：页面文件夹名称和页面文件名称要保持一致 感叹号</li>
+</ol>
+</blockquote>
+<p>新建小程序文件和文件夹作用清单：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs shell">├─pages	                    ➡ 小程序页面存放目录<br>│<br>│  ├─index				   ➡ index 文件夹代表是 index 页面所需的文件<br>│  │      index.js          ➡ index 页面逻辑<br>│  │      index.json        ➡ index 页面配置<br>│  │      index.wxml        ➡ index 页面结构<br>│  │      index.wxss        ➡ index 页面样式<br>│  .eslintrc.js              ➡ Eslint 配置文件<br>│  app.js                    ➡ 小程序入口，即打开小程序首页执行的项目<br>│  app.json                  ➡ 小程序的全局配置<br>│  app.wxss                  ➡ 小程序的全局样式<br>│  project.config.json       ➡ 小程序开发者工具配置<br>│  project.private.config.json<br>│  sitemap.json              ➡ 小程序搜索优化<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="10-如何调试小程序"><a href="#10-如何调试小程序" class="headerlink" title="10. 如何调试小程序"></a>10. 如何调试小程序</h3><p>在进行项目开发的时候，不可避免的需要进行调试，那么如何调试小程序呢 ?</p>
+<blockquote>
+<p>📌 <strong>注意事项：</strong></p>
+<p>  微信开发者工具缓存非常严重❗❗❗❗</p>
+<p>  如果发现代码和预期不一样，先点击编译❗</p>
+<p>  编译后还是没有达到预期的效果，就需要清除缓存❗ 甚至重启项目才可以❗</p>
+</blockquote>
+<img src="http://8.131.91.46:6677/mina/base/调试面板.png" srcset="/blog/img/loading.gif" lazyload style="zoom:70%;" />
+
+<img src="http://8.131.91.46:6677/mina/base/工具栏.png" srcset="/blog/img/loading.gif" lazyload style="zoom:61%;" />
+
+<h3 id="11-如何新建页面"><a href="#11-如何新建页面" class="headerlink" title="11. 如何新建页面"></a>11. 如何新建页面</h3><p><strong>第一种方式：</strong></p>
+<ol>
+<li>在 pages 目录上 点击右键 <code>新建文件夹</code>，输入页面目录的名称，例如：list</li>
+<li>在 list 目录上 点击右键 <code>点击 page</code>，输入页面文件的名称，例如：list</li>
+</ol>
+<blockquote>
+<p> 📌 <strong>注意事项：</strong></p>
+<ol>
+<li>在输入页面文件名称的时候，不要输入后缀名 ❗</li>
+<li>新建页面成功以后，会在 app.json 的 pages 选项中新增页面路径</li>
+</ol>
+</blockquote>
+<p><strong>第二种方式：</strong></p>
+<p>在 app.json 的 pages 选项中，新增页面路径即可</p>
+<p>在新增页面目录以后，会自动在 pages 目录下生成页面文件</p>
+<h3 id="12-调试基础库"><a href="#12-调试基础库" class="headerlink" title="12. 调试基础库"></a>12. 调试基础库</h3><p>小程序调试基础库是指 微信开发者工具中可以选择的微信基础库版本。</p>
+<p>微信基础库是指小程序的运行环境，给小程序提供了运行所需的各种 API 和工具，以及基础框架和运行逻辑等。</p>
+<p>小程序开发者可以在微信开发者工具中选择所需的微信基础库版本，作为运行和调试小程序时的运行环境。</p>
+<p>每个小程序有自己所允许使用的基础库最低版本要求，开发者需要选择要兼容的基础库版本，从而确保小程序的功能正常运行。</p>
+<img src="http://8.131.91.46:6677/mina/base/调试基础库.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%;" />
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="category-chain-item">微信小程序</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>小程序基础</div>
+      <div>https://sunsea-h.github.io/blog/微信小程序/小程序基础/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 29, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%20API/" title="小程序原生 API">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">小程序原生 API</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E6%94%BE%E8%83%BD%E5%8A%9B/" title="小程序开放能力">
+                        <span class="hidden-mobile">小程序开放能力</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../js/events.js" ></script>
+<script  src="../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

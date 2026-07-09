@@ -1,0 +1,1298 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../img/fluid.png">
+  <link rel="icon" href="../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="JavaScript Worker🎊🎊🎊深入 ServiceWorker，消息推送，后台同步，一网打尽！上一章讲到了ServiceWorker的基础 - 掘金🚂🚂🚂 ServiceWorker -&gt; PWA的基石，在线离线都能玩！PWA是Progressive Web A - 掘金 基础知识工作者线程与线程  以实际线程实现 工作者线程并行执行 共享部分内存，不共享全部内存 不一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Worker">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/JavaScript/JavaScript%20Worker/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="JavaScript Worker🎊🎊🎊深入 ServiceWorker，消息推送，后台同步，一网打尽！上一章讲到了ServiceWorker的基础 - 掘金🚂🚂🚂 ServiceWorker -&gt; PWA的基石，在线离线都能玩！PWA是Progressive Web A - 掘金 基础知识工作者线程与线程  以实际线程实现 工作者线程并行执行 共享部分内存，不共享全部内存 不一">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-08-13T17:42:02.000Z">
+<meta property="article:modified_time" content="2025-08-22T15:51:56.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>JavaScript Worker - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../js/utils.js" ></script>
+  <script  src="../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JavaScript Worker"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-13 17:42" pubdate>
+          August 13, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          98 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">JavaScript Worker</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="JavaScript-Worker"><a href="#JavaScript-Worker" class="headerlink" title="JavaScript Worker"></a>JavaScript Worker</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7168107934046486541">🎊🎊🎊深入 ServiceWorker，消息推送，后台同步，一网打尽！上一章讲到了ServiceWorker的基础 - 掘金</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7171088699164213279">🚂🚂🚂 ServiceWorker -&gt; PWA的基石，在线离线都能玩！PWA是Progressive Web A - 掘金</a></p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p><strong>工作者线程与线程</strong></p>
+<ul>
+<li>以实际线程实现</li>
+<li>工作者线程并行执行</li>
+<li>共享部分内存，不共享全部内存</li>
+<li>不一定在同一个进程中</li>
+<li>创建开销更大</li>
+</ul>
+<p><strong>分类</strong></p>
+<ul>
+<li>专用工作者线程<br>Web Worker&#x2F;Worker，只能被创建它的页面使用，执行委托任务。可称为 <strong>后台脚本</strong>。</li>
+<li>共享工作者线程<br>可以被多个不同的上下文使用，包括不同的页面，任何与创建者 <strong>同源</strong> 的脚本。</li>
+<li>服务工作者线程<br>拦截、重定向和修改页面的发送请求。</li>
+</ul>
+<p><strong>全局对象</strong></p>
+<ul>
+<li>专用工作者线程使用 DedicatedWorkerGlobalScope。</li>
+<li>共享工作者线程使用 SharedWorkerGlobalScope。</li>
+<li>服务工作者线程使用 ServiceWorkerGlobalScope。</li>
+</ul>
+<p>都继承了 WorkerGlobalScope，WorkerGlobalScope 通过 self 关键字暴露，其上的属性是 window 的严格子集，返回的属性是特定工作者线程版本。<br>WorkerGlobalScope 还新增了全局方法 <code>importScripts()</code>。</p>
+<h2 id="Web-Worker"><a href="#Web-Worker" class="headerlink" title="Web Worker"></a>Web Worker</h2><h3 id="Worker"><a href="#Worker" class="headerlink" title="Worker"></a>Worker</h3><p><strong>扩展</strong></p>
+<ul>
+<li><code>name</code>，提供给构造函数的可选字符串标识。</li>
+<li><code>postMessage()</code>，向父上下文发送消息。</li>
+<li><code>close()</code>，立即终止脚本，不留清理的机会。</li>
+<li><code>importScripts()</code>，向工作者线程导入任意数量脚本。</li>
+</ul>
+<p><strong>创建</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 通过Blob URL创建行内工作者线程</span><br><span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(<span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">createObjectURL</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>([<span class="hljs-string">`self.onmessage = </span><br><span class="hljs-string">(&#123;data&#125;) =&gt; console.log(data);`</span>])));<br><br><span class="hljs-comment">// 函数序列化初始脚本</span><br><span class="hljs-comment">// 函数体内不能使用通过闭包获得的引用和全局变量window</span><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">fibonacci</span>(<span class="hljs-params">n</span>) &#123;<br>  <span class="hljs-keyword">return</span> n &lt; <span class="hljs-number">1</span> ? <span class="hljs-number">0</span><br>    : n &lt;= <span class="hljs-number">2</span> ? <span class="hljs-number">1</span><br>      : <span class="hljs-title function_">fibonacci</span>(n - <span class="hljs-number">1</span>) + <span class="hljs-title function_">fibonacci</span>(n - <span class="hljs-number">2</span>);<br>&#125;<br><span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(<span class="hljs-variable constant_">URL</span>.<span class="hljs-title function_">createObjectURL</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Blob</span>([<span class="hljs-string">`self.postMessage((<span class="hljs-subst">$&#123;fibonacci.toString()&#125;</span>)(9));`</span>])));<br>worker.<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;blob worker script&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><strong>处理错误</strong><br>try…catch 无法捕获工作者线程错误；通过 onerror 捕获工作者线程错误</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">try</span> &#123;<br>  <span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(<span class="hljs-string">&#x27;./worker.js&#x27;</span>);<br>  <br>  worker.<span class="hljs-property">onerror</span> = <span class="hljs-variable language_">console</span>.<span class="hljs-property">log</span>;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;no error&#x27;</span>);<br>&#125; <span class="hljs-keyword">catch</span> (e) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;caught error&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>通信</strong><br>除了使用 postMessage 进行通信，还可以创建通信 <strong>MessageChannel</strong>，其主要用于两个工作者线程通信。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// main.js</span><br><span class="hljs-keyword">const</span> chanel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MessageChannel</span>();<br><span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(<span class="hljs-string">&#x27;./worker.js&#x27;</span>);<br><span class="hljs-keyword">const</span> worker2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(<span class="hljs-string">&#x27;./worker.js&#x27;</span>);<br>worker.<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;worker&#x27;</span>, [chanel.<span class="hljs-property">port1</span>]);<br>worker2.<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;worker2&#x27;</span>, [chanel.<span class="hljs-property">port2</span>]);<br>worker.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">&#123;data&#125;</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>worker2.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">&#123;data&#125;</span>) =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>worker.<span class="hljs-title function_">postMessage</span>([<span class="hljs-string">&#x27;page&#x27;</span>]);<br>worker2.<span class="hljs-title function_">postMessage</span>([<span class="hljs-string">&#x27;page&#x27;</span>]);<br><br><span class="hljs-comment">// worker.js</span><br><span class="hljs-keyword">let</span> messagePort = <span class="hljs-literal">null</span>;<br><span class="hljs-keyword">let</span> contextIdentifier = <span class="hljs-literal">null</span>;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">addContextAndSend</span>(<span class="hljs-params">data, destination</span>) &#123;<br>  <span class="hljs-comment">// 添加标识符以标识当前工作者线程</span><br>  data.<span class="hljs-title function_">push</span>(contextIdentifier);<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>  <span class="hljs-comment">// 把数据发送到下一个目标</span><br>  destination.<span class="hljs-title function_">postMessage</span>(data);<br>&#125;<br><br>self.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">&#123;data, ports&#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 如果消息里存在端口（ports）</span><br>  <span class="hljs-comment">// 则初始化工作者线程</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(ports);<br>  <span class="hljs-keyword">if</span> (ports.<span class="hljs-property">length</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;11&#x27;</span>);<br>    <span class="hljs-comment">// 记录标识符</span><br>    contextIdentifier = data;<br>    <span class="hljs-comment">// 获取 MessagePort</span><br>    messagePort = ports[<span class="hljs-number">0</span>];<br>    <span class="hljs-comment">// 添加处理程序把接收的数据</span><br>    <span class="hljs-comment">// 发回到父页面</span><br>    messagePort.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">&#123;data&#125;</span>) =&gt;</span> &#123;<br>      <span class="hljs-title function_">addContextAndSend</span>(data, self);<br>    &#125;;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;22&#x27;</span>);<br>    <span class="hljs-title function_">addContextAndSend</span>(data, messagePort);<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>同源脚本也可以使用 <strong>BroadcastChannel</strong> 进行通信。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// main.js</span><br><span class="hljs-keyword">const</span> channel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BroadcastChannel</span>(<span class="hljs-string">&#x27;worker_channel&#x27;</span>);<br><span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Worker</span>(<span class="hljs-string">&#x27;./worker.js&#x27;</span>);<br>channel.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">&#123;data&#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`heard <span class="hljs-subst">$&#123;data&#125;</span> on page`</span>);<br>&#125;;<br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> channel.<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;foo&#x27;</span>), <span class="hljs-number">1000</span>);<br><br><span class="hljs-comment">// worker.js</span><br><span class="hljs-keyword">const</span> channel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BroadcastChannel</span>(<span class="hljs-string">&#x27;worker_channel&#x27;</span>);<br>channel.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">&#123;data&#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`heard <span class="hljs-subst">$&#123;data&#125;</span> in worker`</span>);<br>  channel.<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;bar&#x27;</span>);<br>&#125;; <br></code></pre></td></tr></table></figure>
+
+<p><strong>数据传输</strong></p>
+<ul>
+<li>结构化克隆算法<ul>
+<li>克隆 Error 对象、Function 对象和 DOM 节点会报错。</li>
+<li>对象属性描述符、获取方法和设置方法不会复制，必要时使用默认值。</li>
+<li>不会克隆原型链，<code>RegExp.prototype.lastIndex</code> 属性。</li>
+</ul>
+</li>
+<li>可转移对象<ul>
+<li>包括 ArrayBuffer、MessagePort、ImageBitmap、OffscreenCanvas。</li>
+<li>权限会转移到目标脚本，本脚本将无法操作对象。</li>
+</ul>
+</li>
+<li>共享数组缓冲区 SharedArrayBuffer<ul>
+<li>存在资源争用，导致结果与预期不符，使用 Atomic API 解决。</li>
+</ul>
+</li>
+</ul>
+<p><strong>线程池</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">TaskWorker</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Worker</span> &#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">notifyAvailable, ...workerArgs</span>) &#123;<br>    <span class="hljs-variable language_">super</span>(...workerArgs);<br>    <span class="hljs-comment">// 初始化为不可用状态</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">available</span> = <span class="hljs-literal">false</span>;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">resolve</span> = <span class="hljs-literal">null</span>;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">reject</span> = <span class="hljs-literal">null</span>;<br>    <span class="hljs-comment">// 线程池会传递回调</span><br>    <span class="hljs-comment">// 以便工作者线程发出它需要新任务的信号</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">notifyAvailable</span> = notifyAvailable;<br>    <span class="hljs-comment">// 线程脚本在完全初始化之后</span><br>    <span class="hljs-comment">// 会发送一条&quot;ready&quot;消息</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">onmessage</span> = <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setAvailable</span>();<br>  &#125;<br><br>  <span class="hljs-comment">// 由线程池调用，以分派新任务</span><br>  <span class="hljs-title function_">dispatch</span>(<span class="hljs-params">&#123;resolve, reject, postMessageArgs&#125;</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">available</span> = <span class="hljs-literal">false</span>;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">&#123;data&#125;</span>) =&gt;</span> &#123;<br>      <span class="hljs-title function_">resolve</span>(data);<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setAvailable</span>();<br>    &#125;;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> &#123;<br>      <span class="hljs-title function_">reject</span>(e);<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setAvailable</span>();<br>    &#125;;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">postMessage</span>(...postMessageArgs);<br>  &#125;<br><br>  <span class="hljs-title function_">setAvailable</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">available</span> = <span class="hljs-literal">true</span>;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">resolve</span> = <span class="hljs-literal">null</span>;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">reject</span> = <span class="hljs-literal">null</span>;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">notifyAvailable</span>();<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">WorkerPool</span> &#123;<br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">poolSize, ...workerArgs</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">taskQueue</span> = [];<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span> = [];<br>    <span class="hljs-comment">// 初始化线程池</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; poolSize; ++i) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>.<span class="hljs-title function_">push</span>(<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">TaskWorker</span>(<span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dispatchIfAvailable</span>(), ...workerArgs));<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-comment">// 把任务推入队列</span><br>  <span class="hljs-title function_">enqueue</span>(<span class="hljs-params">...postMessageArgs</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">taskQueue</span>.<span class="hljs-title function_">push</span>(&#123;resolve, reject, postMessageArgs&#125;);<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">dispatchIfAvailable</span>();<br>    &#125;);<br>  &#125;<br><br>  <span class="hljs-comment">// 把任务发送给下一个空闲的线程（如果有的话）</span><br>  <span class="hljs-title function_">dispatchIfAvailable</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">taskQueue</span>.<span class="hljs-property">length</span>) &#123;<br>      <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> worker <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>) &#123;<br>      <span class="hljs-keyword">if</span> (worker.<span class="hljs-property">available</span>) &#123;<br>        <span class="hljs-keyword">let</span> a = <span class="hljs-variable language_">this</span>.<span class="hljs-property">taskQueue</span>.<span class="hljs-title function_">shift</span>();<br>        worker.<span class="hljs-title function_">dispatch</span>(a);<br>        <span class="hljs-keyword">break</span>;<br>      &#125;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-comment">// 终止所有工作者线程</span><br>  <span class="hljs-title function_">close</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> worker <span class="hljs-keyword">of</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">workers</span>) &#123;<br>      worker.<span class="hljs-title function_">terminate</span>();<br>    &#125;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> totalFloats = <span class="hljs-number">1E8</span>;<br><span class="hljs-keyword">const</span> numTasks = <span class="hljs-number">20</span>;<br><span class="hljs-keyword">const</span> floatsPerTask = totalFloats / numTasks;<br><span class="hljs-keyword">const</span> numWorkers = <span class="hljs-number">4</span>;<br><span class="hljs-comment">// 创建线程池</span><br><span class="hljs-keyword">const</span> pool = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WorkerPool</span>(numWorkers, <span class="hljs-string">&#x27;./worker.js&#x27;</span>);<br><span class="hljs-comment">// 填充浮点值数组</span><br><span class="hljs-keyword">let</span> arrayBuffer = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SharedArrayBuffer</span>(<span class="hljs-number">4</span> * totalFloats);<br><span class="hljs-keyword">let</span> view = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Float32Array</span>(arrayBuffer);<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; totalFloats; ++i) &#123;<br>  view[i] = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>();<br>&#125;<br><span class="hljs-keyword">let</span> partialSumPromises = [];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; totalFloats; i += floatsPerTask) &#123;<br>  partialSumPromises.<span class="hljs-title function_">push</span>(<br>    pool.<span class="hljs-title function_">enqueue</span>(&#123;<br>      <span class="hljs-attr">startIdx</span>: i,<br>      <span class="hljs-attr">endIdx</span>: i + floatsPerTask,<br>      <span class="hljs-attr">arrayBuffer</span>: arrayBuffer<br>    &#125;)<br>  );<br>&#125;<br><span class="hljs-comment">// 等待所有期约完成，然后求和</span><br><span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">all</span>(partialSumPromises)<br>  .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">partialSums</span>) =&gt;</span> partialSums.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">x, y</span>) =&gt;</span> x + y))<br>  .<span class="hljs-title function_">then</span>(<span class="hljs-variable language_">console</span>.<span class="hljs-property">log</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="SharedWorker"><a href="#SharedWorker" class="headerlink" title="SharedWorker"></a>SharedWorker</h3><p>只会在相同标识不存在的情况下，才会创建新的实例。否则，重新创建匹配标识的工作者线程的连接。<br>标识：解析后的脚本 URL、工作者线程名称和文档源。<br>在 URL 后添加 <code>?</code> 会导致识别为不同的 URL，如：<code>new SharedWorker(&#39;./sharedWorker.js&#39;); </code> 和 <code>new SharedWorker(&#39;./sharedWorker.js?&#39;);</code>。</p>
+<p><strong>扩展</strong></p>
+<ul>
+<li>name：可选的字符串标识符，可以传给 SharedWorker 构造函数。 </li>
+<li><code>importScripts()</code>：用于向工作者线程中导入任意数量的脚本。 </li>
+<li><code>close()</code>：立即终止线程，只要还有连接存在，就无法关闭共享工作者线程。 </li>
+<li><code>onconnect</code>：与共享线程建立新连接时，应将其设置为处理程序。connect 事件包括 MessagePort 实例的 ports 数组，可用于把消息发送回父上下文。 <ul>
+<li>在通过 <code>worker.port.onmessage</code> 或 <code>worker.port.start()</code> 与共享线程建立连接时都会触 发 connect 事件。 </li>
+<li>connect 事件也可以通过使用 <code>sharedWorker.addEventListener(&#39;connect&#39;, handler)</code> 处理。</li>
+</ul>
+</li>
+</ul>
+<p>每次连接都会触发 <code>connect</code> 事件，但断开连接没有对应的事件。<br>只能在 <code>beforeunload</code> 事件即将销毁页面时， 明确发送卸载消息，让共享线程有机会清除死端口。</p>
+<h2 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a><a target="_blank" rel="noopener" href="https://w3c.github.io/ServiceWorker/#navigator-serviceworker">Service Worker</a></h2><p>来自一个域的多个页面共享一个服务工作者线程。<br>可以在相关的标签页或浏览器关闭后继续等待到来的推送事件。<br>没有全局构造函数，通过 <code>navigator.serviceWorker</code> 中的 ServiceWorkerContainer 实例管理。<br>通过 <code>navigator.serviceWorker.register()</code> 创建, 同共享工作者线程一样，不存在时创建，存在时连接。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 注册服务工作者线程</span><br><span class="hljs-keyword">if</span> (<span class="hljs-string">&#x27;serviceWorker&#x27;</span> <span class="hljs-keyword">in</span> navigator) &#123;<br>	navigator.<span class="hljs-property">serviceWorker</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;service-worker.js&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">registration</span>) &#123;<br>		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;ServiceWorker registration successful with scope: &#x27;</span>, registration.<span class="hljs-property">scope</span>);<br>	&#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) &#123;<br>		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;ServiceWorker registration failed: &#x27;</span>, err);<br>	&#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>扩展</strong></p>
+<ul>
+<li>caches：返回服务工作者线程的 CacheStorage 对象。 </li>
+<li>clients：返回服务工作者线程的 Clients 接口，用于访问底层 Client 对象。 </li>
+<li>registration：返回服务工作者线程的 ServiceWorkerRegistration 对象。 </li>
+<li><code>skipWaiting()</code>：强制服务工作者线程进入活动状态；需要跟 <code>Clients.claim()</code> 一起使用。 </li>
+<li><code>fetch()</code>：在服务工作者线程内发送常规网络请求；用于在服务工作者线程确定有必要发送实际网络请求（而不是返回缓存值）时。</li>
+</ul>
+<p><strong>作用域</strong><br>只拦截作用域下的请求。<br>只能相对于服务脚本所在路径缩小作用域。  </p>
+<table>
+<thead>
+<tr>
+<th>注册参数</th>
+<th>作用域</th>
+<th>拦截请求路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘&#x2F;serviceWorker.js’</td>
+<td><code>https://example.com/</code></td>
+<td><code>/foo</code></td>
+</tr>
+<tr>
+<td>‘&#x2F;serviceWorker.js’,{scope:’.&#x2F;‘}</td>
+<td><code>https://example.com/</code></td>
+<td><code>/foo</code></td>
+</tr>
+<tr>
+<td>‘&#x2F;serviceWorker.js’,{scope:’.&#x2F;foo’}</td>
+<td><code>https://example.com/foo</code></td>
+<td><code>/foo/getUser</code></td>
+</tr>
+<tr>
+<td>‘&#x2F;foo&#x2F;serviceWorker.js’</td>
+<td><code>https://example.com/foo</code></td>
+<td><code>/foo/getUser</code></td>
+</tr>
+</tbody></table>
+<p>扩展作用域：</p>
+<ul>
+<li>提供服务脚本时提供想要的作用域</li>
+<li>给服务脚本的响应添加 <code>Service-Worker-Allowed</code>。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">navigator.<span class="hljs-property">serviceWorker</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;/serviceWorker.js&#x27;</span>)<br>  .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">serviceWorkerRegistration</span>) =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(serviceWorkerRegistration.<span class="hljs-property">scope</span>);<br>    <span class="hljs-comment">// https://example.com/</span><br>  &#125;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="缓存-self-caches"><a href="#缓存-self-caches" class="headerlink" title="缓存 -self.caches"></a>缓存 -self.caches</h3><p>存储在全局对象的 caches 属性的 CacheStorage 对象。<br>只缓存 HTTP 请求的 GET 请求。<br>存储的是调用 request 和 response 对象 clone 方法的副本，不是源请求和响应对象。</p>
+<p><strong>特点</strong></p>
+<ul>
+<li>不自动缓存任何请求</li>
+<li>不存在到期失效</li>
+<li>必须手动更新和删除，手动管理缓存版本</li>
+<li>缓存超出限制，浏览器根据最近最少使用原则删除缓存请求</li>
+</ul>
+<p><strong>属性方法</strong>（均返回 Promise）</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage">CacheStorage对象</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Cache">Cache对象</a></li>
+</ul>
+<p><strong>最大缓存空间</strong> 没有明确标准，可以通过 <code>navigator.storage.estimate()</code> 获取近似值。</p>
+<h3 id="客户端-self-clients"><a href="#客户端-self-clients" class="headerlink" title="客户端 -self.clients"></a>客户端 -self.clients</h3><p><strong>属性方法</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Clients">Clients</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/Client">Client</a></li>
+</ul>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><ul>
+<li>已解析（parsed）</li>
+<li>安装中 （installing）</li>
+<li>已安装（installed）</li>
+<li>激活中（activating）</li>
+<li>已激活（activated）</li>
+<li>已失效（redundant）</li>
+</ul>
+<p><strong>ServiceWorker.state</strong> 永远不会返回 parsed，第一个返回的状态为 installing。</p>
+<p>判断当前服务工作者线程状态，以下属性的值为 ServiceWorker 实例，即为对应状态。</p>
+<ul>
+<li><code>registration.installing</code>，安装中。没有发生错误或报错时进入下一状态。  <ul>
+<li>一般在这个生命周期时，服务工作者线程缓存一组资源。</li>
+</ul>
+</li>
+<li><code>registration.waiting</code>，已安装。<ul>
+<li>可通过 <code>self.skipWaiting()</code> 进入下一状态。</li>
+</ul>
+</li>
+<li><code>registration.active</code>，激活中或已激活。<ul>
+<li>可以通过 <code>registration.controller</code> 属性是否返回激活的实例确认是否已激活。</li>
+<li>通过 <code>ServiceWorkerContainer.ready</code> 期约可以检测当前活动线程，该期约会立解决。</li>
+<li>已激活状态时会捕获 fetch()、通知和推送事件。</li>
+</ul>
+</li>
+</ul>
+<p><em>main.js</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs js">navigator.<span class="hljs-property">serviceWorker</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;./worker.js&#x27;</span>)<br>	.<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">registration</span>) =&gt;</span> &#123;<br>		<span class="hljs-comment">// state变更时，对象状态属性的值为 ServiceWorker 实例</span><br>		<span class="hljs-keyword">if</span> (registration.<span class="hljs-property">installing</span>) &#123;<br>			registration.<span class="hljs-property">installing</span>.<span class="hljs-property">onstatechange</span> = <span class="hljs-function">(<span class="hljs-params">&#123;target: &#123;state&#125;&#125;</span>) =&gt;</span> &#123;<br>				<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;to state:&#x27;</span>, state);<br>			&#125;;<br>		&#125;<br>		<span class="hljs-comment">// updatefount 在状态变为installing时触发</span><br>		registration.<span class="hljs-property">onupdatefound</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>			<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Service worker is in the installing state&#x27;</span>);<br>		&#125;;<br>	&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><em>worker.js</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CACHE_KEY</span> = <span class="hljs-string">&#x27;v1&#x27;</span>;<br><br>self.<span class="hljs-property">oninstall</span> = <span class="hljs-function">(<span class="hljs-params">installEvent</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 这样会触发activate事件</span><br>  installEvent.<span class="hljs-title function_">waitUntil</span>(<br>    <span class="hljs-comment">// 添加一组资源</span><br>    caches.<span class="hljs-title function_">open</span>(<span class="hljs-variable constant_">CACHE_KEY</span>)<br>      .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">cache</span>) =&gt;</span> cache.<span class="hljs-title function_">addAll</span>([<br>        <span class="hljs-string">&#x27;foo.js&#x27;</span>,<br>        <span class="hljs-string">&#x27;bar.html&#x27;</span>,<br>        <span class="hljs-string">&#x27;baz.css&#x27;</span><br>      ]))<br>      .<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> self.<span class="hljs-title function_">skipWaiting</span>()) <span class="hljs-comment">// 强制进入已激活状态</span><br>  );<br>&#125;;<br><br><span class="hljs-comment">// 强制线程接管客户端</span><br><span class="hljs-comment">// 会触发每个客户端的controllerchange事件</span><br>self.<span class="hljs-property">onactivate</span> = <span class="hljs-function">() =&gt;</span> self.<span class="hljs-property">clients</span>.<span class="hljs-title function_">claim</span>();<br></code></pre></td></tr></table></figure>
+
+<p><strong>更新检查触发条件</strong></p>
+<ul>
+<li>调用 <code>navigator.serviceWorker.register()</code> 的 URL 与当前活动线程创建 URL 不一致。</li>
+<li>浏览器导航到服务工作者线程作用域中的一个页面。</li>
+<li>发生了 <code>fetch()</code> 或 <code>push()</code> 等功能性事件，且至少 24 小时内没有发生更新检查。</li>
+</ul>
+<p>除了触发以上条件，也可以通过 <code>registration.update()</code> 强制出发更新。</p>
+<p><strong>客户端缓存行为</strong><br>1.通过 <code>Cache-Control: max-age=0</code> 头部取得最新脚本。<br>2.通过 updateViaCache 管理服务脚本。</p>
+<ul>
+<li>imports，顶级脚本永远不会被缓存；线程内部 importScripts() 导入的会被缓存。</li>
+<li>all，同一按照 Cache-Control 头部纳入 HTTP 缓存。</li>
+<li>none，顶级脚本和内部 importScripts 导入脚本都永远不会被缓存。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">navigator.<span class="hljs-property">serviceWorker</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;/serviceWorker.js&#x27;</span>, &#123; <br> <span class="hljs-attr">updateViaCache</span>: <span class="hljs-string">&#x27;none&#x27;</span> <br>&#125;); <br></code></pre></td></tr></table></figure>
+
+<h3 id="可监听事件"><a href="#可监听事件" class="headerlink" title="可监听事件"></a>可监听事件</h3><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerGlobalScope">ServiceWorkerGlobalScope</a></p>
+<h3 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h3><p><strong>线程被动发送</strong>：<br>主进程发送消息到线程</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">navigator.<span class="hljs-property">serviceWorker</span>.<span class="hljs-property">controller</span>.<span class="hljs-title function_">postMessage</span>()<br><span class="hljs-comment">// 或</span><br>registration.<span class="hljs-property">active</span>.<span class="hljs-title function_">postMessage</span>()<br></code></pre></td></tr></table></figure>
+
+<p>线程到主进程</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">self.<span class="hljs-property">onmessage</span>=<span class="hljs-function">(<span class="hljs-params">&#123;source&#125;</span>)=&gt;</span>&#123;<br>	source.<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;foo&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>线程主动发送</strong> 消息到主进程：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js">self.<span class="hljs-property">onactivate</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>  self.<span class="hljs-property">clients</span>.<span class="hljs-title function_">matchAll</span>(&#123;<span class="hljs-attr">includeUncontrolled</span>: <span class="hljs-literal">true</span>&#125;)<br>    .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">clientMatches</span>) =&gt;</span> clientMatches[<span class="hljs-number">0</span>].<span class="hljs-title function_">postMessage</span>(<span class="hljs-string">&#x27;foo&#x27;</span>));<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="拦截-fetch-事件"><a href="#拦截-fetch-事件" class="headerlink" title="拦截 fetch 事件"></a>拦截 fetch 事件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs js">self.<span class="hljs-property">onfetch</span> = <span class="hljs-function">(<span class="hljs-params">fetchEvent</span>) =&gt;</span> &#123;<br>  <span class="hljs-comment">// 从网络返回</span><br>  <span class="hljs-comment">// fetchEvent.respondWith(fetch(fetchEvent.request));</span><br><br>  <span class="hljs-comment">// 从缓存返回</span><br>  <span class="hljs-comment">// fetchEvent.respondWith(caches.match(fetchEvent.request));</span><br><br>  <span class="hljs-comment">// 从网络返回，缓存作为备用</span><br>  fetchEvent.<span class="hljs-title function_">respondWith</span>(<br>    <span class="hljs-title function_">fetch</span>(fetchEvent.<span class="hljs-property">request</span>)<br>      .<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> caches.<span class="hljs-title function_">match</span>(fetchEvent.<span class="hljs-property">request</span>))<br>  );<br>  <br>  <span class="hljs-comment">// 从缓存返回，网络作为备用</span><br>  fetchEvent.<span class="hljs-title function_">respondWith</span>(<br>    caches.<span class="hljs-title function_">match</span>(fetchEvent.<span class="hljs-property">request</span>)<br>      .<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> response || <span class="hljs-title function_">fetch</span>(fetchEvent.<span class="hljs-property">request</span>))<br>      <span class="hljs-comment">// 通用后备</span><br>      .<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> caches.<span class="hljs-title function_">match</span>(<span class="hljs-string">&#x27;/callback.html&#x27;</span>))<br>  );<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><p><em>main.js</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs js">navigator.<span class="hljs-property">serviceWorker</span>.<span class="hljs-title function_">register</span>(<span class="hljs-string">&#x27;./worker.js&#x27;</span>)<br>	.<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">registration</span>) =&gt;</span> &#123;<br>		<span class="hljs-comment">// 请求权限授权</span><br>		<span class="hljs-title class_">Notification</span>.<span class="hljs-title function_">requestPermission</span>()<br>			.<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">status</span>) =&gt;</span> &#123;<br>				<span class="hljs-keyword">if</span> (status === <span class="hljs-string">&#x27;granted&#x27;</span>) &#123;<br>					<span class="hljs-comment">// 显示通知</span><br>					registration.<span class="hljs-title function_">showNotification</span>(<span class="hljs-string">&#x27;foo&#x27;</span>);<br>					<span class="hljs-comment">// 订阅推送</span><br>					registration.<span class="hljs-property">pushManager</span>.<span class="hljs-title function_">subscribe</span>(&#123;<br>						<span class="hljs-attr">applicationServerKey</span>: <span class="hljs-string">&#x27;服务器的公钥&#x27;</span>,<br>						<span class="hljs-attr">userVisibleOnly</span>: <span class="hljs-literal">true</span><br>					&#125;);<br>				&#125;<br>			&#125;);<br>	&#125;);<br></code></pre></td></tr></table></figure>
+
+<p><em>worker.js</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js">self.<span class="hljs-property">onactivate</span> = <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-comment">// 显示通知</span><br>  self.<span class="hljs-property">registration</span>.<span class="hljs-title function_">showNotification</span>(<span class="hljs-string">&#x27;bar&#x27;</span>);<br>  <span class="hljs-comment">// 订阅推送</span><br>  self.<span class="hljs-property">registration</span>.<span class="hljs-property">pushManager</span>.<span class="hljs-title function_">subscribe</span>(&#123;<br>    <span class="hljs-attr">applicationServerKey</span>: <span class="hljs-string">&#x27;服务器公钥&#x27;</span>,<br>    <span class="hljs-attr">userVisibleOnly</span>: <span class="hljs-literal">true</span><br>  &#125;);<br>&#125;;<br><br><span class="hljs-comment">// 处理推送事件后，显示消息文本</span><br>self.<span class="hljs-property">onpush</span> = <span class="hljs-function">(<span class="hljs-params">pushEvent</span>) =&gt;</span> &#123;<br>  pushEvent.<span class="hljs-title function_">waitUntil</span>(<br>    self.<span class="hljs-property">registration</span>.<span class="hljs-title function_">showNotification</span>(pushEvent.<span class="hljs-property">data</span>.<span class="hljs-title function_">text</span>())<br>  );<br>&#125;;<br><span class="hljs-comment">// 用于单击通知时，打开指定网页</span><br>self.<span class="hljs-property">onnotificationclick</span> = <span class="hljs-function">(<span class="hljs-params">&#123;notification&#125;</span>) =&gt;</span> &#123;<br>  self.<span class="hljs-property">clients</span>.<span class="hljs-title function_">openWindow</span>(<span class="hljs-string">&#x27;xxx&#x27;</span>);<br>&#125;;<br><span class="hljs-comment">// 通知关闭事件</span><br>self.<span class="hljs-property">onnotificationclose</span> = <span class="hljs-function">(<span class="hljs-params">&#123;notification&#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;notification close.&#x27;</span>);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../categories/JavaScript/" class="category-chain-item">JavaScript</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JavaScript Worker</div>
+      <div>https://sunsea-h.github.io/blog/JavaScript/JavaScript Worker/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 13, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA/%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86/" title="理论知识">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">理论知识</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE/ESLint/" title="ESLint">
+                        <span class="hidden-mobile">ESLint</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../js/events.js" ></script>
+<script  src="../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

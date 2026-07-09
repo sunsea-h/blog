@@ -1,0 +1,25 @@
+<hr>
+<h2 id="title-Webpack核心概念categories-JavaScript-Engineering-Webpackdate-2025-04-14-14-08-58updated-2025-04-16-17-31-24"><a href="#title-Webpack核心概念categories-JavaScript-Engineering-Webpackdate-2025-04-14-14-08-58updated-2025-04-16-17-31-24" class="headerlink" title="title: Webpack核心概念categories:  - JavaScript Engineering  - Webpackdate: 2025-04-14 14:08:58updated: 2025-04-16 17:31:24"></a>title: Webpack核心概念<br>categories:<br>  - JavaScript Engineering<br>  - Webpack<br>date: 2025-04-14 14:08:58<br>updated: 2025-04-16 17:31:24</h2><h1 id="Webpack-核心概念"><a href="#Webpack-核心概念" class="headerlink" title="Webpack 核心概念"></a>Webpack 核心概念</h1><h2 id="待学习"><a href="#待学习" class="headerlink" title="待学习"></a>待学习</h2><ul>
+<li>理解打包流程</li>
+<li>熟练掌握常用配置项、Loader、插件的使用方法，能够灵活搭建集成 Vue、React、Babel、Eslint、Less、Sass、图片处理等工具的 Webpack 环境</li>
+<li>掌握常见脚手架工具的用法，例如：Vue-cli、create-react-app、@angular&#x2F;cli</li>
+<li>理解 Loader、Plugin 机制，能够自行开发 Web 组件</li>
+<li>理解常见性能优化手段，并能用于解决实际问题</li>
+<li>理解前端工程化概念与生态现状</li>
+</ul>
+<h2 id="核心流程"><a href="#核心流程" class="headerlink" title="核心流程"></a>核心流程</h2><p><img src="Webpack%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5.assets/file-20250414165105960.png"><br><img src="Webpack%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5.assets/file-20250414180857436.png"></p>
+<h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><h2 id="加载器（Loaders）"><a href="#加载器（Loaders）" class="headerlink" title="加载器（Loaders）"></a>加载器（Loaders）</h2><p>Rule 按照数组顺序，use 内部 loaders 执行顺序<strong>从下往上</strong>。<br>处理非 JS 的资源。<br><strong>特点</strong></p>
+<ul>
+<li>链式执行</li>
+<li>支持异步执行</li>
+<li>分 normal，pitch 模式</li>
+</ul>
+<pre><code class="ad-example">title:css资源处理
+
+1.less-loader，实现 less 转换为 css。
+
+2.css-loader，将 CSS 包装为符合 JavaScript 语法，类似 module.exports = `${css}`。
+
+3.style-loader，使用 require 进行包装，运行时通过 injectStyles 注入到页面 style 标签中。 
+</code></pre>
+<h2 id="插件（plugins）"><a href="#插件（plugins）" class="headerlink" title="插件（plugins）"></a>插件（plugins）</h2>

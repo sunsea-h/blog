@@ -1,0 +1,1261 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../img/fluid.png">
+  <link rel="icon" href="../../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Vue RouterVue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。功能：  嵌套路由映射 动态路由选择 模块化、基于组件的路由配置 路由参数、查询、通配符 展示由 Vue.js 的过渡系统提供的过渡效果 细致的导航控制 自动激活 CSS 类的链接 HTML5 history 模式或 hash 模式 可定制的滚动行为 UR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue Router">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/JavaScript%20Framework/Vue/Vue%20Router/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="Vue RouterVue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。功能：  嵌套路由映射 动态路由选择 模块化、基于组件的路由配置 路由参数、查询、通配符 展示由 Vue.js 的过渡系统提供的过渡效果 细致的导航控制 自动激活 CSS 类的链接 HTML5 history 模式或 hash 模式 可定制的滚动行为 UR">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/JavaScript%20Framework/Vue/Vue%20Router/Vue%20Router_image_1.png">
+<meta property="article:published_time" content="2022-09-26T09:27:58.000Z">
+<meta property="article:modified_time" content="2025-07-07T10:52:58.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sunsea-h.github.io/blog/JavaScript%20Framework/Vue/Vue%20Router/Vue%20Router_image_1.png">
+  
+  
+  
+  <title>Vue Router - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../js/utils.js" ></script>
+  <script  src="../../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Vue Router"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-26 09:27" pubdate>
+          September 26, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          97 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Vue Router</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Vue-Router"><a href="#Vue-Router" class="headerlink" title="Vue Router"></a>Vue Router</h1><p>Vue Router 是 Vue.js 官方的路由管理器。它和 Vue.js 的核心深度集成，让构建单页面应用变得易如反掌。<br><strong>功能：</strong></p>
+<ul>
+<li>嵌套路由映射</li>
+<li>动态路由选择</li>
+<li>模块化、基于组件的路由配置</li>
+<li>路由参数、查询、通配符</li>
+<li>展示由 Vue.js 的过渡系统提供的过渡效果</li>
+<li>细致的导航控制</li>
+<li>自动激活 CSS 类的链接</li>
+<li>HTML5 history 模式或 hash 模式</li>
+<li>可定制的滚动行为</li>
+<li>URL 的正确编码</li>
+</ul>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li>方式一 : CDN 引入</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js&quot;</span>&gt;&lt;/script&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/vue-router/3.4.3/vue-router.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>方式二 : 本地引入</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;script src=<span class="hljs-string">&#x27;vue.js&#x27;</span>&gt;&lt;/script&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;vue-router.js&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>方式三 : npm 下载</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">cnpm install vue-router</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在 html 文件中使用时需要引入 vueRouter</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;div id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>	&lt;!-- <span class="hljs-number">4.</span>实现路由切换，router-link的本质是创建a标签 --&gt;<br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/r1_path&quot;</span>&gt;</span>r1<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/r2_path&quot;</span>&gt;</span>r2<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br>	&lt;!-- <span class="hljs-number">5.</span>路由出口，将匹配到的路由组件，渲染到此 --&gt;<br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span><br>&lt;/div&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">let</span> r1 = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">            &lt;div&gt;组件一&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">        `</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">let</span> r2 = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">            &lt;div&gt;组件二&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">        `</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 1.声明路由器实例对象</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 2.声明配置路由对象</span></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">routes</span>:[&#123;</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/r1_path&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-attr">component</span>:r1</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;,&#123;</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/r2_path&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-attr">component</span>:r2</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;]</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;)</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">el</span>:<span class="hljs-string">&quot;##app&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 3.注册，将路由实例对象导入vue实例，相当于router:router,在此使用简写形式</span></span></span><br><span class="language-javascript"><span class="language-xml">        router</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><p>把某种模式匹配到的所有路由，全部映射到同一个组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;!-- 有一个user组件，对于所有id不同的用户，都要使用这个组件来渲染 --&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/user/1&quot;</span>&gt;</span>user1<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/user/2&quot;</span>&gt;</span>user2<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br><span class="language-xml">   <span class="hljs-comment">&lt;!-- 路由对应的内容加载到这里 --&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">let</span> user = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 从$route中接受参数</span></span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">             &lt;div&gt;&#123;&#123;$route.params.id&#125;&#125;&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">        `</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 2.创建路由实例对象</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">routes</span>:[&#123;</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-comment">// 动态路径参数使用&#x27;:&#x27;开头</span></span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user/:id&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">            <span class="hljs-attr">component</span>:user</span></span><br><span class="language-javascript"><span class="language-xml">        &#125;]</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;)</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">el</span>:<span class="hljs-string">&quot;##app&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 将路由实例对象导入vue实例</span></span></span><br><span class="language-javascript"><span class="language-xml">        router   <span class="hljs-comment">//相当于router:router,在此使用简写形式</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>当使用动态路径参数的时候，从&#x2F;user&#x2F;1 到 user&#x2F;2 的时候，组件 user 实例就会被复用，比起销毁再重建，复用更加高效。</p>
+<p>但是组件也会因此不再重新创建，这就导致一个问题，生命周期钩子函数就不会被调用了。<br><strong>解决方案：</strong></p>
+<ol>
+<li>使用 watch 监控路由</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">let</span> user = &#123;<br>    <span class="hljs-comment">// 接受参数</span><br>    <span class="hljs-attr">template</span>:<span class="hljs-string">` &lt;div&gt;&#123;&#123;$route.params.id&#125;&#125;&lt;/div&gt; `</span>,<br>    <span class="hljs-attr">watch</span>: &#123;<br>        $route(to,<span class="hljs-keyword">from</span>) &#123;<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;to&#x27;</span>,to)<br>            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;from&#x27;</span>,<span class="hljs-keyword">from</span>)<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用路由守卫</li>
+<li>给 router-view 添加添加一个唯一 key 值</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;router-view :key=<span class="hljs-string">&quot;key&quot;</span>&gt;&lt;/router-view&gt;<br><br><span class="hljs-attr">computed</span>: &#123;<br>    <span class="hljs-title function_">key</span>(<span class="hljs-params"></span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">$route</span>.<span class="hljs-property">name</span> !== <span class="hljs-literal">undefined</span>? <span class="hljs-variable language_">this</span>.<span class="hljs-property">$route</span>.<span class="hljs-property">name</span> + +<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(): <span class="hljs-variable language_">this</span>.<span class="hljs-property">$route</span> + +<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()<br>    &#125;<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;div id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/user&quot;</span>&gt;</span>user<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/manager&quot;</span>&gt;</span>manager<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span><br>&lt;/div&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">let</span> user = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">			&lt;div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">				&lt;router-link to=&quot;/user/user_child1&quot;&gt;子组件1&lt;/router-link&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">				&lt;router-link to=&quot;/user/user_child2&quot;&gt;子组件2&lt;/router-link&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">				&lt;router-view&gt;&lt;/router-view&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">			&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		`</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">let</span> manager = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">			&lt;div&gt;管理员&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		`</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">let</span> userChild1 = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">			&lt;div&gt;普通用户的子组件1&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		`</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">let</span> userChild2 = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">			&lt;div&gt;普通用户的子组件2&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		`</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-comment">// 创建路由实例对象，嵌套路由</span></span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">routes</span>:[&#123;</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">component</span>:user,</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">children</span>:[&#123;</span></span><br><span class="language-javascript"><span class="language-xml">						<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;user_child1&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">						<span class="hljs-attr">component</span>:userChild1</span></span><br><span class="language-javascript"><span class="language-xml">				&#125;,&#123;</span></span><br><span class="language-javascript"><span class="language-xml">						<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;user_child2&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">						<span class="hljs-attr">component</span>:userChild2</span></span><br><span class="language-javascript"><span class="language-xml">				&#125;]</span></span><br><span class="language-javascript"><span class="language-xml">			&#125;,&#123;</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/manager&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">component</span>:manager,</span></span><br><span class="language-javascript"><span class="language-xml">			&#125;]</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;)</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">el</span>:<span class="hljs-string">&quot;##app&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-comment">// 将路由实例对象导入vue实例</span></span></span><br><span class="language-javascript"><span class="language-xml">			router   <span class="hljs-comment">//相当于router:router,在此使用简写形式</span></span></span><br><span class="language-javascript"><span class="language-xml">  &#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="编程式导航"><a href="#编程式导航" class="headerlink" title="编程式导航"></a>编程式导航</h2><h3 id="this-router-push"><a href="#this-router-push" class="headerlink" title="this.$router.push()"></a>this.$router.push()</h3><p>跳转到指定路由，会向 history 栈添加一个新的记录，当用户点击浏览器回退按钮的时候，可以回到跳转前的 url。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;div id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;r1Handler&quot;</span>&gt;</span>r1<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;r2Handler&quot;</span>&gt;</span>r2<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span><br>&lt;/div&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">let</span> r1 = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">			&lt;div&gt;组件一&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		`</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">let</span> r2 = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">			&lt;div&gt;组件二&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		`</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-comment">// 1.创建路由实例对象</span></span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-comment">// 2.配置实例对象</span></span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">routes</span>:[&#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/r1_path&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">component</span>:r1</span></span><br><span class="language-javascript"><span class="language-xml">		&#125;,&#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/r2_path&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">component</span>:r2</span></span><br><span class="language-javascript"><span class="language-xml">		&#125;]</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;)</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">el</span>:<span class="hljs-string">&quot;##app&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-comment">// 3.将路由实例对象导入vue实例</span></span></span><br><span class="language-javascript"><span class="language-xml">		router,</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-title function_">r1Handler</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">push</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">					<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/r1_path&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">				&#125;)</span></span><br><span class="language-javascript"><span class="language-xml">			&#125;,</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-title function_">r2Handler</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">push</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">					<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/r2_path&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">				&#125;)</span></span><br><span class="language-javascript"><span class="language-xml">			&#125;</span></span><br><span class="language-javascript"><span class="language-xml">		&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="this-router-repalce"><a href="#this-router-repalce" class="headerlink" title="this.$router.repalce()"></a>this.$router.repalce()</h3><p>跟 router.push 很像，唯一的不同就是，它不会向 history 添加新记录，而是跟它的方法名一样 —— 替换掉当前的 history 记录。</p>
+<h3 id="this-router-go-n"><a href="#this-router-go-n" class="headerlink" title="this.$router.go(n)"></a>this.$router.go(n)</h3><p>这个方法的参数是一个整数，意思是在 history 记录中向前或者后退多少步。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// 在浏览器记录中前进一步，等同于 history.forward()</span><br>router.<span class="hljs-title function_">go</span>(<span class="hljs-number">1</span>)<br><span class="hljs-comment">// 后退一步记录，等同于 history.back()</span><br>router.<span class="hljs-title function_">go</span>(-<span class="hljs-number">1</span>)<br><span class="hljs-comment">// 前进 3 步记录</span><br>router.<span class="hljs-title function_">go</span>(<span class="hljs-number">3</span>)<br><span class="hljs-comment">// 如果 history 记录不够用，则会报错</span><br>router.<span class="hljs-title function_">go</span>(-<span class="hljs-number">100</span>)<br>router.<span class="hljs-title function_">go</span>(<span class="hljs-number">100</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="命令路由"><a href="#命令路由" class="headerlink" title="命令路由"></a>命令路由</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;<br>  <span class="hljs-attr">routes</span>: [<br>    &#123;<br>      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/user/:userId&#x27;</span>,<br>      <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;user&#x27;</span>,<br>      <span class="hljs-attr">component</span>: <span class="hljs-title class_">User</span><br>    &#125;<br>  ]<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>链接到一个命名路由（给 router-link 的 to 属性传一个对象）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// 跳转到/user/123路径</span><br><br>&lt;router-link :to=<span class="hljs-string">&quot;&#123; name: &#x27;user&#x27;, params: &#123; userId: 123 &#125;&#125;&quot;</span>&gt;<span class="hljs-title class_">User</span>&lt;/router-link&gt;<br><span class="hljs-comment">// 等同于</span><br>router.<span class="hljs-title function_">push</span>(&#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;user&#x27;</span>, <span class="hljs-attr">params</span>: &#123; <span class="hljs-attr">userId</span>: <span class="hljs-number">123</span> &#125;&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// 从 /a 重定向到 /b</span><br><span class="hljs-comment">// 当用户访问 /a 时，URL 将会被替换成 /b，然后匹配路由为 /b 。</span><br><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;<br>  <span class="hljs-attr">routes</span>: [<br>		&#123;<br>			<span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/a&#x27;</span>,<br>			<span class="hljs-attr">redirect</span>: <span class="hljs-string">&#x27;/b&#x27;</span>,<br>			<span class="hljs-comment">// 或者 redirect: &#123; name: &#x27;b&#x27; &#125;</span><br>			<span class="hljs-comment">// 或者</span><br>			<span class="hljs-comment">/*redirect: to =&gt; &#123;</span><br><span class="hljs-comment">				// 方法接收 目标路由 作为参数</span><br><span class="hljs-comment">				// return 重定向的 字符串路径/路径对象</span><br><span class="hljs-comment">			&#125;*/</span><br>		&#125;<br>  ]<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h2><p>让你可以自由地将 UI 结构映射到任意的 URL，而不是受限于配置的嵌套路由结构。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// /a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样。</span><br><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;<br>  <span class="hljs-attr">routes</span>: [<br>		&#123;<br>			<span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/a&#x27;</span>,<br>			<span class="hljs-attr">component</span>: A,<br>			<span class="hljs-attr">alias</span>: <span class="hljs-string">&#x27;/b&#x27;</span><br>		&#125;<br>  ]<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="路由组件传参"><a href="#路由组件传参" class="headerlink" title="路由组件传参"></a>路由组件传参</h2><p>路由传递是指，从 A 页面跳转到 B 页面时，将 A 页面中的变量传递给 B 页面使用，传递参数的方式有两种 :</p>
+<h3 id="path-query-传参"><a href="#path-query-传参" class="headerlink" title="path-query 传参"></a>path-query 传参</h3><p>使用 path 与 query 结合的方式传递参数时，参数会被拼接在浏览器地址栏中，并且刷新页面后数据也不会丢失。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;div id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/user&quot;</span>&gt;</span>user<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/manager&quot;</span>&gt;</span>manager<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span><br>&lt;/div&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> user = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		&lt;div @click=&quot;userHandler&quot;&gt;普通用户，点击此处可跳转至管理员页面&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">	`</span>,</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">list</span>:<span class="hljs-string">&quot;hello&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">obj</span>:&#123;</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;tom&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">age</span>:<span class="hljs-number">3</span></span></span><br><span class="language-javascript"><span class="language-xml">			&#125;</span></span><br><span class="language-javascript"><span class="language-xml">		&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;,</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-title function_">userHandler</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-comment">// 跳转</span></span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">push</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/manager&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">query</span>:&#123;</span></span><br><span class="language-javascript"><span class="language-xml">					<span class="hljs-attr">list</span>:<span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>,</span></span><br><span class="language-javascript"><span class="language-xml">					<span class="hljs-attr">obj</span>:<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">obj</span>)</span></span><br><span class="language-javascript"><span class="language-xml">				&#125;</span></span><br><span class="language-javascript"><span class="language-xml">			&#125;)</span></span><br><span class="language-javascript"><span class="language-xml">		&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> manager = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		&lt;div&gt;管理员 &#123;&#123;$route.query.list&#125;&#125;  &#123;&#123;$route.query.obj&#125;&#125;&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">	`</span></span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">routes</span>:[&#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">component</span>:user</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;,&#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/manager&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">component</span>:manager</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;]</span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span> (&#123;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">el</span>:<span class="hljs-string">&quot;##app&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">	router</span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="name-params-传参"><a href="#name-params-传参" class="headerlink" title="name-params 传参"></a>name-params 传参</h3><p>使用 name 与 params 结合的方式传递参数时，参数不会被拼接在浏览器地址栏中显示，并且刷新页面后数据会丢失。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;div id=<span class="hljs-string">&quot;app&quot;</span>&gt;<br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/user&quot;</span>&gt;</span>user<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-link</span> <span class="hljs-attr">to</span>=<span class="hljs-string">&quot;/manager&quot;</span>&gt;</span>manager<span class="hljs-tag">&lt;/<span class="hljs-name">router-link</span>&gt;</span></span><br>	<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span></span><br>&lt;/div&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> user = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		&lt;div @click=&quot;userHandler&quot;&gt;普通用户，点击此处可跳转至管理员页面&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">	`</span>,</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">list</span>:<span class="hljs-string">&quot;hello&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-attr">obj</span>:&#123;</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;tom&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">age</span>:<span class="hljs-number">3</span></span></span><br><span class="language-javascript"><span class="language-xml">			&#125;</span></span><br><span class="language-javascript"><span class="language-xml">		&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;,</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-title function_">userHandler</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-comment">// 跳转</span></span></span><br><span class="language-javascript"><span class="language-xml">			<span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">push</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;manager&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">				<span class="hljs-attr">params</span>:&#123;</span></span><br><span class="language-javascript"><span class="language-xml">					<span class="hljs-attr">list</span>:<span class="hljs-variable language_">this</span>.<span class="hljs-property">list</span>,</span></span><br><span class="language-javascript"><span class="language-xml">					<span class="hljs-attr">obj</span>:<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">obj</span>)</span></span><br><span class="language-javascript"><span class="language-xml">				&#125;</span></span><br><span class="language-javascript"><span class="language-xml">			&#125;)</span></span><br><span class="language-javascript"><span class="language-xml">		&#125;</span></span><br><span class="language-javascript"><span class="language-xml">	&#125;,</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> manager = &#123;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">template</span>:<span class="hljs-string">`</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">		&lt;div&gt;管理员 &#123;&#123;$route.params.list&#125;&#125;  &#123;&#123;$route.params.obj&#125;&#125;&lt;/div&gt;</span></span></span><br><span class="hljs-string"><span class="language-javascript"><span class="language-xml">	`</span></span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">routes</span>:[&#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/user&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">component</span>:user,</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;user&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;,&#123;</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">path</span>:<span class="hljs-string">&#x27;/manager&#x27;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">component</span>:manager,</span></span><br><span class="language-javascript"><span class="language-xml">		<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;manager&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">	&#125;]</span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span> (&#123;</span></span><br><span class="language-javascript"><span class="language-xml">	<span class="hljs-attr">el</span>:<span class="hljs-string">&quot;##app&quot;</span>,</span></span><br><span class="language-javascript"><span class="language-xml">	router</span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="路由模式"><a href="#路由模式" class="headerlink" title="路由模式"></a>路由模式</h2><table>
+<thead>
+<tr>
+<th>路由模式</th>
+<th>示例</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hash 模式</td>
+<td><a target="_blank" rel="noopener" href="http://localhost:8080/##/login">http://localhost:8080/##/login</a></td>
+<td>有##号，刷新页面没问题</td>
+</tr>
+<tr>
+<td>history 模式</td>
+<td><a target="_blank" rel="noopener" href="http://localhost:8080/login">http://localhost:8080/login</a></td>
+<td>无##号，刷新页面有问题，需要后台支持</td>
+</tr>
+</tbody></table>
+<h3 id="hash-模式"><a href="#hash-模式" class="headerlink" title="hash 模式"></a>hash 模式</h3><p>hash 模式的工作原理是 hashchange 事件，可以在 window 监听 hash 的变化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-variable language_">window</span>.<span class="hljs-property">onhashchange</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)&#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event);<br>	<span class="hljs-comment">// 打印出一个HashChangeEvent事件对象，在该对象内有newURL和oldURL</span><br>	<span class="hljs-comment">// location.hash中也有相关的信息</span><br>	<span class="hljs-comment">// 假设hash值是个颜色值，通过location.hash来获取到对应的hash值，然后设置页面中的某个元素的背景颜色来改变页面</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>尽管浏览器没有请求服务器，但是页面状态和 url 已经关联起来了，这就是所谓的前端路由，单页应用的标配。</p>
+<h3 id="history-模式"><a href="#history-模式" class="headerlink" title="history 模式"></a>history 模式</h3><p>把 window.history 对象打印出来可以看到里边提供的方法和记录长度<br>history 对象内有 back(),forword(),go() 等方法<br>前进，后退，跳转操作方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">history.<span class="hljs-title function_">go</span>(-<span class="hljs-number">3</span>);<span class="hljs-comment">//后退3次</span><br>history.<span class="hljs-title function_">go</span>(<span class="hljs-number">2</span>);<span class="hljs-comment">//前进2次</span><br>history.<span class="hljs-title function_">go</span>(<span class="hljs-number">0</span>);<span class="hljs-comment">//刷新当前页面</span><br>history.<span class="hljs-title function_">back</span>(); <span class="hljs-comment">//后退</span><br>history.<span class="hljs-title function_">forward</span>(); <span class="hljs-comment">//前进</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="vue-router-使用的模式"><a href="#vue-router-使用的模式" class="headerlink" title="vue-router 使用的模式"></a>vue-router 使用的模式</h3><p>vue-router 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。<br>也可以使用路由的 <strong>history 模式</strong>，充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。但是需要后台配置支持。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;<br>  <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;history&#x27;</span>,<br>  <span class="hljs-attr">routes</span>: [...]<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h2><p><code>vue-router</code> 提供的导航守卫主要用来通过跳转或取消的方式守卫导航。</p>
+<h3 id="全局守卫"><a href="#全局守卫" class="headerlink" title="全局守卫"></a>全局守卫</h3><p>全局守卫有全局前置守卫、全局解析守卫、全局后置守卫。</p>
+<p>当一个导航触发时，全局守卫按照创建顺序调用。守卫是 <strong>异步</strong> 解析执行，此时导航在所有守卫 <code>resolve</code> 完之前一直处于 <strong>等待中</strong>。</p>
+<h5 id="全局前置守卫-router-beforeEach"><a href="#全局前置守卫-router-beforeEach" class="headerlink" title="全局前置守卫 router.beforeEach"></a>全局前置守卫 <code>router.beforeEach</code></h5><p>路由跳转前触发，<strong>每次导航</strong> 时都会触发。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123; ... &#125;)<br><span class="hljs-comment">// Vue3</span><br><span class="hljs-comment">// const router = createRouter(&#123; ... &#125;)</span><br>router.<span class="hljs-title function_">beforeEach</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> &#123;<br>	<span class="hljs-comment">// ...</span><br>	<span class="hljs-comment">// 返回的值为false或路由地址</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// 返回false取消导航</span><br>	<span class="hljs-comment">// 什么都没有 underfined或返回true，导航有效</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><strong>参数：</strong></p>
+<ul>
+<li><code>to</code>：即将要进入的目标路由对象</li>
+<li><code>from</code>：当前导航正要离开的路由</li>
+<li><code>next</code>：(<code>Function</code>) 一定要调用该方法来 <code>resolve</code> 这个钩子<ul>
+<li><code>next()</code>：进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 <code>confirmed</code>(确认的)。</li>
+<li><code>next(false)</code>：中断当前的导航。如果 URL 改变，URL 重置到 from 对应的地址。</li>
+<li><code>next(&#39;/&#39;)</code> 或 <code>next(&#123;path:&#39;/&#39;&#125;)</code>：跳转到一个不同的地址。</li>
+<li><code>next(error)</code>：导航被终止且错误传递给 <code>router.onError()</code> 注册过的回调</li>
+</ul>
+</li>
+</ul>
+<h5 id="全局解析守卫（2-5-0-）router-beforeResolve"><a href="#全局解析守卫（2-5-0-）router-beforeResolve" class="headerlink" title="全局解析守卫（2.5.0+）router.beforeResolve"></a>全局解析守卫（2.5.0+）<code>router.beforeResolve</code></h5><p><strong>每次导航</strong> 时都会触发。路由跳转前，同时在所有 <strong>组件内守卫</strong> 和 <strong>异步路由组件</strong> 被解析之后触发。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">router.<span class="hljs-title function_">beforeResolve</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> &#123;<br>	<span class="hljs-title function_">next</span>();<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h5 id="全局后置钩子-router-afterEach"><a href="#全局后置钩子-router-afterEach" class="headerlink" title="全局后置钩子 router.afterEach"></a>全局后置钩子 <code>router.afterEach</code></h5><p><strong>每次导航</strong> 时都会触发。路由跳转完成后，<code>beforeEach</code> 和 <code>beforeResolve</code> 之后，<code>beforeRouteEnter</code>（组件内守卫）之前触发。<br>不接受 <code>next</code> 函数，不改变导航本身。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">router.<span class="hljs-title function_">afterEach</span>(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> &#123;<br>	<span class="hljs-comment">// ...</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="路由独享守卫-beforeEnter"><a href="#路由独享守卫-beforeEnter" class="headerlink" title="路由独享守卫 beforeEnter"></a>路由独享守卫 <code>beforeEnter</code></h3><p>直接在路由配置上定义，只在 <strong>进入路由</strong> 时触发，在 <code>beforeEach</code> 之后紧随执行。不会在 <code>params</code>、<code>query</code> 或 <code>hash</code> 改变时触发。<br>与全局前置守卫的方法参数一样。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> routes = [<br>  &#123;<br>    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/users/:id&#x27;</span>,<br>    <span class="hljs-attr">component</span>: <span class="hljs-title class_">UserDetails</span>,<br>    <span class="hljs-attr">beforeEnter</span>: <span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> &#123;<br>		<span class="hljs-comment">// ...</span><br>    &#125;,<br>  &#125;,<br>]<br></code></pre></td></tr></table></figure>
+
+<p>也可以将一个函数数组传递给 <code>beforeEnter</code>，为不同路由重用守卫时很有用。</p>
+<h3 id="组件内的守卫"><a href="#组件内的守卫" class="headerlink" title="组件内的守卫"></a>组件内的守卫</h3><p>可以在路由组件内直接定义路由导航守卫 (传递给路由配置的)</p>
+<h4 id="beforeRouteEnter"><a href="#beforeRouteEnter" class="headerlink" title="beforeRouteEnter"></a><code>beforeRouteEnter</code></h4><p>在渲染该组件的对应路由被 <code>confirm</code> 前调用。<br>不能获取组件实例 <code>this</code>(underfined，组件实例没被创建)，但可以通过 <code>next</code> 回调函数访问组件实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Foo</span> = &#123;<br>	<span class="hljs-attr">template</span>: <span class="hljs-string">`...`</span>,<br>	<span class="hljs-title function_">beforeRouteEnter</span> (to, <span class="hljs-keyword">from</span>, next) &#123;<br>		<span class="hljs-title function_">next</span>(<span class="hljs-function"><span class="hljs-params">vm</span> =&gt;</span> &#123;<br>		<span class="hljs-comment">// 通过 `vm` 访问组件实例</span><br>		&#125;)<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="beforeRouteUpdate"><a href="#beforeRouteUpdate" class="headerlink" title="beforeRouteUpdate"></a><code>beforeRouteUpdate</code></h4><p>在当前路由改变，但是该组件被复用时调用（对于一个带有动态参数的路径 <code>/foo/:id</code>，在 <code>/foo/1</code> 和 <code>/foo/2</code> 之间跳转的时候）。<br>由于会渲染同样的 <code>Foo</code> 组件，因此组件实例会被复用，而这个钩子就会在这个情况下被调用。<br>可以访问组件实例 <code>this</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Foo</span> = &#123;<br>  <span class="hljs-attr">template</span>: <span class="hljs-string">`...`</span>,<br>  <span class="hljs-title function_">beforeRouteUpdate</span> (to, <span class="hljs-keyword">from</span>, next) &#123;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="beforeRouteLeave"><a href="#beforeRouteLeave" class="headerlink" title="beforeRouteLeave"></a><code>beforeRouteLeave</code></h4><p>导航离开该组件的对应路由时调用。<br>可以访问组件实例 <code>this</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">Foo</span> = &#123;<br>  <span class="hljs-attr">template</span>: <span class="hljs-string">`...`</span>,<br>  <span class="hljs-title function_">beforeRouteLeave</span> (to, <span class="hljs-keyword">from</span>, next) &#123;<br><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="完整的导航解析流程"><a href="#完整的导航解析流程" class="headerlink" title="完整的导航解析流程"></a>完整的导航解析流程</h3><ol>
+<li>导航被触发。</li>
+<li>在失活的组件里调用 <code>beforeRouteLeave</code> 守卫。</li>
+<li>调用全局的 <code>beforeEach</code> 守卫。</li>
+<li>在重用的组件里调用 <code>beforeRouteUpdate</code> 守卫 (2.2+)。</li>
+<li>在路由配置里调用 <code>beforeEnter</code>。</li>
+<li>解析异步路由组件。</li>
+<li>在被激活的组件里调用 <code>beforeRouteEnter</code>。</li>
+<li>调用全局的 <code>beforeResolve</code> 守卫 (2.5+)。</li>
+<li>导航被确认。</li>
+<li>调用全局的 <code>afterEach</code> 钩子。</li>
+<li>触发 DOM 更新。</li>
+<li>调用 <code>beforeRouteEnter</code> 守卫中传给 <code>next</code> 的回调函数，创建好的组件实例会作为回调函数的参数传入。</li>
+</ol>
+<p><img src="Vue%20Router_image_1.png" srcset="/blog/img/loading.gif" lazyload alt="流程图"></p>
+<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><p>使用时才会加载相关组件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-comment">// 将</span><br><span class="hljs-comment">// import UserDetails from &#x27;./views/UserDetails&#x27;</span><br><span class="hljs-comment">// 替换成</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">UserDetails</span> = (<span class="hljs-params"></span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./views/UserDetails&#x27;</span>)<br><br><span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createRouter</span>(&#123;<br>  <span class="hljs-comment">// ...</span><br>  <span class="hljs-attr">routes</span>: [&#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/users/:id&#x27;</span>, <span class="hljs-attr">component</span>: <span class="hljs-title class_">UserDetails</span> &#125;],<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>只要返回的是 Promise 组件的函数即可，也可以使用一下写法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">UserDetails</span> = (<span class="hljs-params"></span>) =&gt;<br>  <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(&#123;<br>    <span class="hljs-comment">/* 组件定义 */</span><br>  &#125;)<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../../categories/JavaScript-Framework/" class="category-chain-item">JavaScript Framework</a>
+  
+  
+    <span>></span>
+    
+  <a href="../../../categories/JavaScript-Framework/Vue/" class="category-chain-item">Vue</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Vue Router</div>
+      <div>https://sunsea-h.github.io/blog/JavaScript Framework/Vue/Vue Router/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 26, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../Pinia/" title="Pinia">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Pinia</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../Vue-cli/" title="Vue-cli">
+                        <span class="hidden-mobile">Vue-cli</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../js/events.js" ></script>
+<script  src="../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

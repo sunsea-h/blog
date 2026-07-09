@@ -1,0 +1,1307 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../img/fluid.png">
+  <link rel="icon" href="../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="小程序原生 API微信原生 API1. API 基础小程序开发框架提供丰富的微信原生 API，可以方便的调起微信提供的能力，如获取用户信息，本地存储，支付功能等，几乎所有小程序的 API 都挂载在 wx 对象底下，例如：wx.chooseMedia()、wx.request(), wx 对象实际上就是小程序的宿主环境微信所提供的全局对象 通常，在小程序 API 有以下几种类型：  事件监听 API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序原生 API">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%94%9F%20API/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="小程序原生 API微信原生 API1. API 基础小程序开发框架提供丰富的微信原生 API，可以方便的调起微信提供的能力，如获取用户信息，本地存储，支付功能等，几乎所有小程序的 API 都挂载在 wx 对象底下，例如：wx.chooseMedia()、wx.request(), wx 对象实际上就是小程序的宿主环境微信所提供的全局对象 通常，在小程序 API 有以下几种类型：  事件监听 API">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E5%B0%8F%E7%A8%8B%E5%BA%8F%20API%20%E7%B1%BB%E5%9E%8B.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/038-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%94%99%E8%AF%AF.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/39-%E5%BC%80%E5%8F%91%E8%AE%BE%E7%BD%AE.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/40-%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9F%9F%E5%90%8D.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/41-%E4%B8%8D%E6%A0%A1%E9%AA%8C%E5%90%88%E6%B3%95%E5%9F%9F%E5%90%8D.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/41-%E4%B8%8D%E6%A0%A1%E9%AA%8C%E5%90%88%E6%B3%95%E5%9F%9F%E5%90%8D-1.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/loading%20%E6%8F%90%E7%A4%BA%E6%A1%86.gif">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E6%A8%A1%E6%80%81%E5%AF%B9%E8%AF%9D%E6%A1%86%E4%BB%A5%E5%8F%8A%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA%E6%A1%86.gif">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8.png">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%80%9A%E4%BF%A1.png">
+<meta property="og:image" content="c:\Users\15778\Desktop\01-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0\01-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80\images\%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A.gif">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A%E6%A1%88%E4%BE%8B.gif">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0.gif">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%A1%88%E4%BE%8B.gif">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/scroll-%E4%B8%8A%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A.gif">
+<meta property="og:image" content="http://8.131.91.46:6677/mina/base/scroll-%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0.gif">
+<meta property="article:published_time" content="2024-04-29T16:22:09.000Z">
+<meta property="article:modified_time" content="2025-03-28T10:38:14.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://8.131.91.46:6677/mina/base/%E5%B0%8F%E7%A8%8B%E5%BA%8F%20API%20%E7%B1%BB%E5%9E%8B.png">
+  
+  
+  
+  <title>小程序原生 API - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../js/utils.js" ></script>
+  <script  src="../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="小程序原生 API"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-29 16:22" pubdate>
+          April 29, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          115 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">小程序原生 API</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="小程序原生-API"><a href="#小程序原生-API" class="headerlink" title="小程序原生 API"></a>小程序原生 API</h1><h2 id="微信原生-API"><a href="#微信原生-API" class="headerlink" title="微信原生 API"></a>微信原生 API</h2><h3 id="1-API-基础"><a href="#1-API-基础" class="headerlink" title="1. API 基础"></a>1. API 基础</h3><p>小程序开发框架提供丰富的微信原生 <code>API</code>，可以方便的调起微信提供的能力，如获取用户信息，本地存储，支付功能等，几乎所有小程序的 <code>API</code> 都挂载在 <code>wx</code> 对象底下，例如：<code>wx.chooseMedia()</code>、<code>wx.request()</code>, <code>wx</code> 对象实际上就是小程序的宿主环境微信所提供的全局对象</p>
+<p>通常，在小程序 API 有以下几种类型：</p>
+<ol>
+<li>事件监听 API：约定以 <code>on</code> 开头 API 用来监听某个事件是否触发，例如：<code>wx.onThemeChange()</code></li>
+<li>同步 API：约定以 <code>Sync</code> 结尾的 API 都是同步 API，例如：<code>wx.setStorageSync()</code></li>
+<li>异步 API：大多数 API 都是异步 API，例如：<code>wx.setStorage()</code></li>
+</ol>
+<img src="http://8.131.91.46:6677/mina/base/小程序 API 类型.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p>异步 API 支持 callback &amp; Promise 两种调用方式：</p>
+<ol>
+<li>当接口参数 Object 对象中不包含 success&#x2F;fail&#x2F;complete 时将默认返回 Promise</li>
+<li>部分接口如 request, uploadFile 本身就有返回值，因此不支持 Promise 风格的调用方式，它们的 promisify 需要开发者自行封装。</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/api.html">小程序 API 介绍</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/">微信小程序 API 文档</a></p>
+<h3 id="2-网络请求"><a href="#2-网络请求" class="headerlink" title="2. 网络请求"></a>2. 网络请求</h3><p><strong>知识点：</strong></p>
+<p>在微信小程序中，如果需要发起 HTTPS 网络请求需要使用：<code>wx.request()</code>，语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js">wx.<span class="hljs-title function_">request</span>(&#123;<br>  <span class="hljs-comment">// 接口地址，仅为示例，并非真实的接口地址</span><br>  <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;example.php&#x27;</span>,<br>  <span class="hljs-comment">// 请求的参数</span><br>  <span class="hljs-attr">data</span>: &#123; <span class="hljs-attr">x</span>: <span class="hljs-string">&#x27;&#x27;</span> &#125;,<br>  <span class="hljs-comment">// 请求方式</span><br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET|POST|PUT|DELETE&#x27;</span>,<br>  <span class="hljs-title function_">success</span> (res) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">data</span>)<br>  &#125;,<br>  <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><font color="red"><strong>注意：wx.request() 请求的域名需要在小程序管理平台进行配置，如果小程序正式版使用 wx.request 请求未配置的域名，在控制台会有相应的报错。</strong></font></p>
+<img src="http://8.131.91.46:6677/mina/base/038-网络请求错误.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%;" />
+
+<p>这时候就需要在小程序管理后台进行设置请求的域名，打开微信公众后台：点击左侧 开发 → 开发管理 → 开发设置 → 服务器域名。<strong>域名只支持 <code>https</code> 而且要求已备案</strong></p>
+<img src="http://8.131.91.46:6677/mina/base/39-开发设置.png" srcset="/blog/img/loading.gif" lazyload style="zoom:47.5%; border: 1px solid #ccc" />
+
+<img src="http://8.131.91.46:6677/mina/base/40-配置服务器域名.png" srcset="/blog/img/loading.gif" lazyload style="zoom:49.4%; border: 1px solid #ccc" />
+
+<p>但一般我们在开发阶段时，处于开发阶段的服务器接口可能还没部署到对应的域名下，经常会通过另一个域名来进行开发调试，考虑到这一点，为了方便开发者进行开发调试，开发者工具、小程序的开发版和小程序的体验版在某些情况下允许 <code>wx.request</code> 请求任意域名 (只适用于开发环境，只能在小程序开发者工具中生效)，在开发工具中设置步骤如下：</p>
+<p>将 <strong>不校验合法域名、web-view (业务域名)、TLS 版本以及 HTTPS 证书</strong> 勾选上：</p>
+<p>​ <img src="http://8.131.91.46:6677/mina/base/41-不校验合法域名.png" srcset="/blog/img/loading.gif" lazyload style="zoom:61%;" /> <img src="http://8.131.91.46:6677/mina/base/41-不校验合法域名-1.png" srcset="/blog/img/loading.gif" lazyload style="zoom:50.25%;" /> </p>
+<blockquote>
+<p>📌 <strong>注意事项：</strong></p>
+<p>​	这两种方式只适用于开发者工具、小程序的开发版和小程序的体验版</p>
+<p>​	项目上线前必须在小程序管理平台进行合法域名的配置</p>
+</blockquote>
+<p><strong>落地代码：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;<br>  <span class="hljs-comment">// 页面的初始数据</span><br>  <span class="hljs-attr">data</span>: &#123;&#125;,<br><br>  <span class="hljs-comment">// 获取数据</span><br>  <span class="hljs-title function_">getPostInfo</span>(<span class="hljs-params"></span>) &#123;<br>    wx.<span class="hljs-title function_">request</span>(&#123;<br>      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://jsonplaceholder.typicode.com/posts/1&#x27;</span>,<br>      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>      <span class="hljs-title function_">success</span>(<span class="hljs-params">res</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res)<br>      &#125;,<br>      <span class="hljs-title function_">fail</span>(<span class="hljs-params">err</span>) &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)<br>      &#125;<br>    &#125;)<br>  &#125;,<br>    <br>  <span class="hljs-comment">// coding...</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-界面交互"><a href="#3-界面交互" class="headerlink" title="3. 界面交互"></a>3. 界面交互</h3><p>小程序还提供了一些用于界面交互的 API，如消息提示框、模态对话框、 loading 提示框等等</p>
+<h4 id="3-1-loading-提示框"><a href="#3-1-loading-提示框" class="headerlink" title="3.1 loading 提示框"></a>3.1 loading 提示框</h4><p><strong>知识点：</strong></p>
+<p>小程序提供了一些用于界面交互的 API，例如： loading 提示框、消息提示框、模态对话框等 API。</p>
+<img src="http://8.131.91.46:6677/mina/base/loading 提示框.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p>loading 提示框常配合网络请求来使用，用于增加用户体验，对应的 API 有两个：</p>
+<ol>
+<li><code>wx.showLoading</code> 显示加载提示框</li>
+<li><code>wx.hideLoading</code> 隐藏加载提示框</li>
+</ol>
+<p>语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">wx.<span class="hljs-title function_">showLoading</span>(&#123;<br>  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;提示内容&#x27;</span>, <span class="hljs-comment">// 提示的内容</span><br>  <span class="hljs-attr">mask</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否显示透明蒙层，防止触摸穿透</span><br>  <span class="hljs-title function_">success</span>(<span class="hljs-params"></span>) &#123;&#125;, <span class="hljs-comment">// 接口调用成功的回调函数</span><br>  <span class="hljs-title function_">fail</span>(<span class="hljs-params"></span>) &#123;&#125; <span class="hljs-comment">// 接口调用失败的回调函数</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>官方文档：</p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showLoading.html">wx.showLoading 官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.hideLoading.html">wx.hideLoading 官方文档</a></p>
+<p><strong>落地代码：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;<br><br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">list</span>: []<br>  &#125;,<br><br>  <span class="hljs-comment">// 获取数据</span><br>  <span class="hljs-title function_">getData</span> () &#123;<br><br>+     <span class="hljs-comment">// 显示 loading 提示框</span><br>+     wx.<span class="hljs-title function_">showLoading</span>(&#123;<br>+       <span class="hljs-comment">// 用来显示提示的内容</span><br>+       <span class="hljs-comment">// 提示的内容不会自动换行，如果提示的内容比较多，因为在同一行展示</span><br>+       <span class="hljs-comment">// 多出来的内容就会被隐藏</span><br>+       <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;数据加载中...&#x27;</span>,<br>+       <span class="hljs-comment">// 是否展示透明蒙层，防止触摸穿透</span><br>+       <span class="hljs-attr">mask</span>: <span class="hljs-literal">true</span><br>+     &#125;)<br><br>    <span class="hljs-comment">// 如果需要发起网络请求，需要使用 wx.request API</span><br>    wx.<span class="hljs-title function_">request</span>(&#123;<br>      <span class="hljs-comment">// 接口地址</span><br>      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://gmall-prod.atguigu.cn/mall-api/index/findBanner&#x27;</span>,<br>      <span class="hljs-comment">// 请求方式</span><br>      <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,<br>      <span class="hljs-comment">// 请求参数</span><br>      <span class="hljs-attr">data</span>: &#123;&#125;,<br>      <span class="hljs-comment">// 请求头</span><br>      <span class="hljs-attr">header</span>: &#123;&#125;,<br>      <span class="hljs-comment">// API 调用成功以后，执行的回调</span><br>      <span class="hljs-attr">success</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// console.log(res)</span><br>        <span class="hljs-keyword">if</span> (res.<span class="hljs-property">data</span>.<span class="hljs-property">code</span> === <span class="hljs-number">200</span>) &#123;<br>          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>            <span class="hljs-attr">list</span>: res.<span class="hljs-property">data</span>.<span class="hljs-property">data</span><br>          &#125;)<br>        &#125;<br>      &#125;,<br>      <span class="hljs-comment">// API 调用失败以后，执行的回调</span><br>      <span class="hljs-attr">fail</span>: <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)<br>      &#125;,<br>      <span class="hljs-comment">// API 不管调用成功还是失败以后，执行的回调</span><br>      <span class="hljs-attr">complete</span>: <span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;<br>        <span class="hljs-comment">// console.log(res)</span><br><br>+         <span class="hljs-comment">// 关掉 loading 提示框</span><br>+         <span class="hljs-comment">// hideLoading 和 showLoading 必须结合、配对使用才可以</span><br>+         wx.<span class="hljs-title function_">hideLoading</span>()<br>      &#125;<br>    &#125;)<br><br>  &#125;<br><br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-模态对话框以及消息提示框"><a href="#3-2-模态对话框以及消息提示框" class="headerlink" title="3.2 模态对话框以及消息提示框"></a>3.2 模态对话框以及消息提示框</h4><p><strong>知识点：</strong></p>
+<p><code>wx.showToast()</code>：消息提示框用来根据用户的某些操作来告知操作的结果，如退出成功给用户提示，提示删除成功等，语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js">wx.<span class="hljs-title function_">showToast</span>(&#123;<br>  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;标题&#x27;</span>, <span class="hljs-comment">// 提示的内容</span><br>  <span class="hljs-attr">duration</span>: <span class="hljs-number">2000</span>, <span class="hljs-comment">// 提示的延迟时间</span><br>  <span class="hljs-attr">mask</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否显示透明蒙层，防止触摸穿透</span><br>  <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span>, <span class="hljs-comment">// 	图标</span><br>  <span class="hljs-title function_">success</span>(<span class="hljs-params"></span>) &#123;&#125;, <span class="hljs-comment">// 接口调用成功的回调函数</span><br>  <span class="hljs-title function_">fail</span>(<span class="hljs-params"></span>) &#123;&#125; <span class="hljs-comment">// 接口调用失败的回调函数</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p><code>wx.showModal()</code> 模态对话框也是在项目中频繁使用的一个小程序 <code>API</code>，通常用于向用户询问是否执行一些操作，例如：点击退出登录，显示模态对话框，询问用户是否真的需要退出等等</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js">wx.<span class="hljs-title function_">showModal</span>(&#123;<br>  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;提示&#x27;</span>, <span class="hljs-comment">// 提示的标题</span><br>  <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;您确定执行该操作吗？&#x27;</span>, <span class="hljs-comment">// 提示的内容</span><br>  <span class="hljs-attr">confirmColor</span>: <span class="hljs-string">&#x27;#f3514f&#x27;</span>,<br>  <span class="hljs-comment">// 接口调用结束的回调函数（调用成功、失败都会执行）</span><br>  <span class="hljs-title function_">success</span>(<span class="hljs-params">&#123; confirm &#125;</span>) &#123;<br>    confirm &amp;&amp; consle.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;点击了确定&#x27;</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>官方文档：</p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showToast.html">wx.showToast 官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/interaction/wx.showModal.html">wx.showModal 官方文档</a></p>
+<img src="http://8.131.91.46:6677/mina/base/模态对话框以及消息提示框.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p><strong>落地代码：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;<br>  <span class="hljs-comment">// coding...</span><br>  <br>  <span class="hljs-comment">// 删除商品</span><br>  <span class="hljs-keyword">async</span> <span class="hljs-title function_">delHandler</span> () &#123;<br><br>    <span class="hljs-comment">// showModal 显示模态对话框</span><br>    <span class="hljs-keyword">const</span> &#123; confirm &#125; = <span class="hljs-keyword">await</span> wx.<span class="hljs-title function_">showModal</span>(&#123;<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;提示&#x27;</span>,<br>      <span class="hljs-attr">content</span>: <span class="hljs-string">&#x27;是否删除该商品 ?&#x27;</span><br>    &#125;)<br><br>    <span class="hljs-keyword">if</span> (confirm) &#123;<br>      <span class="hljs-comment">// showToast 消息提示框</span><br>      wx.<span class="hljs-title function_">showToast</span>(&#123;<br>        <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;删除成功&#x27;</span>,<br>        <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;none&#x27;</span>,<br>        <span class="hljs-attr">duration</span>: <span class="hljs-number">2000</span><br>      &#125;)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      wx.<span class="hljs-title function_">showToast</span>(&#123;<br>        <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;取消删除&#x27;</span>,<br>        <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;error&#x27;</span>,<br>        <span class="hljs-attr">duration</span>: <span class="hljs-number">2000</span><br>      &#125;)<br>    &#125;<br><br>  &#125;<br>   <br>  <span class="hljs-comment">// coding...</span><br><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-本地存储"><a href="#4-本地存储" class="headerlink" title="4. 本地存储"></a>4. 本地存储</h3><p>小程序中也能够像网页一样支持本地数据缓存，本地数据缓存是小程序存储在当前设备上硬盘上的数据，本地数据缓存有非常多的用途，我们可以利用本地数据缓存来存储用户在小程序上产生的操作，在用户关闭小程序重新打开时可以恢复之前的状态。我们还可以利用本地缓存一些服务端非实时的数据提高小程序获取数据的速度，在特定的场景下可以提高页面的渲染速度，减少用户的等待时间。其包含以下 8 个主要的 API</p>
+<table>
+<thead>
+<tr>
+<th>同步 API</th>
+<th>异步 API</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>wx.setStorageSync</code></td>
+<td><code>wx.setStorage</code></td>
+<td>将数据存储在本地缓存中指定的 key 中</td>
+</tr>
+<tr>
+<td><code>wx.getStorageSync</code></td>
+<td><code>wx.getStorage</code></td>
+<td>从本地缓存中同步获取指定 key 的内容</td>
+</tr>
+<tr>
+<td><code>wx.removeStorageSync</code></td>
+<td><code>wx.removeStorage</code></td>
+<td>从本地缓存中移除指定 key</td>
+</tr>
+<tr>
+<td><code>wx.clearStorageSync</code></td>
+<td><code>wx.clearStorageSync</code></td>
+<td>清理本地数据缓存</td>
+</tr>
+</tbody></table>
+<img src="http://8.131.91.46:6677/mina/base/本地存储.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p>异步方式的 <code>API</code>，在调用的时候都需要传入对象类型的参数</p>
+<p>同步方式执行的 API 在使用时简洁比较好，缺点是同步会阻塞程序执行，执行效率上相较异步版本要差一些。</p>
+<blockquote>
+<p>📌 <strong>注意事项</strong>：</p>
+<ol>
+<li>对象类型的数据，可以直接进行存储，无需使用 <code>JSON.stringify</code> 转换</li>
+<li>对象类型的数据存的时候没有使用转换，因此获取的时候也不需要使用 <code>JSON.parse</code> 转换</li>
+</ol>
+</blockquote>
+<p><strong>落地代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;handler&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;mini&quot;</span> <span class="hljs-attr">plain</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;setData&quot;</span>&gt;</span><br>  存储数据<br><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;handler&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;mini&quot;</span> <span class="hljs-attr">plain</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;getData&quot;</span>&gt;</span><br>  获取数据<br><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;warn&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;handler&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;mini&quot;</span> <span class="hljs-attr">plain</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;delData&quot;</span>&gt;</span><br>  删除数据<br><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;warn&quot;</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;handler&quot;</span> <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;mini&quot;</span> <span class="hljs-attr">plain</span> <span class="hljs-attr">bindtap</span>=<span class="hljs-string">&quot;clearData&quot;</span>&gt;</span><br>  移除数据<br><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;<br><br>  <span class="hljs-comment">// 将数据存储到本地</span><br>  <span class="hljs-title function_">setStorage</span> () &#123;<br><br>    <span class="hljs-comment">// 第一个参数：本地存储中指定的 key</span><br>    <span class="hljs-comment">// 第二个参数：需要存储的数据</span><br>    <span class="hljs-comment">// wx.setStorageSync(&#x27;num&#x27;, 1)</span><br><br>    <span class="hljs-comment">// 在小程序中</span><br>    <span class="hljs-comment">// 如果存储的是对象类型数据，不需要使用 JSON.stringify 和 JSON.parse 进行转换</span><br>    <span class="hljs-comment">// 直接进行存储和获取即可</span><br>    <span class="hljs-comment">// wx.setStorageSync(&#x27;obj&#x27;, &#123; name: &#x27;tom&#x27;, age: 10 &#125;)</span><br><br>    <span class="hljs-comment">// ------------------- 异步 API -------------------</span><br> <br>    wx.<span class="hljs-title function_">setStorage</span>(&#123;<br>      <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;num&#x27;</span>,<br>      <span class="hljs-attr">data</span>: <span class="hljs-number">1</span><br>    &#125;)<br><br>    wx.<span class="hljs-title function_">setStorage</span>(&#123;<br>      <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;obj&#x27;</span>,<br>      <span class="hljs-attr">data</span>: &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;jerry&#x27;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">18</span> &#125;<br>    &#125;)<br><br>  &#125;,<br><br>  <span class="hljs-comment">// 获取本地存储的数据</span><br>  <span class="hljs-keyword">async</span> <span class="hljs-title function_">getStorage</span> () &#123;<br><br>    <span class="hljs-comment">// 从本地存储的数据中获取指定 key 的数据、内容</span><br>    <span class="hljs-comment">// const num = wx.getStorageSync(&#x27;num&#x27;)</span><br>    <span class="hljs-comment">// const obj = wx.getStorageSync(&#x27;obj&#x27;)</span><br><br>    <span class="hljs-comment">// console.log(num)</span><br>    <span class="hljs-comment">// console.log(obj)</span><br><br>    <span class="hljs-comment">// ------------------- 异步 API -------------------</span><br><br>    <span class="hljs-keyword">const</span> &#123; data &#125; = <span class="hljs-keyword">await</span> wx.<span class="hljs-title function_">getStorage</span>(&#123;<br>      <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;obj&#x27;</span><br>    &#125;)<br><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br><br>  &#125;,<br><br>  <span class="hljs-comment">// 删除本地存储的数据</span><br>  <span class="hljs-title function_">removeStorage</span> () &#123;<br><br>    <span class="hljs-comment">// 从本地移除指定 key 的数据、内容</span><br>    <span class="hljs-comment">// wx.removeStorageSync(&#x27;num&#x27;)</span><br><br>    <span class="hljs-comment">// ------------------- 异步 API -------------------</span><br><br>    wx.<span class="hljs-title function_">removeStorage</span>(&#123;<br>      <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;num&#x27;</span><br>    &#125;)<br><br>  &#125;,<br><br>  <span class="hljs-comment">// 清空本地存储的全部数据</span><br>  <span class="hljs-title function_">clearStorage</span> () &#123;<br>    <span class="hljs-comment">// wx.clearStorageSync()</span><br>      <br>    <span class="hljs-comment">// ------------------- 异步 API -------------------</span><br><br>    wx.<span class="hljs-title function_">clearStorage</span>()<br>  &#125;,<br><br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="5-路由与通信"><a href="#5-路由与通信" class="headerlink" title="5. 路由与通信"></a>5. 路由与通信</h3><p><strong>知识点：</strong></p>
+<p>在小程序中实现页面的跳转，有两种方式：</p>
+<ol>
+<li>声明式导航：<code>navigator</code> 组件</li>
+<li>编程式导航：使用小程序提供的 <code>API</code><ul>
+<li><code>wx.navigateTo()</code>：保留当前页面，跳转到应用内的某个页面，但是不能跳到 tabbar 页面</li>
+<li><code>wx.redirectTo()</code>：关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面</li>
+<li><code>wx.switchTab()</code>：跳转到 tabBar 页面，路径后不能带参数</li>
+<li><code>wx.navigateBack()</code>：关闭当前页面，返回上一页面或多级页面</li>
+</ul>
+</li>
+<li><strong>路径后可以带参数，参数需要在跳转到的页面的 <code>onLoad</code> 钩子函数中通过形参进行接收</strong><ul>
+<li>参数与路径之间使用 <code>?</code> 分隔</li>
+<li>参数键与参数值用 <code>=</code> 相连</li>
+<li>不同参数用 <code>&amp;</code> 分隔</li>
+<li>例如 <code>path?key=value&amp;key2=value2</code></li>
+</ul>
+</li>
+</ol>
+<img src="http://8.131.91.46:6677/mina/base/路由与通信.png" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p><strong>落地代码：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;<br><br><br>  <span class="hljs-title function_">navigateTo</span>(<span class="hljs-params"></span>) &#123;<br><br>    <span class="hljs-comment">// 保留当前页面，跳转到应用中其他页面，不能跳转到 tabBar 页面</span><br>    wx.<span class="hljs-title function_">navigateTo</span>(&#123;<br>      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/pages/list/list?id=1&amp;name=tom&#x27;</span><br>      <span class="hljs-comment">// url: &#x27;/pages/cate/cate&#x27;</span><br>    &#125;)<br><br>  &#125;,<br><br>  <span class="hljs-title function_">redirectTo</span>(<span class="hljs-params"></span>) &#123;<br><br>    <span class="hljs-comment">// 关闭(销毁)当前页面，跳转到应用中其他页面，不能跳转到 tabBar 页面</span><br>    wx.<span class="hljs-title function_">redirectTo</span>(&#123;<br>      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/pages/list/list?id=1&amp;name=tom&#x27;</span><br>      <span class="hljs-comment">// url: &#x27;/pages/cate/cate&#x27;</span><br>    &#125;)<br><br>  &#125;,<br><br>  <span class="hljs-title function_">switchTab</span>(<span class="hljs-params"></span>) &#123;<br><br>    <span class="hljs-comment">// 跳转到 tabBar 页面，不能跳转到 非 tabBar 页面，路径后面不能传递参数</span><br>    wx.<span class="hljs-title function_">switchTab</span>(&#123;<br>      <span class="hljs-comment">// url: &#x27;/pages/list/list&#x27;</span><br>      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/pages/cate/cate?id=1&amp;name=tom&#x27;</span><br>    &#125;)<br><br>  &#125;,<br><br>  <span class="hljs-title function_">reLaunch</span>(<span class="hljs-params"></span>) &#123;<br><br>    <span class="hljs-comment">// 关闭所有的页面，然后跳转到应用中某一个页面</span><br>    wx.<span class="hljs-title function_">reLaunch</span>(&#123;<br>      <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;/pages/list/list?id=1&amp;name=tom&#x27;</span><br>      <span class="hljs-comment">// url: &#x27;/pages/cate/cate?id=1&amp;name=tom&#x27;</span><br>    &#125;)<br><br>  &#125;<br><br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// list.js</span><br><span class="hljs-title class_">Page</span>(&#123;<br><br>  <span class="hljs-title function_">navigateBack</span>(<span class="hljs-params"></span>) &#123;<br><br>    <span class="hljs-comment">// 关闭当前页面，返回上一页或者返回多级页面</span><br>    <span class="hljs-comment">// 默认返回上一页</span><br>    wx.<span class="hljs-title function_">navigateBack</span>(&#123;<br>      <span class="hljs-attr">delta</span>: <span class="hljs-number">1</span><br>    &#125;)<br><br>  &#125;,<br><br>  <span class="hljs-title function_">onLoad</span>(<span class="hljs-params">options</span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(options)<br>  &#125;<br><br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="6-事件监听-上拉加载更多"><a href="#6-事件监听-上拉加载更多" class="headerlink" title="6. 事件监听 - 上拉加载更多"></a>6. 事件监听 - 上拉加载更多</h3><p>上拉加载是小程序中常见的一种加载方式，当用户滑动页面到底部时，会自动加载更多的内容，以便用户继续浏览</p>
+<p>小程序中实现上拉加载的方式：</p>
+<p>1.在 app.json 或者 page.json 中配置距离页面底部距离： onReachBottomDistance；默认 50px</p>
+<p>2.在 页面.js 中定义 onReachBottom 事件监听用户上拉加载</p>
+<p>​ <img src="C:\Users\15778\Desktop\01-小程序课程笔记\01-小程序基础\images\上拉加载更多.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:70%;" /> <img src="http://8.131.91.46:6677/mina/base/上拉加载更多案例.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:80%;" /></p>
+<p><strong>落地代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">&quot;&#123;&#123; numList &#125;&#125;&quot;</span> <span class="hljs-attr">wx:key</span>=<span class="hljs-string">&quot;*this&quot;</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">/* pages/market/market.wxss */</span><br><br>view &#123;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">400</span>rpx;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">align-items</span>: center;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>&#125;<br><br>view<span class="hljs-selector-pseudo">:nth-child</span>(odd) &#123;<br>  <span class="hljs-attribute">background-color</span>: lightskyblue;<br>&#125;<br><br>view<span class="hljs-selector-pseudo">:nth-child</span>(even) &#123;<br>  <span class="hljs-attribute">background-color</span>: lightsalmon;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;<br><br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">numList</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>  &#125;,<br><br>  <span class="hljs-comment">// 监听用户上拉加载</span><br>  <span class="hljs-title function_">onReachBottom</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">// console.log(&#x27;监听用户上拉加载&#x27;)</span><br>    <span class="hljs-comment">// 产品需求：</span><br>    <span class="hljs-comment">// 当用户上拉，需要数字进行累加</span><br><br>    <span class="hljs-comment">// 当用户上拉加载时，需要对数字进行累加，每次累加 3 个数字</span><br>    <span class="hljs-comment">// 目前是 [1, 2, 3]，[1, 2, 3, 4, 5, 6]</span><br>    <span class="hljs-comment">// 怎么进行追加 ？</span><br>    <span class="hljs-comment">// 获取目前数组中最后一项 n，n + 1, n + 2, n + 3</span><br><br>    wx.<span class="hljs-title function_">showLoading</span>(&#123;<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;数据加载中...&#x27;</span><br>    &#125;)<br><br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-comment">// 获取数组的最后一项</span><br>      <span class="hljs-keyword">const</span> lastNum = <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">numList</span>[<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">numList</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>]<br>      <span class="hljs-comment">// 定义需要追加的元素</span><br>      <span class="hljs-keyword">const</span> newArr = [lastNum + <span class="hljs-number">1</span>, lastNum + <span class="hljs-number">2</span>, lastNum + <span class="hljs-number">3</span>]<br><br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>        <span class="hljs-attr">numList</span>: [...<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">numList</span>, ...newArr]<br>      &#125;)<br><br>      wx.<span class="hljs-title function_">hideLoading</span>()<br>    &#125;, <span class="hljs-number">1500</span>)<br><br>  &#125;<br><br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="7-事件监听-下拉刷新"><a href="#7-事件监听-下拉刷新" class="headerlink" title="7. 事件监听 - 下拉刷新"></a>7. 事件监听 - 下拉刷新</h3><p>下拉刷新是小程序中常见的一种刷新方式，当用户下拉页面时，页面会自动刷新，以便用户获取最新的内容。</p>
+<p>小程序中实现上拉加载更多的方式：</p>
+<p>1.在 app.json 或者 page.json 中开启允许下拉，同时可以配置 窗口、loading 样式等 </p>
+<p>2.在 页面.js 中定义 onPullDownRefresh 事件监听用户下拉刷新</p>
+<p>​ <img src="http://8.131.91.46:6677/mina/base/下拉刷新.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:67%;" /> <img src="http://8.131.91.46:6677/mina/base/下拉刷新案例.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:70%;" />     </p>
+<p><strong>落地代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">&quot;&#123;&#123; numList &#125;&#125;&quot;</span> <span class="hljs-attr">wx:key</span>=<span class="hljs-string">&quot;*this&quot;</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">/* pages/market/market.wxss */</span><br><br>view &#123;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">400</span>rpx;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">align-items</span>: center;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>&#125;<br><br>view<span class="hljs-selector-pseudo">:nth-child</span>(odd) &#123;<br>  <span class="hljs-attribute">background-color</span>: lightskyblue;<br>&#125;<br><br>view<span class="hljs-selector-pseudo">:nth-child</span>(even) &#123;<br>  <span class="hljs-attribute">background-color</span>: lightsalmon;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title class_">Page</span>(&#123;<br><br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">numList</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>  &#125;,<br><br>  <span class="hljs-comment">// 监听用户上拉加载</span><br>  <span class="hljs-title function_">onReachBottom</span>(<span class="hljs-params"></span>) &#123;<br>    <br>     <span class="hljs-comment">// coding...</span><br><br>  &#125;,<br><br>  <span class="hljs-comment">// 监听用户下拉刷新</span><br>  <span class="hljs-title function_">onPullDownRefresh</span> () &#123;<br>    <span class="hljs-comment">// console.log(&#x27;监听用户下拉刷新&#x27;)</span><br><br>    <span class="hljs-comment">// 产品需求：</span><br>    <span class="hljs-comment">// 当用户上拉加载更多以后，如果用户进行了下拉刷新</span><br>    <span class="hljs-comment">// 需要将数据进行重置</span><br>    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>      <span class="hljs-attr">numList</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>    &#125;)<br><br>    <span class="hljs-comment">// 在下拉刷新以后，loading 效果有可能不会回弹回去</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">numList</span>.<span class="hljs-property">length</span> === <span class="hljs-number">3</span>) &#123;<br>      wx.<span class="hljs-title function_">stopPullDownRefresh</span>()<br>    &#125;<br>  &#125;<br><br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="8-增强-scroll-view"><a href="#8-增强-scroll-view" class="headerlink" title="8. 增强 scroll-view"></a>8. 增强 scroll-view</h3><h4 id="8-1-scroll-view-上拉加载"><a href="#8-1-scroll-view-上拉加载" class="headerlink" title="8.1 scroll-view 上拉加载"></a>8.1 scroll-view 上拉加载</h4><p><strong>知识点</strong>：</p>
+<p>bindscrolltolower：滚动到底部&#x2F;右边时触发</p>
+<p>lower-threshold：距底部&#x2F;右边多远时，触发 scrolltolower 事件</p>
+<p>enable-back-to-top：<strong>让滚动条返回顶部</strong>，iOS 点击顶部状态栏、安卓双击标题栏时，只支持竖向</p>
+<img src="http://8.131.91.46:6677/mina/base/scroll-上拉加载更多.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p><strong>落地代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span></span><br><span class="hljs-tag">  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scroll-y&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">scroll-y</span></span><br><span class="hljs-tag">  <span class="hljs-attr">lower-threshold</span>=<span class="hljs-string">&quot;100&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">bindscrolltolower</span>=<span class="hljs-string">&quot;getMore&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">enable-back-to-top</span></span><br><span class="hljs-tag">&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">&quot;&#123;&#123; arr &#125;&#125;&quot;</span> <span class="hljs-attr">wx:key</span>=<span class="hljs-string">&quot;*this&quot;</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// index.js</span><br><span class="hljs-title class_">Page</span>(&#123;<br><br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">arr</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>  &#125;,<br><br>  <span class="hljs-comment">// 上拉加载更多</span><br>  <span class="hljs-title function_">getMore</span>(<span class="hljs-params"></span>) &#123;<br><br>    wx.<span class="hljs-title function_">showLoading</span>(&#123;<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;数据正在加载中...&#x27;</span><br>    &#125;)<br><br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br><br>      <span class="hljs-comment">// 记录当前数组的最后一个元素</span><br>      <span class="hljs-keyword">let</span> lastNum = <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">arr</span>[<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">arr</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>]<br>      <span class="hljs-comment">// 最后一个元素加 1</span><br>      lastNum++<br>      <span class="hljs-comment">// 每次向数组中新增三项</span><br>      <span class="hljs-keyword">const</span> newArr = [lastNum, lastNum + <span class="hljs-number">1</span>, lastNum + <span class="hljs-number">2</span>]<br><br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>        <span class="hljs-attr">arr</span>: [...<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">arr</span>, ...newArr]<br>      &#125;)<br><br>     <span class="hljs-comment">// 数据返回，隐藏 Loading</span><br>     wx.<span class="hljs-title function_">hideLoading</span>()<br><br>     wx.<span class="hljs-title function_">showToast</span>(&#123;<br>       <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;数字请求完毕，上滑继续浏览&#x27;</span>,<br>       <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;none&#x27;</span><br>     &#125;)<br><br>    &#125;, <span class="hljs-number">1000</span>)<br><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="8-2-scroll-view-下拉刷新"><a href="#8-2-scroll-view-下拉刷新" class="headerlink" title="8.2 scroll-view 下拉刷新"></a>8.2 scroll-view 下拉刷新</h4><p><strong>知识点：</strong></p>
+<p>refresher-enabled：开启自定义下拉刷新</p>
+<p>refresher-default-style 自定义下拉刷新默认样式支持设置 <code>black | white | none</code>， none 表示不使用默认样式</p>
+<p>refresher-background：自定义下拉刷新区域背景颜色</p>
+<p>bindrefresherrefresh：自定义下拉刷新状态回调</p>
+<p>refresher-triggered：设置当前下拉刷新状态，(true 下拉刷新被触发，false 表示下拉刷新未被触发，<strong>用来关闭下拉效果</strong>)</p>
+<img src="http://8.131.91.46:6677/mina/base/scroll-下拉刷新.gif" srcset="/blog/img/loading.gif" lazyload style="zoom:80%; border: 1px solid #ccc" />
+
+<p><strong>落地代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span></span><br><span class="hljs-tag">  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scroll-y&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">scroll-y</span></span><br><span class="hljs-tag">  <span class="hljs-attr">lower-threshold</span>=<span class="hljs-string">&quot;100&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">bindscrolltolower</span>=<span class="hljs-string">&quot;getMore&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">enable-back-to-top</span></span><br><span class="hljs-tag">             </span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-enabled</span></span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-default-style</span>=<span class="hljs-string">&quot;black&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-background</span>=<span class="hljs-string">&quot;#f7f7f8&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-triggered</span></span><br><span class="hljs-tag">  <span class="hljs-attr">bindrefresherrefresh</span>=<span class="hljs-string">&quot;onrefresh&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-triggered</span>=<span class="hljs-string">&quot;&#123;&#123; triggered &#125;&#125;&quot;</span></span><br><span class="hljs-tag">&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">&quot;&#123;&#123; arr &#125;&#125;&quot;</span> <span class="hljs-attr">wx:key</span>=<span class="hljs-string">&quot;*this&quot;</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// index.js</span><br><span class="hljs-title class_">Page</span>(&#123;<br><br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">triggered</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 控制 scroll-view 下拉刷新效果</span><br>    <span class="hljs-attr">arr</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>  &#125;,<br><br>  <span class="hljs-comment">// scroll-view 下拉刷新回调函数</span><br>  <span class="hljs-title function_">onrefresh</span>(<span class="hljs-params"></span>) &#123;<br><br>    wx.<span class="hljs-title function_">showLoading</span>(&#123;<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;数据正在加载中...&#x27;</span><br>    &#125;)<br><br>    <span class="hljs-comment">// 定时器模拟网络请求，1 秒后数据返回</span><br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br><br>      <span class="hljs-comment">// 重置数据</span><br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>        <span class="hljs-attr">arr</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>      &#125;)<br><br>      <span class="hljs-comment">// 数据返回，隐藏 Loading</span><br>      wx.<span class="hljs-title function_">hideLoading</span>()<br><br>      wx.<span class="hljs-title function_">showToast</span>(&#123;<br>        <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;下拉刷新完成，数据已重置...&#x27;</span>,<br>        <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;none&#x27;</span><br>      &#125;)<br><br>      <span class="hljs-comment">// 数据返回，关闭 scroll-view 下拉刷新效果</span><br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>        <span class="hljs-attr">triggered</span>: <span class="hljs-literal">false</span><br>      &#125;)<br><br>    &#125;, <span class="hljs-number">1000</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="8-3-增强-scroll-view-完整代码"><a href="#8-3-增强-scroll-view-完整代码" class="headerlink" title="8.3 增强 scroll-view 完整代码"></a>8.3 增强 scroll-view 完整代码</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">scroll-view</span></span><br><span class="hljs-tag">  <span class="hljs-attr">scroll-y</span></span><br><span class="hljs-tag">  <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;scroll-y&quot;</span></span><br><span class="hljs-tag"></span><br><span class="hljs-tag">  <span class="hljs-attr">lower-threshold</span>=<span class="hljs-string">&quot;100&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">bindscrolltolower</span>=<span class="hljs-string">&quot;getMore&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">enable-back-to-top</span></span><br><span class="hljs-tag"></span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-enabled</span></span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-default-style</span>=<span class="hljs-string">&quot;black&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-background</span>=<span class="hljs-string">&quot;#f7f7f8&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">bindrefresherrefresh</span>=<span class="hljs-string">&quot;refreshHandler&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">refresher-triggered</span>=<span class="hljs-string">&quot;&#123;&#123;isTriggered&#125;&#125;&quot;</span></span><br><span class="hljs-tag">&gt;</span><br>  <br>  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">wx:for</span>=<span class="hljs-string">&quot;&#123;&#123; numList &#125;&#125;&quot;</span> <span class="hljs-attr">wx:key</span>=<span class="hljs-string">&quot;*this&quot;</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">scroll-view</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">/* pages/index/index.wxss */</span><br><br><span class="hljs-selector-class">.scroll-y</span> &#123;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">100vh</span>;<br>  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#efefef</span>;<br>&#125;<br><br>view &#123;<br>  <span class="hljs-attribute">height</span>: <span class="hljs-number">500</span>rpx;<br>  <span class="hljs-attribute">display</span>: flex;<br>  <span class="hljs-attribute">align-items</span>: center;<br>  <span class="hljs-attribute">justify-content</span>: center;<br>&#125;<br><br>view<span class="hljs-selector-pseudo">:nth-child</span>(odd) &#123;<br>  <span class="hljs-attribute">background-color</span>: skyblue;<br>&#125; <br><br>view<span class="hljs-selector-pseudo">:nth-child</span>(even) &#123;<br>  <span class="hljs-attribute">background-color</span>: lightsalmon;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs js"><br><span class="hljs-title class_">Page</span>(&#123;<br><br>  <span class="hljs-attr">data</span>: &#123;<br>    <span class="hljs-attr">numList</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>    <span class="hljs-attr">isTriggered</span>: <span class="hljs-literal">false</span><br>  &#125;,<br><br>  <span class="hljs-comment">// 下拉刷新</span><br>  <span class="hljs-title function_">refreshHandler</span> () &#123;<br><br>    wx.<span class="hljs-title function_">showToast</span>(&#123;<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;下拉刷新...&#x27;</span><br>    &#125;)<br>    <br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>        <span class="hljs-attr">numList</span>: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],<br>        <span class="hljs-attr">isTriggered</span>: <span class="hljs-literal">false</span><br>      &#125;)<br>    &#125;, <span class="hljs-number">2000</span>)<br><br>  &#125;,<br><br><br>  <span class="hljs-comment">// scroll-view 上拉加载更多事件的事件处理函数</span><br>  <span class="hljs-title function_">getMore</span> () &#123;<br><br>    <br>    wx.<span class="hljs-title function_">showLoading</span>(&#123;<br>      <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;数据加载中...&#x27;</span><br>    &#125;)<br><br>    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>      <span class="hljs-comment">// 获取数组的最后一项</span><br>      <span class="hljs-keyword">const</span> lastNum = <span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">numList</span>[<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">numList</span>.<span class="hljs-property">length</span> - <span class="hljs-number">1</span>]<br>      <span class="hljs-comment">// 定义需要追加的元素</span><br>      <span class="hljs-keyword">const</span> newArr = [lastNum + <span class="hljs-number">1</span>, lastNum + <span class="hljs-number">2</span>, lastNum + <span class="hljs-number">3</span>]<br><br>      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">setData</span>(&#123;<br>        <span class="hljs-attr">numList</span>: [...<span class="hljs-variable language_">this</span>.<span class="hljs-property">data</span>.<span class="hljs-property">numList</span>, ...newArr]<br>      &#125;)<br><br>      wx.<span class="hljs-title function_">hideLoading</span>()<br>    &#125;, <span class="hljs-number">1500</span>)<br><br><br>  &#125;<br><br>&#125;)<br><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="category-chain-item">微信小程序</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>小程序原生 API</div>
+      <div>https://sunsea-h.github.io/blog/微信小程序/小程序原生 API/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 29, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%88%86%E5%8C%85%E5%8A%A0%E8%BD%BD/" title="小程序分包加载">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">小程序分包加载</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/" title="小程序基础">
+                        <span class="hidden-mobile">小程序基础</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../js/events.js" ></script>
+<script  src="../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

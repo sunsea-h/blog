@@ -1,0 +1,1296 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../img/fluid.png">
+  <link rel="icon" href="../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Browser获取敏感权限问题超详细讲解页面加载过程 - 掘金性能优化之html、css、js三者的加载顺序 - 前端南玖 - 博客园从输入URL开始建立前端知识体系 - 掘金中级前端必备知识点1、从输入url到页面显示出来发生了什么 1.DNS解析 2.TCP连接 3.发送HTTP请求 4.服 - 掘金 浏览器进程 主进程 网络进程页面网络资源加载。 第三方插件进程 音频进程 GPU 进程最多一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Browser">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/Web/Browser/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="Browser获取敏感权限问题超详细讲解页面加载过程 - 掘金性能优化之html、css、js三者的加载顺序 - 前端南玖 - 博客园从输入URL开始建立前端知识体系 - 掘金中级前端必备知识点1、从输入url到页面显示出来发生了什么 1.DNS解析 2.TCP连接 3.发送HTTP请求 4.服 - 掘金 浏览器进程 主进程 网络进程页面网络资源加载。 第三方插件进程 音频进程 GPU 进程最多一">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/Web/Browser/image-20240830111500876.png">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/Web/Browser/image-20230510150629303.png">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/Web/Browser/image-20230512144002115.png">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/Web/Browser/file-20250428173808360.png">
+<meta property="article:published_time" content="2022-11-24T14:19:04.000Z">
+<meta property="article:modified_time" content="2026-03-26T13:18:37.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sunsea-h.github.io/blog/Web/Browser/image-20240830111500876.png">
+  
+  
+  
+  <title>Browser - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../js/utils.js" ></script>
+  <script  src="../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Browser"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-24 14:19" pubdate>
+          November 24, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          82 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Browser</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Browser"><a href="#Browser" class="headerlink" title="Browser"></a>Browser</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35517283/article/details/129733510">获取敏感权限问题</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7028385332391477255">超详细讲解页面加载过程 - 掘金</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/songyao666/p/16112629.html">性能优化之html、css、js三者的加载顺序 - 前端南玖 - 博客园</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6935232082482298911">从输入URL开始建立前端知识体系 - 掘金</a><br><a target="_blank" rel="noopener" href="https://juejin.cn/post/7291291652139499535">中级前端必备知识点1、从输入url到页面显示出来发生了什么 1.DNS解析 2.TCP连接 3.发送HTTP请求 4.服 - 掘金</a></p>
+<h2 id="浏览器进程"><a href="#浏览器进程" class="headerlink" title="浏览器进程"></a>浏览器进程</h2><ul>
+<li><strong>主进程</strong></li>
+<li><strong>网络进程</strong><br>页面网络资源加载。</li>
+<li><strong>第三方插件进程</strong></li>
+<li><strong>音频进程</strong></li>
+<li><strong>GPU 进程</strong><br>最多一个，用于 3D 绘制等。</li>
+<li><strong>渲染进程</strong><br>浏览器内核。<ul>
+<li><strong>JS 引擎线程</strong><br>处理 JavaScript 脚本（如 V8 引擎），一个渲染进程只有一个该线程在运行。</li>
+<li><strong>事件触发线程</strong><br>归属浏览器，执行添加的 setTimeOut（来自 JS 引擎），鼠标点击、AJAX 异步请求（来自浏览器其他线程）等任务。</li>
+<li><strong>定时触发器线程</strong><ul>
+<li>setInterval 与 setTimeout 所在线程。</li>
+</ul>
+</li>
+<li><strong>异步 http 请求线程</strong><br>XMLHttpRequest 在连接后是通过浏览器新开一个线程请求。</li>
+<li><strong>GUI 渲染线程</strong><br>负责渲染浏览器界面,解析 HTML,CSS,构建 DOM 树和 RenderObject 树,布局和绘制等。<ul>
+<li>建立数据传输通道</li>
+<li>构建 DOM 树</li>
+<li>布局阶段</li>
+<li>绘制以及合成渲染</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>GUI 渲染线程与 JS 引擎线程互斥。</p>
+
+<div class="hcb-content hcb-block hcbtip">
+  <p class="hcb-content hcb-block-title"><i class="fa fa-fire fa-fw"></i>渲染进程中的线程</p>
+  <ul>
+  <li><strong>主线程</strong> &#x3D; GUI 渲染线程&#x2F; JS 引擎线程。<br>因为二者互斥不会同时运行且都会阻塞UI 也有叫UI线程的。</li>
+  <li><strong>工作线程</strong> &#x3D; 事件触发线程 + 定时触发器线程 + 异步 HTTP 请求线程 + web works 等用户执行耗时任务的线程。</li>
+  <li><strong>合成线程</strong>：用于合成帧的线程&#x2F;一些动画属性变化也可以单独在这个线程运行，不需要经过主线程，提高渲染性能。</li>
+  <li><strong>raster 线程</strong>：和合成线程共同作用，用于同层分块的，提高渲染性能。</li>
+  </ul>
+</div>
+
+
+<p>渲染进程的主线程中有一个 <strong>HTML 解析器（HTMLparser）</strong>，将 html 字节流通过分词器转换为 Token 流，最终生成 DOM 结构。</p>
+<p>解析过程中，会先解析 CSS 文件（JS 可能改变 CSS），生成 CSSOM 后，再进行 JS 的解析，最后进行 DOM 树的构建。</p>
+
+<div class="hcb-content hcb-block hcbinfo">
+  <p class="hcb-content hcb-block-title"><i class="fa fa-circle-info fa-fw"></i>解析时遇到script标签</p>
+  <ul>
+  <li><strong>script</strong>：当解析器遇到script标签时，文档的解析将立即停止，并立即下载并且执行脚本，脚本执行完毕以后将继续解析文档</li>
+  <li><strong>defer script</strong>：当解析器遇到script标签时，文档的解析不会立即停止，其他线程将下载脚本，待到文档的解析完成，脚本才会执行</li>
+  <li><strong>async script</strong>：当解析器遇到script标签时，文档的解析不会停止，其他线程将下载脚本，脚本完成后开始执行脚本，脚本的执行过程中文档将会停止解析，直到脚本执行完毕</li>
+  </ul>
+</div>
+
+
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/huangpb123/article/details/104076301/">浏览器的多进程架构_huangpb0624的博客-CSDN博客</a></p>
+<h2 id="解析渲染机制"><a href="#解析渲染机制" class="headerlink" title="解析渲染机制"></a>解析渲染机制</h2><p><img src="image-20240830111500876.png" srcset="/blog/img/loading.gif" lazyload></p>
+<h2 id="回流（reflow）-和-重绘（repaint）"><a href="#回流（reflow）-和-重绘（repaint）" class="headerlink" title="回流（reflow） 和 重绘（repaint）"></a>回流（reflow） 和 重绘（repaint）</h2><blockquote>
+<p>重绘不一定导致回流，但回流一定会导致重绘</p>
+</blockquote>
+<h3 id="回流-重排"><a href="#回流-重排" class="headerlink" title="回流 (重排)"></a>回流 (重排)</h3><h4 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h4><p>当 <code>页面布局</code> 或 <code>DOM 元素的几何属性</code>（例如位置、大小）发生变化时，浏览器需要重新计算元素的几何属性，并重新布局整个页面。这是一个比较耗性能的操作，会导致页面重新渲染，因此应该尽量避免频繁的回流</p>
+<h4 id="触发条件"><a href="#触发条件" class="headerlink" title="触发条件"></a>触发条件</h4><ol>
+<li>页面首次渲染（无法避免且开销最大的一次）；</li>
+<li>浏览器窗口大小发生改变（<code>resize</code> 事件）；</li>
+<li>添加或删除 <strong>可见</strong> 的 DOM 元素；</li>
+<li>修改 DOM 元素的尺寸、位置、边距、填充等；</li>
+<li>修改 DOM 元素的内容（文本、图片等）；</li>
+<li>激活 CSS 伪类，例如 <code>:hover</code>、<code>:active</code>、<code>:focus</code> 等；</li>
+<li>查询属性或调用方法需要通过 <strong>即时计算</strong> 得到结果：<ul>
+<li>offsetTop、offsetLeft、offsetWidth、offsetHeight</li>
+<li>scrollTop、scrollLeft、scrollWidth、scrollHeight</li>
+<li>clientTop、clientLeft、clientWidth、clientHeight</li>
+<li>getComputedStyle()</li>
+<li>getBoundingClientRect()</li>
+</ul>
+</li>
+</ol>
+<h3 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h3><h4 id="含义-1"><a href="#含义-1" class="headerlink" title="含义"></a>含义</h4><p>当 <code>DOM 元素的样式属性</code>（例如颜色、背景）发生变化时，浏览器会重新绘制被影响的元素。重绘不会影响布局，只会重新绘制元素的外观，因此比回流的性能开销要小</p>
+<h4 id="触发条件-1"><a href="#触发条件-1" class="headerlink" title="触发条件"></a>触发条件</h4><ul>
+<li>修改元素的 <strong>颜色属性</strong><br><code>color</code>、<code>background-color</code>、<code>border-color</code> 等</li>
+<li>修改元素的 <strong>文字属性</strong><br><code>font-weight</code>、<code>font-style</code>、<code>text-decoration</code> 等</li>
+<li>修改元素的 <strong>文本属性</strong><br> <code>text-align</code>、<code>text-transform</code>、<code>line-height</code> 等</li>
+<li>修改元素的 <strong>背景属性</strong><br><code>background-image</code>、<code>background-position</code>、<code>background-size</code> 等</li>
+<li>修改元素的 <strong>盒子模型属性</strong><br> <code>ox-shadow</code>、<code>outline-color</code>、<code>outline-style</code> 等</li>
+<li>使用 <strong>渐变属性</strong><br> <code>linear-gradient</code>、<code>radial-gradient</code> 等</li>
+<li>使用 <strong>变形属性</strong><br> <code>transform</code>、<code>transform-origin</code> 等</li>
+<li>使用 <strong>过渡属性</strong><br> <code>transition</code>、<code>transition-property</code>、<code>transition-duration</code> 等</li>
+</ul>
+<h3 id="浏览器优化机制"><a href="#浏览器优化机制" class="headerlink" title="浏览器优化机制"></a>浏览器优化机制</h3><p>采用 <strong>队列化修改并批量执行</strong> 策略, 将修改放入队列中, 直至一定时间在去清空队列<br>当获取布局信息时, 会强制刷新队列, 获取实时信息</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p><strong>1.避免逐行修改样式, 合并修改样式</strong><br>以下会触发三次重绘, 一次回流, 应尽量避免</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-keyword">const</span> el = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.el&#x27;</span>);<br>el.<span class="hljs-property">style</span>.<span class="hljs-property">color</span> = <span class="hljs-string">&#x27;blue&#x27;</span>; <span class="hljs-comment">// 导致重绘 </span><br>el.<span class="hljs-property">style</span>.<span class="hljs-property">backgroundColor</span> = <span class="hljs-string">&#x27;#96f2d7&#x27;</span>; <span class="hljs-comment">// 导致重绘 </span><br>el.<span class="hljs-property">style</span>.<span class="hljs-property">margin</span> = <span class="hljs-string">&#x27;10px&#x27;</span>; <span class="hljs-comment">// 导致回流（回流会引起重绘）</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>2.动态渲染少用 table 布局</strong><br>内部出现变动, 整个 table 都会重新计算<br><strong>3.避免强制同步</strong><br>减少获取布局信息的次数<br><strong>4.使用 absolute 或 fixed 脱离文档流</strong><br><strong>5.文档片段 (Document Fragment)</strong><br><strong>6.离线处理</strong><br><code>display:none</code> 不会出现在不布局中,不触发重绘和回流<br><code>visibility: none</code> 会触发重绘, 不会影响回流<br><strong>7.使用硬件加速</strong><br>CSS3 动画: <code>transform</code>、<code>opacity</code> 非 1 非 0、<code>keyframes</code> 和 <code>animation</code>, <code>filter</code></p>
+<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><blockquote>
+<p>单线程是异步产生的原因；事件循环是异步的实现方式。</p>
+</blockquote>
+<p>渲染主线程进入死循环执行消息队列中的任务。</p>
+<ul>
+<li>微队列（最高）</li>
+<li>交互队列（高）</li>
+<li>延时队列（中）</li>
+</ul>
+<h2 id="V8-垃圾回收"><a href="#V8-垃圾回收" class="headerlink" title="V8 垃圾回收"></a>V8 垃圾回收</h2><p>主要采取 <strong>分代式</strong> 回收机制。<br>根据对象存活时间进行分代，将对象分为 <strong>新生代</strong> 和 <strong>老生代</strong> 两块内存空间。<br><strong>存活时间较短和新建的对象</strong> 分配到新生代内存中，<strong>存活时间较长的对象</strong> 分配到老生代内存中。<br>两个内存空间分别采用 <strong>不同</strong> 的垃圾回收算法。</p>
+<p><strong>Scavenge 算法 – 新生代</strong><br>1.对象分配到 <strong>From Space</strong>，直到 From Space 接近满（占用 FROM 空间的 <strong>75%</strong> 时）。<br>2.触发 Scavenge 算法，标记存活对象并复制到 <strong>To Space</strong>。当 <strong>To Space</strong> 占用率为 <strong>25%</strong> 时，为了不影响之后<strong>From Space</strong>的分配，需要 <strong>晋升</strong>。<br>3.复制完成后，To Space 变为新的 From Space，原 From Space 被清空。<br>4.未被复制的对象（死亡对象）的内存被自动释放。</p>
+<p><strong>Mark-sweep 和 Mark-compact 算法 – 老生代</strong><br>调用 <strong>Mark-sweep（对象标记和清除）</strong> 标记存活对象，清除未被标记的对象。但会造成内存空间不连续，导致新生代晋升的大对象无法分配。 </p>
+<blockquote>
+<p>标记清除时，会构建一个根列表，从根对象出发，可访问为活动对象，不可访问为死亡对象，执行清除。</p>
+</blockquote>
+<p>当出现该情况时，会调用 <strong>Mark-compact（标记整理）</strong> 进行内存空间整理，将存活对象整理到一侧，然后清除边界外的空间。</p>
+
+<div class="hcb-content hcb-block hcbnote">
+  <p class="hcb-content hcb-block-title"><i class="fa fa-pen fa-fw"></i>新生代晋升老生代</p>
+  <p>对象被多次复制时，会认为生命周期较长，晋升到老生代空间。<br>晋升条件：<br>1.该对象在新生代时是否经历过 Scavenge 回收（第二次 Scavenge 回收依然存活）<br>2.从 From Space 复制到 To Space时，占比超过25%，该批次对象晋升</p>
+</div>
+
+
+<p>V8 还支持增量垃圾回收技术。<br>可将垃圾回收的时间分解成多个短周期的执行任务，从而在进行垃圾回收时不会阻塞 JS 的执行。<br>增量垃圾回收分为几个阶段：</p>
+<ul>
+<li>初始标记（Initial Marking）：在该阶段，垃圾回收器会标记所有根对象和在根对象的引用链上的对象。</li>
+<li>并发标记（Concurrent Marking）：在该阶段，垃圾回收器会在执行应用程序的同时，并发执行标记操作。它会标记所有从根对象出发可到达的对象，直到标记完所有活动对象。</li>
+<li>重新标记（Remark）：这是一个短暂的暂停，垃圾回收器会标记在并发标记阶段有新的指针引用的对象。</li>
+<li>并发清除（Concurrent Sweep）：在该阶段，垃圾回收器会在执行应用程序的同时，并发执行清除操作。它会回收标记为死亡的对象，同时不会改变存活对象的地址。</li>
+</ul>
+<h3 id="常见内存泄漏"><a href="#常见内存泄漏" class="headerlink" title="常见内存泄漏"></a>常见内存泄漏</h3><ul>
+<li>意外的全局变量，未使用关键字</li>
+<li>定时器和回调函数</li>
+<li>闭包持有引用</li>
+<li>脱离的 DOM 元素<br>声明的 DOM 变量主动赋值为 null</li>
+<li>事件监听器</li>
+</ul>
+<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><h3 id="浏览器请求过程"><a href="#浏览器请求过程" class="headerlink" title="浏览器请求过程"></a>浏览器请求过程</h3><p><img src="image-20230510150629303.png" srcset="/blog/img/loading.gif" lazyload></p>
+<h3 id="强缓存"><a href="#强缓存" class="headerlink" title="强缓存"></a>强缓存</h3><p>直接从缓存中获取，不会向服务器发送请求。<br>通过设置 <strong>Expires</strong>(有效期) 和 <strong>Cache-Control</strong> （优先级高）响应头设置。</p>
+<p><strong>Expires</strong> (http1.0)<br><code>Expires:now()+max-age</code>，指定时间点之前访问可命中缓存。  </p>
+<blockquote>
+<p><strong>缺点</strong>：使用的是本地时间判断，本地时间可修改。</p>
+</blockquote>
+<p><strong>Cache-Control</strong> (http1.1)<br><code>Cache-Control:max-age=300</code>，返回时间开始，300 秒以内访问可命中缓存。</p>
+
+<div class="hcb-content hcb-block hcbinfo">
+  <p class="hcb-content hcb-block-title"><i class="fa fa-circle-info fa-fw"></i>多种命令</p>
+  <p><img src="image-20230512144002115.png" srcset="/blog/img/loading.gif" lazyload><br><strong>immutable</strong>：缓存有效期内禁止验证。一般搭配max-age使用，单独使用部分浏览器可能忽略该值。<br><strong>no-cache</strong>：客户端缓存内容，是否使用缓存则需要经过协商缓存来验证决定。表示不使用 Cache-Control的缓存控制方式做前置验证，而是使用 Etag 或者Last-Modified字段来控制缓存。<br><strong>no-store</strong>：所有内容都不会被缓存，即不使用强制缓存，也不使用协商缓存, 也不会触发启发式缓存</p>
+</div>
+
+
+<h3 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h3><p>强缓存失效后，携带缓存标识请求服务器，决定是否使用缓存。<br><strong>Last-Modified</strong> 和 <strong>If-Modified-Since</strong><br>响应头 Last-Modified 携带文件上次修改时间，下次客户端请求服务器在 If-Modified-Since 存放改时间，服务器对比文件修改时间来决定是否使用缓存。<br><strong>ETag</strong> 和 <strong>If-None-Match</strong><br>服务器响应在 ETag 携带文件唯一标识，每次更新文件重新生成，客户端请求在 If-None-Match 携带该标识，服务器对比标识决定是否使用缓存。</p>
+
+<div class="hcb-content hcb-block hcbtip">
+  <p class="hcb-content hcb-block-title"><i class="fa fa-fire fa-fw"></i>Last-Modified和ETag</p>
+  <p><strong>精确度</strong>：Last-Modified单位为秒，如何文件1秒内修改多次，会导致检测不到变化。<br><strong>性能</strong>：ETag需要算法生成hash，而Last-Modified只需要记录时间，性能更好。<br><strong>优先级</strong>：ETag优先级更高。  </p>
+</div>
+
+
+<h3 id="启发式缓存"><a href="#启发式缓存" class="headerlink" title="启发式缓存"></a>启发式缓存</h3><p>当响应中不存在 <strong>Expires</strong> 和 <strong>Cache-Control</strong> 头时, 浏览器依然会触发强缓存, 即启发式缓存<br>缓存有效期计算公式：**(date - last-modified ) * 10%**</p>
+<h3 id="memory-cache-和-disk-cache"><a href="#memory-cache-和-disk-cache" class="headerlink" title="memory cache 和 disk cache"></a>memory cache 和 disk cache</h3><p>memory cache 存储在内存中，读取速度快；<br>disk cache 存储在硬盘中，读取速度慢于 memory cache。<br>页面打开后刷新从 memory cache 获取，页面关闭后再打开，从 disk cache 获取。</p>
+<h2 id="客户端存储"><a href="#客户端存储" class="headerlink" title="客户端存储"></a>客户端存储</h2><h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">CookieUtil</span> &#123;<br>  <span class="hljs-keyword">static</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">name</span>) &#123;<br>    <span class="hljs-keyword">let</span> cookieName = <span class="hljs-string">`<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(name)&#125;</span>=`</span>,<br>      cookieStart = <span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>.<span class="hljs-title function_">indexOf</span>(cookieName),<br>      cookieValue = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">if</span> (cookieStart &gt; -<span class="hljs-number">1</span>) &#123;<br>      <span class="hljs-keyword">let</span> cookieEnd = <span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;;&quot;</span>, cookieStart);<br>      <span class="hljs-keyword">if</span> (cookieEnd === -<span class="hljs-number">1</span>) &#123;<br>        cookieEnd = <span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>.<span class="hljs-property">length</span>;<br>      &#125;<br>      cookieValue = <span class="hljs-built_in">decodeURIComponent</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span>.<span class="hljs-title function_">substring</span>(cookieStart<br>        + cookieName.<span class="hljs-property">length</span>, cookieEnd));<br>    &#125;<br>    <span class="hljs-keyword">return</span> cookieValue;<br>  &#125;<br><br>  <span class="hljs-keyword">static</span> <span class="hljs-title function_">set</span>(<span class="hljs-params">name, value, expires, path, domain, secure</span>) &#123;<br>    <span class="hljs-keyword">let</span> cookieText =<br>      <span class="hljs-string">`<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(name)&#125;</span>=<span class="hljs-subst">$&#123;<span class="hljs-built_in">encodeURIComponent</span>(value)&#125;</span>`</span>;<br>    <span class="hljs-keyword">if</span> (expires <span class="hljs-keyword">instanceof</span> <span class="hljs-title class_">Date</span>) &#123;<br>      cookieText += <span class="hljs-string">`; expires=<span class="hljs-subst">$&#123;expires.toUTCString()&#125;</span>`</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (path) &#123;<br>      cookieText += <span class="hljs-string">`; path=<span class="hljs-subst">$&#123;path&#125;</span>`</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (domain) &#123;<br>      cookieText += <span class="hljs-string">`; domain=<span class="hljs-subst">$&#123;domain&#125;</span>`</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (secure) &#123;<br>      cookieText += <span class="hljs-string">&quot;; secure&quot;</span>;<br>    &#125;<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-property">cookie</span> = cookieText;<br>  &#125;<br><br>  <span class="hljs-keyword">static</span> <span class="hljs-title function_">unset</span>(<span class="hljs-params">name, path, domain, secure</span>) &#123;<br>    <span class="hljs-title class_">CookieUtil</span>.<span class="hljs-title function_">set</span>(name, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">0</span>), path, domain, secure);<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>跨域携带</strong><br>1.发送请求携带 <code>withCredentials: true</code><br>2.服务器配置响应头 <code>&quot;Access-Control-Allow-Origin&quot;, &quot;http://xxx:$&#123;port&#125;&quot;</code>，<code>&quot;Access-Control-Allow-Credentials&quot;, &quot;true&quot;</code></p>
+<h3 id="Storage"><a href="#Storage" class="headerlink" title="Storage"></a>Storage</h3><p>当 Storage 对象发生变化时，触发 storage 事件。该事件不区分 sessionStorage 和 localStorage。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;storage&quot;</span>, <br> <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;Storage changed for $&#123;event.domain&#125;&#x27;</span>)); <br></code></pre></td></tr></table></figure>
+
+<h3 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h3><p>每个请求都需要注册 onerror 和 onsuccess 处理程序。<br><strong>打开数据库连接</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 打开数据库</span><br><span class="hljs-keyword">let</span> db,<br>  request,<br>  <span class="hljs-comment">// 版本号需要是整数</span><br>  version = <span class="hljs-number">1</span>;<br>request = indexedDB.<span class="hljs-title function_">open</span>(<span class="hljs-string">&quot;admin&quot;</span>, version);<br><span class="hljs-comment">// event.target --&gt; request</span><br>request.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>  <span class="hljs-title function_">alert</span>(<span class="hljs-string">`Failed to open: <span class="hljs-subst">$&#123;event.target.errorCode&#125;</span>`</span>);<br>&#125;;<br>request.<span class="hljs-property">onsuccess</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>  db = event.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>;<br>&#125;;<br><span class="hljs-comment">// open()创建新数据库/数据库存在，指定升级版的版本号--&gt;触发upgradeneeded</span><br>request.<span class="hljs-property">onupgradeneeded</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> db = event.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>;<br>  <span class="hljs-comment">// 如果存在则删除当前 objectStore。测试的时候可以这样做</span><br>  <span class="hljs-comment">// 但这样会在每次执行事件处理程序时删除已有数据</span><br>  <span class="hljs-keyword">if</span> (db.<span class="hljs-property">objectStoreNames</span>.<span class="hljs-title function_">contains</span>(<span class="hljs-string">&quot;users&quot;</span>)) &#123;<br>    db.<span class="hljs-title function_">deleteObjectStore</span>(<span class="hljs-string">&quot;users&quot;</span>);<br>  &#125;<br>  <span class="hljs-comment">// keyPath 用作键的存储对象的属性名</span><br>  db.<span class="hljs-title function_">createObjectStore</span>(<span class="hljs-string">&quot;users&quot;</span>, &#123;<span class="hljs-attr">keyPath</span>: <span class="hljs-string">&quot;username&quot;</span>&#125;);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>创建事务，操作数据</strong><br>该操作应该放在打开数据的请求中的 <code>onsuccess</code> 事件处理程序中。<br><code>add()</code> 与 <code>put()</code> 的唯一区别，前者用于添加新数据，后者用于更新数据。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 创建事务</span><br><span class="hljs-keyword">const</span> transaction = db.<span class="hljs-title function_">transaction</span>(<span class="hljs-string">&quot;users&quot;</span>, <span class="hljs-string">&quot;readwrite&quot;</span>);<br>transaction.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>	<span class="hljs-comment">// 整个事务被取消</span><br>&#125;;<br>transaction.<span class="hljs-property">oncomplete</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>	<span class="hljs-comment">// 整个事务成功完成</span><br>	<span class="hljs-comment">// 不能访问 get() 返回的数据 应该在请求的 onsuccess 中处理</span><br>&#125;;<br><span class="hljs-comment">// 获得对象存储引用</span><br><span class="hljs-keyword">const</span> store = transaction.<span class="hljs-title function_">objectStore</span>(<span class="hljs-string">&quot;users&quot;</span>);<br><span class="hljs-keyword">const</span> requestAdd = store.<span class="hljs-title function_">add</span>(&#123;<span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;lili&#x27;</span>&#125;);<br>requestAdd.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);<br>&#125;;<br>requestAdd.<span class="hljs-property">onsuccess</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">target</span>);<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>使用游标</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> cursorRequest = store.<span class="hljs-title function_">openCursor</span>();<br>cursorRequest.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(event.<span class="hljs-property">target</span>.<span class="hljs-property">errorCode</span>);<br>&#125;;<br>cursorRequest.<span class="hljs-property">onsuccess</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>	<span class="hljs-keyword">const</span> cursor = event.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>;<br>	<span class="hljs-keyword">let</span> value,<br>		updateRequest;<br>	<span class="hljs-comment">// 必须检查是否存在</span><br>	<span class="hljs-keyword">if</span> (cursor) &#123;<br>		<span class="hljs-comment">// 下一条记录</span><br>		<span class="hljs-comment">// cursor.continue();</span><br>		<span class="hljs-comment">// 指定的上2条记录</span><br>		<span class="hljs-comment">// cursor.advance(2);</span><br>		<span class="hljs-keyword">if</span> (cursor.<span class="hljs-property">key</span> === <span class="hljs-string">&#x27;lili&#x27;</span>) &#123;<br>			value = cursor.<span class="hljs-property">value</span>;<br>			value.<span class="hljs-property">password</span> = <span class="hljs-string">&quot;magic&quot;</span>;<br>			updateRequest = cursor.<span class="hljs-title function_">update</span>(value);<br>			<span class="hljs-comment">//onerror,onsuccess</span><br>			updateRequest.<span class="hljs-property">onerror</span> = <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;<br>				<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err);<br>			&#125;;<br>			updateRequest.<span class="hljs-property">onsuccess</span> = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> &#123;<br>				<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">target</span>);<br>			&#125;;<br>		&#125;<br>	&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>也可以在打开游标时 (<code>openCursor()</code>) 传入键范围对象，对游标进行限制。</p>
+<ul>
+<li><code>IDBKeyRange.only(key)</code>，只返回指定键的值。</li>
+<li><code>IDBKeyRange.lowerBound(key[,true])</code>，从键为 key 开始知道最后，参数二为 true 时则从 key 的下一个记录开始。</li>
+<li><code>IDBKeyRange.upperBound(key[,true])</code>，从头到 key 结束，参数二为 true 时则从 key 的上一个记录开始。</li>
+<li><code>IDBKeyRange.bound(lowerKey,upperKey,lowertrue,uppertrue)</code>，前两个方法的结合。</li>
+</ul>
+<p><code>openCursor(null,direction)</code> 第二个参数可以设置游标方向。</p>
+<p><strong>创建索引</strong><br>主键 userId,创建 username 的索引，索引同对象存储，只是主键为 username。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> index=store.<span class="hljs-title function_">index</span>(<span class="hljs-string">&quot;username&quot;</span>); <br><span class="hljs-comment">// 通过索引键获取主键</span><br><span class="hljs-keyword">const</span> indexRequest=index.<span class="hljs-title function_">getKey</span>(<span class="hljs-string">&quot;007&quot;</span>);<br><span class="hljs-comment">// 删除索引</span><br>store.<span class="hljs-title function_">deleteIndex</span>(<span class="hljs-string">&quot;username&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><strong>并发问题</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">request = indexedDB.<span class="hljs-title function_">open</span>(<span class="hljs-string">&quot;admin&quot;</span>, version);<br>request.<span class="hljs-property">onsuccess</span> = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>	db = event.<span class="hljs-property">target</span>.<span class="hljs-property">result</span>;<br>	<span class="hljs-comment">// 每次打开数据库都注册该事件处理程序</span><br>	db.<span class="hljs-property">onversionchange</span> = <span class="hljs-function">() =&gt;</span> db.<span class="hljs-title function_">close</span>();<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>限制</strong><br>与页面源（协议、域和端口）绑定，不能跨域共享。<br>存储空间限制（各浏览器不同）。<br>Firefox 本地文件不能访问 IndexedDB。</p>
+<h2 id="同源策略（Same-Origin-Policy）"><a href="#同源策略（Same-Origin-Policy）" class="headerlink" title="同源策略（Same-Origin Policy）"></a>同源策略（Same-Origin Policy）</h2><p>只允许从同源地址获取数据，非同源的请求会先出发 CORS 预检请求，简单请求不会出发预检请求。  </p>
+
+<div class="hcb-content hcb-block hcbinfo">
+  <p class="hcb-content hcb-block-title"><i class="fa fa-circle-info fa-fw"></i>简单请求</p>
+  <ul>
+  <li>HTTP 方法限制：只能使用 GET、HEAD、POST 这三种 HTTP 方法之一。如果请求使用了其他 HTTP 方法，就不再被视为简单请求。</li>
+  <li>自定义标头限制：请求的 HTTP 标头只能是以下几种常见的标头：Accept、Accept-Language、Content-Language、Last-Event-ID、Content-Type（仅限于 application&#x2F;x-www-form-urlencoded、multipart&#x2F;form-data、text&#x2F;plain）。HTML 头部 header field 字段：DPR、Download、Save-Data、Viewport-Width、WIdth。如果请求使用了其他标头，同样不再被视为简单请求。</li>
+  <li>请求中没有使用 ReadableStream 对象。</li>
+  <li>不使用自定义请求标头：请求不能包含用户自定义的标头。</li>
+  <li>请求中的任意 XMLHttpRequestUpload 对象均没有注册任何事件监听器；XMLHttpRequestUpload 对象可以使用 XMLHttpRequest.upload 属性访问</li>
+  </ul>
+</div>
+
+
+<h3 id="存储分区（Storage-Partitioning）"><a href="#存储分区（Storage-Partitioning）" class="headerlink" title="存储分区（Storage Partitioning）"></a>存储分区（Storage Partitioning）</h3><p><img src="file-20250428173808360.png" srcset="/blog/img/loading.gif" lazyload><br>跨域加载页面默认启动存储分区。<br>部分浏览器针对跨端口（尤其是本地环境）嵌入相对宽松。<br><code>127.0.0.1:5500</code> 嵌入 <code>127.0.0.1:9000</code> 不会触发存储分区，但 <code>localhost:5500</code> 嵌入 <code>127.0.0.1:9000</code> 会触发存储分区，因为不只是跨端口。  </p>
+<p>如果一定要跨域访问，可以使用 Storage Access API（兼容性考虑）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-title function_">requestStorageAccess</span>(&#123; <span class="hljs-attr">localStorage</span>: <span class="hljs-literal">true</span> &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">handle</span>) =&gt;</span> &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(handle);<br>	handle.<span class="hljs-property">localStorage</span>.<span class="hljs-title function_">clear</span>();<br>&#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;拒绝授权&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>需要在<strong>用户主动触发</strong>的操作中执行以上代码。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../categories/Web/" class="category-chain-item">Web</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Browser</div>
+      <div>https://sunsea-h.github.io/blog/Web/Browser/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 24, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../%E5%9F%8B%E7%82%B9%E7%9B%91%E6%8E%A7/" title="埋点监控">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">埋点监控</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../HTML/XML/" title="XML">
+                        <span class="hidden-mobile">XML</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../js/events.js" ></script>
+<script  src="../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

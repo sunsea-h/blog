@@ -1,0 +1,1368 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="../../img/fluid.png">
+  <link rel="icon" href="../../img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="hxh">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="HTML5新增标签语义化标签：article、section、aside、header、nav、footer、address progress：表示运行中的进度&lt;progress value&#x3D;&#39;50&#39; max&#x3D;&#39;100&#39;&gt;&lt;&#x2F;progress&gt; input 输入框  placeholder 用来描述输入字段预期值的提示信息。输入字段为空时显示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5">
+<meta property="og:url" content="https://sunsea-h.github.io/blog/HTML/HTML5/index.html">
+<meta property="og:site_name" content="Blog">
+<meta property="og:description" content="HTML5新增标签语义化标签：article、section、aside、header、nav、footer、address progress：表示运行中的进度&lt;progress value&#x3D;&#39;50&#39; max&#x3D;&#39;100&#39;&gt;&lt;&#x2F;progress&gt; input 输入框  placeholder 用来描述输入字段预期值的提示信息。输入字段为空时显示">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/HTML/HTML5/image-20221124112959910.png">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/HTML/HTML5/image-20221124113619483.png">
+<meta property="og:image" content="https://sunsea-h.github.io/blog/HTML/HTML5/image-20221124115027617.png">
+<meta property="article:published_time" content="2022-09-05T11:33:18.000Z">
+<meta property="article:modified_time" content="2025-06-04T11:17:31.000Z">
+<meta property="article:author" content="hxh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sunsea-h.github.io/blog/HTML/HTML5/image-20221124112959910.png">
+  
+  
+  
+  <title>HTML5 - Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"sunsea-h.github.io","root":"/blog/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/blog/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../js/utils.js" ></script>
+  <script  src="../../js/color-schema.js" ></script>
+  
+
+
+      <style type="text/css">
+
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote,div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract,div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo,div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip,div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess,div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion,div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning,div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure,div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger,div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug,div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample,div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border: .05rem solid #448aff;
+  border-radius: .2rem;
+  font-size: 0.96rem;
+  margin: 1.5625em 0;
+  padding: 0 1.2rem;
+  transition: box-shadow 250ms;
+}
+div.hcb-content.hcb-block.hcbnote, details.hcb-content.box.hcbnote {
+  border-color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract, details.hcb-content.box.hcbabstract {
+  border-color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo, details.hcb-content.box.hcbinfo {
+  border-color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip, details.hcb-content.box.hcbtip {
+  border-color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess, details.hcb-content.box.hcbsuccess {
+  border-color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion, details.hcb-content.box.hcbquestion {
+  border-color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning, details.hcb-content.box.hcbwarning {
+  border-color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure, details.hcb-content.box.hcbfailure {
+  border-color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger, details.hcb-content.box.hcbdanger {
+  border-color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug, details.hcb-content.box.hcbbug {
+  border-color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample, details.hcb-content.box.hcbexample {
+  border-color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote, details.hcb-content.box.hcbquote {
+  border-color: #9e9e9e;
+}
+div.hcb-content.hcb-block.hcbnote:focus-within, details.hcb-content.box.hcbnote:focus-within {
+  box-shadow: 0 0 0 .2rem #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract:focus-within, details.hcb-content.box.hcbabstract:focus-within {
+  box-shadow: 0 0 0 .2rem #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo:focus-within, details.hcb-content.box.hcbinfo:focus-within {
+  box-shadow: 0 0 0 .2rem #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip:focus-within, details.hcb-content.box.hcbtip:focus-within {
+  box-shadow: 0 0 0 .2rem #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess:focus-within, details.hcb-content.box.hcbsuccess:focus-within {
+  box-shadow: 0 0 0 .2rem #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion:focus-within, details.hcb-content.box.hcbquestion:focus-within {
+  box-shadow: 0 0 0 .2rem #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning:focus-within, details.hcb-content.box.hcbwarning:focus-within {
+  box-shadow: 0 0 0 .2rem #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure:focus-within, details.hcb-content.box.hcbfailure:focus-within {
+  box-shadow: 0 0 0 .2rem #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger:focus-within, details.hcb-content.box.hcbdanger:focus-within {
+  box-shadow: 0 0 0 .2rem #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug:focus-within, details.hcb-content.box.hcbbug:focus-within {
+  box-shadow: 0 0 0 .2rem #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample:focus-within, details.hcb-content.box.hcbexample:focus-within {
+  box-shadow: 0 0 0 .2rem #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote:focus-within, details.hcb-content.box.hcbquote:focus-within {
+  box-shadow: 0 0 0 .2rem #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote *, details.hcb-content.box.hcbnote *,div.hcb-content.hcb-block.hcbabstract *, details.hcb-content.box.hcbabstract *,div.hcb-content.hcb-block.hcbinfo *, details.hcb-content.box.hcbinfo *,div.hcb-content.hcb-block.hcbtip *, details.hcb-content.box.hcbtip *,div.hcb-content.hcb-block.hcbsuccess *, details.hcb-content.box.hcbsuccess *,div.hcb-content.hcb-block.hcbquestion *, details.hcb-content.box.hcbquestion *,div.hcb-content.hcb-block.hcbwarning *, details.hcb-content.box.hcbwarning *,div.hcb-content.hcb-block.hcbfailure *, details.hcb-content.box.hcbfailure *,div.hcb-content.hcb-block.hcbdanger *, details.hcb-content.box.hcbdanger *,div.hcb-content.hcb-block.hcbbug *, details.hcb-content.box.hcbbug *,div.hcb-content.hcb-block.hcbexample *, details.hcb-content.box.hcbexample *,div.hcb-content.hcb-block.hcbquote *, details.hcb-content.box.hcbquote * {
+  box-sizing: border-box;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary,div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary,div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary,div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary,div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary,div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary,div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary,div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary,div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary,div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary,div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary,div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  border-top-right-radius: 0.1rem;
+  border-top-left-radius: 0.1rem;
+  border-left-width: 0.2rem;
+  display: block;
+  min-height: 1rem;
+  border: none;
+  font-weight: 700;
+  margin: 0 -1.2rem 1rem;
+  padding: 0.4rem 0.6rem;
+  position: relative;
+  outline: none;
+}
+details.hcb-content.box.hcbnote > summary,details.hcb-content.box.hcbabstract > summary,details.hcb-content.box.hcbinfo > summary,details.hcb-content.box.hcbtip > summary,details.hcb-content.box.hcbsuccess > summary,details.hcb-content.box.hcbquestion > summary,details.hcb-content.box.hcbwarning > summary,details.hcb-content.box.hcbfailure > summary,details.hcb-content.box.hcbdanger > summary,details.hcb-content.box.hcbbug > summary,details.hcb-content.box.hcbexample > summary,details.hcb-content.box.hcbquote > summary {
+  cursor: pointer;
+}
+details.hcb-content.box.hcbnote:not([open]) > summary,details.hcb-content.box.hcbabstract:not([open]) > summary,details.hcb-content.box.hcbinfo:not([open]) > summary,details.hcb-content.box.hcbtip:not([open]) > summary,details.hcb-content.box.hcbsuccess:not([open]) > summary,details.hcb-content.box.hcbquestion:not([open]) > summary,details.hcb-content.box.hcbwarning:not([open]) > summary,details.hcb-content.box.hcbfailure:not([open]) > summary,details.hcb-content.box.hcbdanger:not([open]) > summary,details.hcb-content.box.hcbbug:not([open]) > summary,details.hcb-content.box.hcbexample:not([open]) > summary,details.hcb-content.box.hcbquote:not([open]) > summary {
+  margin-bottom: 0;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbnote > summary {
+  background-color: #448aff1a;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbabstract > summary {
+  background-color: #00b0ff1a;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbinfo > summary {
+  background-color: #00b8d41a;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbtip > summary {
+  background-color: #00bfa51a;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbsuccess > summary {
+  background-color: #00c8531a;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquestion > summary {
+  background-color: #64dd171a;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbwarning > summary {
+  background-color: #ff91001a;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbfailure > summary {
+  background-color: #ff52521a;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbdanger > summary {
+  background-color: #ff17441a;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbbug > summary {
+  background-color: #f500571a;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbexample > summary {
+  background-color: #7c4dff1a;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title, details.hcb-content.box.hcbquote > summary {
+  background-color: #9e9e9e1a;
+}
+div.hcb-content.hcb-block.hcbnote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbnote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #448aff;
+}
+div.hcb-content.hcb-block.hcbabstract > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbabstract > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b0ff;
+}
+div.hcb-content.hcb-block.hcbinfo > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbinfo > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00b8d4;
+}
+div.hcb-content.hcb-block.hcbtip > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbtip > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00bfa5;
+}
+div.hcb-content.hcb-block.hcbsuccess > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbsuccess > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #00c853;
+}
+div.hcb-content.hcb-block.hcbquestion > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquestion > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #64dd17;
+}
+div.hcb-content.hcb-block.hcbwarning > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbwarning > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff9100;
+}
+div.hcb-content.hcb-block.hcbfailure > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbfailure > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff5252;
+}
+div.hcb-content.hcb-block.hcbdanger > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbdanger > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #ff1744;
+}
+div.hcb-content.hcb-block.hcbbug > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbbug > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #f50057;
+}
+div.hcb-content.hcb-block.hcbexample > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbexample > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #7c4dff;
+}
+div.hcb-content.hcb-block.hcbquote > p.hcb-content.hcb-block-title > i, details.hcb-content.box.hcbquote > summary > i {
+  margin: 0 0.6rem 0 0.6rem;
+  color: #9e9e9e;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button {
+  float: right;
+}
+details.hcb-content.box.hcbnote > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbabstract > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbinfo > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbtip > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbsuccess > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquestion > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbwarning > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbfailure > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbdanger > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbbug > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbexample > summary > div.hcb-box-open-button > i,details.hcb-content.box.hcbquote > summary > div.hcb-box-open-button > i {
+  margin: 0 0.6rem 0 0.6rem;
+  font-size: 0.7rem;
+  transition: transform 250ms
+}
+details.hcb-content.box.hcbnote:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample:not([open]) > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote:not([open]) > summary > div.hcb-box-open-button i {
+  transform: rotate(270deg);
+}
+details.hcb-content.box.hcbnote[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbabstract[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbinfo[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbtip[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbsuccess[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquestion[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbwarning[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbfailure[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbdanger[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbbug[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbexample[open] > summary > div.hcb-box-open-button i,details.hcb-content.box.hcbquote[open] > summary > div.hcb-box-open-button i {
+  transform: rotate(180deg);
+}
+details.hcb-content.box.hcbnote summary div.hcb-box-open-button i {
+  color: #448aff;
+}
+details.hcb-content.box.hcbabstract summary div.hcb-box-open-button i {
+  color: #00b0ff;
+}
+details.hcb-content.box.hcbinfo summary div.hcb-box-open-button i {
+  color: #00b8d4;
+}
+details.hcb-content.box.hcbtip summary div.hcb-box-open-button i {
+  color: #00bfa5;
+}
+details.hcb-content.box.hcbsuccess summary div.hcb-box-open-button i {
+  color: #00c853;
+}
+details.hcb-content.box.hcbquestion summary div.hcb-box-open-button i {
+  color: #64dd17;
+}
+details.hcb-content.box.hcbwarning summary div.hcb-box-open-button i {
+  color: #ff9100;
+}
+details.hcb-content.box.hcbfailure summary div.hcb-box-open-button i {
+  color: #ff5252;
+}
+details.hcb-content.box.hcbdanger summary div.hcb-box-open-button i {
+  color: #ff1744;
+}
+details.hcb-content.box.hcbbug summary div.hcb-box-open-button i {
+  color: #f50057;
+}
+details.hcb-content.box.hcbexample summary div.hcb-box-open-button i {
+  color: #7c4dff;
+}
+details.hcb-content.box.hcbquote summary div.hcb-box-open-button i {
+  color: #9e9e9e;
+}
+div.hcb-content.hcb-cards * {
+  box-sizing: border-box;
+}
+input.hcb-content.hcb-cards-input {
+  display: none;
+}
+div.hcb-content.hcb-cards-labels {
+  position: relative;
+  box-shadow: 0 -0.05rem #00000012 inset;
+  display: flex;
+  margin-bottom: 1.25rem;
+}
+div.hcb-content.hcb-cards-labels:before {
+  background: var(--cards-color);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: translateX(var(--md-indicator-x));
+  transition: width 225ms, transform 250ms;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  width: var(--md-indicator-width);
+}
+label.hcb-content.hcb-cards-label {
+  border-bottom: 0.1rem solid #0000;
+  border-radius: 0.1rem 0.1rem 0 0;
+  cursor: pointer;
+  color: #0000008a;
+  font-size: 0.92em;
+  font-weight: 700;
+  padding: 0 1.25rem 0.625rem;
+  transition: color 250ms;
+}
+label.hcb-content.hcb-cards-label.active, label.hcb-content.hcb-cards-label:hover {
+  color: var(--cards-color);
+}
+div.hcb-content.hcb-cards-content {
+  display: none;
+}
+div.hcb-content.hcb-cards-content.active {
+  display: block;
+}
+</style>
+    <link rel="stylesheet" href="/blog/webfonts/font-awesome-all.min.css"/>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../index.html">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../index.html" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>Home</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>Archives</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>Categories</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>Tags</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="../../about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>About</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>Search</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="Light"
+               data-label-dark="Dark">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">Dark</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HTML5"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-05 11:33" pubdate>
+          September 5, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          22k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          180 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">HTML5</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h1><h2 id="新增标签"><a href="#新增标签" class="headerlink" title="新增标签"></a>新增标签</h2><p><strong>语义化标签</strong>：article、section、aside、header、nav、footer、address</p>
+<p><strong>progress</strong>：表示运行中的进度<br><code>&lt;progress value=&#39;50&#39; max=&#39;100&#39;&gt;&lt;/progress&gt;</code></p>
+<p><strong>input 输入框</strong></p>
+<ol>
+<li>placeholder 用来描述输入字段预期值的提示信息。输入字段为空时显示</li>
+<li>type 的类型<br> 可以设置为 number,date 等。<code>type=‘number’</code> 只能输入数字类型，火狐没效果，谷歌可以，兼容性差</li>
+</ol>
+<h2 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h2><ol>
+<li><strong>video 视频</strong><br>H5 中 video 标签可以向向使用 img 显示图片一样简单去播放视频。</li>
+</ol>
+<p><strong>属性</strong>：</p>
+<ul>
+<li>src：需要引入的视频资源地址</li>
+<li>controls：是否显示视频的控件，比如播放暂停进度条音量全屏等。</li>
+<li>autoplay：在视频就绪后马上播放。跟 muted 搭配使用，否则可能不能自动播放。</li>
+<li>muted ：视频的音频为静音。</li>
+<li>loop：当视频完成播放后再次开始播放</li>
+<li>volume：视频的音量 0~1</li>
+<li>duration ：视频的总时长</li>
+<li>currentTime：当前播放的进度</li>
+<li>paused：当前视频的状态是否暂停暂停 true</li>
+<li>width：设置宽度</li>
+<li>height：设置高度</li>
+</ul>
+<p><strong>方法</strong>：</p>
+<ul>
+<li>play()：播放</li>
+<li>load()：重新加载当前视频</li>
+<li>pause()：暂停方法</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;视频地址&quot;</span> <span class="hljs-attr">controls</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btns&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>播放<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>暂停<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>快进<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>快退<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>快倍速<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>慢倍速<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;play&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;play&quot;</span>&gt;</span>播放<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;progress&quot;</span>&gt;</span>获得播放百分比<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;showprogress&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> video = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;video&#x27;</span>)[<span class="hljs-number">0</span>]</span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> btns = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByClassName</span>(<span class="hljs-string">&#x27;btns&#x27;</span>)[<span class="hljs-number">0</span>]</span><br><span class="language-javascript">	btns.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> text = event.<span class="hljs-property">target</span>.<span class="hljs-property">innerText</span></span><br><span class="language-javascript">		<span class="hljs-keyword">if</span>(text == <span class="hljs-string">&#x27;播放&#x27;</span>)&#123;</span><br><span class="language-javascript">			video.<span class="hljs-title function_">play</span>()</span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">		<span class="hljs-keyword">if</span>(text == <span class="hljs-string">&#x27;暂停&#x27;</span>)&#123;</span><br><span class="language-javascript">			video.<span class="hljs-title function_">pause</span>()</span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">		<span class="hljs-keyword">if</span>(text == <span class="hljs-string">&#x27;快进&#x27;</span>)&#123;</span><br><span class="language-javascript">			video.<span class="hljs-property">currentTime</span> +=<span class="hljs-number">10</span></span><br><span class="language-javascript">			video.<span class="hljs-title function_">play</span>()</span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">		<span class="hljs-keyword">if</span>(text == <span class="hljs-string">&#x27;快退&#x27;</span>)&#123;</span><br><span class="language-javascript">			video.<span class="hljs-property">currentTime</span> -=<span class="hljs-number">10</span></span><br><span class="language-javascript">			video.<span class="hljs-title function_">play</span>()</span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">		<span class="hljs-keyword">if</span>(text == <span class="hljs-string">&#x27;快倍速&#x27;</span>)&#123;</span><br><span class="language-javascript">			video.<span class="hljs-property">playbackRate</span> *= <span class="hljs-number">1.2</span></span><br><span class="language-javascript">			video.<span class="hljs-title function_">play</span>()</span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">		<span class="hljs-keyword">if</span>(text == <span class="hljs-string">&#x27;满倍速&#x27;</span>)&#123;</span><br><span class="language-javascript">			video.<span class="hljs-property">playbackRate</span> *= <span class="hljs-number">0.1</span></span><br><span class="language-javascript">			video.<span class="hljs-title function_">play</span>()</span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">	&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-comment">// 同一个按钮实现暂停播放</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> play_btn = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;play&#x27;</span>)</span><br><span class="language-javascript">	play_btn.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">		<span class="hljs-keyword">if</span>(video.<span class="hljs-property">paused</span>)&#123;            <span class="hljs-comment">//判断视频播放状态  true为暂停</span></span><br><span class="language-javascript">			video.<span class="hljs-title function_">play</span>()</span><br><span class="language-javascript">			play_btn.<span class="hljs-property">innerText</span> = <span class="hljs-string">&#x27;暂停&#x27;</span></span><br><span class="language-javascript">		&#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="language-javascript">			video.<span class="hljs-title function_">pause</span>()</span><br><span class="language-javascript">			play_btn.<span class="hljs-property">innerText</span> = <span class="hljs-string">&#x27;播放&#x27;</span></span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">	&#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-comment">// 获得播放的百分比</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> progress = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;progress&#x27;</span>)</span><br><span class="language-javascript">	progress.<span class="hljs-property">onclick</span>= <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> total = video.<span class="hljs-property">duration</span></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> current = video.<span class="hljs-property">currentTime</span></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> res = (current/total*<span class="hljs-number">100</span>).<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">2</span>) +<span class="hljs-string">&#x27;%&#x27;</span></span><br><span class="language-javascript">		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);</span><br><span class="language-javascript">		<span class="hljs-comment">//将百分比存入div</span></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> showprogress = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByClassName</span>(<span class="hljs-string">&#x27;showprogress&#x27;</span>)[<span class="hljs-number">0</span>]</span><br><span class="language-javascript">		showprogress.<span class="hljs-property">innerText</span> = res</span><br><span class="language-javascript">	&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>audio 音频</strong><br>audio 元素和 video 类似，是用来播放音频的。其属性方法事件也几乎与 video 元素一致</li>
+</ol>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ul>
+<li>**requestAnimationFrame()**，通知浏览器 JavaScript 动画要执行了。</li>
+<li>**cancelAnimationFrame()**，取消重绘任务。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 限流：将回调限制为不超过 50 毫秒执行一次</span><br><span class="hljs-keyword">let</span> enabled = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">expensiveOperation</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Invoked at&#x27;</span>, <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>());<br>&#125;<br><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;scroll&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (enabled) &#123;<br>    enabled = <span class="hljs-literal">false</span>;<br>    <span class="hljs-keyword">const</span> requestID = <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">requestAnimationFrame</span>(expensiveOperation);<br>    <span class="hljs-variable language_">window</span>.<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> enabled = <span class="hljs-literal">true</span>, <span class="hljs-number">50</span>);<br>    <span class="hljs-comment">// 可用返回的ID取消重绘</span><br>    <span class="hljs-comment">// window.cancelAnimationFrame(requestID);</span><br>  &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><p>canvas 元素专门用来绘制图形。在页面中放置一个 canvas 元素，就相当于在页面上放置一块画布，可以利用 canvas api 在其中进行图形的描绘。canvas 只是一个容器，不具备绘制能力，需要编写 js 代码实现。</p>
+<h3 id="导出图像"><a href="#导出图像" class="headerlink" title="导出图像"></a>导出图像</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 获取canvas元素对象</span><br><span class="hljs-keyword">let</span> drawing = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;drawing&quot;</span>);<br><span class="hljs-comment">// 确保浏览器支持&lt;canvas&gt; </span><br><span class="hljs-keyword">if</span> (drawing.<span class="hljs-property">getContext</span>) &#123;<br>  <span class="hljs-comment">// 取得图像的数据 URI </span><br>  <span class="hljs-keyword">let</span> imgURI = drawing.<span class="hljs-title function_">toDataURL</span>(<span class="hljs-string">&quot;image/png&quot;</span>);<br>  <span class="hljs-comment">// 显示图片</span><br>  <span class="hljs-keyword">let</span> image = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&quot;img&quot;</span>);<br>  image.<span class="hljs-property">src</span> = imgURI;<br>  <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(image);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h3><ol>
+<li>取得 canvas 对象</li>
+<li>取得 2d 上下文（context）</li>
+<li>设定绘图样式，使用图形上下文对象中的 fillStyle 填充样式 、strokeStyle 边框样式</li>
+<li>指定线宽，使用图形上下文对象中的（lineWidth）</li>
+<li>绘制矩形，使用图形上下文对象的</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- canvas 画布宽高用heigh和width属性设置 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid ##333;&quot;</span>&gt;</span><br>此处内容在浏览器不支持canvas元素时显示<br><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-comment">// 1.获取canvas对象</span></span><br><span class="language-javascript">  <span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>)[<span class="hljs-number">0</span>];</span><br><span class="language-javascript">  <span class="hljs-comment">// 2.获取canvasd的2d上下文</span></span><br><span class="language-javascript">  <span class="hljs-comment">// 有些浏览器对不存在的元素返回默认HTML元素对象，会不包含getContext</span></span><br><span class="language-javascript">  <span class="hljs-keyword">if</span> (canvas.<span class="hljs-property">getContext</span>) &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">var</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);</span><br><span class="language-javascript">    <span class="hljs-comment">// 3.设置填充模式   填充/描边</span></span><br><span class="language-javascript">    context.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;red&#x27;</span>;   <span class="hljs-comment">//填充</span></span><br><span class="language-javascript">    context.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;blue&#x27;</span>;  <span class="hljs-comment">//描边</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 4.设置线宽  描边时需要设置线宽</span></span><br><span class="language-javascript">    context.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&#x27;1&#x27;</span>;</span><br><span class="language-javascript">    <span class="hljs-comment">// 5.绘制矩形 (x坐标，y坐标，宽度，高度)</span></span><br><span class="language-javascript">    <span class="hljs-comment">// 填充矩形</span></span><br><span class="language-javascript">    context.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">20</span>, <span class="hljs-number">20</span>, <span class="hljs-number">100</span>, <span class="hljs-number">100</span>);</span><br><span class="language-javascript">    <span class="hljs-comment">// 描边矩形</span></span><br><span class="language-javascript">    context.<span class="hljs-title function_">strokeRect</span>(<span class="hljs-number">200</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>);</span><br><span class="language-javascript">    <span class="hljs-comment">// 清除矩形</span></span><br><span class="language-javascript">    context.<span class="hljs-title function_">clearRect</span>(<span class="hljs-number">20</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">30</span>);</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="圆形"><a href="#圆形" class="headerlink" title="圆形"></a>圆形</h3><ol>
+<li>取得 canvas 对象</li>
+<li>取得 2d 上下文（context）</li>
+<li>设定绘图样式，使用图形上下文对象中的 fillStyle 填充样式、strokeStyle 边框样式</li>
+<li>指定线宽，使用图形上下文对象中的（lineWidth）</li>
+<li>开始创建路径 <code>context.beginPath()</code></li>
+<li>设置路径 <code>context.arc(x, y, radius, startAngle, endAanle, direction)</code><br> 参数分别是：圆心 x 坐标，圆心 y 坐标，半径，开始角度 (弧度制)，结束角度 (弧度制)，绘制方向（false 顺时针、true 逆时针）</li>
+<li>关闭路径 <code>context.closePath()</code></li>
+<li>设定绘制样式，进行图形绘制 fill()、stroke() 重复绘制圆形</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid ##333;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-comment">// 1.获取canvas对象lx</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>)[<span class="hljs-number">0</span>]</span><br><span class="language-javascript">	<span class="hljs-comment">// 2.获取canvasd的2d上下文</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);</span><br><span class="language-javascript">	<span class="hljs-comment">// 3.设置填充模式   填充/描边</span></span><br><span class="language-javascript">	context.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;red&#x27;</span></span><br><span class="language-javascript">	context.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;blue&#x27;</span></span><br><span class="language-javascript">	<span class="hljs-comment">// 4.设置线宽  描边时需要设置线宽</span></span><br><span class="language-javascript">	context.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&#x27;1&#x27;</span></span><br><span class="language-javascript">	<span class="hljs-comment">// 5.开始路径</span></span><br><span class="language-javascript">	context.<span class="hljs-title function_">beginPath</span>()</span><br><span class="language-javascript">	<span class="hljs-comment">// 6.设置路径</span></span><br><span class="language-javascript">	context.<span class="hljs-title function_">arc</span>(<span class="hljs-number">200</span>,<span class="hljs-number">200</span>,<span class="hljs-number">50</span>, <span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span> /<span class="hljs-number">180</span> * <span class="hljs-number">0</span>,<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>/<span class="hljs-number">180</span>*<span class="hljs-number">360</span>,)</span><br><span class="language-javascript">	<span class="hljs-comment">// 7.关闭路径</span></span><br><span class="language-javascript">	context.<span class="hljs-title function_">closePath</span>()</span><br><span class="language-javascript">	<span class="hljs-comment">// 8.绘制圆形</span></span><br><span class="language-javascript">	context.<span class="hljs-title function_">fill</span>()   <span class="hljs-comment">// 填充圆形</span></span><br><span class="language-javascript">	context.<span class="hljs-title function_">stroke</span>()     <span class="hljs-comment">// 描边圆形</span></span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h3><ol>
+<li>取得 canvas 对象</li>
+<li>创建渐变对象，并添加渐变色</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> gradient = context.<span class="hljs-title function_">createLinearGradient</span>(xstart,ystart,xend,yend)<br><span class="hljs-comment">// 参数为：起始点x坐标，y坐标，结束点x坐标，y坐标。</span><br>gradient.<span class="hljs-title function_">addColorStop</span>(number,<span class="hljs-string">&#x27;color&#x27;</span>)<br>gradient.<span class="hljs-title function_">addColorStop</span>(number,<span class="hljs-string">&#x27;color&#x27;</span>)<br><span class="hljs-comment">// number为偏移量，0～1之间</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>获取 2d 上下文 context</li>
+<li>设置填充模式 <code>context.fillStyle = gradient</code></li>
+<li>绘制矩形 <code>context.fillRect(x,y,width,height)</code></li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid ##333;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-comment">// 1.获取canvas对象</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>)[<span class="hljs-number">0</span>]</span><br><span class="language-javascript">	<span class="hljs-comment">// 2.获取canvasd的2d上下文</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);</span><br><span class="language-javascript">	<span class="hljs-comment">// 3.创建渐变对象 并添加渐变色</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> gradient = context.<span class="hljs-title function_">createLinearGradient</span>(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">300</span>,<span class="hljs-number">300</span>)</span><br><span class="language-javascript">	gradient.<span class="hljs-title function_">addColorStop</span>(<span class="hljs-number">0</span>,<span class="hljs-string">&#x27;##fff&#x27;</span>)</span><br><span class="language-javascript">	gradient.<span class="hljs-title function_">addColorStop</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;##000&#x27;</span>)</span><br><span class="language-javascript">	<span class="hljs-comment">// 4.设置填充模式</span></span><br><span class="language-javascript">	context.<span class="hljs-property">fillStyle</span> = gradient</span><br><span class="language-javascript">	<span class="hljs-comment">// 5.绘制 矩形</span></span><br><span class="language-javascript">	context.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">200</span>,<span class="hljs-number">200</span>)</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><ol>
+<li>取得 canvas 对象</li>
+<li>获取 2d 上下文 context</li>
+<li>创建图像对象</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> image = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>()<br>image.<span class="hljs-property">src</span> = <span class="hljs-string">&#x27;./photo.jpg&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>在图片加载完毕后绘制图片，绘制图像</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">image.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>	context.<span class="hljs-title function_">drawImage</span>(image，x，y) <span class="hljs-comment">// 参数：图像，绘制位置的x坐标，y坐标</span><br>	context.<span class="hljs-title function_">drawImage</span>(image，x，y，w，h) <span class="hljs-comment">// 参数：图像，绘制位置的x坐标，y坐标 ，宽，高</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>可以设置平铺模式</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> pattern = context.<span class="hljs-title function_">createPattern</span>(image,<span class="hljs-string">&#x27;repeat&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>将平铺对象复制给填充模式</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">context.<span class="hljs-property">fillStyle</span> = pattern<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1000&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1000&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid ##333;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-comment">// 1.获取canvas对象</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>)[<span class="hljs-number">0</span>]</span><br><span class="language-javascript">	<span class="hljs-comment">// 2.获取canvasd的2d上下文</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);</span><br><span class="language-javascript">	<span class="hljs-comment">// 3.创建图片对象 并导入图片</span></span><br><span class="language-javascript">	<span class="hljs-keyword">var</span> image = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Image</span>()</span><br><span class="language-javascript">	image.<span class="hljs-property">src</span> = <span class="hljs-string">&#x27;../image/哈士基.jpeg&#x27;</span></span><br><span class="language-javascript">	<span class="hljs-comment">// 4.调用绘制图片的方法 </span></span><br><span class="language-javascript">	image.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">		<span class="hljs-comment">// 绘制图片</span></span><br><span class="language-javascript">		<span class="hljs-comment">// context.drawImage(image,100,100,100,100)</span></span><br><span class="language-javascript"></span><br><span class="language-javascript">		<span class="hljs-comment">// 创建平铺对象 并设置平铺模式  </span></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> pattern = context.<span class="hljs-title function_">createPattern</span>(image,<span class="hljs-string">&#x27;repeat&#x27;</span>)</span><br><span class="language-javascript">		context.<span class="hljs-property">fillStyle</span> = pattern</span><br><span class="language-javascript">		context.<span class="hljs-title function_">fillRect</span>(<span class="hljs-number">20</span>,<span class="hljs-number">20</span>,<span class="hljs-number">500</span>,<span class="hljs-number">500</span>)</span><br><span class="language-javascript">	&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h3><ol>
+<li>取得 canvas 对象</li>
+<li>取得 2d 上下文（context）</li>
+<li>设定绘图样式（fillStyle 填充样式、strokeStyle 边框样式）</li>
+<li>指定线宽（lineWidth）</li>
+<li>设置文字和对齐方式</li>
+<li>绘制文字</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid ##333;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>    <br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">        </span><br><span class="language-javascript"><span class="hljs-comment">// 1.获取canvas对象        </span></span><br><span class="language-javascript"><span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementsByTagName</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>)[<span class="hljs-number">0</span>]       </span><br><span class="language-javascript"><span class="hljs-comment">// 2.获取canvasd的2d上下文        </span></span><br><span class="language-javascript"><span class="hljs-keyword">var</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);        </span><br><span class="language-javascript"><span class="hljs-comment">// 3.设置填充模式   填充/描边        </span></span><br><span class="language-javascript">context.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;red&#x27;</span>        </span><br><span class="language-javascript">context.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;blue&#x27;</span>        </span><br><span class="language-javascript"><span class="hljs-comment">// 4.设置线宽  描边时需要设置线宽        </span></span><br><span class="language-javascript">context.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&#x27;1&#x27;</span>       </span><br><span class="language-javascript"> <span class="hljs-comment">// 5.设置文字        </span></span><br><span class="language-javascript">context.<span class="hljs-property">font</span> = <span class="hljs-string">&#x27;40px sans-serif&#x27;</span>        </span><br><span class="language-javascript">context.<span class="hljs-property">textAlign</span> = <span class="hljs-string">&#x27;center&#x27;</span>        </span><br><span class="language-javascript"> <span class="hljs-comment">// 6.绘制文字        </span></span><br><span class="language-javascript">context.<span class="hljs-title function_">fillText</span>(<span class="hljs-string">&#x27;hello canvas&#x27;</span>, <span class="hljs-number">200</span>,<span class="hljs-number">100</span>)    <span class="hljs-comment">//填充文字        </span></span><br><span class="language-javascript">context.<span class="hljs-title function_">strokeText</span>(<span class="hljs-string">&#x27;hello canvas&#x27;</span>, <span class="hljs-number">200</span>,<span class="hljs-number">200</span>)   <span class="hljs-comment">// 描边文字    </span></span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="线段"><a href="#线段" class="headerlink" title="线段"></a>线段</h3><p>moveTo(x, y)：线段的起点坐标 (x, y)<br>lineTo(x, y)：线段的终点坐标 (x, y)<br>cx.stroke();<br>lineWidth&#x3D;number;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid &quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>    <br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">        </span><br><span class="language-javascript">	<span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">		<span class="hljs-comment">// 获取画布</span></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>);</span><br><span class="language-javascript">		<span class="hljs-comment">// 获取上下文</span></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);</span><br><span class="language-javascript">		<span class="hljs-comment">// 绘制线段</span></span><br><span class="language-javascript">		context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">		context.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&#x27;3&#x27;</span>;</span><br><span class="language-javascript">		context.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;red&#x27;</span>;</span><br><span class="language-javascript">		context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">200</span>, <span class="hljs-number">10</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">300</span>, <span class="hljs-number">100</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">closePath</span>();</span><br><span class="language-javascript">		context.<span class="hljs-title function_">stroke</span>();</span><br><span class="language-javascript">	&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="变形"><a href="#变形" class="headerlink" title="变形"></a>变形</h3><p><strong>1. 平移</strong><br><code>translate(x,y)</code>：重新映射画布上的原点位置<br><strong>2. 扩大（放大坐标）</strong><br><code>scale(x,y)</code>：x: 代表的是水平方向上的放大倍数、y: 代表的是垂直方向上的放大倍数（如果想要缩小，参数设置为 0~1 之间<br><strong>3. 旋转</strong><br><code>rotate(angle)</code>：angle: 旋转角度，旋转的中心点就是坐标轴的原点，默认按照顺时针进行旋转，想要进行逆时针旋转，角度设置为负数<br><strong>4. 保存和回滚</strong><br><code>save()</code>: 将当前的绘画状态进行保存并存入状态栈<br><code>restore()</code>: 该方法每次调用只会回滚到上一次 save 的状态</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myCanvas&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;500&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid &quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>    <br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">        </span><br><span class="language-javascript">	<span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">		<span class="hljs-comment">// 获取画布</span></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>);</span><br><span class="language-javascript">		<span class="hljs-comment">// 获取上下文</span></span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);</span><br><span class="language-javascript">		<span class="hljs-comment">// 绘制线段</span></span><br><span class="language-javascript">		context.<span class="hljs-title function_">save</span>();<span class="hljs-comment">// 保存状态1</span></span><br><span class="language-javascript">		context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">		context.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&#x27;3&#x27;</span>;</span><br><span class="language-javascript">		context.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;red&#x27;</span>;</span><br><span class="language-javascript">		context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">stroke</span>();</span><br><span class="language-javascript"></span><br><span class="language-javascript">		context.<span class="hljs-title function_">translate</span>(<span class="hljs-number">100</span>,<span class="hljs-number">100</span>)<span class="hljs-comment">// 画布的原点改变为(100,100)</span></span><br><span class="language-javascript">		context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">		context.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&#x27;3&#x27;</span>;</span><br><span class="language-javascript">		context.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;red&#x27;</span>;</span><br><span class="language-javascript">		context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">200</span>, <span class="hljs-number">100</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">stroke</span>();</span><br><span class="language-javascript"></span><br><span class="language-javascript">		context.<span class="hljs-title function_">restore</span>();<span class="hljs-comment">// 恢复状态1（原点(0,0)）</span></span><br><span class="language-javascript">		context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">		context.<span class="hljs-property">lineWidth</span> = <span class="hljs-string">&#x27;3&#x27;</span>;</span><br><span class="language-javascript">		context.<span class="hljs-property">strokeStyle</span> = <span class="hljs-string">&#x27;blue&#x27;</span>;</span><br><span class="language-javascript">		context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>);</span><br><span class="language-javascript">		context.<span class="hljs-title function_">stroke</span>();</span><br><span class="language-javascript">	&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="时钟"><a href="#时钟" class="headerlink" title="时钟"></a>时钟</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;800&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;800&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>    <br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-variable language_">window</span>.<span class="hljs-property">onload</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> canvas = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;canvas&#x27;</span>);</span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> context = canvas.<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);</span><br><span class="language-javascript">		<span class="hljs-keyword">function</span> <span class="hljs-title function_">clock</span>(<span class="hljs-params"></span>)&#123;</span><br><span class="language-javascript">			<span class="hljs-comment">// 绘制圆盘</span></span><br><span class="language-javascript">			context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">arc</span>(<span class="hljs-number">400</span>,<span class="hljs-number">400</span>,<span class="hljs-number">200</span>,<span class="hljs-number">0</span>,<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>*<span class="hljs-number">2</span>);</span><br><span class="language-javascript">			context.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;pink&#x27;</span>;</span><br><span class="language-javascript">			context.<span class="hljs-title function_">fill</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">closePath</span>();</span><br><span class="language-javascript">			<span class="hljs-comment">// 绘制时刻度</span></span><br><span class="language-javascript">			<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">12</span>; i++)&#123;</span><br><span class="language-javascript">				context.<span class="hljs-title function_">save</span>();</span><br><span class="language-javascript">				context.<span class="hljs-title function_">translate</span>(<span class="hljs-number">400</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">				context.<span class="hljs-title function_">rotate</span>(i*(<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>/<span class="hljs-number">6</span>));</span><br><span class="language-javascript">				context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">				context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>,-<span class="hljs-number">180</span>);</span><br><span class="language-javascript">				context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">0</span>,-<span class="hljs-number">200</span>);</span><br><span class="language-javascript">				context.<span class="hljs-title function_">closePath</span>();</span><br><span class="language-javascript">				context.<span class="hljs-property">lineWidth</span> = <span class="hljs-number">4</span>;</span><br><span class="language-javascript">				context.<span class="hljs-property">fillStyle</span> = <span class="hljs-string">&#x27;black&#x27;</span>;</span><br><span class="language-javascript">				context.<span class="hljs-title function_">rotate</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>/<span class="hljs-number">6</span>);</span><br><span class="language-javascript">				context.<span class="hljs-property">font</span> = <span class="hljs-string">&#x27;16px bold&#x27;</span>;</span><br><span class="language-javascript">				context.<span class="hljs-title function_">fillText</span>(i+<span class="hljs-number">1</span>, -<span class="hljs-number">5</span>, -<span class="hljs-number">220</span>);</span><br><span class="language-javascript">				context.<span class="hljs-title function_">stroke</span>();</span><br><span class="language-javascript">				context.<span class="hljs-title function_">restore</span>();</span><br><span class="language-javascript">			&#125;</span><br><span class="language-javascript">			<span class="hljs-comment">// 绘制分刻度</span></span><br><span class="language-javascript">			<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">60</span>; i++)&#123;</span><br><span class="language-javascript">				context.<span class="hljs-title function_">save</span>();</span><br><span class="language-javascript">				context.<span class="hljs-title function_">translate</span>(<span class="hljs-number">400</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">				context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">				context.<span class="hljs-title function_">rotate</span>(i*(<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>/<span class="hljs-number">30</span>));</span><br><span class="language-javascript">				context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">190</span>);</span><br><span class="language-javascript">				context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">0</span>, -<span class="hljs-number">200</span>);</span><br><span class="language-javascript">				context.<span class="hljs-title function_">stroke</span>();</span><br><span class="language-javascript">				context.<span class="hljs-title function_">closePath</span>();</span><br><span class="language-javascript">				context.<span class="hljs-title function_">restore</span>();</span><br><span class="language-javascript">			&#125;</span><br><span class="language-javascript">			<span class="hljs-comment">// 获取当前时间</span></span><br><span class="language-javascript">			<span class="hljs-keyword">var</span> today = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();</span><br><span class="language-javascript">			<span class="hljs-keyword">var</span> hour = today.<span class="hljs-title function_">getHours</span>();</span><br><span class="language-javascript">			<span class="hljs-keyword">var</span> min = today.<span class="hljs-title function_">getMinutes</span>();</span><br><span class="language-javascript">			<span class="hljs-keyword">var</span> sec = today.<span class="hljs-title function_">getSeconds</span>();</span><br><span class="language-javascript">			hour = hour+min/<span class="hljs-number">60</span>;</span><br><span class="language-javascript">		<span class="hljs-comment">// 绘制时针</span></span><br><span class="language-javascript">			context.<span class="hljs-property">lineWidth</span>=<span class="hljs-number">4</span></span><br><span class="language-javascript">			context.<span class="hljs-title function_">save</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">translate</span>(<span class="hljs-number">400</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">rotate</span>(hour*<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>/<span class="hljs-number">3</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>)</span><br><span class="language-javascript">			context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">0</span>,-<span class="hljs-number">100</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">stroke</span>()</span><br><span class="language-javascript">			context.<span class="hljs-title function_">closePath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">restore</span>();</span><br><span class="language-javascript">			<span class="hljs-comment">// 绘制分针</span></span><br><span class="language-javascript">			context.<span class="hljs-property">lineWidth</span>=<span class="hljs-number">3</span></span><br><span class="language-javascript">			context.<span class="hljs-title function_">save</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">translate</span>(<span class="hljs-number">400</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">rotate</span>(min*(<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>/<span class="hljs-number">30</span>));</span><br><span class="language-javascript">			context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">0</span>,-<span class="hljs-number">160</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">stroke</span>()</span><br><span class="language-javascript">			context.<span class="hljs-title function_">closePath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">restore</span>();</span><br><span class="language-javascript">			<span class="hljs-comment">// 绘制秒针 </span></span><br><span class="language-javascript">			context.<span class="hljs-property">lineWidth</span>=<span class="hljs-number">2</span></span><br><span class="language-javascript">			context.<span class="hljs-title function_">save</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">translate</span>(<span class="hljs-number">400</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">rotate</span>(sec*<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>/<span class="hljs-number">30</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">moveTo</span>(<span class="hljs-number">0</span>,<span class="hljs-number">10</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">lineTo</span>(<span class="hljs-number">0</span>,-<span class="hljs-number">180</span>);</span><br><span class="language-javascript">			context.<span class="hljs-property">strokeStyle</span>=<span class="hljs-string">&#x27;red&#x27;</span></span><br><span class="language-javascript">			context.<span class="hljs-title function_">stroke</span>()</span><br><span class="language-javascript">			context.<span class="hljs-title function_">closePath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">restore</span>();</span><br><span class="language-javascript"></span><br><span class="language-javascript">			<span class="hljs-comment">// 绘制交叉处</span></span><br><span class="language-javascript">			context.<span class="hljs-property">lineWidth</span>=<span class="hljs-number">1</span></span><br><span class="language-javascript">			context.<span class="hljs-title function_">save</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">translate</span>(<span class="hljs-number">400</span>,<span class="hljs-number">400</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">beginPath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">arc</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">5</span>,<span class="hljs-number">0</span>,<span class="hljs-title class_">Math</span>.<span class="hljs-property">PI</span>*<span class="hljs-number">2</span>);</span><br><span class="language-javascript">			context.<span class="hljs-title function_">fill</span>();</span><br><span class="language-javascript">			context.<span class="hljs-property">fillStyle</span>=<span class="hljs-string">&#x27;##ccc&#x27;</span></span><br><span class="language-javascript">			context.<span class="hljs-property">strokeStyle</span>=<span class="hljs-string">&#x27;red&#x27;</span></span><br><span class="language-javascript">			context.<span class="hljs-title function_">stroke</span>()</span><br><span class="language-javascript">			context.<span class="hljs-title function_">closePath</span>();</span><br><span class="language-javascript">			context.<span class="hljs-title function_">restore</span>();</span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">		<span class="hljs-built_in">setInterval</span>(clock, <span class="hljs-number">1000</span>)</span><br><span class="language-javascript">		<span class="hljs-title function_">clock</span>();</span><br><span class="language-javascript">	&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><ul>
+<li><strong>globalAlpha</strong>，设置上下文中新绘制内容的透明度。</li>
+<li><strong>globalCompositionOperation</strong>，表示新绘制的形状如何与上下文中已有的形状融合。</li>
+</ul>
+<h3 id="WebGL"><a href="#WebGL" class="headerlink" title="WebGL"></a>WebGL</h3><p>画布的 3D 上下文。<br>与 OpenGL ES2.0 有很多相同。<br>TODO: JavaScript 高级程序设计 p594</p>
+<h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2><p>可伸缩矢量图形 (Scalable Vector Graphics)。  </p>
+<ul>
+<li>定义用于网络的基于矢量的图形</li>
+<li>使用 XML 格式定义图形</li>
+<li>放大或缩小不影响图片质量</li>
+</ul>
+<p>相比其他图像，优势：</p>
+<ul>
+<li>SVG 可被非常多的工具读取和修改（比如记事本）</li>
+<li>SVG 与 JPEG 和 GIF 图像比起来，尺寸更小，且可压缩性更强</li>
+<li>SVG 是可伸缩的</li>
+<li>SVG 图像可在任何的分辨率下被高质量地打印</li>
+<li>SVG 可在图像质量不下降的情况下被放大</li>
+<li>SVG 图像中的文本是可选的，同时也是可搜索的（很适合制作地图）</li>
+<li>SVG 可以与 Java 技术一起运行</li>
+<li>SVG 是开放的标准</li>
+<li>SVG 文件是纯粹的 XML</li>
+</ul>
+<h3 id="嵌入-HTML"><a href="#嵌入-HTML" class="headerlink" title="嵌入 HTML"></a>嵌入 HTML</h3><p><strong><code>&lt;embed&gt;</code></strong>  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">embed</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;rect.svg&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100&quot;</span> </span><br><span class="hljs-tag">	<span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/svg+xml&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">pluginspage</span>=<span class="hljs-string">&quot;http://www.adobe.com/svg/viewer/install/&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>pluginspage 属性指向下载插件的 URL。<br><strong><code>&lt;object&gt;</code></strong>   </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">object</span> <span class="hljs-attr">data</span>=<span class="hljs-string">&quot;rect.svg&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100&quot;</span> </span><br><span class="hljs-tag">	<span class="hljs-attr">type</span>=<span class="hljs-string">&quot;image/svg+xml&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">codebase</span>=<span class="hljs-string">&quot;http://www.adobe.com/svg/viewer/install/&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong><code>&lt;iframe&gt;</code></strong>  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;rect.svg&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="预定义形状元素"><a href="#预定义形状元素" class="headerlink" title="预定义形状元素"></a>预定义形状元素</h3><h4 id="矩形-1"><a href="#矩形-1" class="headerlink" title="矩形 &lt;rect&gt;"></a>矩形 <code>&lt;rect&gt;</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;300&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">style</span>=<span class="hljs-string">&quot;fill:rgb(0,0,255);stroke-width:1;</span></span><br><span class="hljs-string"><span class="hljs-tag">	stroke:rgb(0,0,0)&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="圆形-1"><a href="#圆形-1" class="headerlink" title="圆形 &lt;circle&gt;"></a>圆形 <code>&lt;circle&gt;</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">circle</span> <span class="hljs-attr">cx</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">cy</span>=<span class="hljs-string">&quot;50&quot;</span> <span class="hljs-attr">r</span>=<span class="hljs-string">&quot;40&quot;</span> <span class="hljs-attr">stroke</span>=<span class="hljs-string">&quot;black&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">stroke-width</span>=<span class="hljs-string">&quot;2&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;red&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="椭圆"><a href="#椭圆" class="headerlink" title="椭圆 &lt;ellipse&gt;"></a>椭圆 <code>&lt;ellipse&gt;</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ellipse</span> <span class="hljs-attr">cx</span>=<span class="hljs-string">&quot;300&quot;</span> <span class="hljs-attr">cy</span>=<span class="hljs-string">&quot;150&quot;</span> <span class="hljs-attr">rx</span>=<span class="hljs-string">&quot;200&quot;</span> <span class="hljs-attr">ry</span>=<span class="hljs-string">&quot;80&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">style</span>=<span class="hljs-string">&quot;fill:rgb(200,100,50);</span></span><br><span class="hljs-string"><span class="hljs-tag">	stroke:rgb(0,0,100);stroke-width:2&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="线"><a href="#线" class="headerlink" title="线 &lt;line&gt;"></a>线 <code>&lt;line&gt;</code></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">line</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">&quot;300&quot;</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">&quot;300&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">style</span>=<span class="hljs-string">&quot;stroke:rgb(99,99,99);stroke-width:2&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="折线"><a href="#折线" class="headerlink" title="折线 &lt;polyline&gt;"></a>折线 <code>&lt;polyline&gt;</code></h4><p>仅包含直线的形状。  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">polyline</span> <span class="hljs-attr">points</span>=<span class="hljs-string">&quot;0,0 0,20 20,20 20,40 40,40 40,60&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">style</span>=<span class="hljs-string">&quot;fill:white;stroke:red;stroke-width:2&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="多边形"><a href="#多边形" class="headerlink" title="多边形 &lt;polygon&gt;"></a>多边形 <code>&lt;polygon&gt;</code></h4><p>不少于三条边的图形。  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">polygon</span> <span class="hljs-attr">points</span>=<span class="hljs-string">&quot;220,100 300,210 170,250&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">style</span>=<span class="hljs-string">&quot;fill:##cccccc;</span></span><br><span class="hljs-string"><span class="hljs-tag">	stroke:##000000;stroke-width:1&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="路径"><a href="#路径" class="headerlink" title="路径 &lt;path&gt;"></a>路径 <code>&lt;path&gt;</code></h4><ul>
+<li>M &#x3D; moveto 起始  </li>
+<li>L &#x3D; lineto 连线  </li>
+<li>H &#x3D; horizontal lineto 水平线  </li>
+<li>V &#x3D; vertical lineto 垂直线  </li>
+<li>C &#x3D; curveto 三次贝塞尔曲线<br>后跟三组坐标，起点的控制点（控制曲线射出的方向）、终点的控制点（控制曲线射入的方向）、终点  </li>
+<li>S &#x3D; smooth curveto 三次贝塞尔曲线<br>后跟两组坐标，终点的控制点（控制曲线射入的方向）、终点；同 T，自动推测起点控制点，不跟 S 或 C 则变成二次贝塞尔曲线  </li>
+<li>Q &#x3D; quadratic Belzier curve 二次贝塞尔曲线<br>后跟两组坐标，控制点和终点  </li>
+<li>T &#x3D; smooth quadratic Belzier curveto 二次贝塞尔曲线<br>后跟一组坐标，终点；自动根据上一个控制点推测（必须在 Q 或 T 之后使用，否则为直线）  </li>
+<li>A &#x3D; elliptical Arc 椭圆弧<br>x 轴半径、y 轴半径、x 轴旋转度数 (顺为正)、弧长 (0 短 1 长)、弧线方向 (0 逆 1 顺)、终点 x、终点 y<br>半径为比例时，默认取符合条件的最小值，则弧长无意义  </li>
+<li>Z &#x3D; closepath 闭合，画直线到起始点</li>
+</ul>
+<p>大写表示绝对定位 (数值为线的结束位置)，小写表示相对定位 (数值等于线的长度)。  </p>
+<p><strong>二次贝塞尔曲线</strong><br><img src="image-20221124112959910.png" srcset="/blog/img/loading.gif" lazyload><br><strong>三次贝塞尔曲线</strong><br><img src="image-20221124113619483.png" srcset="/blog/img/loading.gif" lazyload><br><strong>椭圆弧</strong><br><img src="image-20221124115027617.png" srcset="/blog/img/loading.gif" lazyload></p>
+<h3 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h3><p>必须在 <code>&lt;defs&gt;</code> 中定义滤镜。  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> standalone=<span class="hljs-string">&quot;no&quot;</span>?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">svg</span> <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//W3C//DTD SVG 1.1//EN&quot;</span> </span><br><span class="hljs-meta"><span class="hljs-string">&quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.1&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">defs</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">filter</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Gaussian_Blur&quot;</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">feGaussianBlur</span> <span class="hljs-attr">in</span>=<span class="hljs-string">&quot;SourceGraphic&quot;</span> <span class="hljs-attr">stdDeviation</span>=<span class="hljs-string">&quot;3&quot;</span> /&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">defs</span>&gt;</span><br>	<br>	<span class="hljs-tag">&lt;<span class="hljs-name">ellipse</span> <span class="hljs-attr">cx</span>=<span class="hljs-string">&quot;200&quot;</span> <span class="hljs-attr">cy</span>=<span class="hljs-string">&quot;150&quot;</span> <span class="hljs-attr">rx</span>=<span class="hljs-string">&quot;70&quot;</span> <span class="hljs-attr">ry</span>=<span class="hljs-string">&quot;40&quot;</span></span><br><span class="hljs-tag">	<span class="hljs-attr">style</span>=<span class="hljs-string">&quot;fill:##ff0000;stroke:##000000;</span></span><br><span class="hljs-string"><span class="hljs-tag">	stroke-width:2;filter:url(##Gaussian_Blur)&quot;</span>/&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;feGaussianBlur&gt;</code> 标签的 stdDeviation 属性可定义模糊的程度</li>
+<li><code>in=&quot;SourceGraphic&quot;</code> 这个部分定义了由整个图像创建效果</li>
+</ul>
+<h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><p>必须在 <code>&lt;defs&gt;</code> 中定义渐变。  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> standalone=<span class="hljs-string">&quot;no&quot;</span>?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">svg</span> <span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//W3C//DTD SVG 1.1//EN&quot;</span> </span><br><span class="hljs-meta"><span class="hljs-string">&quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.1&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">defs</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">linearGradient</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;orange_red&quot;</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">&quot;0%&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;stop-color:rgb(255,255,0);</span></span><br><span class="hljs-string"><span class="hljs-tag">stop-opacity:1&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;stop-color:rgb(255,0,0);</span></span><br><span class="hljs-string"><span class="hljs-tag">stop-opacity:1&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">linearGradient</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">defs</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">ellipse</span> <span class="hljs-attr">cx</span>=<span class="hljs-string">&quot;200&quot;</span> <span class="hljs-attr">cy</span>=<span class="hljs-string">&quot;190&quot;</span> <span class="hljs-attr">rx</span>=<span class="hljs-string">&quot;85&quot;</span> <span class="hljs-attr">ry</span>=<span class="hljs-string">&quot;55&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">style</span>=<span class="hljs-string">&quot;fill:url(##orange_red)&quot;</span>/&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;stop&gt;</code> 每种颜色一个标签，offset 定义位置。  </li>
+<li><code>&lt;linearGradient id=&quot;orange_red&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;</code><br>x 控制水平方向，y 控制垂直方向  </li>
+<li><code>&lt;radialGradient id=&quot;grey_blue&quot; cx=&quot;20%&quot; cy=&quot;40%&quot; r=&quot;50%&quot; fx=&quot;50%&quot; fy=&quot;50%&quot;&gt;</code><br>cx、cy 和 r 属性定义外圈，而 fx 和 fy 定义内圈</li>
+</ul>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/svg/svg_examples.asp">SVG 实例</a>  </p>
+<h2 id="拖拽"><a href="#拖拽" class="headerlink" title="拖拽"></a>拖拽</h2><p>在 H5 中实现了拖拽技术，允许用户在网页内部拖拽以及浏览器与其他应用程序之间的拖拽，通过拖拽可以传递数据。<br><strong>属性</strong>：draggable（是否可拖动）<br><strong>事件</strong></p>
+<ul>
+<li>拖拽元素（需要改变位置的元素）<br>  dragstart 开始拖拽<br>  drag 正在拖拽<br>  dragend 结束拖拽</li>
+<li>目标元素（被放置元素的元素）<br>  dragenter 拖拽元素进入到目标元素<br>  dragover 拖拽元素在目标元素中移动<br>  drop 拖拽元素放置到目标元素中</li>
+</ul>
+<p><strong>拖拽事件流</strong>：<br>当拖动一个元素放置到目标元素上的时候将会按照如下顺序依次触发<br>dragstart—-drag—-dragenter—-dragover—-drop—-dragend<br><strong>数据交互 dataTransfer</strong><br>在拖拽事件中，我们可以通过 datatransfer 来实现数据交互。它是事件对象的一个属性 event.datatransfer。用于从被拖拽元素向目标元素传递字符串格式的数据。<br>设置值：<code>event.datatransfer.setData()</code> 在元素拖拽开始时设置 <code>ondragstart</code><br>获取值：<code>event.datatransfer.getData()</code> 在元素放置时获取 <code>ondrop</code><br>将拖动元素放置到目标元素<br><strong>前提</strong><br>拖拽元素可拖拽 draggable<br>目标元素可放置 ondragover &#x3D; function(){ event.preventDefault() } &#x2F;&#x2F; 阻止默认行为</p>
+<h2 id="Web-存储"><a href="#Web-存储" class="headerlink" title="Web 存储"></a>Web 存储</h2><p>WebStorage 目标：</p>
+<ul>
+<li>提供一种在 cookie 之外存储会话数据的路径</li>
+<li>提供一种存储大量可以跨会话存在的数据的机制</li>
+</ul>
+<p>HTML5 的 WebStorage 提供两种 API：localStorage（本地存储）、sessionStorage（会话机制）</p>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>存储在浏览器中，每次浏览器向服务器发送请求都需要携带 cookie，一般情况下，cookie 是产生于服务器端，保存于客户端。但是我们也可以通过 js 来产生 cookie，可以通过 js-cookie 这个库来操作 cookie<br><strong>特点：</strong></p>
+<ul>
+<li>数据持久型，即数据在浏览器关闭时才删除</li>
+<li>不需要任何服务器资源，因为 cookie 是存储在客户端并发送给服务器读取</li>
+<li>可配置到期，控制 cookie 的生命周期，使之不会永远有效，偷盗者可能拿到的是过期的 cookie</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//引入cookie</span><br>&lt;script src=<span class="hljs-string">&quot;https://cdn.bootcdn.net/ajax/libs/js-cookie/latest/js.cookie.min.js&quot;</span>&gt;&lt;/script&gt;<br><br><span class="hljs-comment">//创建一个cookie，7天后过期</span><br><span class="hljs-keyword">var</span> cookie = <span class="hljs-title class_">Cookies</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;name&#x27;</span>,<span class="hljs-string">&#x27;this is a cookie&#x27;</span>,&#123;<span class="hljs-attr">expires</span>:<span class="hljs-number">7</span>&#125;)<br><br><span class="hljs-comment">//获取cookie</span><br><span class="hljs-keyword">var</span> name = <span class="hljs-title class_">Cookies</span>.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;name&#x27;</span>)<br><br><span class="hljs-comment">//移除cookie</span><br><span class="hljs-title class_">Cookies</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;name&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><p>sessionStorage 仅在当前会话下有效（关闭选项卡或关闭浏览器后会话数据失效），仅在客户端 (即浏览器）中保存，不参与和服务器的通信。<br><strong>特点</strong>：</p>
+<ul>
+<li>页面会话在浏览器打开期间一直保持，并且<strong>重新加载</strong>或<strong>恢复页面</strong>仍会保持原来的页面会话<ul>
+<li>重新加载：点击刷新按钮刷新页面</li>
+<li>恢复页面：当前 tab 没有关闭，跳转到其他地址后，再重新回到原来页面。</li>
+</ul>
+</li>
+<li>打开多个相同的 URL 的 Tabs 页面，会创建各自的 sessionStorage</li>
+<li>关闭对应浏览器的 tab，会清除对应的 sessionStorage</li>
+</ul>
+<blockquote>
+<p><strong>重点是原来页面的那个 tab 是否关闭，即使 tab 已经不是原来的页面地址</strong>。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//创建</span><br><span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;name&#x27;</span>,<span class="hljs-string">&#x27;zhangsan&#x27;</span>)<br><span class="hljs-comment">//获取</span><br><span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;name&#x27;</span>)<br><span class="hljs-comment">//移除</span><br><span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;name&#x27;</span>)<br><span class="hljs-comment">//清空</span><br><span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">clear</span>()<br></code></pre></td></tr></table></figure>
+
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><p>localStorage 生命周期是永久，这意味着除非用户显示在浏览器提供的 UI 上清除 localStorage 信息，否则这些信息将永远存在。仅在客户端（即浏览器）中保存，不参与和服务器的通信。<br><strong>特点：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//创建</span><br><span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;name&#x27;</span>,<span class="hljs-string">&#x27;zhangsan&#x27;</span>)<br><span class="hljs-comment">//获取</span><br><span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;name&#x27;</span>)<br><span class="hljs-comment">//移除</span><br><span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">remove</span>(<span class="hljs-string">&#x27;name&#x27;</span>)<br><span class="hljs-comment">//清空</span><br><span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">clear</span>()<br></code></pre></td></tr></table></figure>
+
+<h3 id="异同"><a href="#异同" class="headerlink" title="异同"></a>异同</h3><ol>
+<li><p>作用域的不同：<br>不同浏览器无法共享 localStorage 或 sessionStorage 中的信息。相同浏览器的不同页面间可以共享相同的 localStorage（页面属于相同域名和端口），但是不同页面或标签页间无法共享 sessionStorage 的信息。页面及标签页仅指顶级窗口，如果一个标签页包含多个 iframe 标签且它们属于同源页面，那么它们之间是可以共享 sessionStorage 的</p>
+</li>
+<li><p>存储大小：<br>localStorage 和 sessionStorage 的存储数据大小一般都是：5MB</p>
+</li>
+<li><p>存储位置：<br>localStorage 和 sessionStorage 都保存在客户端，不与服务器进行交互通信</p>
+</li>
+<li><p>存储内容类型：<br>localStorage 和 sessionStorage 只能存储字符串类型，对于复杂的对象可以使用 ECMAScript 提供的 JSON 对象的 stringify 和 parse 来处理</p>
+</li>
+<li><p>获取方式：<br>localStorage:window.localStorage;<br>sessionStorage:window.sessionStorage;</p>
+</li>
+<li><p>应用场景：<br>localStorage: 常用于长期登录（+ 判断用户是否已登录）,适合长期保存在本地的数据，而 sessionStorage: 敏感账号一次性登录</p>
+</li>
+<li><p>WebStorage 的优点：<br>存储空间更大：cookie 为 4KB，而 WebStorage 是 5MB<br>节省网络流量：WebStorage 不会传送到服务器，存储在本地的数据可以直接获取，也不会像 cookie 一样请求都会传送到服务器，所以减少了客户端和服务器 端的交互，节省了网络流量<br>对于那种只需要在用户浏览一组页面期间保存而关闭浏览器后就可以丢弃的数据，sessionStorage 会非常方便<br>快速显示：有的数据存储在 WebStorage 上，再加上浏览器本身的缓存。获取数据时可以从本地获取会比从服务器端获取快得多，所以速度更快<br>安全性：WebStorage 不会随着 HTTP header 发送到服务器端，所以安全性相对于 cookie 来说比较高一些，不会担心截获，但是仍然存在伪造问题</p>
+</li>
+</ol>
+<h2 id="通信"><a href="#通信" class="headerlink" title="通信"></a>通信</h2><h3 id="BoardCast-Channel"><a href="#BoardCast-Channel" class="headerlink" title="BoardCast Channel"></a>BoardCast Channel</h3><p>适用于同一 origin 下的不同页面之前进行通信。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> channel = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BroadcastChannel</span>(<span class="hljs-string">&#x27;demo&#x27;</span>);<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">sendMsg</span>(<span class="hljs-params">type, content</span>) &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;sendMsg&#x27;</span>);<br>  channel.<span class="hljs-title function_">postMessage</span>(&#123;<br>    type,<br>    content,<br>  &#125;)<br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">listenMsg</span>(<span class="hljs-params">callback</span>) &#123;<br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handler</span> = e =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;callback&#x27;</span>);<br>    callback &amp;&amp; <span class="hljs-title function_">callback</span>(e.<span class="hljs-property">data</span>);<br>  &#125;;<br><br>  channel.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;message&#x27;</span>, handler);<br>  <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> &#123;<br>    channel.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;message&#x27;</span>, handler);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> message = (<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">return</span> &#123;<br>    sendMsg,<br>    listenMsg,<br>  &#125;<br>&#125;)()<br></code></pre></td></tr></table></figure>
+
+<h3 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h3><h3 id="Localstorage、window-onstorage"><a href="#Localstorage、window-onstorage" class="headerlink" title="Localstorage、window.onstorage"></a>Localstorage、window.onstorage</h3><h3 id="Shared-Worker-定时器轮询-setInterval"><a href="#Shared-Worker-定时器轮询-setInterval" class="headerlink" title="Shared Worker 定时器轮询 (setInterval)"></a>Shared Worker 定时器轮询 (setInterval)</h3><h3 id="IndexDB-定时器轮询-setInterval"><a href="#IndexDB-定时器轮询-setInterval" class="headerlink" title="IndexDB 定时器轮询 (setInterval)"></a>IndexDB 定时器轮询 (setInterval)</h3><h3 id="Cookie-定时器轮询-setInterval"><a href="#Cookie-定时器轮询-setInterval" class="headerlink" title="Cookie 定时器轮询 (setInterval)"></a>Cookie 定时器轮询 (setInterval)</h3><h3 id="window-open、window-postMessage"><a href="#window-open、window-postMessage" class="headerlink" title="window.open、window.postMessage"></a>window.open、window.postMessage</h3><p>H5 提供了网页文档之间互相接收与发送消息的功能，当在 a 页面中通过 window.open() 方法打开 b 页面，或者在 a 页面中通过 iframe 嵌套 b 页面，我们想让 a 中的数据传递到 b 中就可以使用跨文档消息传输<br><em>a.html</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;sendMessage()&quot;</span>&gt;</span>发送消息<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-keyword">let</span> windowB = <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">open</span>(<span class="hljs-string">&quot;http://127.0.0.1:5500/test/b.html&quot;</span>)</span><br><span class="language-javascript">	</span><br><span class="language-javascript">	<span class="hljs-keyword">function</span> <span class="hljs-title function_">sendMessage</span>(<span class="hljs-params"></span>) &#123;</span><br><span class="language-javascript">	  <span class="hljs-keyword">const</span> data = &#123;</span><br><span class="language-javascript">		<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;lili&#x27;</span></span><br><span class="language-javascript">	  &#125;;</span><br><span class="language-javascript">	  <span class="hljs-comment">// windowB 发送对象窗口引用</span></span><br><span class="language-javascript">	  <span class="hljs-comment">// 如：iframe 的 contentWindow 属性、执行window.open返回的窗口对象</span></span><br><span class="language-javascript">	  windowB.<span class="hljs-title function_">postMessage</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data), <span class="hljs-string">&#x27;http://127.0.0.1:5500&#x27;</span>);</span><br><span class="language-javascript">	&#125;;</span><br><span class="language-javascript">	<span class="hljs-comment">// 接受页面b返回数据</span></span><br><span class="language-javascript">	<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;</span><br><span class="language-javascript">	  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;来自页面b的数据 ---&gt; &#x27;</span> + e.<span class="hljs-property">data</span>);</span><br><span class="language-javascript">	&#125;, <span class="hljs-literal">false</span>);</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><em>b.html</em></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript">	<span class="hljs-comment">// 接收页面a的数据</span></span><br><span class="language-javascript">	<span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) &#123;</span><br><span class="language-javascript">		<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;来自页面a的数据 ---&gt; &#x27;</span> + e.<span class="hljs-property">data</span>);</span><br><span class="language-javascript">		<span class="hljs-keyword">var</span> data = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(e.<span class="hljs-property">data</span>);</span><br><span class="language-javascript">		<span class="hljs-keyword">if</span> (data) &#123;</span><br><span class="language-javascript">			data.<span class="hljs-property">age</span> = <span class="hljs-number">16</span>;</span><br><span class="language-javascript">			<span class="hljs-comment">// 处理后再发回页面a</span></span><br><span class="language-javascript">			e.<span class="hljs-property">source</span>.<span class="hljs-title function_">postMessage</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data), e.<span class="hljs-property">origin</span>);</span><br><span class="language-javascript">		&#125;</span><br><span class="language-javascript">	&#125;, <span class="hljs-literal">false</span>);</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Websocket"><a href="#Websocket" class="headerlink" title="Websocket"></a>Websocket</h3><p>使用 websocket 可以在服务器与客户端之间建立一个非 http 的双向连接，这个连接是实时的也是永久的，除非被显示关闭。服务器可以随时将消息推送到客户端。<br>想要实现 websocket 连接，需要有服务器的支持。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//1.建立与服务器之间的长连接 绝对地址</span><br><span class="hljs-keyword">var</span> ws = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Websocket</span>(<span class="hljs-string">&#x27;ws://47.94.46.113:8888/imserver/1&#x27;</span>)<br><span class="hljs-comment">//2.连接成功后的回调函数</span><br>ws.<span class="hljs-property">onopen</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e)<br>  ws.<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;我是客户端&#x27;</span>)     <span class="hljs-comment">//向服务端发送数据，字符串、ArrayBuffer、Blob</span><br>&#125;<br><span class="hljs-comment">//3.收到服务器消息的回调函数</span><br>ws.<span class="hljs-property">onmessage</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)&#123;<br>	<span class="hljs-comment">// 通过 binaryType 确定返回数据类型</span><br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(e.<span class="hljs-property">data</span>)<br>&#125;<br><br>ws.<span class="hljs-property">onerror</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;	<span class="hljs-comment">//连接失败</span><br>ws.<span class="hljs-property">onclose</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;&#125;   <span class="hljs-comment">//关闭连接</span><br></code></pre></td></tr></table></figure>
+
+<p>close 的 event 额外包含三个属性：</p>
+<ul>
+<li>wasClean，连接是否干净的关闭。</li>
+<li>code，来自服务器的数值状态码。</li>
+<li>reason，来自服务器的消息。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_54773998/article/details/123863493">WebSocket_ohana！的博客-CSDN博客_websocket</a>  </p>
+<h3 id="SSE"><a href="#SSE" class="headerlink" title="SSE"></a>SSE</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/knxhd/p/18384413">Event-Stream技术 - 柯南小海盗 - 博客园</a></p>
+<h2 id="地理位置-geolocation"><a href="#地理位置-geolocation" class="headerlink" title="地理位置 geolocation"></a>地理位置 geolocation</h2><p>H5 中添加了获取地理位置的 api，<code>window.navigator.geolocation.getCurrentPosition</code>。也是百度地图&#x2F;高德地图通过浏览器定位的实现原理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">window</span>.<span class="hljs-property">navigator</span>.<span class="hljs-property">geolocation</span>.<span class="hljs-title function_">getCurrentPosition</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">position</span>)&#123;<br>	<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(position)  <br>&#125;)<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="../../categories/HTML/" class="category-chain-item">HTML</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>HTML5</div>
+      <div>https://sunsea-h.github.io/blog/HTML/HTML5/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>hxh</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 5, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../HTML/" title="HTML">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../Java/Java%20Spring%E6%B3%A8%E8%A7%A3/" title="Java Spring 注解">
+                        <span class="hidden-mobile">Java Spring 注解</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../js/events.js" ></script>
+<script  src="../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
