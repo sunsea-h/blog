@@ -3,7 +3,7 @@ title: Manjaro
 categories:
   - System
 date: 2024-08-05 21:57:52
-updated: 2025-08-01 17:29:43
+updated: 2026-04-02 22:00:22
 ---
 # [Manjaro](https://manjaro.org/)
 
@@ -174,4 +174,5 @@ pacman -S linuxXY linuxXY-headers
 
 ## 参考
 
-[Manjaro安装、配置、调试超详细攻略\_皛心的博客-CSDN博客](https://blog.csdn.net/m0_47670683/article/details/113793200)
+[Manjaro安装、配置、调试超详细攻略\_皛心的博客-CSDN博客](https://blog.csdn.net/m0_47670683/article/details/113793200)  
+[Title Unavailable \| Site Unreachable](https://github.com/orangbus/Tool)

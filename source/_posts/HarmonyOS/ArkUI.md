@@ -3,7 +3,7 @@ title: ArkUI
 categories:
   - HarmonyOS
 date: 2025-03-27 23:44:11
-updated: 2025-12-30 13:33:48
+updated: 2026-03-29 21:50:12
 ---
 # ArkUI
 

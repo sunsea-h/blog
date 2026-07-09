@@ -3,7 +3,7 @@ title: Linux
 categories:
   - System
 date: 2022-09-26 09:27:58
-updated: 2025-06-20 14:35:49
+updated: 2026-03-29 23:25:28
 ---
 # Linux
 
